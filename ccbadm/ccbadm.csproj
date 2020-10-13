@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6F64A4D4-FAF1-41FE-A499-36107F974DA4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ccbadm</RootNamespace>
+    <AssemblyName>ccbadm</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization.resources, Version=11.0.0.0, Culture=de, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.DataVisualization.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmListaPresenca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaPresenca.Designer.cs">
+      <DependentUpon>frmListaPresenca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPreviaLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPreviaLista.Designer.cs">
+      <DependentUpon>frmPreviaLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTipoReuniao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTipoReuniao.Designer.cs">
+      <DependentUpon>frmTipoReuniao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTipoReuniaoBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTipoReuniaoBusca.Designer.cs">
+      <DependentUpon>frmTipoReuniaoBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReunioes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReunioes.Designer.cs">
+      <DependentUpon>frmReunioes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReunioesBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReunioesBusca.Designer.cs">
+      <DependentUpon>frmReunioesBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaComum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaComum.Designer.cs">
+      <DependentUpon>frmPesquisaComum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaPessoa.Designer.cs">
+      <DependentUpon>frmPesquisaPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPessoa.Designer.cs">
+      <DependentUpon>frmPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="relatorios\frmListaReuniao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="relatorios\frmListaReuniao.Designer.cs">
+      <DependentUpon>frmListaReuniao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="relatorios\frmMixListaReuniao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="relatorios\frmMixListaReuniao.Designer.cs">
+      <DependentUpon>frmMixListaReuniao.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmListaPresenca.resx">
+      <DependentUpon>frmListaPresenca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPreviaLista.resx">
+      <DependentUpon>frmPreviaLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTipoReuniao.resx">
+      <DependentUpon>frmTipoReuniao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTipoReuniaoBusca.resx">
+      <DependentUpon>frmTipoReuniaoBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReunioes.resx">
+      <DependentUpon>frmReunioes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReunioesBusca.resx">
+      <DependentUpon>frmReunioesBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaComum.resx">
+      <DependentUpon>frmPesquisaComum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaPessoa.resx">
+      <DependentUpon>frmPesquisaPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPessoa.resx">
+      <DependentUpon>frmPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\frmListaReuniao.resx">
+      <DependentUpon>frmListaReuniao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\frmMixListaReuniao.resx">
+      <DependentUpon>frmMixListaReuniao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\rptReuniao_Reg_Cargo.rdlc" />
+    <EmbeddedResource Include="relatorios\rptReuniao_Reg.rdlc" />
+    <EmbeddedResource Include="relatorios\rptReuniao_Cargo.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\button_cancel.png" />
+    <None Include="Properties\DataSources\ENT.administracao.MOD_listaPresenca.datasource" />
+    <None Include="Properties\DataSources\ENT.administracao.MOD_reuniaoMinisterio.datasource" />
+    <None Include="Properties\DataSources\ENT.administracao.MOD_tipoReuniao.datasource" />
+    <None Include="Properties\DataSources\ENT.administracao.MOD_tipoReuniaoCargo.datasource" />
+    <None Include="Properties\DataSources\ENT.administracao.MOD_totalListaPresenca.datasource" />
+    <None Include="Properties\DataSources\ENT.pessoa.MOD_cargo.datasource" />
+    <None Include="Properties\DataSources\ENT.pessoa.MOD_pessoa.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\badm\badm.csproj">
+      <Project>{bf9bb35f-fc06-40e7-b379-5ac25429f3f1}</Project>
+      <Name>badm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\binst\binst.csproj">
+      <Project>{38e61cf1-fd5f-402c-a381-7808bf90f805}</Project>
+      <Name>binst</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\bpess\bpess.csproj">
+      <Project>{9c258944-c272-427a-b59c-139fd8c905d6}</Project>
+      <Name>bpess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\busua\busua.csproj">
+      <Project>{aa265f7b-63d5-4b88-86ba-122acbad2e25}</Project>
+      <Name>busua</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\butil\butil.csproj">
+      <Project>{63c8b22b-8a1c-405e-ad2a-f4649d3570e1}</Project>
+      <Name>butil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbfun\ccbfun.csproj">
+      <Project>{77174dd7-29c6-4caf-910c-a895312ed355}</Project>
+      <Name>ccbfun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbpess\ccbpess.csproj">
+      <Project>{d6020838-429c-4bd8-8be6-ae70a53c4cf9}</Project>
+      <Name>ccbpess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbvalida\ccbvalida.csproj">
+      <Project>{f571bbc4-39b9-4bb4-8a2a-f4a663552346}</Project>
+      <Name>ccbvalida</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\entities\entities.csproj">
+      <Project>{538edb2f-4afa-41e6-b891-5fdd1d3b245a}</Project>
+      <Name>entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\antes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\cancelado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\depois.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\DesTodos.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\finalizado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Lupa.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\negar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\PesquisaOS.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Processar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\SelTodos.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\button_ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\listagem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Impressora.bmp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

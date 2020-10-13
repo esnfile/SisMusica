@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1FB10B3A-CFBD-485C-AD81-28BE3D4ACB69}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ccbprinc</RootNamespace>
+    <AssemblyName>ccbprinc</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\SistemaCCB\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>80</ApplicationRevision>
+    <ApplicationVersion>1.0.4.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icone.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\bconect\bconect.csproj">
+      <Project>{2735a2ce-b0cb-41d8-ae87-1daed217be2e}</Project>
+      <Name>bconect</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\busua\busua.csproj">
+      <Project>{aa265f7b-63d5-4b88-86ba-122acbad2e25}</Project>
+      <Name>busua</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\butil\butil.csproj">
+      <Project>{63c8b22b-8a1c-405e-ad2a-f4649d3570e1}</Project>
+      <Name>butil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbadm\ccbadm.csproj">
+      <Project>{6f64a4d4-faf1-41fe-a499-36107f974da4}</Project>
+      <Name>ccbadm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbaju\ccbaju.csproj">
+      <Project>{15ad7fb5-9d82-4ff0-ae82-0bee0555bbe2}</Project>
+      <Name>ccbaju</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbexp\ccbexp.csproj">
+      <Project>{c643593f-979e-4398-a332-76e0dc13d0ae}</Project>
+      <Name>ccbexp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbfun\ccbfun.csproj">
+      <Project>{77174dd7-29c6-4caf-910c-a895312ed355}</Project>
+      <Name>ccbfun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbimp\ccbimp.csproj">
+      <Project>{8d04159a-284b-43a2-b56c-ca6127959b90}</Project>
+      <Name>ccbimp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbinst\ccbinst.csproj">
+      <Project>{a08704d9-39dd-401f-b2e9-4ce49404d0c8}</Project>
+      <Name>ccbinst</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccborq\ccborq.csproj">
+      <Project>{0d3e14a5-6985-4280-8803-9483748716c8}</Project>
+      <Name>ccborq</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbpess\ccbpess.csproj">
+      <Project>{d6020838-429c-4bd8-8be6-ae70a53c4cf9}</Project>
+      <Name>ccbpess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbrepess\ccbrepess.csproj">
+      <Project>{dd8ddfee-0ec6-4625-9617-9582b4a5a6f5}</Project>
+      <Name>ccbrepess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbreutil\ccbreutil.csproj">
+      <Project>{b1e464f6-368a-4726-93a3-b0e26f917ba7}</Project>
+      <Name>ccbreutil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbtest\ccbtest.csproj">
+      <Project>{5fb2f9ec-f98d-4928-9df2-8145a66d3eca}</Project>
+      <Name>ccbtest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbusua\ccbusua.csproj">
+      <Project>{f67d418a-cf1a-429d-a305-440d44cd31f7}</Project>
+      <Name>ccbusua</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbutil\ccbutil.csproj">
+      <Project>{8e308619-1aa3-4cf5-867f-b866649c359d}</Project>
+      <Name>ccbutil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbvalida\ccbvalida.csproj">
+      <Project>{f571bbc4-39b9-4bb4-8a2a-f4a663552346}</Project>
+      <Name>ccbvalida</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\entities\entities.csproj">
+      <Project>{538edb2f-4afa-41e6-b891-5fdd1d3b245a}</Project>
+      <Name>entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\btnMenu_Fundo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\ToolbarInstr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\ToolbarPessoas.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\ToolbarPessoas%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\ToolbarUsuario%282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\ToolbarInstr%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\ToolbarComum%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\ToolbarPreTeste%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\ToolbarTeste%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\ToolbarPreTeste%282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\ToolbarSair.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icone.ico" />
+    <None Include="imagens\fundo_ccb.png" />
+    <None Include="imagens\ToolbarSeparador.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

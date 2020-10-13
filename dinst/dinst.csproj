@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D009AAD6-D1D0-4EEB-B0B5-A7F385290BB4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>dinst</RootNamespace>
+    <AssemblyName>dinst</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL_escala.cs" />
+    <Compile Include="DAL_tipoEscala.cs" />
+    <Compile Include="DAL_hinario.cs" />
+    <Compile Include="DAL_instrumentoHinario.cs" />
+    <Compile Include="DAL_instrumentoTom.cs" />
+    <Compile Include="DAL_instrumentoVozAlternativa.cs" />
+    <Compile Include="metodos\DAL_metodoFamilia.cs" />
+    <Compile Include="DAL_voz.cs" />
+    <Compile Include="DAL_tonalidade.cs" />
+    <Compile Include="DAL_instrumentoVozPrincipal.cs" />
+    <Compile Include="DAL_familia.cs" />
+    <Compile Include="DAL_instrumento.cs" />
+    <Compile Include="DAL_instrumentoFoto.cs" />
+    <Compile Include="metodos\DAL_metodoInstr.cs" />
+    <Compile Include="metodos\DAL_metodos.cs" />
+    <Compile Include="metodos\DAL_mtsFase.cs" />
+    <Compile Include="metodos\DAL_mtsModulo.cs" />
+    <Compile Include="metodos\DAL_teoria.cs" />
+    <Compile Include="metodos\DAL_teoriaFoto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dconect\dconect.csproj">
+      <Project>{770c4aa7-58cc-4fb3-81e1-07a323700e0b}</Project>
+      <Name>dconect</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\entities\entities.csproj">
+      <Project>{538edb2f-4afa-41e6-b891-5fdd1d3b245a}</Project>
+      <Name>entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F571BBC4-39B9-4BB4-8A2A-F4A663552346}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ccbvalida</RootNamespace>
+    <AssemblyName>ccbvalida</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="apoio.cs" />
+    <Compile Include="controles\ComboBoxPersonal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controles\ComboBoxPersonal.Designer.cs" />
+    <Compile Include="controles\DataGridViewPersonal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controles\DataGridViewPersonal.Designer.cs" />
+    <Compile Include="controles\DateTimePickerPersonal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controles\DateTimePickerPersonal.Designer.cs" />
+    <Compile Include="controles\NumericUpDownPersonal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controles\NumericUpDownPersonal.Designer.cs" />
+    <Compile Include="controles\tabControlPersonal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controles\tabControlPersonal.Designer.cs" />
+    <Compile Include="controles\tabLabelPersonal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controles\tabLabelPersonal.Designer.cs">
+      <DependentUpon>tabLabelPersonal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controles\TextBoxPersonal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controles\TextBoxPersonal.Designer.cs" />
+    <Compile Include="exceptions\clsException.cs" />
+    <Compile Include="formularios\carregBarra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\carregAtendimento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\carregAcessos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\carregRelatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\telaErros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\reabrir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\gravando.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\finalizando.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\fechando.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\excluindo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\estornando.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\conectarBanco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\carregUf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\carregInf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\cancelando.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\badm\badm.csproj">
+      <Project>{BF9BB35F-FC06-40E7-B379-5AC25429F3F1}</Project>
+      <Name>badm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\binst\binst.csproj">
+      <Project>{38e61cf1-fd5f-402c-a381-7808bf90f805}</Project>
+      <Name>binst</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\bpess\bpess.csproj">
+      <Project>{9c258944-c272-427a-b59c-139fd8c905d6}</Project>
+      <Name>bpess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\btest\btest.csproj">
+      <Project>{9b077fa8-be0f-400c-bf62-bf192c2342da}</Project>
+      <Name>btest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\busua\busua.csproj">
+      <Project>{aa265f7b-63d5-4b88-86ba-122acbad2e25}</Project>
+      <Name>busua</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\butil\butil.csproj">
+      <Project>{63c8b22b-8a1c-405e-ad2a-f4649d3570e1}</Project>
+      <Name>butil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbfun\ccbfun.csproj">
+      <Project>{77174dd7-29c6-4caf-910c-a895312ed355}</Project>
+      <Name>ccbfun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dconect\dconect.csproj">
+      <Project>{770c4aa7-58cc-4fb3-81e1-07a323700e0b}</Project>
+      <Name>dconect</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\entities\entities.csproj">
+      <Project>{538edb2f-4afa-41e6-b891-5fdd1d3b245a}</Project>
+      <Name>entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\comtest.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="controles\ComboBoxPersonal.resx" />
+    <EmbeddedResource Include="controles\tabControlPersonal.resx">
+      <DependentUpon>tabControlPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\carregBarra.resx">
+      <DependentUpon>carregBarra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\carregAtendimento.resx">
+      <DependentUpon>carregAtendimento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\carregAcessos.resx">
+      <DependentUpon>carregAcessos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\carregRelatorio.resx">
+      <DependentUpon>carregRelatorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\telaErros.resx">
+      <DependentUpon>telaErros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\reabrir.resx">
+      <DependentUpon>reabrir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\gravando.resx">
+      <DependentUpon>gravando.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\finalizando.resx">
+      <DependentUpon>finalizando.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\fechando.resx">
+      <DependentUpon>fechando.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\excluindo.resx">
+      <DependentUpon>excluindo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\estornando.resx">
+      <DependentUpon>estornando.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\conectarBanco.resx">
+      <DependentUpon>conectarBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\carregUf.resx">
+      <DependentUpon>carregUf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\carregInf.resx">
+      <DependentUpon>carregInf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\cancelando.resx">
+      <DependentUpon>cancelando.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\BolaAmarela.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\BolaAzul.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\BolaVerde.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\BolaVermelha.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Icone.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\relatorio1.Jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\relatorio2.Jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\relatorio3.Jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\relatorio4.Jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\relatorio5.Jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\relatorio6.Jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\relatorio7.Jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

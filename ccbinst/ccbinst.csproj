@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A08704D9-39DD-401F-B2E9-4CE49404D0C8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ccbinst</RootNamespace>
+    <AssemblyName>ccbinst</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmMetodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMetodo.Designer.cs">
+      <DependentUpon>frmMetodo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInstrBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInstrBusca.Designer.cs">
+      <DependentUpon>frmInstrBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMtsFase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMtsFase.Designer.cs">
+      <DependentUpon>frmMtsFase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHinarioBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHinarioBusca.Designer.cs">
+      <DependentUpon>frmHinarioBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMtsModulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMtsModulo.Designer.cs">
+      <DependentUpon>frmMtsModulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMtsModuloBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMtsModuloBusca.Designer.cs">
+      <DependentUpon>frmMtsModuloBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMetodoBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMetodoBusca.Designer.cs">
+      <DependentUpon>frmMetodoBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTeoriaBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTeoriaBusca.Designer.cs">
+      <DependentUpon>frmTeoriaBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMtsFaseBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMtsFaseBusca.Designer.cs">
+      <DependentUpon>frmMtsFaseBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVozes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVozes.Designer.cs">
+      <DependentUpon>frmVozes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVozesBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVozesBusca.Designer.cs">
+      <DependentUpon>frmVozesBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTonalidadeBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTonalidadeBusca.Designer.cs">
+      <DependentUpon>frmTonalidadeBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFamilia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFamilia.Designer.cs">
+      <DependentUpon>frmFamilia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFamiliaBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFamiliaBusca.Designer.cs">
+      <DependentUpon>frmFamiliaBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEscala.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEscala.Designer.cs">
+      <DependentUpon>frmEscala.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEscalaBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEscalaBusca.Designer.cs">
+      <DependentUpon>frmEscalaBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHinario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHinario.Designer.cs">
+      <DependentUpon>frmHinario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMetodoInstr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMetodoInstr.Designer.cs">
+      <DependentUpon>frmMetodoInstr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTeoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTeoria.Designer.cs">
+      <DependentUpon>frmTeoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTonalidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTonalidade.Designer.cs">
+      <DependentUpon>frmTonalidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInst.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInst.Designer.cs">
+      <DependentUpon>frmInst.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmMetodo.resx">
+      <DependentUpon>frmMetodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInstrBusca.resx">
+      <DependentUpon>frmInstrBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMtsFase.resx">
+      <DependentUpon>frmMtsFase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHinarioBusca.resx">
+      <DependentUpon>frmHinarioBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMtsModulo.resx">
+      <DependentUpon>frmMtsModulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMtsModuloBusca.resx">
+      <DependentUpon>frmMtsModuloBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMetodoBusca.resx">
+      <DependentUpon>frmMetodoBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTeoriaBusca.resx">
+      <DependentUpon>frmTeoriaBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMtsFaseBusca.resx">
+      <DependentUpon>frmMtsFaseBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVozes.resx">
+      <DependentUpon>frmVozes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVozesBusca.resx">
+      <DependentUpon>frmVozesBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTonalidadeBusca.resx">
+      <DependentUpon>frmTonalidadeBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFamilia.resx">
+      <DependentUpon>frmFamilia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFamiliaBusca.resx">
+      <DependentUpon>frmFamiliaBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEscala.resx">
+      <DependentUpon>frmEscala.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEscalaBusca.resx">
+      <DependentUpon>frmEscalaBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHinario.resx">
+      <DependentUpon>frmHinario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMetodoInstr.resx">
+      <DependentUpon>frmMetodoInstr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTeoria.resx">
+      <DependentUpon>frmTeoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTonalidade.resx">
+      <DependentUpon>frmTonalidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInst.resx">
+      <DependentUpon>frmInst.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\binst\binst.csproj">
+      <Project>{38e61cf1-fd5f-402c-a381-7808bf90f805}</Project>
+      <Name>binst</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbfun\ccbfun.csproj">
+      <Project>{77174dd7-29c6-4caf-910c-a895312ed355}</Project>
+      <Name>ccbfun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbutil\ccbutil.csproj">
+      <Project>{8e308619-1aa3-4cf5-867f-b866649c359d}</Project>
+      <Name>ccbutil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbvalida\ccbvalida.csproj">
+      <Project>{f571bbc4-39b9-4bb4-8a2a-f4a663552346}</Project>
+      <Name>ccbvalida</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\entities\entities.csproj">
+      <Project>{538edb2f-4afa-41e6-b891-5fdd1d3b245a}</Project>
+      <Name>entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Lupa.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\bequadro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\bb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\X.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\frente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\CarregarFoto.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\tesgrave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\tesagudo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\proximo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Cancela.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Sust.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

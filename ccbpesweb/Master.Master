@@ -1,0 +1,76 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.Master.cs" Inherits="ccbpesweb.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>..:: School System ::..</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        var jq = jQuery.noConflict();
+        jq(document).ready((function () {
+            jq('tbody tr:odd').addClass('odd');
+        }));
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="frmMaster" runat="server">
+
+        <div id="main">
+
+            <div class="header">
+                <a href="Default.aspx" title="School System">
+                    <img src="images/logo.jpg" alt="School System" /></a>
+            </div>
+            <!-- /header -->
+
+            <div class="navSide radius">
+
+                <ul>
+                    <li><a href="#" title="Ir para paginal Inicial">Inicial</a></li>
+                    <li>Alunos
+                        <ul class="itens">
+                            <li><a href="#" title="Cadastrar novo Aluno(s)">Cadastrar novo Aluno(s)</a></li>
+                            <li><a href="#" title="Editar Aluno">Editar Aluno</a></li>
+                            <li><a href="#" title="Pesaquisar Aluno(s)">Pesaquisar Aluno(s)</a></li>
+                        </ul>
+                    </li>
+                    <li>Cursos
+                        <ul class="itens">
+                            <li><a href="#" title="Cadastrar novo Curso">Cadastrar novo Curso</a></li>
+                            <li><a href="#" title="Editar Curso">Editar Curso</a></li>
+                            <li><a href="#" title="Pesaquisar Cursos">Pesaquisar Cursos</a></li>
+                        </ul>
+                    </li>
+                    <li>Matérias
+                        <ul class="itens">
+                            <li><a href="#" title="Cadastrar nova Matéria">Cadastrar nova Matéria</a></li>
+                            <li><a href="#" title="Editar Matéria">Editar Matéria</a></li>
+                            <li><a href="#" title="Pesaquisar Matérias">Pesaquisar Matérias</a></li>
+                        </ul>
+                    </li>
+              
+                </ul>
+
+            </div>
+            <!-- /navSide -->
+
+            <div id="content" class="radius">
+                <asp:ContentPlaceHolder ID="cphContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <!-- /Content -->
+
+            <div class="footer">
+            </div>
+            <!-- /footer -->
+
+        </div>
+        <!-- /Main -->
+
+    </form>
+</body>
+</html>

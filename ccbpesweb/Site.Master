@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ccbpesweb.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="content">
+            <div id="Cabecalho">
+                cabecalho
+            </div>
+            <div id="MenuPrincipal">
+                menu horizontal
+            </div>
+            <div id="MenuDinamico">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                    ColunaEsquera
+                </asp:ContentPlaceHolder>
+            </div>
+            <div id="conteudo">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    conteudo
+                </asp:ContentPlaceHolder>
+            </div>
+            <div id="Rodape">
+                rodape
+            </div>
+
+        </div>
+
+    </form>
+</body>
+</html>

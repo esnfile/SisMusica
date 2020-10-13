@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5FB2F9EC-F98D-4928-9DF2-8145A66D3ECA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ccbtest</RootNamespace>
+    <AssemblyName>ccbtest</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmResultadoPreTeste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmResultadoPreTeste.Designer.cs">
+      <DependentUpon>frmResultadoPreTeste.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMetodoTeste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMetodoTeste.Designer.cs">
+      <DependentUpon>frmMetodoTeste.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPreTeste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPreTeste.Designer.cs">
+      <DependentUpon>frmPreTeste.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSolicitaTesteBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSolicitaTesteBusca.Designer.cs">
+      <DependentUpon>frmSolicitaTesteBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSolicitaTeste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSolicitaTeste.Designer.cs">
+      <DependentUpon>frmSolicitaTeste.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVisualSolicita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVisualSolicita.Designer.cs">
+      <DependentUpon>frmVisualSolicita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPreTesteBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPreTesteBusca.Designer.cs">
+      <DependentUpon>frmPreTesteBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLicaoTeste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLicaoTeste.Designer.cs">
+      <DependentUpon>frmLicaoTeste.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFichaPreTeste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFichaPreTeste.Designer.cs">
+      <DependentUpon>frmFichaPreTeste.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaSolicita .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaSolicita .Designer.cs">
+      <DependentUpon>frmPesquisaSolicita .cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaComum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaComum.Designer.cs">
+      <DependentUpon>frmPesquisaComum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaInstr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaInstr.Designer.cs">
+      <DependentUpon>frmPesquisaInstr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaPessoa.Designer.cs">
+      <DependentUpon>frmPesquisaPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\binst\binst.csproj">
+      <Project>{38e61cf1-fd5f-402c-a381-7808bf90f805}</Project>
+      <Name>binst</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\bpess\bpess.csproj">
+      <Project>{9c258944-c272-427a-b59c-139fd8c905d6}</Project>
+      <Name>bpess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\btest\btest.csproj">
+      <Project>{9b077fa8-be0f-400c-bf62-bf192c2342da}</Project>
+      <Name>btest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\butil\butil.csproj">
+      <Project>{63c8b22b-8a1c-405e-ad2a-f4649d3570e1}</Project>
+      <Name>butil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbfun\ccbfun.csproj">
+      <Project>{77174dd7-29c6-4caf-910c-a895312ed355}</Project>
+      <Name>ccbfun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbretest\ccbretest.csproj">
+      <Project>{afc40e6d-982e-4dfb-b4da-b00f9afc983e}</Project>
+      <Name>ccbretest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbvalida\ccbvalida.csproj">
+      <Project>{f571bbc4-39b9-4bb4-8a2a-f4a663552346}</Project>
+      <Name>ccbvalida</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\entities\entities.csproj">
+      <Project>{538edb2f-4afa-41e6-b891-5fdd1d3b245a}</Project>
+      <Name>entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmResultadoPreTeste.resx">
+      <DependentUpon>frmResultadoPreTeste.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMetodoTeste.resx">
+      <DependentUpon>frmMetodoTeste.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPreTeste.resx">
+      <DependentUpon>frmPreTeste.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSolicitaTesteBusca.resx">
+      <DependentUpon>frmSolicitaTesteBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSolicitaTeste.resx">
+      <DependentUpon>frmSolicitaTeste.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVisualSolicita.resx">
+      <DependentUpon>frmVisualSolicita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPreTesteBusca.resx">
+      <DependentUpon>frmPreTesteBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLicaoTeste.resx">
+      <DependentUpon>frmLicaoTeste.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFichaPreTeste.resx">
+      <DependentUpon>frmFichaPreTeste.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaSolicita .resx">
+      <DependentUpon>frmPesquisaSolicita .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaComum.resx">
+      <DependentUpon>frmPesquisaComum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaInstr.resx">
+      <DependentUpon>frmPesquisaInstr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaPessoa.resx">
+      <DependentUpon>frmPesquisaPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Processar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\BolaAmarela.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\BolaAzul.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\BolaVerde.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\BolaVermelha.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\CarregarFoto.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\DesTodos.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Email.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Lupa.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\PesquisaOS.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\SelTodos.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Abertas.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Processar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Salvar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Processar2_25x25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Processar3_25x25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\antes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\datainicial.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\datafinal.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\depois.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\AnaliseCusto2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Cancelar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\emoji_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\emoji_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\emoji_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\emoji_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\emoji_5.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

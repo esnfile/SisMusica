@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AFC40E6D-982E-4DFB-B4DA-B00F9AFC983E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ccbretest</RootNamespace>
+    <AssemblyName>ccbretest</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization.resources, Version=11.0.0.0, Culture=de, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.DataVisualization.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmListaTeste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaTeste.Designer.cs">
+      <DependentUpon>frmListaTeste.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmListaTeste.resx">
+      <DependentUpon>frmListaTeste.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\rptFichaPreTeste.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Abertas.ico" />
+    <None Include="Properties\DataSources\ENT.preTeste.MOD_preTesteEscala.datasource" />
+    <None Include="Properties\DataSources\ENT.preTeste.MOD_preTesteFicha.datasource" />
+    <None Include="Properties\DataSources\ENT.preTeste.MOD_preTesteHino.datasource" />
+    <None Include="Properties\DataSources\ENT.preTeste.MOD_preTesteMet.datasource" />
+    <None Include="Properties\DataSources\ENT.preTeste.MOD_preTesteMts.datasource" />
+    <None Include="Properties\DataSources\ENT.preTeste.MOD_preTesteTeoria.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\AnaliseCusto2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\antes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\BolaAmarela.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\BolaAzul.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\BolaVerde.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\BolaVermelha.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Cancelar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\CarregarFoto.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\datafinal.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\datainicial.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\depois.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\DesTodos.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Email.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Lupa.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\PesquisaOS.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Processar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Processar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Processar2_25x25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Processar3_25x25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Salvar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\SelTodos.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\btest\btest.csproj">
+      <Project>{9b077fa8-be0f-400c-bf62-bf192c2342da}</Project>
+      <Name>btest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbfun\ccbfun.csproj">
+      <Project>{77174dd7-29c6-4caf-910c-a895312ed355}</Project>
+      <Name>ccbfun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbvalida\ccbvalida.csproj">
+      <Project>{f571bbc4-39b9-4bb4-8a2a-f4a663552346}</Project>
+      <Name>ccbvalida</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\entities\entities.csproj">
+      <Project>{538edb2f-4afa-41e6-b891-5fdd1d3b245a}</Project>
+      <Name>entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,76 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ccbweb.master.cs" Inherits="ccbweb.ccbweb" %>
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>CCB SisMúsica - Campo Grande/MS</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="_css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="interface">
+        <form id="form1" runat="server">
+            <header id="cabecalho">
+                <div id="divcabecalho">
+                    <figure class="foto-cabecalho">
+                        <img src="_images/logo-ccb-peq.jpg" id="imglogo" />
+                        <img src="_images/logo-sis-peq.jpg" id="imgsis" />
+                    </figure>
+                </div>
+                <div id="menuhorizontal">
+                    <nav id="menumaster">
+                        <h1>Menu Principal</h1>
+                        <ul>
+                            <a href="instrumentos.aspx">
+                                <li id="menuorquestra">Orquestra                                    
+                                </li>
+                            </a>
+
+                            <a href="instrumentos.aspx">
+                                <li id="menuteste">Exames</li>
+                            </a>
+                            <a href="instrumentos.aspx">
+                                <li id="menugem">Controle Gem</li>
+                            </a>
+                            <a href="instrumentos.aspx">
+                                <li id="menuadm">Administração</li>
+                            </a>
+                            <a href="instrumentos.aspx">
+                                <li id="menuutil">Utilitários</li>
+                            </a>
+                            <a href="instrumentos.aspx">
+                                <li id="menuconfig">Configurações</li>
+                            </a>
+                            <a href="instrumentos.aspx">
+                                <li id="menuajuda">Ajuda</li>
+                            </a>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+
+            <div id="menuvertical">
+                <nav id="menupagina">
+                    <asp:ContentPlaceHolder ID="MenuVertical" runat="server">
+                        menu vertical
+                    </asp:ContentPlaceHolder>
+                </nav>
+            </div>
+
+            <div id="conteudo">
+                <asp:ContentPlaceHolder ID="Conteudo" runat="server">
+                    conteudo
+                </asp:ContentPlaceHolder>
+            </div>
+
+            <div id="rodape">
+                &copy Copyright Congregação Cristã no Brasil - Regional de Campo Grande - MS<br />
+                SisMusica - Todos os direitos reservados
+            </div>
+        </form>
+    </div>
+</body>
+</html>

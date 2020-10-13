@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8E308619-1AA3-4CF5-867F-B866649C359D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ccbutil</RootNamespace>
+    <AssemblyName>ccbutil</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmCCB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCCB.Designer.cs">
+      <DependentUpon>frmCCB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCCBBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCCBBusca.Designer.cs">
+      <DependentUpon>frmCCBBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmParametros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmParametros.Designer.cs">
+      <DependentUpon>frmParametros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegiao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegiao.Designer.cs">
+      <DependentUpon>frmRegiao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegiaoBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegiaoBusca.Designer.cs">
+      <DependentUpon>frmRegiaoBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVersao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVersao.Designer.cs">
+      <DependentUpon>frmVersao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegional.Designer.cs">
+      <DependentUpon>frmRegional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVersaoBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVersaoBusca.Designer.cs">
+      <DependentUpon>frmVersaoBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegionalBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegionalBusca.Designer.cs">
+      <DependentUpon>frmRegionalBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaCidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaCidade.Designer.cs">
+      <DependentUpon>frmPesquisaCidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaPessoa.Designer.cs">
+      <DependentUpon>frmPesquisaPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaRegiao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaRegiao.Designer.cs">
+      <DependentUpon>frmPesquisaRegiao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaRegional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaRegional.Designer.cs">
+      <DependentUpon>frmPesquisaRegional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\#.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\barAgudo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\barGrave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\bb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\bequadro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Lupa.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\X.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmCCB.resx">
+      <DependentUpon>frmCCB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCCBBusca.resx">
+      <DependentUpon>frmCCBBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmParametros.resx">
+      <DependentUpon>frmParametros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegiao.resx">
+      <DependentUpon>frmRegiao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegiaoBusca.resx">
+      <DependentUpon>frmRegiaoBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVersao.resx">
+      <DependentUpon>frmVersao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegional.resx">
+      <DependentUpon>frmRegional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVersaoBusca.resx">
+      <DependentUpon>frmVersaoBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegionalBusca.resx">
+      <DependentUpon>frmRegionalBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaCidade.resx">
+      <DependentUpon>frmPesquisaCidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaPessoa.resx">
+      <DependentUpon>frmPesquisaPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaRegiao.resx">
+      <DependentUpon>frmPesquisaRegiao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaRegional.resx">
+      <DependentUpon>frmPesquisaRegional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\binst\binst.csproj">
+      <Project>{38e61cf1-fd5f-402c-a381-7808bf90f805}</Project>
+      <Name>binst</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\bpess\bpess.csproj">
+      <Project>{9c258944-c272-427a-b59c-139fd8c905d6}</Project>
+      <Name>bpess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\butil\butil.csproj">
+      <Project>{63c8b22b-8a1c-405e-ad2a-f4649d3570e1}</Project>
+      <Name>butil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbfun\ccbfun.csproj">
+      <Project>{77174dd7-29c6-4caf-910c-a895312ed355}</Project>
+      <Name>ccbfun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbvalida\ccbvalida.csproj">
+      <Project>{f571bbc4-39b9-4bb4-8a2a-f4a663552346}</Project>
+      <Name>ccbvalida</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\entities\entities.csproj">
+      <Project>{538edb2f-4afa-41e6-b891-5fdd1d3b245a}</Project>
+      <Name>entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\CarregarFoto.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\DesTodos.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Email.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\PesquisaOS.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\SelTodos.bmp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

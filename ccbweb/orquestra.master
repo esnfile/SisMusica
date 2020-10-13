@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/ccbweb.Master" AutoEventWireup="true" CodeBehind="orquestra.master.cs" Inherits="ccbweb.orquestra" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MenuVertical" runat="server">
+    <nav>
+        <div id="menuorquestra" class="menuorquestra">
+            <h1>Menu Orquestra</h1>
+            <ul id="lstorquestra">
+                <li>Instrumentos</li>
+                <ul id="lstinstrumento">
+                    <li><a href="">Instrumentos</a></li>
+                    <li><a href="">Famílias</a></li>
+                    <li><a href="">Escalas</a></li>
+                    <li><a href="">Hinários</a></li>
+                    <li><a href="">Tonalidade</a></li>
+                    <li><a href="">Vozes</a></li>
+                </ul>
+                <li>Métodos</li>
+                <ul id="lstmetodos">
+                    <li><a href="">Métodos</a></li>
+                    <li><a href="">Fases</a></li>
+                    <li><a href="">Módulos</a></li>
+                </ul>
+                <li>Configurações</li>
+                <ul id="lstconfiguracoes">
+                    <li><a href="">Métodos por Instrumentos</a></li>
+                </ul>
+                <li>Relatórios</li>
+                <ul id="lstconfiguracoes">
+                    <li><a href="">Listagem de Instrumentos</a></li>
+                </ul>
+            </ul>
+        </div>
+    </nav>
+</a>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Conteudo" runat="server">
+    <asp:ContentPlaceHolder ID="paginaformulario" runat="server">
+        Página
+    </asp:ContentPlaceHolder>
+
+
+
+</asp:Content>

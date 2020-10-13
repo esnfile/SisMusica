@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{50267302-5043-4AA0-9610-23E5A87B1EF7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ccbpessra</RootNamespace>
+    <AssemblyName>ccbpessra</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization.resources, Version=11.0.0.0, Culture=de, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.DataVisualization.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmListaPessoaAnalit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaPessoaAnalit.Designer.cs">
+      <DependentUpon>frmListaPessoaAnalit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\bpess\bpess.csproj">
+      <Project>{9c258944-c272-427a-b59c-139fd8c905d6}</Project>
+      <Name>bpess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbfun\ccbfun.csproj">
+      <Project>{77174dd7-29c6-4caf-910c-a895312ed355}</Project>
+      <Name>ccbfun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbvalida\ccbvalida.csproj">
+      <Project>{f571bbc4-39b9-4bb4-8a2a-f4a663552346}</Project>
+      <Name>ccbvalida</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\entities\entities.csproj">
+      <Project>{538edb2f-4afa-41e6-b891-5fdd1d3b245a}</Project>
+      <Name>entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmListaPessoaAnalit.resx">
+      <DependentUpon>frmListaPessoaAnalit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Cargo.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Cargo_Com.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Cargo_Com_Fam.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Cargo_Fam.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Cid.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Cid_Com.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Cid_Com_Desenv.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Cid_Com_Fam.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Cid_Com_Fam_Desenv.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Cid_Desenv.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Cid_Fam.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Cid_Fam_Desenv.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Codigo.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Instr.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Instr_Com.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Instr_Com_Desenv.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Instr_Com_Fam.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Instr_Com_Fam_Desenv.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Instr_Desenv.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Instr_Fam.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Instr_Fam_Desenv.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Reg.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Reg_Com_Desenv.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Reg_Com.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Reg_Com_Fam.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Reg_Com_Fam_Desenv.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Reg_Desenv.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Reg_Fam.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Anal_Reg_Fam_Desenv.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\antes.png" />
+    <None Include="Properties\DataSources\ENT.instrumentos.MOD_familia.datasource" />
+    <None Include="Properties\DataSources\ENT.instrumentos.MOD_instrumento.datasource" />
+    <None Include="Properties\DataSources\ENT.pessoa.MOD_cargo.datasource" />
+    <None Include="Properties\DataSources\ENT.pessoa.MOD_departamento.datasource" />
+    <None Include="Properties\DataSources\ENT.pessoa.MOD_pessoa.datasource" />
+    <None Include="Properties\DataSources\ENT.pessoa.MOD_pessoaInstr.datasource" />
+    <None Include="Properties\DataSources\ENT.uteis.MOD_ccb.datasource" />
+    <None Include="Properties\DataSources\ENT.uteis.MOD_ccbPessoa.datasource" />
+    <None Include="Properties\DataSources\ENT.uteis.MOD_cidade.datasource" />
+    <None Include="Properties\DataSources\ENT.uteis.MOD_regiaoAtuacao.datasource" />
+    <None Include="Properties\DataSources\ENT.uteis.MOD_regiaoPessoa.datasource" />
+    <None Include="Properties\DataSources\ENT.uteis.MOD_regional.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\depois.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\DesTodos.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\frente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Impressora.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Lupa.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\PesquisaOS.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Processar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\SelTodos.bmp" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

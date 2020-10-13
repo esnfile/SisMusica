@@ -1,0 +1,186 @@
+﻿@charset "UTF-8";
+
+body {
+    font-family: 'Trebuchet MS';
+    font-size: 12px;
+    background-color: #dddddd;
+    color: rgba(0,0,0,1);
+}
+
+div#interface {
+    background-color: #ffffff;
+    margin: 10px auto 10px auto;
+    border: 5px solid dimgray;
+    padding: 2px;
+    box-shadow: 0px 0px 10px rgba(0,0,0, .5)
+}
+
+h1 {
+    font-family: 'Trebuchet MS';
+    font-size: 14px;
+    background-color: white;
+    color: black;
+}
+
+h2 {
+    font-family: 'Trebuchet MS';
+    font-size: 12px;
+    background-color: white;
+    color: black;
+}
+
+
+
+/* Formatação do Header*/
+header#cabecalho {
+    /*font-family: 'Trebuchet MS';
+    font-size: 20px;
+    background-color: white;
+    color: black;
+    margin-top: 2px;
+    margin-left: 2px;*/
+    height: auto;
+    width: auto;
+    padding: 0px;
+}
+
+    header#cabecalho figure.foto-cabecalho {
+        border: 8px solid white;
+        box-shadow: 1px 1px 8px rgba(0,0,0, .5);
+        margin: 10px 10px 10px 10px;
+        height: auto;
+    }
+
+    header#cabecalho div#divcabecalho {
+        width: auto;
+        height: auto;
+        border: 2px solid dimgray;
+    }
+
+
+    header#cabecalho img#imglogo {
+        margin-top: 2px;
+        margin-left: 10px;
+        width: auto;
+        height: auto;
+        display: block;
+        float: left;
+    }
+
+    header#cabecalho img#imgsis {
+        margin-top: 2px;
+        margin-left: auto;
+        margin-right: 10px;
+        display: block;
+        width: auto;
+        height: auto;
+    }
+
+
+    /*Formatação do Menu Principal*/
+    header#cabecalho nav#menumaster {
+        height: auto;
+        border: 2px solid dimgray;
+        margin-top: 2px;
+        display: block;
+        color: black;
+        padding: 0px;
+        background-image: url(../_images/back-menu.jpg);
+        background-size: auto;
+        background-position: 1px 1px;
+    }
+
+        header#cabecalho nav#menumaster ul {
+            list-style: none;
+            /*text-transform: uppercase;*/
+            /*position: relative;*/
+            top: 0px;
+            left: 0px;
+            margin: 2px 2px 2px 2px;
+        }
+
+        header#cabecalho nav#menumaster li {
+            display: inline-block;
+            border: 2px solid rgba(0,0,0,0);
+            background-color: rgba(0,0,0,0);
+            border-radius: 3px 3px 3px 3px;
+            transition: background-color 1s;
+            box-shadow: 0px 0px 15px rgba(0,0,0, .7);
+            text-align: right;
+            padding: 5px;
+        }
+
+            header#cabecalho nav#menumaster li:hover {
+                background-color: dimgray;
+                border: 2px solid darkgrey;
+                box-shadow: 0px 0px 15px rgba(255,255,255, .7)
+            }
+            /*Menu Orquestra*/
+            header#cabecalho nav#menumaster li#menuorquestra {
+                width: 90px;
+                background-image: url(../_images/icone-menu-orquestra.jpg);
+                background-size: auto;
+                background-position: 1px 1px;
+                background-repeat: no-repeat;
+            }
+
+                header#cabecalho nav#menumaster li#menuorquestra:hover {
+                    background-image: url(../_images/icone-menu-orquestra-hover.jpg);
+                }
+
+                /*Menu Exames*/
+            header#cabecalho nav#menumaster li#menuteste {
+                width: 80px;
+                background-image: url(../_images/icone-menu-exame.jpg);
+                background-size: auto;
+                background-position: 1px 1px;
+                background-repeat: no-repeat;
+            }
+
+                header#cabecalho nav#menumaster li#menuteste:hover {
+                    background-image: url(../_images/icone-menu-exame-hover.jpg);
+                }
+
+        header#cabecalho nav#menumaster h1 {
+            display: none;
+        }
+
+        header#cabecalho nav#menumaster a {
+            color: black;
+            text-decoration: none;
+        }
+
+            header#cabecalho nav#menumaster a:hover {
+                color: white;
+                font: bold;
+            }
+
+
+/* Formatação Menu Vertical*/
+
+div#menuvertical {
+    border: 2px solid dimgray;
+    margin: 2px auto 2px auto;
+    width: 170px;
+    display: block;
+    float: left;
+}
+
+#conteudo {
+    border: 2px solid dimgray;
+    margin: 2px auto 2px 180px;
+    width: auto;
+    display: block;
+}
+
+#rodape {
+    border: 2px solid white;
+    font-family: 'Trebuchet MS';
+    font-size: 9px;
+    font-weight: bold;
+    color: gray;
+    display: block;
+    clear: both;
+    margin-top: 5px;
+    text-align: center;
+}

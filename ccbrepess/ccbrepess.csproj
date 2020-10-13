@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DD8DDFEE-0EC6-4625-9617-9582B4A5A6F5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ccbrepess</RootNamespace>
+    <AssemblyName>ccbrepess</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmConsultaSimples.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaSimples.Designer.cs">
+      <DependentUpon>frmConsultaSimples.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFichaCadastral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFichaCadastral.Designer.cs">
+      <DependentUpon>frmFichaCadastral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmListaPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaPessoa.Designer.cs">
+      <DependentUpon>frmListaPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAnalisePessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAnalisePessoa.Designer.cs">
+      <DependentUpon>frmAnalisePessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMixPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMixPessoa.Designer.cs">
+      <DependentUpon>frmMixPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\DesTodos.bmp" />
+    <None Include="imagens\frente.png" />
+    <None Include="imagens\Impressora.bmp" />
+    <None Include="imagens\Lupa.bmp" />
+    <None Include="imagens\PesquisaOS.bmp" />
+    <None Include="imagens\Processar.bmp" />
+    <None Include="imagens\SelTodos.bmp" />
+    <None Include="imagens\antes.png" />
+    <None Include="imagens\depois.png" />
+    <None Include="imagens\cracha.png" />
+    <None Include="imagens\solicitacao.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\ENT.instrumentos.MOD_familia.datasource" />
+    <None Include="Properties\DataSources\ENT.instrumentos.MOD_instrumento.datasource" />
+    <None Include="Properties\DataSources\ENT.pessoa.MOD_cargo.datasource" />
+    <None Include="Properties\DataSources\ENT.pessoa.MOD_departamento.datasource" />
+    <None Include="Properties\DataSources\ENT.pessoa.MOD_pessoa.datasource" />
+    <None Include="Properties\DataSources\ENT.pessoa.MOD_pessoaInstr.datasource" />
+    <None Include="Properties\DataSources\ENT.uteis.MOD_ccb.datasource" />
+    <None Include="Properties\DataSources\ENT.uteis.MOD_ccbPessoa.datasource" />
+    <None Include="Properties\DataSources\ENT.uteis.MOD_cidade.datasource" />
+    <None Include="Properties\DataSources\ENT.uteis.MOD_regiaoAtuacao.datasource" />
+    <None Include="Properties\DataSources\ENT.uteis.MOD_regiaoPessoa.datasource" />
+    <None Include="Properties\DataSources\ENT.uteis.MOD_regional.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmConsultaSimples.resx">
+      <DependentUpon>frmConsultaSimples.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFichaCadastral.resx">
+      <DependentUpon>frmFichaCadastral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaPessoa.resx">
+      <DependentUpon>frmListaPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAnalisePessoa.resx">
+      <DependentUpon>frmAnalisePessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMixPessoa.resx">
+      <DependentUpon>frmMixPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\rptFichaCadastralPessoa_Basico.rdlc" />
+    <EmbeddedResource Include="relatorios\rptFichaCadastralPessoa_Cartao.rdlc" />
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Nome_Cid.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Nome_Reg.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Nome_Cid_Comum.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\rptListaPessoa_Nome_Reg_Comum.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\rptFichaCadastralPessoa.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\bpess\bpess.csproj">
+      <Project>{9c258944-c272-427a-b59c-139fd8c905d6}</Project>
+      <Name>bpess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\busua\busua.csproj">
+      <Project>{aa265f7b-63d5-4b88-86ba-122acbad2e25}</Project>
+      <Name>busua</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\butil\butil.csproj">
+      <Project>{63c8b22b-8a1c-405e-ad2a-f4649d3570e1}</Project>
+      <Name>butil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbfun\ccbfun.csproj">
+      <Project>{77174dd7-29c6-4caf-910c-a895312ed355}</Project>
+      <Name>ccbfun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbpessra\ccbpessra.csproj">
+      <Project>{50267302-5043-4aa0-9610-23e5a87b1ef7}</Project>
+      <Name>ccbpessra</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbpessrs\ccbpessrs.csproj">
+      <Project>{7add3993-e687-46a1-9dfe-59f0ec9e7ac2}</Project>
+      <Name>ccbpessrs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbvalida\ccbvalida.csproj">
+      <Project>{f571bbc4-39b9-4bb4-8a2a-f4a663552346}</Project>
+      <Name>ccbvalida</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\entities\entities.csproj">
+      <Project>{538edb2f-4afa-41e6-b891-5fdd1d3b245a}</Project>
+      <Name>entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

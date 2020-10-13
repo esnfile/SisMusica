@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8D04159A-284B-43A2-B56C-CA6127959B90}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ccbimp</RootNamespace>
+    <AssemblyName>ccbimp</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmImportarPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImportarPessoa.Designer.cs">
+      <DependentUpon>frmImportarPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportarPessoaBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImportarPessoaBusca.Designer.cs">
+      <DependentUpon>frmImportarPessoaBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportarPessoaErros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImportarPessoaErros.Designer.cs">
+      <DependentUpon>frmImportarPessoaErros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportarPessoaSucesso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImportarPessoaSucesso.Designer.cs">
+      <DependentUpon>frmImportarPessoaSucesso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPessoaErros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPessoaErros.Designer.cs">
+      <DependentUpon>frmPessoaErros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVincularCampos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVincularCampos.Designer.cs">
+      <DependentUpon>frmVincularCampos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaCargoImp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaCargoImp.Designer.cs">
+      <DependentUpon>frmPesquisaCargoImp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaCidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaCidade.Designer.cs">
+      <DependentUpon>frmPesquisaCidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaCidadeImp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaCidadeImp.Designer.cs">
+      <DependentUpon>frmPesquisaCidadeImp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaComum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaComum.Designer.cs">
+      <DependentUpon>frmPesquisaComum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaComumImp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaComumImp.Designer.cs">
+      <DependentUpon>frmPesquisaComumImp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaInstrImp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaInstrImp.Designer.cs">
+      <DependentUpon>frmPesquisaInstrImp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\frmPesquisaPessoa.Designer.cs">
+      <DependentUpon>frmPesquisaPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmImportarPessoa.resx">
+      <DependentUpon>frmImportarPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportarPessoaBusca.resx">
+      <DependentUpon>frmImportarPessoaBusca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportarPessoaErros.resx">
+      <DependentUpon>frmImportarPessoaErros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportarPessoaSucesso.resx">
+      <DependentUpon>frmImportarPessoaSucesso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPessoaErros.resx">
+      <DependentUpon>frmPessoaErros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVincularCampos.resx">
+      <DependentUpon>frmVincularCampos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaCargoImp.resx">
+      <DependentUpon>frmPesquisaCargoImp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaCidade.resx">
+      <DependentUpon>frmPesquisaCidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaCidadeImp.resx">
+      <DependentUpon>frmPesquisaCidadeImp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaComum.resx">
+      <DependentUpon>frmPesquisaComum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaComumImp.resx">
+      <DependentUpon>frmPesquisaComumImp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaInstrImp.resx">
+      <DependentUpon>frmPesquisaInstrImp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pesquisa\frmPesquisaPessoa.resx">
+      <DependentUpon>frmPesquisaPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\bimp\bimp.csproj">
+      <Project>{fd1063b4-1784-4fd7-9be7-d36824908332}</Project>
+      <Name>bimp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\binst\binst.csproj">
+      <Project>{38e61cf1-fd5f-402c-a381-7808bf90f805}</Project>
+      <Name>binst</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\bpess\bpess.csproj">
+      <Project>{9c258944-c272-427a-b59c-139fd8c905d6}</Project>
+      <Name>bpess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\busua\busua.csproj">
+      <Project>{aa265f7b-63d5-4b88-86ba-122acbad2e25}</Project>
+      <Name>busua</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\butil\butil.csproj">
+      <Project>{63c8b22b-8a1c-405e-ad2a-f4649d3570e1}</Project>
+      <Name>butil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbfun\ccbfun.csproj">
+      <Project>{77174dd7-29c6-4caf-910c-a895312ed355}</Project>
+      <Name>ccbfun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccbvalida\ccbvalida.csproj">
+      <Project>{f571bbc4-39b9-4bb4-8a2a-f4a663552346}</Project>
+      <Name>ccbvalida</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\entities\entities.csproj">
+      <Project>{538edb2f-4afa-41e6-b891-5fdd1d3b245a}</Project>
+      <Name>entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Cancelar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\compfile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\DesTodos.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Lupa.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\PesquisaOS.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Processar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\SelTodos.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\datainicial.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\datafinal.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Cancelada.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\Email.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\frente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\CarregarFoto.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\datafinal.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\datainicial.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\antes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagens\depois.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
