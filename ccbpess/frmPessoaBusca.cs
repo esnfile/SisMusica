@@ -261,25 +261,12 @@ namespace ccbpess
         }
         private void gridCodigo_DataSourceChanged(object sender, EventArgs e)
         {
-            try
-            {
-                verPermCodigo(gridCodigo);
-                txtQtde.Text = Convert.ToString(gridCodigo.RowCount).PadLeft(6, '0');
-            }
-            catch (SqlException exl)
-            {
-                excp = new clsException(exl);
-            }
-            catch (Exception ex)
-            {
-                excp = new clsException(ex);
-            }
         }
         private void btnCodImp_Click(object sender, EventArgs e)
         {
             try
             {
-                apoio.Aguarde();
+                apoio.Aguarde("Carregando registro...");
                 Codigo = gridCodigo["CodPessoa", gridCodigo.CurrentRow.Index].Value.ToString();
                     NomeRelatorio = "ccbrepess.relatorios.rptFichaCadastralPessoa.rdlc";
                     abrirForm("frmFicha", gridCodigo);
@@ -295,6 +282,22 @@ namespace ccbpess
             finally
             {
                 apoio.FecharAguarde();
+            }
+        }
+        private void gridCodigo_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            try
+            {
+                verPermCodigo(gridCodigo);
+                txtQtde.Text = Convert.ToString(gridCodigo.RowCount).PadLeft(6, '0');
+            }
+            catch (SqlException exl)
+            {
+                excp = new clsException(exl);
+            }
+            catch (Exception ex)
+            {
+                excp = new clsException(ex);
             }
         }
 
@@ -490,6 +493,31 @@ namespace ccbpess
         }
         private void gridNome_DataSourceChanged(object sender, EventArgs e)
         {
+        }
+        private void btnNomeImp_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                apoio.Aguarde("Carregando registro...");
+                Codigo = gridNome["CodPessoa", gridNome.CurrentRow.Index].Value.ToString();
+                NomeRelatorio = "ccbrepess.relatorios.rptFichaCadastralPessoa.rdlc";
+                abrirForm("frmFicha", gridNome);
+            }
+            catch (SqlException exl)
+            {
+                excp = new clsException(exl);
+            }
+            catch (Exception ex)
+            {
+                excp = new clsException(ex);
+            }
+            finally
+            {
+                apoio.FecharAguarde();
+            }
+        }
+        private void gridNome_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
             try
             {
                 verPermNome(gridNome);
@@ -502,28 +530,6 @@ namespace ccbpess
             catch (Exception ex)
             {
                 excp = new clsException(ex);
-            }
-        }
-        private void btnNomeImp_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                apoio.AguardeRelatorio();
-                Codigo = gridNome["CodPessoa", gridNome.CurrentRow.Index].Value.ToString();
-                    NomeRelatorio = "ccbrepess.relatorios.rptFichaCadastralPessoa.rdlc";
-                    abrirForm("frmFicha", gridNome);
-            }
-            catch (SqlException exl)
-            {
-                excp = new clsException(exl);
-            }
-            catch (Exception ex)
-            {
-                excp = new clsException(ex);
-            }
-            finally
-            {
-                apoio.FecharAguardeRelatorio();
             }
         }
 
@@ -718,25 +724,12 @@ namespace ccbpess
         }
         private void gridCpf_DataSourceChanged(object sender, EventArgs e)
         {
-            try
-            {
-                verPermCpf(gridCpf);
-                txtQtde.Text = Convert.ToString(gridCpf.RowCount).PadLeft(6, '0');
-            }
-            catch (SqlException exl)
-            {
-                excp = new clsException(exl);
-            }
-            catch (Exception ex)
-            {
-                excp = new clsException(ex);
-            }
         }
         private void btnCpfImp_Click(object sender, EventArgs e)
         {
             try
             {
-                apoio.Aguarde();
+                apoio.Aguarde("Carregando registro...");
                 Codigo = gridCpf["CodPessoa", gridCpf.CurrentRow.Index].Value.ToString();
                     NomeRelatorio = "ccbrepess.relatorios.rptFichaCadastralPessoa.rdlc";
                     abrirForm("frmFicha", gridCpf);
@@ -752,6 +745,22 @@ namespace ccbpess
             finally
             {
                 apoio.FecharAguarde();
+            }
+        }
+        private void gridCpf_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            try
+            {
+                verPermCpf(gridCpf);
+                txtQtde.Text = Convert.ToString(gridCpf.RowCount).PadLeft(6, '0');
+            }
+            catch (SqlException exl)
+            {
+                excp = new clsException(exl);
+            }
+            catch (Exception ex)
+            {
+                excp = new clsException(ex);
             }
         }
 
@@ -947,25 +956,12 @@ namespace ccbpess
         }
         private void gridRegiao_DataSourceChanged(object sender, EventArgs e)
         {
-            try
-            {
-                verPermRegiao(gridRegiao);
-                txtQtde.Text = Convert.ToString(gridRegiao.RowCount).PadLeft(6, '0');
-            }
-            catch (SqlException exl)
-            {
-                excp = new clsException(exl);
-            }
-            catch (Exception ex)
-            {
-                excp = new clsException(ex);
-            }
         }
         private void btnRegImp_Click(object sender, EventArgs e)
         {
             try
             {
-                apoio.Aguarde();
+                apoio.Aguarde("Carregando registro...");
                 Codigo = gridRegiao["CodPessoa", gridRegiao.CurrentRow.Index].Value.ToString();
                     NomeRelatorio = "ccbrepess.relatorios.rptFichaCadastralPessoa.rdlc";
                     abrirForm("frmFicha", gridRegiao);
@@ -983,8 +979,27 @@ namespace ccbpess
                 apoio.FecharAguarde();
             }
         }
+        private void gridRegiao_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            try
+            {
+                verPermRegiao(gridRegiao);
+                txtQtde.Text = Convert.ToString(gridRegiao.RowCount).PadLeft(6, '0');
+            }
+            catch (SqlException exl)
+            {
+                excp = new clsException(exl);
+            }
+            catch (Exception ex)
+            {
+                excp = new clsException(ex);
+            }
+        }
 
         #endregion
+
+
+
 
         #region Aba Comum
 
@@ -1176,25 +1191,12 @@ namespace ccbpess
         }
         private void gridComum_DataSourceChanged(object sender, EventArgs e)
         {
-            try
-            {
-                verPermComum(gridComum);
-                txtQtde.Text = Convert.ToString(gridComum.RowCount).PadLeft(6, '0');
-            }
-            catch (SqlException exl)
-            {
-                excp = new clsException(exl);
-            }
-            catch (Exception ex)
-            {
-                excp = new clsException(ex);
-            }
         }
         private void btnComImp_Click(object sender, EventArgs e)
         {
             try
             {
-                apoio.Aguarde();
+                apoio.Aguarde("Carregando registro...");
                 Codigo = gridComum["CodPessoa", gridComum.CurrentRow.Index].Value.ToString();
                     NomeRelatorio = "ccbrepess.relatorios.rptFichaCadastralPessoa.rdlc";
                     abrirForm("frmFicha", gridComum);
@@ -1210,6 +1212,22 @@ namespace ccbpess
             finally
             {
                 apoio.FecharAguarde();
+            }
+        }
+        private void gridComum_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            try
+            {
+                verPermComum(gridComum);
+                txtQtde.Text = Convert.ToString(gridComum.RowCount).PadLeft(6, '0');
+            }
+            catch (SqlException exl)
+            {
+                excp = new clsException(exl);
+            }
+            catch (Exception ex)
+            {
+                excp = new clsException(ex);
             }
         }
 
@@ -1429,7 +1447,6 @@ namespace ccbpess
                     Parametro.RodapeRelatorio = modulos.listaParametros[0].RodapeRelatorio;
                     formulario = new frmListaPessoa(this, lista, Parametro);
                     ((frmListaPessoa)formulario).ShowDialog();
-                    ((frmListaPessoa)formulario).Dispose();
                 }
                 else
                 {
@@ -1617,47 +1634,11 @@ namespace ccbpess
                 MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
 
                 //verificando o botão inserir
-                btnCodIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsPessoa);
-
-                //verificando o botão editar
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnCodEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditPessoa);
-                }
-                else
-                {
-                    btnCodEditar.Enabled = false;
-                }
-
-                //verificando o botão excluir
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnCodExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcPessoa);
-                }
-                else
-                {
-                    btnCodExc.Enabled = false;
-                }
-
-                //verificando o botão visualizar
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnCodVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisPessoa);
-                }
-                else
-                {
-                    btnCodVisual.Enabled = false;
-                }
-
-                //verificando o botão imprimir
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnCodImp.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesImpFicha);
-                }
-                else
-                {
-                    btnCodImp.Enabled = false;
-                }
+                btnCodIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPessoa);
+                btnCodEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPessoa, dataGrid);
+                btnCodExc.Enabled = funcoes.liberacoes(entAcesso.rotExcPessoa, dataGrid);
+                btnCodVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPessoa, dataGrid);
+                btnCodImp.Enabled = funcoes.liberacoes(entAcesso.rotPesImpFicha, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1679,47 +1660,11 @@ namespace ccbpess
                 MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
 
                 //verificando o botão inserir
-                btnNomeIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsPessoa);
-
-                //verificando o botão editar
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnNomeEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditPessoa);
-                }
-                else
-                {
-                    btnNomeEditar.Enabled = false;
-                }
-
-                //verificando o botão excluir
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnNomeExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcPessoa);
-                }
-                else
-                {
-                    btnNomeExc.Enabled = false;
-                }
-
-                //verificando o botão visualizar
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnNomeVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisPessoa);
-                }
-                else
-                {
-                    btnNomeVisual.Enabled = false;
-                }
-
-                //verificando o botão imprimir
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnNomeImp.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesImpFicha);
-                }
-                else
-                {
-                    btnNomeImp.Enabled = false;
-                }
+                btnNomeIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPessoa);
+                btnNomeEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPessoa, dataGrid);
+                btnNomeExc.Enabled = funcoes.liberacoes(entAcesso.rotExcPessoa, dataGrid);
+                btnNomeVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPessoa, dataGrid);
+                btnNomeImp.Enabled = funcoes.liberacoes(entAcesso.rotPesImpFicha, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1741,47 +1686,11 @@ namespace ccbpess
                 MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
 
                 //verificando o botão inserir
-                btnCpfIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsPessoa);
-
-                //verificando o botão editar
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnCpfEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditPessoa);
-                }
-                else
-                {
-                    btnCpfEditar.Enabled = false;
-                }
-
-                //verificando o botão excluir
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnCpfExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcPessoa);
-                }
-                else
-                {
-                    btnCpfExc.Enabled = false;
-                }
-
-                //verificando o botão visualizar
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnCpfVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisPessoa);
-                }
-                else
-                {
-                    btnCpfVisual.Enabled = false;
-                }
-
-                //verificando o botão imprimir
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnCpfImp.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesImpFicha);
-                }
-                else
-                {
-                    btnCpfImp.Enabled = false;
-                }
+                btnCpfIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPessoa);
+                btnCpfEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPessoa, dataGrid);
+                btnCpfExc.Enabled = funcoes.liberacoes(entAcesso.rotExcPessoa, dataGrid);
+                btnCpfVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPessoa, dataGrid);
+                btnCpfImp.Enabled = funcoes.liberacoes(entAcesso.rotPesImpFicha, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1803,47 +1712,11 @@ namespace ccbpess
                 MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
 
                 //verificando o botão inserir
-                btnComIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsPessoa);
-
-                //verificando o botão editar
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnComEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditPessoa);
-                }
-                else
-                {
-                    btnComEditar.Enabled = false;
-                }
-
-                //verificando o botão excluir
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnComExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcPessoa);
-                }
-                else
-                {
-                    btnComExc.Enabled = false;
-                }
-
-                //verificando o botão visualizar
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnComVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisPessoa);
-                }
-                else
-                {
-                    btnComVisual.Enabled = false;
-                }
-
-                //verificando o botão imprimir
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnComImp.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesImpFicha);
-                }
-                else
-                {
-                    btnComImp.Enabled = false;
-                }
+                btnComIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPessoa);
+                btnComEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPessoa, dataGrid);
+                btnComExc.Enabled = funcoes.liberacoes(entAcesso.rotExcPessoa, dataGrid);
+                btnComVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPessoa, dataGrid);
+                btnComImp.Enabled = funcoes.liberacoes(entAcesso.rotPesImpFicha, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1865,47 +1738,11 @@ namespace ccbpess
                 MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
 
                 //verificando o botão inserir
-                btnRegIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsPessoa);
-
-                //verificando o botão editar
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnRegEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditPessoa);
-                }
-                else
-                {
-                    btnRegEditar.Enabled = false;
-                }
-
-                //verificando o botão excluir
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnRegExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcPessoa);
-                }
-                else
-                {
-                    btnRegExc.Enabled = false;
-                }
-
-                //verificando o botão visualizar
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnRegVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisPessoa);
-                }
-                else
-                {
-                    btnRegVisual.Enabled = false;
-                }
-
-                //verificando o botão imprimir
-                if (dataGrid.Rows.Count > 0)
-                {
-                    btnRegImp.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesImpFicha);
-                }
-                else
-                {
-                    btnRegImp.Enabled = false;
-                }
+                btnRegIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPessoa);
+                btnRegEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPessoa, dataGrid);
+                btnRegExc.Enabled = funcoes.liberacoes(entAcesso.rotExcPessoa, dataGrid);
+                btnRegVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPessoa, dataGrid);
+                btnRegImp.Enabled = funcoes.liberacoes(entAcesso.rotPesImpFicha, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1918,5 +1755,6 @@ namespace ccbpess
         }
 
         #endregion
+
     }
 }

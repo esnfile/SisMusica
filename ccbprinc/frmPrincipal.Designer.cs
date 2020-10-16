@@ -174,14 +174,15 @@
             // mnuVisaoAmplaOrquestra
             // 
             this.mnuVisaoAmplaOrquestra.Name = "mnuVisaoAmplaOrquestra";
-            this.mnuVisaoAmplaOrquestra.Size = new System.Drawing.Size(160, 22);
+            this.mnuVisaoAmplaOrquestra.Size = new System.Drawing.Size(180, 22);
             this.mnuVisaoAmplaOrquestra.Text = "Visão Orquestral";
             this.mnuVisaoAmplaOrquestra.Click += new System.EventHandler(this.mnuVisaoAmplaOrquestra_Click);
             // 
             // mnuControleOrquestra
             // 
+            this.mnuControleOrquestra.Enabled = false;
             this.mnuControleOrquestra.Name = "mnuControleOrquestra";
-            this.mnuControleOrquestra.Size = new System.Drawing.Size(160, 22);
+            this.mnuControleOrquestra.Size = new System.Drawing.Size(180, 22);
             this.mnuControleOrquestra.Text = "Controle";
             // 
             // mnuTabOrquestra
@@ -191,7 +192,7 @@
             this.mnuTabInstrMet,
             this.subMnuTeoria});
             this.mnuTabOrquestra.Name = "mnuTabOrquestra";
-            this.mnuTabOrquestra.Size = new System.Drawing.Size(160, 22);
+            this.mnuTabOrquestra.Size = new System.Drawing.Size(180, 22);
             this.mnuTabOrquestra.Text = "Tabelas";
             // 
             // instrumentosToolStripMenuItem
@@ -210,42 +211,42 @@
             // mnuInstr
             // 
             this.mnuInstr.Name = "mnuInstr";
-            this.mnuInstr.Size = new System.Drawing.Size(144, 22);
+            this.mnuInstr.Size = new System.Drawing.Size(180, 22);
             this.mnuInstr.Text = "Instrumentos";
             this.mnuInstr.Click += new System.EventHandler(this.mnuInstr_Click);
             // 
             // mnuTabInstrFamilia
             // 
             this.mnuTabInstrFamilia.Name = "mnuTabInstrFamilia";
-            this.mnuTabInstrFamilia.Size = new System.Drawing.Size(144, 22);
+            this.mnuTabInstrFamilia.Size = new System.Drawing.Size(180, 22);
             this.mnuTabInstrFamilia.Text = "Família";
             this.mnuTabInstrFamilia.Click += new System.EventHandler(this.mnuTabInstrFamilia_Click);
             // 
             // mnuTabInstrEscala
             // 
             this.mnuTabInstrEscala.Name = "mnuTabInstrEscala";
-            this.mnuTabInstrEscala.Size = new System.Drawing.Size(144, 22);
+            this.mnuTabInstrEscala.Size = new System.Drawing.Size(180, 22);
             this.mnuTabInstrEscala.Text = "Escala";
             this.mnuTabInstrEscala.Click += new System.EventHandler(this.mnuTabInstrEscala_Click);
             // 
             // mnuTabInstrHino
             // 
             this.mnuTabInstrHino.Name = "mnuTabInstrHino";
-            this.mnuTabInstrHino.Size = new System.Drawing.Size(144, 22);
+            this.mnuTabInstrHino.Size = new System.Drawing.Size(180, 22);
             this.mnuTabInstrHino.Text = "Hinários";
             this.mnuTabInstrHino.Click += new System.EventHandler(this.mnuTabInstrHino_Click);
             // 
             // mnuTabInstrTonal
             // 
             this.mnuTabInstrTonal.Name = "mnuTabInstrTonal";
-            this.mnuTabInstrTonal.Size = new System.Drawing.Size(144, 22);
+            this.mnuTabInstrTonal.Size = new System.Drawing.Size(180, 22);
             this.mnuTabInstrTonal.Text = "Tonalidade";
             this.mnuTabInstrTonal.Click += new System.EventHandler(this.mnuTabInstrTonal_Click);
             // 
             // mnuTabInstrVozes
             // 
             this.mnuTabInstrVozes.Name = "mnuTabInstrVozes";
-            this.mnuTabInstrVozes.Size = new System.Drawing.Size(144, 22);
+            this.mnuTabInstrVozes.Size = new System.Drawing.Size(180, 22);
             this.mnuTabInstrVozes.Text = "Vozes";
             this.mnuTabInstrVozes.Click += new System.EventHandler(this.mnuTabInstrVozes_Click);
             // 
@@ -292,8 +293,9 @@
             this.mnuRelOrquestra.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuRelMetInstr,
             this.mnuRelListInstr});
+            this.mnuRelOrquestra.Enabled = false;
             this.mnuRelOrquestra.Name = "mnuRelOrquestra";
-            this.mnuRelOrquestra.Size = new System.Drawing.Size(160, 22);
+            this.mnuRelOrquestra.Size = new System.Drawing.Size(180, 22);
             this.mnuRelOrquestra.Text = "Relatórios";
             // 
             // mnuRelMetInstr
@@ -313,7 +315,7 @@
             this.mnuConfInstr.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuConfInstrMet});
             this.mnuConfInstr.Name = "mnuConfInstr";
-            this.mnuConfInstr.Size = new System.Drawing.Size(160, 22);
+            this.mnuConfInstr.Size = new System.Drawing.Size(180, 22);
             this.mnuConfInstr.Text = "Configurações";
             // 
             // mnuConfInstrMet
@@ -328,6 +330,7 @@
             this.mnuControleGEM.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tabelasToolStripMenuItem,
             this.aplicaçãoDeAulasToolStripMenuItem});
+            this.mnuControleGEM.Enabled = false;
             this.mnuControleGEM.Name = "mnuControleGEM";
             this.mnuControleGEM.Size = new System.Drawing.Size(93, 20);
             this.mnuControleGEM.Text = "Controle GEM";
@@ -335,7 +338,7 @@
             // tabelasToolStripMenuItem
             // 
             this.tabelasToolStripMenuItem.Name = "tabelasToolStripMenuItem";
-            this.tabelasToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.tabelasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tabelasToolStripMenuItem.Text = "Tabelas";
             // 
             // aplicaçãoDeAulasToolStripMenuItem
@@ -344,7 +347,7 @@
             this.listaDePresençaToolStripMenuItem,
             this.agendaAnotaçõesToolStripMenuItem});
             this.aplicaçãoDeAulasToolStripMenuItem.Name = "aplicaçãoDeAulasToolStripMenuItem";
-            this.aplicaçãoDeAulasToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.aplicaçãoDeAulasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aplicaçãoDeAulasToolStripMenuItem.Text = "Controle de Aulas";
             // 
             // listaDePresençaToolStripMenuItem
@@ -381,6 +384,7 @@
             // 
             // mnuTeste
             // 
+            this.mnuTeste.Enabled = false;
             this.mnuTeste.Name = "mnuTeste";
             this.mnuTeste.Size = new System.Drawing.Size(197, 22);
             this.mnuTeste.Text = "Testes";
@@ -397,6 +401,7 @@
             this.mnuTabExame.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuTabExamePreTeste,
             this.mnuTabExameTeste});
+            this.mnuTabExame.Enabled = false;
             this.mnuTabExame.Name = "mnuTabExame";
             this.mnuTabExame.Size = new System.Drawing.Size(197, 22);
             this.mnuTabExame.Text = "Tabelas";
@@ -419,6 +424,7 @@
             this.mnuRelExamePreTeste,
             this.mnuRelExameTeste,
             this.fichasDeTestesToolStripMenuItem});
+            this.mnuRelExame.Enabled = false;
             this.mnuRelExame.Name = "mnuRelExame";
             this.mnuRelExame.Size = new System.Drawing.Size(197, 22);
             this.mnuRelExame.Text = "Relatórios";
@@ -492,7 +498,7 @@
             // mnuTabTipoReuniaoAdm
             // 
             this.mnuTabTipoReuniaoAdm.Name = "mnuTabTipoReuniaoAdm";
-            this.mnuTabTipoReuniaoAdm.Size = new System.Drawing.Size(164, 22);
+            this.mnuTabTipoReuniaoAdm.Size = new System.Drawing.Size(180, 22);
             this.mnuTabTipoReuniaoAdm.Text = "Tipos de Reunião";
             this.mnuTabTipoReuniaoAdm.Click += new System.EventHandler(this.mnuTabTipoReuniaoAdm_Click);
             // 
@@ -500,6 +506,7 @@
             // 
             this.mnuRelAdm.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuRelMixAdm});
+            this.mnuRelAdm.Enabled = false;
             this.mnuRelAdm.Name = "mnuRelAdm";
             this.mnuRelAdm.Size = new System.Drawing.Size(185, 22);
             this.mnuRelAdm.Text = "Relatórios";
@@ -507,7 +514,7 @@
             // mnuRelMixAdm
             // 
             this.mnuRelMixAdm.Name = "mnuRelMixAdm";
-            this.mnuRelMixAdm.Size = new System.Drawing.Size(145, 22);
+            this.mnuRelMixAdm.Size = new System.Drawing.Size(180, 22);
             this.mnuRelMixAdm.Text = "Mix Reuniões";
             // 
             // mnuUtilitarios
@@ -673,6 +680,7 @@
             // 
             // mnuConfigParam
             // 
+            this.mnuConfigParam.Enabled = false;
             this.mnuConfigParam.Name = "mnuConfigParam";
             this.mnuConfigParam.Size = new System.Drawing.Size(192, 22);
             this.mnuConfigParam.Text = "Parâmetros";
@@ -692,7 +700,7 @@
             this.mnuImportaPessoaSucesso,
             this.mnuImportaPessoaErro});
             this.mnuImportaPessoa.Name = "mnuImportaPessoa";
-            this.mnuImportaPessoa.Size = new System.Drawing.Size(115, 22);
+            this.mnuImportaPessoa.Size = new System.Drawing.Size(180, 22);
             this.mnuImportaPessoa.Text = "Pessoas";
             // 
             // mnuImportarPessoas
@@ -750,21 +758,23 @@
             // 
             // mnuAjudaCircular
             // 
+            this.mnuAjudaCircular.Enabled = false;
             this.mnuAjudaCircular.Name = "mnuAjudaCircular";
-            this.mnuAjudaCircular.Size = new System.Drawing.Size(130, 22);
+            this.mnuAjudaCircular.Size = new System.Drawing.Size(180, 22);
             this.mnuAjudaCircular.Text = "Circulares";
             // 
             // mnuAjudaNovidades
             // 
             this.mnuAjudaNovidades.Name = "mnuAjudaNovidades";
-            this.mnuAjudaNovidades.Size = new System.Drawing.Size(130, 22);
+            this.mnuAjudaNovidades.Size = new System.Drawing.Size(180, 22);
             this.mnuAjudaNovidades.Text = "Novidades";
             this.mnuAjudaNovidades.Click += new System.EventHandler(this.mnuAjudaNovidades_Click);
             // 
             // mnuAjudaManuais
             // 
+            this.mnuAjudaManuais.Enabled = false;
             this.mnuAjudaManuais.Name = "mnuAjudaManuais";
-            this.mnuAjudaManuais.Size = new System.Drawing.Size(130, 22);
+            this.mnuAjudaManuais.Size = new System.Drawing.Size(180, 22);
             this.mnuAjudaManuais.Text = "Manuais";
             // 
             // button1

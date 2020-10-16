@@ -61,6 +61,7 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Location = new System.Drawing.Point(321, 287);
             this.btnCancelar.Name = "btnCancelar";
@@ -72,6 +73,7 @@
             // 
             // btnEntrar
             // 
+            this.btnEntrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEntrar.Location = new System.Drawing.Point(259, 287);
             this.btnEntrar.Name = "btnEntrar";
             this.btnEntrar.Size = new System.Drawing.Size(60, 23);

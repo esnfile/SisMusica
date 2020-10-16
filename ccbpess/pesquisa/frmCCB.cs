@@ -1396,7 +1396,7 @@ namespace ccbpess.pesquisa
             try
             {
                 MOD_acessoCcb entAcesso = new MOD_acessoCcb();
-                tabMinisterio.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotCCBAbaMinist);
+                tabMinisterio.Enabled = funcoes.liberacoes(entAcesso.rotCCBAbaMinist);
             }
             catch (SqlException exl)
             {
@@ -1417,8 +1417,8 @@ namespace ccbpess.pesquisa
             try
             {
                 MOD_acessoCcb entAcesso = new MOD_acessoCcb();
-                btnInserir.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsCCBMinist);
-                btnExcluir.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcCCBMinist, dataGrid);
+                btnInserir.Enabled = funcoes.liberacoes(entAcesso.rotInsCCBMinist);
+                btnExcluir.Enabled = funcoes.liberacoes(entAcesso.rotExcCCBMinist, dataGrid);
             }
             catch (SqlException exl)
             {

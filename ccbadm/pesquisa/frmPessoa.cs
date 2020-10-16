@@ -1724,8 +1724,8 @@ namespace ccbadm
                     }
                     else
                     {
-                        lblCargo.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesAteraCargo);
-                        cboCodCargo.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesAteraCargo);
+                        lblCargo.Enabled = funcoes.liberacoes(entAcesso.rotPesAteraCargo);
+                        cboCodCargo.Enabled = funcoes.liberacoes(entAcesso.rotPesAteraCargo);
                     }
                 }
                 else
@@ -1753,19 +1753,19 @@ namespace ccbadm
             {
                 MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
 
-                tabAdicionais.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesAdicionais);
+                tabAdicionais.Enabled = funcoes.liberacoes(entAcesso.rotPesAdicionais);
 
                 if (tabAdicionais.Enabled.Equals(true))
                 {
-                    tabFormacao.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesAdiForma);
-                    tabDiversos.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesAdiOrquetra);
-                    tabOutraOrquestra.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesAdiOrquetra);
+                    tabFormacao.Enabled = funcoes.liberacoes(entAcesso.rotPesAdiForma);
+                    tabDiversos.Enabled = funcoes.liberacoes(entAcesso.rotPesAdiOrquetra);
+                    tabOutraOrquestra.Enabled = funcoes.liberacoes(entAcesso.rotPesAdiOrquetra);
 
                     if (!lblCodCargo.Text.Equals(string.Empty))
                     {
                         if (CargoSelecao.PermiteInstrumento.Equals("Sim"))
                         {
-                            if (funcoes.liberacoes(listaAcesso, entAcesso.rotPesAdiInstrumento).Equals(true))
+                            if (funcoes.liberacoes(entAcesso.rotPesAdiInstrumento).Equals(true))
                             {
                                 gpoEstudo.Enabled = true;
 

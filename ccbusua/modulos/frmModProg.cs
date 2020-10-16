@@ -962,9 +962,9 @@ namespace ccbusua
             try
             {
                 MOD_acessoModulos entAcesso = new MOD_acessoModulos();
-                this.btnModIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsModulo);
-                this.btnModEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditModulo, dataGrid);
-                this.btnModExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcModulo, dataGrid);
+                this.btnModIns.Enabled = funcoes.liberacoes(entAcesso.rotInsModulo);
+                this.btnModEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditModulo, dataGrid);
+                this.btnModExc.Enabled = funcoes.liberacoes(entAcesso.rotExcModulo, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -984,9 +984,9 @@ namespace ccbusua
             try
             {
                 MOD_acessoSubModulos entAcesso = new MOD_acessoSubModulos();
-                this.btnSubIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsSubModulo);
-                this.btnSubEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditSubModulo, dataGrid);
-                this.btnSubExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcSubModulo, dataGrid);
+                this.btnSubIns.Enabled = funcoes.liberacoes(entAcesso.rotInsSubModulo);
+                this.btnSubEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditSubModulo, dataGrid);
+                this.btnSubExc.Enabled = funcoes.liberacoes(entAcesso.rotExcSubModulo, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1006,9 +1006,9 @@ namespace ccbusua
             try
             {
                 MOD_acessoProgramas entAcesso = new MOD_acessoProgramas();
-                this.btnProgIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsProgModulo);
-                this.btnProgEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditProgModulo, dataGrid);
-                this.btnProgExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcProgModulo, dataGrid);
+                this.btnProgIns.Enabled = funcoes.liberacoes(entAcesso.rotInsProgModulo);
+                this.btnProgEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditProgModulo, dataGrid);
+                this.btnProgExc.Enabled = funcoes.liberacoes(entAcesso.rotExcProgModulo, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1028,9 +1028,9 @@ namespace ccbusua
             try
             {
                 MOD_acessoRotinas entAcesso = new MOD_acessoRotinas();
-                this.btnRotIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsRotModulo);
-                this.btnRotEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditRotModulo, dataGrid);
-                this.btnRotExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcRotModulo, dataGrid);
+                this.btnRotIns.Enabled = funcoes.liberacoes(entAcesso.rotInsRotModulo);
+                this.btnRotEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditRotModulo, dataGrid);
+                this.btnRotExc.Enabled = funcoes.liberacoes(entAcesso.rotExcRotModulo, dataGrid);
             }
             catch (SqlException exl)
             {

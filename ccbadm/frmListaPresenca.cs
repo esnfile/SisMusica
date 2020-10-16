@@ -773,8 +773,8 @@ namespace ccbadm
             try
             {
                 MOD_acessoListaPresenca entAcesso = new MOD_acessoListaPresenca();
-                btnIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsPresenca);
-                btnExcluir.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcPresenca, dataGrid);
+                btnIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPresenca);
+                btnExcluir.Enabled = funcoes.liberacoes(entAcesso.rotExcPresenca, dataGrid);
             }
             catch (SqlException exl)
             {

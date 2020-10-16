@@ -1065,10 +1065,10 @@ namespace ccbutil
             try
             {
                 MOD_acessoCcb entAcesso = new MOD_acessoCcb();
-                btnCodIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsCCB);
-                btnCodEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditCCB, dataGrid);
-                btnCodExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcCCB, dataGrid);
-                btnCodVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisCCB, dataGrid);
+                btnCodIns.Enabled = funcoes.liberacoes(entAcesso.rotInsCCB);
+                btnCodEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditCCB, dataGrid);
+                btnCodExc.Enabled = funcoes.liberacoes(entAcesso.rotExcCCB, dataGrid);
+                btnCodVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisCCB, dataGrid);
 
                 //verificando o botão Selecionar
                 if (Text.Equals("Pesquisar Comum"))
@@ -1103,10 +1103,10 @@ namespace ccbutil
             try
             {
                 MOD_acessoCcb entAcesso = new MOD_acessoCcb();
-                btnNomeIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsCCB);
-                btnNomeEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditCCB, dataGrid);
-                btnNomeExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcCCB, dataGrid);
-                btnNomeVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisCCB, dataGrid);
+                btnNomeIns.Enabled = funcoes.liberacoes(entAcesso.rotInsCCB);
+                btnNomeEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditCCB, dataGrid);
+                btnNomeExc.Enabled = funcoes.liberacoes(entAcesso.rotExcCCB, dataGrid);
+                btnNomeVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisCCB, dataGrid);
 
                 //verificando o botão Selecionar
                 if (Text.Equals("Pesquisar Comum"))
@@ -1141,10 +1141,10 @@ namespace ccbutil
             try
             {
                 MOD_acessoCcb entAcesso = new MOD_acessoCcb();
-                btnRegIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsCCB);
-                btnRegEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditCCB, dataGrid);
-                btnRegExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcCCB, dataGrid);
-                btnRegVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisCCB, dataGrid);
+                btnRegIns.Enabled = funcoes.liberacoes(entAcesso.rotInsCCB);
+                btnRegEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditCCB, dataGrid);
+                btnRegExc.Enabled = funcoes.liberacoes(entAcesso.rotExcCCB, dataGrid);
+                btnRegVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisCCB, dataGrid);
 
                 //verificando o botão Selecionar
                 if (Text.Equals("Pesquisar Comum"))

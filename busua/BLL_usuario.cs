@@ -1653,22 +1653,22 @@ namespace BLL.Usuario
 
                 if (Operacao.Equals("Insert"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(modulos.rotInsUsuario);
+                    ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotInsUsuario);
                     ent.Logs.Ocorrencia = "Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
                 }
                 else if (Operacao.Equals("Update"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(modulos.rotEditUsuario);
+                    ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotEditUsuario);
                     ent.Logs.Ocorrencia = "Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
                 }
                 else if (Operacao.Equals("Delete"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(modulos.rotExcUsuario);
+                    ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotExcUsuario);
                     ent.Logs.Ocorrencia = "Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
                 }
                 else if (Operacao.Equals("UpdateSenha"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(modulos.rotSenhaUsuario);
+                    ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotSenhaUsuario);
                     ent.Logs.Ocorrencia = "Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
                 }
 
@@ -1706,7 +1706,7 @@ namespace BLL.Usuario
                 ent.Logs.Hora = DateTime.Now.ToString("HH:mm");
                 ent.Logs.CodUsuario = Convert.ToString(modulos.CodUsuario);
 
-                ent.Logs.CodRotina = Convert.ToString(modulos.rotUsuAcessoCargo);
+                ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotUsuAcessoCargo);
                 ent.Logs.Ocorrencia = "Foi feito " + Operacao.ToUpper() + " do Cargo: < " + ent.SiglaCargo + " - " + ent.DescCargo + " > " + " no cadastro do usuário Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
 
                 ent.Logs.NomePc = modulos.DescPc;
@@ -1743,7 +1743,7 @@ namespace BLL.Usuario
                 ent.Logs.Hora = DateTime.Now.ToString("HH:mm");
                 ent.Logs.CodUsuario = Convert.ToString(modulos.CodUsuario);
 
-                ent.Logs.CodRotina = Convert.ToString(modulos.rotUsuAcessoCargo);
+                ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotUsuAcessoCargo);
                 ent.Logs.Ocorrencia = "Foi feito " + Operacao.ToUpper() + " da Comum Congregação: < " + ent.Codigo + " - " + ent.Descricao + " > " + " no cadastro do usuário Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
 
                 ent.Logs.NomePc = modulos.DescPc;
@@ -1780,7 +1780,7 @@ namespace BLL.Usuario
                 ent.Logs.Hora = DateTime.Now.ToString("HH:mm");
                 ent.Logs.CodUsuario = Convert.ToString(modulos.CodUsuario);
 
-                ent.Logs.CodRotina = Convert.ToString(modulos.rotUsuAcessoCargo);
+                ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotUsuAcessoCargo);
                 ent.Logs.Ocorrencia = "Foi feito " + Operacao.ToUpper() + " da Região: < " + ent.CodigoRegiao + " - " + ent.DescRegiao + " > " + " no cadastro do usuário Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
 
                 ent.Logs.NomePc = modulos.DescPc;
@@ -1817,7 +1817,7 @@ namespace BLL.Usuario
                 ent.Logs.Hora = DateTime.Now.ToString("HH:mm");
                 ent.Logs.CodUsuario = Convert.ToString(modulos.CodUsuario);
 
-                ent.Logs.CodRotina = Convert.ToString(modulos.rotUsuAcessoCargo);
+                ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotUsuAcessoCargo);
                 ent.Logs.Ocorrencia = "Foi feito " + Operacao.ToUpper() + " da Região: < " + ent.CodigoRegiao + " - " + ent.DescRegiao + " > " + " no cadastro do usuário Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
 
                 ent.Logs.NomePc = modulos.DescPc;

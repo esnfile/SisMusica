@@ -6996,27 +6996,6 @@ namespace BLL.Funcoes
             formulario.BringToFront();
         }
 
-        public static bool AbrirErros(List<MOD_erros> listaErros)
-        {
-            try
-            {
-                telaErros frmErros = new telaErros(listaErros);
-
-                if (frmErros.ShowDialog().Equals(DialogResult.OK))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         #endregion
 
         #region ### Funções que tratam da liberação e bloqueios dos acessos ###
@@ -7066,7 +7045,7 @@ namespace BLL.Funcoes
         /// <param name="rotina"></param>
         /// <param name="dataGrid"></param>
         /// <returns></returns>
-        public static bool liberacoes(List<MOD_acessos> listaAcesso, int rotina, DataGridView dataGrid)
+        public static bool liberacoes(int rotina, DataGridView dataGrid)
         {
             bool retorno = false;
             if (modulos.Supervisor.Equals("Sim"))
@@ -7082,7 +7061,7 @@ namespace BLL.Funcoes
             }
             else
             {
-                foreach (MOD_acessos entAcesso in listaAcesso)
+                foreach (MOD_acessos entAcesso in modulos.listaLibAcesso)
                 {
                     if (Convert.ToInt32(entAcesso.CodRotina).Equals(rotina))
                     {
@@ -7113,7 +7092,7 @@ namespace BLL.Funcoes
         /// <param name="listaAcesso"></param>
         /// <param name="rotina"></param>
         /// <returns></returns>
-        public static bool liberacoes(List<MOD_acessos> listaAcesso, int rotina)
+        public static bool liberacoes(int rotina)
         {
             bool retorno = false;
             if (modulos.Supervisor.Equals("Sim"))
@@ -7122,7 +7101,7 @@ namespace BLL.Funcoes
             }
             else
             {
-                foreach (MOD_acessos entAcesso in listaAcesso)
+                foreach (MOD_acessos entAcesso in modulos.listaLibAcesso)
                 {
                     if (Convert.ToInt32(entAcesso.CodRotina).Equals(rotina))
                     {

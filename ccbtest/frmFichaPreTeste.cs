@@ -4395,29 +4395,8 @@ namespace ccbtest
             try
             {
                 MOD_acessoFichaPreTeste entAcesso = new MOD_acessoFichaPreTeste();
-                btnMetIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsMetFichaPreTeste);
-                btnMetExcluir.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcMetFichaPreTeste, dataGrid);
-
-                //foreach (MOD_acessos ent in listaAcesso)
-                //{
-                //    //verificando o botão inserir
-                //    if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotInsMetFichaPreTeste))
-                //    {
-                //        btnMetIns.Enabled = true;
-                //    }
-                //    //verificando o botão excluir
-                //    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotExcMetFichaPreTeste))
-                //    {
-                //        if (dataGrid.Rows.Count > 0)
-                //        {
-                //            btnMetExcluir.Enabled = true;
-                //        }
-                //        else
-                //        {
-                //            btnMetExcluir.Enabled = false;
-                //        }
-                //    }
-                //}
+                btnMetIns.Enabled = funcoes.liberacoes(entAcesso.rotInsMetFichaPreTeste);
+                btnMetExcluir.Enabled = funcoes.liberacoes(entAcesso.rotExcMetFichaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -4438,8 +4417,8 @@ namespace ccbtest
             {
                 MOD_acessoFichaPreTeste entAcesso = new MOD_acessoFichaPreTeste();
                 //verificando o botão inserir
-                btnHinoInserir.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsHinoFichaPreTeste);
-                btnHinoExcluir.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcHinoFichaPreTeste, dataGrid);
+                btnHinoInserir.Enabled = funcoes.liberacoes(entAcesso.rotInsHinoFichaPreTeste);
+                btnHinoExcluir.Enabled = funcoes.liberacoes(entAcesso.rotExcHinoFichaPreTeste, dataGrid);
 
                 //foreach (MOD_acessos ent in listaAcesso)
                 //{
@@ -4480,29 +4459,8 @@ namespace ccbtest
             try
             {
                 MOD_acessoFichaPreTeste entAcesso = new MOD_acessoFichaPreTeste();
-                btnMtsInserir.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsMtsFichaPreTeste);
-                btnMtsExcluir.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcMtsFichaPreTeste, dataGrid);
-
-                //foreach (MOD_acessos ent in listaAcesso)
-                //{
-                //    //verificando o botão inserir
-                //    if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotInsMetFichaPreTeste))
-                //    {
-                //        btnMetIns.Enabled = true;
-                //    }
-                //    //verificando o botão excluir
-                //    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotExcMetFichaPreTeste))
-                //    {
-                //        if (dataGrid.Rows.Count > 0)
-                //        {
-                //            btnMetExcluir.Enabled = true;
-                //        }
-                //        else
-                //        {
-                //            btnMetExcluir.Enabled = false;
-                //        }
-                //    }
-                //}
+                btnMtsInserir.Enabled = funcoes.liberacoes(entAcesso.rotInsMtsFichaPreTeste);
+                btnMtsExcluir.Enabled = funcoes.liberacoes(entAcesso.rotExcMtsFichaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -4522,29 +4480,8 @@ namespace ccbtest
             try
             {
                 MOD_acessoFichaPreTeste entAcesso = new MOD_acessoFichaPreTeste();
-                btnEscalaInserir.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsEscalaFichaPreTeste);
-                btnEscalaExcluir.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcEscalaFichaPreTeste, dataGrid);
-
-                //foreach (MOD_acessos ent in listaAcesso)
-                //{
-                //    //verificando o botão inserir
-                //    if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotInsMetFichaPreTeste))
-                //    {
-                //        btnMetIns.Enabled = true;
-                //    }
-                //    //verificando o botão excluir
-                //    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotExcMetFichaPreTeste))
-                //    {
-                //        if (dataGrid.Rows.Count > 0)
-                //        {
-                //            btnMetExcluir.Enabled = true;
-                //        }
-                //        else
-                //        {
-                //            btnMetExcluir.Enabled = false;
-                //        }
-                //    }
-                //}
+                btnEscalaInserir.Enabled = funcoes.liberacoes(entAcesso.rotInsEscalaFichaPreTeste);
+                btnEscalaExcluir.Enabled = funcoes.liberacoes(entAcesso.rotExcEscalaFichaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -4564,29 +4501,8 @@ namespace ccbtest
             try
             {
                 MOD_acessoFichaPreTeste entAcesso = new MOD_acessoFichaPreTeste();
-                btnTeoriaInserir.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsTeoriaFichaPreTeste);
-                btnTeoriaExcluir.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcTeoriaFichaPreTeste, dataGrid);
-
-                //foreach (MOD_acessos ent in listaAcesso)
-                //{
-                //    //verificando o botão inserir
-                //    if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotInsMetFichaPreTeste))
-                //    {
-                //        btnMetIns.Enabled = true;
-                //    }
-                //    //verificando o botão excluir
-                //    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotExcMetFichaPreTeste))
-                //    {
-                //        if (dataGrid.Rows.Count > 0)
-                //        {
-                //            btnMetExcluir.Enabled = true;
-                //        }
-                //        else
-                //        {
-                //            btnMetExcluir.Enabled = false;
-                //        }
-                //    }
-                //}
+                btnTeoriaInserir.Enabled = funcoes.liberacoes(entAcesso.rotInsTeoriaFichaPreTeste);
+                btnTeoriaExcluir.Enabled = funcoes.liberacoes(entAcesso.rotExcTeoriaFichaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {

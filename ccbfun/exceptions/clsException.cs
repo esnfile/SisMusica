@@ -32,12 +32,6 @@ namespace BLL.Funcoes.Exceptions
             _excsql = exl;
             avalException(_excep, _excsql);
         }
-        //inicializador que instancia a classe e passa o exception como parametro
-        public clsException(List<MOD_erros> erros)
-        {
-            _erros = erros;
-            AvalErros(_erros);
-        }
 
         private void avalException(Exception ex, SqlException exl)
         {
@@ -143,15 +137,6 @@ namespace BLL.Funcoes.Exceptions
                 MessageBox.Show(ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-        }
-
-        /// <summary>
-        /// Mostra o Formulario de erros
-        /// </summary>
-        /// <returns></returns>
-        private bool AvalErros(List<MOD_erros> erros)
-        {
-            return funcoes.AbrirErros(erros);
         }
     }
 }

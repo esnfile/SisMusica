@@ -520,7 +520,7 @@ namespace ccbadm
             try
             {
                 MOD_acessoTipoReuniao entAcesso = new MOD_acessoTipoReuniao();
-                gpoCargo.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotipoReuniaoCargo);
+                gpoCargo.Enabled = funcoes.liberacoes(entAcesso.rotipoReuniaoCargo);
             }
             catch (SqlException exl)
             {

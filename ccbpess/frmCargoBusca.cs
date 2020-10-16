@@ -409,10 +409,10 @@ namespace ccbpess
             try
             {
                 MOD_acessoCargo entAcesso = new MOD_acessoCargo();
-                btnDescIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsCargo);
-                btnDescEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditCargo, dataGrid);
-                btnDescExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcCargo, dataGrid);
-                btnDescVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisCargo, dataGrid);
+                btnDescIns.Enabled = funcoes.liberacoes(entAcesso.rotInsCargo);
+                btnDescEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditCargo, dataGrid);
+                btnDescExc.Enabled = funcoes.liberacoes(entAcesso.rotExcCargo, dataGrid);
+                btnDescVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisCargo, dataGrid);
             }
             catch (SqlException exl)
             {

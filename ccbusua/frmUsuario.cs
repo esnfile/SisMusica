@@ -2007,23 +2007,8 @@ namespace ccbusua
             try
             {
                 //verificando a Aba Acessos
-                gpoAcesso.Enabled = funcoes.liberacoes(modulos.listaLibAcesso, modulos.rotLibAcessoUsuario);
-                tvwAcesso.Enabled = funcoes.liberacoes(modulos.listaLibAcesso, modulos.rotLibAcessoUsuario);
-                //foreach (MOD_acessos ent in modulos.listaLibAcesso)
-                //{
-                //    //verificando a Check Supervisor
-                //    if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotSupUsuario))
-                //    {
-                //          gpoAcesso.Enabled = true;
-                //          tvwAcesso.Enabled = true;
-                //        break;
-                //    }
-                //    else
-                //    {
-                //          gpoAcesso.Enabled = false;
-                //          tvwAcesso.Enabled = false;
-                //    }
-                //}
+                gpoAcesso.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotLibAcessoUsuario);
+                tvwAcesso.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotLibAcessoUsuario);
             }
             catch (SqlException exl)
             {
@@ -2041,20 +2026,7 @@ namespace ccbusua
         {
             try
             {
-                chkSupervisor.Enabled = funcoes.liberacoes(modulos.listaLibAcesso, modulos.rotSupUsuario);
-                //foreach (MOD_acessos ent in modulos.listaLibAcesso)
-                //{
-                //    //verificando a Check Supervisor
-                //    if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotSupUsuario))
-                //    {
-                //          chkSupervisor.Enabled = true;
-                //        break;
-                //    }
-                //    else
-                //    {
-                //        chkSupervisor.Enabled = false;
-                //    }
-                //}
+                chkSupervisor.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotSupUsuario);
             }
             catch (SqlException exl)
             {
@@ -2072,19 +2044,7 @@ namespace ccbusua
         {
             try
             {
-                foreach (MOD_acessos ent in modulos.listaLibAcesso)
-                {
-                    //verificando a Check Supervisor
-                    if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotSolAlteraSenha))
-                    {
-                        chkAlteraSenha.Enabled = true;
-                        break;
-                    }
-                    else
-                    {
-                        chkAlteraSenha.Enabled = false;
-                    }
-                }
+                chkAlteraSenha.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotSolAlteraSenha);
             }
             catch (SqlException exl)
             {
@@ -2102,19 +2062,7 @@ namespace ccbusua
         {
             try
             {
-                foreach (MOD_acessos ent in modulos.listaLibAcesso)
-                {
-                    //verificando a Check Supervisor
-                    if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotUsuAcessoCargo))
-                    {
-                        gpoCargo.Enabled = true;
-                        break;
-                    }
-                    else
-                    {
-                        gpoCargo.Enabled = false;
-                    }
-                }
+                gpoCargo.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotUsuAcessoCargo);
             }
             catch (SqlException exl)
             {
@@ -2132,19 +2080,7 @@ namespace ccbusua
         {
             try
             {
-                foreach (MOD_acessos ent in modulos.listaLibAcesso)
-                {
-                    //verificando Acesso a CCB
-                    if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotUsuAcessoCCB))
-                    {
-                        gpoComum.Enabled = true;
-                        break;
-                    }
-                    else
-                    {
-                        gpoComum.Enabled = false;
-                    }
-                }
+                gpoComum.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotUsuAcessoCCB);
             }
             catch (SqlException exl)
             {

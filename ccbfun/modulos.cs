@@ -324,19 +324,6 @@ namespace BLL.Funcoes
 
         #region Programas e Rotinas GerSys
 
-        #region Usuario
-        public static int progUsuario = 29;
-        public static int rotInsUsuario = 147;
-        public static int rotEditUsuario = 148;
-        public static int rotExcUsuario = 149;
-        public static int rotVisUsuario = 150;
-        public static int rotSenhaUsuario = 151;
-        public static int rotLibAcessoUsuario = 152;
-        public static int rotSupUsuario = 153;
-        public static int rotSolAlteraSenha = 154;
-        public static int rotUsuAcessoCargo = 158;
-        public static int rotUsuAcessoCCB = 159;
-        #endregion
         #region Modulos
         //public static int progModulo = 16;
         //public static int rotInsModulo = 54;

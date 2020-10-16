@@ -602,7 +602,7 @@ namespace ccbpess
                 List<MOD_erros> erros = valida.ValidaCamposCargo(cargo);
                 if (erros.Count > 0)
                 {
-                    return funcoes.AbrirErros(erros);
+                    return apoio.AbrirErros(erros, this);
                 }
                 return true;
             }

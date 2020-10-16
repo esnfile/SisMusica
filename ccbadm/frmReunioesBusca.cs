@@ -1429,12 +1429,12 @@ namespace ccbadm
             {
                 MOD_acessoReuniao entAcesso = new MOD_acessoReuniao();
 
-                btnCodIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsReuniao);
-                btnCodEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditReuniao, dataGrid);
-                btnCodCancel.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotCancelReuniao, dataGrid);
-                btnCodVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisReuniao, dataGrid);
-                btnCodImp.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotImpReuniao, dataGrid);
-                btnCodFinaliza.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotFinalReuniao, dataGrid);
+                btnCodIns.Enabled = funcoes.liberacoes(entAcesso.rotInsReuniao);
+                btnCodEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditReuniao, dataGrid);
+                btnCodCancel.Enabled = funcoes.liberacoes(entAcesso.rotCancelReuniao, dataGrid);
+                btnCodVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisReuniao, dataGrid);
+                btnCodImp.Enabled = funcoes.liberacoes(entAcesso.rotImpReuniao, dataGrid);
+                btnCodFinaliza.Enabled = funcoes.liberacoes(entAcesso.rotFinalReuniao, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1455,12 +1455,12 @@ namespace ccbadm
             {
                 MOD_acessoReuniao entAcesso = new MOD_acessoReuniao();
 
-                btnRegIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsReuniao);
-                btnRegEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditReuniao, dataGrid);
-                btnRegCancel.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotCancelReuniao, dataGrid);
-                btnRegVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisReuniao, dataGrid);
-                btnRegImp.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotImpReuniao, dataGrid);
-                btnRegFinaliza.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotFinalReuniao, dataGrid);
+                btnRegIns.Enabled = funcoes.liberacoes(entAcesso.rotInsReuniao);
+                btnRegEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditReuniao, dataGrid);
+                btnRegCancel.Enabled = funcoes.liberacoes(entAcesso.rotCancelReuniao, dataGrid);
+                btnRegVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisReuniao, dataGrid);
+                btnRegImp.Enabled = funcoes.liberacoes(entAcesso.rotImpReuniao, dataGrid);
+                btnRegFinaliza.Enabled = funcoes.liberacoes(entAcesso.rotFinalReuniao, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1481,12 +1481,12 @@ namespace ccbadm
             {
                 MOD_acessoReuniao entAcesso = new MOD_acessoReuniao();
 
-                btnDataIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsReuniao);
-                btnDataEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditReuniao, dataGrid);
-                btnDataCancel.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotCancelReuniao, dataGrid);
-                btnDataVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisReuniao, dataGrid);
-                btnDataImp.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotImpReuniao, dataGrid);
-                btnDataFinaliza.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotFinalReuniao, dataGrid);
+                btnDataIns.Enabled = funcoes.liberacoes(entAcesso.rotInsReuniao);
+                btnDataEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditReuniao, dataGrid);
+                btnDataCancel.Enabled = funcoes.liberacoes(entAcesso.rotCancelReuniao, dataGrid);
+                btnDataVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisReuniao, dataGrid);
+                btnDataImp.Enabled = funcoes.liberacoes(entAcesso.rotImpReuniao, dataGrid);
+                btnDataFinaliza.Enabled = funcoes.liberacoes(entAcesso.rotFinalReuniao, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1507,12 +1507,12 @@ namespace ccbadm
             {
                 MOD_acessoReuniao entAcesso = new MOD_acessoReuniao();
 
-                btnSitIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsReuniao);
-                btnSitEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditReuniao, dataGrid);
-                btnSitCancel.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotCancelReuniao, dataGrid);
-                btnSitVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisReuniao, dataGrid);
-                btnSitImp.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotImpReuniao, dataGrid);
-                btnSitFinaliza.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotFinalReuniao, dataGrid);
+                btnSitIns.Enabled = funcoes.liberacoes(entAcesso.rotInsReuniao);
+                btnSitEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditReuniao, dataGrid);
+                btnSitCancel.Enabled = funcoes.liberacoes(entAcesso.rotCancelReuniao, dataGrid);
+                btnSitVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisReuniao, dataGrid);
+                btnSitImp.Enabled = funcoes.liberacoes(entAcesso.rotImpReuniao, dataGrid);
+                btnSitFinaliza.Enabled = funcoes.liberacoes(entAcesso.rotFinalReuniao, dataGrid);
             }
             catch (SqlException exl)
             {

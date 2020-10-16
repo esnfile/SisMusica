@@ -652,6 +652,7 @@
             this.gridNome.TabIndex = 2;
             this.gridNome.DataSourceChanged += new System.EventHandler(this.gridNome_DataSourceChanged);
             this.gridNome.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridNome_CellDoubleClick);
+            this.gridNome.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridNome_DataBindingComplete);
             this.gridNome.SelectionChanged += new System.EventHandler(this.gridNome_SelectionChanged);
             // 
             // tabCodigo
@@ -704,6 +705,7 @@
             this.gridCodigo.TabIndex = 2;
             this.gridCodigo.DataSourceChanged += new System.EventHandler(this.gridCodigo_DataSourceChanged);
             this.gridCodigo.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCodigo_CellDoubleClick);
+            this.gridCodigo.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridCodigo_DataBindingComplete);
             this.gridCodigo.SelectionChanged += new System.EventHandler(this.gridCodigo_SelectionChanged);
             // 
             // tabCpf
@@ -756,6 +758,7 @@
             this.gridCpf.TabIndex = 2;
             this.gridCpf.DataSourceChanged += new System.EventHandler(this.gridCpf_DataSourceChanged);
             this.gridCpf.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCpf_CellDoubleClick);
+            this.gridCpf.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridCpf_DataBindingComplete);
             this.gridCpf.SelectionChanged += new System.EventHandler(this.gridCpf_SelectionChanged);
             // 
             // tabComum
@@ -841,6 +844,7 @@
             this.gridComum.TabIndex = 121;
             this.gridComum.DataSourceChanged += new System.EventHandler(this.gridComum_DataSourceChanged);
             this.gridComum.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridComum_CellDoubleClick);
+            this.gridComum.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridComum_DataBindingComplete);
             this.gridComum.SelectionChanged += new System.EventHandler(this.gridComum_SelectionChanged);
             // 
             // tabRegiao
@@ -926,6 +930,7 @@
             this.gridRegiao.TabIndex = 9;
             this.gridRegiao.DataSourceChanged += new System.EventHandler(this.gridRegiao_DataSourceChanged);
             this.gridRegiao.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegiao_CellDoubleClick);
+            this.gridRegiao.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridRegiao_DataBindingComplete);
             this.gridRegiao.SelectionChanged += new System.EventHandler(this.gridRegiao_SelectionChanged);
             // 
             // lblInativa

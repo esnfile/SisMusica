@@ -1680,12 +1680,12 @@ namespace ccbtest
             {
                 MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
 
-                btnCodIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsPreTeste);
-                btnCodEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditPreTeste, dataGrid);
-                btnCodExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotCancelPreTeste, dataGrid);
-                btnCodVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisPreTeste, dataGrid);
-                btnCodEncerra.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEncerraPreTeste, dataGrid);
-                btnCodAgenda.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotReAgendaPreTeste, dataGrid);
+                btnCodIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPreTeste);
+                btnCodEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPreTeste, dataGrid);
+                btnCodExc.Enabled = funcoes.liberacoes(entAcesso.rotCancelPreTeste, dataGrid);
+                btnCodVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPreTeste, dataGrid);
+                btnCodEncerra.Enabled = funcoes.liberacoes(entAcesso.rotEncerraPreTeste, dataGrid);
+                btnCodAgenda.Enabled = funcoes.liberacoes(entAcesso.rotReAgendaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1706,12 +1706,12 @@ namespace ccbtest
             {
                 MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
 
-                btnPesIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsPreTeste);
-                btnPesEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditPreTeste, dataGrid);
-                btnPesExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotCancelPreTeste, dataGrid);
-                btnPesVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisPreTeste, dataGrid);
-                btnPesEncerra.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEncerraPreTeste, dataGrid);
-                btnPesAgenda.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotReAgendaPreTeste, dataGrid);
+                btnPesIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPreTeste);
+                btnPesEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPreTeste, dataGrid);
+                btnPesExc.Enabled = funcoes.liberacoes(entAcesso.rotCancelPreTeste, dataGrid);
+                btnPesVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPreTeste, dataGrid);
+                btnPesEncerra.Enabled = funcoes.liberacoes(entAcesso.rotEncerraPreTeste, dataGrid);
+                btnPesAgenda.Enabled = funcoes.liberacoes(entAcesso.rotReAgendaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1732,12 +1732,12 @@ namespace ccbtest
             {
                 MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
 
-                btnDataIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsPreTeste);
-                btnDataEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditPreTeste, dataGrid);
-                btnDataExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotCancelPreTeste, dataGrid);
-                btnDataVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisPreTeste, dataGrid);
-                btnDataEncerra.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEncerraPreTeste, dataGrid);
-                btnDataAgenda.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotReAgendaPreTeste, dataGrid);
+                btnDataIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPreTeste);
+                btnDataEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPreTeste, dataGrid);
+                btnDataExc.Enabled = funcoes.liberacoes(entAcesso.rotCancelPreTeste, dataGrid);
+                btnDataVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPreTeste, dataGrid);
+                btnDataEncerra.Enabled = funcoes.liberacoes(entAcesso.rotEncerraPreTeste, dataGrid);
+                btnDataAgenda.Enabled = funcoes.liberacoes(entAcesso.rotReAgendaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1758,12 +1758,12 @@ namespace ccbtest
             {
                 MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
 
-                btnSolIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsPreTeste);
-                btnSolEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditPreTeste, dataGrid);
-                btnSolExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotCancelPreTeste, dataGrid);
-                btnSolVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisPreTeste, dataGrid);
-                btnSolEncerra.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEncerraPreTeste, dataGrid);
-                btnSolAgenda.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotReAgendaPreTeste, dataGrid);
+                btnSolIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPreTeste);
+                btnSolEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPreTeste, dataGrid);
+                btnSolExc.Enabled = funcoes.liberacoes(entAcesso.rotCancelPreTeste, dataGrid);
+                btnSolVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPreTeste, dataGrid);
+                btnSolEncerra.Enabled = funcoes.liberacoes(entAcesso.rotEncerraPreTeste, dataGrid);
+                btnSolAgenda.Enabled = funcoes.liberacoes(entAcesso.rotReAgendaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1784,12 +1784,12 @@ namespace ccbtest
             {
                 MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
 
-                btnSitIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsPreTeste);
-                btnSitEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditPreTeste, dataGrid);
-                btnSitExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotCancelPreTeste, dataGrid);
-                btnSitVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisPreTeste, dataGrid);
-                btnSitEncerra.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEncerraPreTeste, dataGrid);
-                btnSitAgenda.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotReAgendaPreTeste, dataGrid);
+                btnSitIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPreTeste);
+                btnSitEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPreTeste, dataGrid);
+                btnSitExc.Enabled = funcoes.liberacoes(entAcesso.rotCancelPreTeste, dataGrid);
+                btnSitVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPreTeste, dataGrid);
+                btnSitEncerra.Enabled = funcoes.liberacoes(entAcesso.rotEncerraPreTeste, dataGrid);
+                btnSitAgenda.Enabled = funcoes.liberacoes(entAcesso.rotReAgendaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1810,12 +1810,12 @@ namespace ccbtest
             {
                 MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
 
-                btnComIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsPreTeste);
-                btnComEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditPreTeste, dataGrid);
-                btnComExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotCancelPreTeste, dataGrid);
-                btnComVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisPreTeste, dataGrid);
-                btnComEncerra.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEncerraPreTeste, dataGrid);
-                btnComAgenda.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotReAgendaPreTeste, dataGrid);
+                btnComIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPreTeste);
+                btnComEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPreTeste, dataGrid);
+                btnComExc.Enabled = funcoes.liberacoes(entAcesso.rotCancelPreTeste, dataGrid);
+                btnComVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPreTeste, dataGrid);
+                btnComEncerra.Enabled = funcoes.liberacoes(entAcesso.rotEncerraPreTeste, dataGrid);
+                btnComAgenda.Enabled = funcoes.liberacoes(entAcesso.rotReAgendaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {

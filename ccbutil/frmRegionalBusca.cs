@@ -846,10 +846,10 @@ namespace ccbutil
             try
             {
                 MOD_acessoRegional entAcesso = new MOD_acessoRegional();
-                btnCodIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsRegional);
-                btnCodEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditRegional, dataGrid);
-                btnCodExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcRegional, dataGrid);
-                btnCodVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisRegional, dataGrid);
+                btnCodIns.Enabled = funcoes.liberacoes(entAcesso.rotInsRegional);
+                btnCodEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditRegional, dataGrid);
+                btnCodExc.Enabled = funcoes.liberacoes(entAcesso.rotExcRegional, dataGrid);
+                btnCodVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisRegional, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -869,10 +869,10 @@ namespace ccbutil
             try
             {
                 MOD_acessoRegional entAcesso = new MOD_acessoRegional();
-                btnNomeIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsRegional);
-                btnNomeEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditRegional, dataGrid);
-                btnNomeExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcRegional, dataGrid);
-                btnNomeVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisRegional, dataGrid);
+                btnNomeIns.Enabled = funcoes.liberacoes(entAcesso.rotInsRegional);
+                btnNomeEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditRegional, dataGrid);
+                btnNomeExc.Enabled = funcoes.liberacoes(entAcesso.rotExcRegional, dataGrid);
+                btnNomeVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisRegional, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -892,10 +892,10 @@ namespace ccbutil
             try
             {
                 MOD_acessoRegional entAcesso = new MOD_acessoRegional();
-                btnEstIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsRegional);
-                btnEstEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditRegional, dataGrid);
-                btnEstExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcRegional, dataGrid);
-                btnEstVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisRegional, dataGrid);
+                btnEstIns.Enabled = funcoes.liberacoes(entAcesso.rotInsRegional);
+                btnEstEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditRegional, dataGrid);
+                btnEstExc.Enabled = funcoes.liberacoes(entAcesso.rotExcRegional, dataGrid);
+                btnEstVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisRegional, dataGrid);
             }
             catch (SqlException exl)
             {

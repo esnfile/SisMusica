@@ -1900,7 +1900,7 @@ namespace ccbpess
             List<MOD_erros> erros = valida.ValidaCamposPessoa(pessoa);
             if (erros.Count > 0)
             {
-                return funcoes.AbrirErros(erros);
+                return apoio.AbrirErros(erros, this);
             }
             return true;
         }
@@ -1912,25 +1912,29 @@ namespace ccbpess
         {
             try
             {
-                objBLL = new BLL_pessoa();
-                List<MOD_pessoa> listaValidaCpf = new List<MOD_pessoa>();
-                listaValidaCpf = objBLL.buscarCpf(this.txtCpf.Text);
+                MOD_pessoa pessoa = new MOD_pessoa();
+                pessoa.Cpf = txtCpf.Text;
+                pessoa.CodPessoa = txtCodigo.Text;
 
-                if (listaValidaCpf.Count > 0)
+                IValidacaoCampo valida = new ValidacaoCampo();
+                List<MOD_pessoa> validaCpf = valida.validaCpfDuplicado(pessoa);
+
+                if (validaCpf.Count > 0)
                 {
-                    if (!Convert.ToInt64(listaValidaCpf[0].CodPessoa).Equals(Convert.ToInt64(this.txtCodigo.Text)))
+                    if (!pessoa.CodPessoa.Equals(validaCpf[0].CodPessoa))
                     {
                         if (MessageBox.Show("Pessoa já cadastrada!" + "\n" +
-                                            "Código: " + listaValidaCpf[0].CodPessoa + Constants.vbCrLf +
-                                            "Nome: " + listaValidaCpf[0].Nome + Constants.vbCrLf + Constants.vbCrLf +
+                                            "Código: " + validaCpf[0].CodPessoa + "\n" +
+                                            "Nome: " + validaCpf[0].Nome + "\n" + "\n" +
                                             "Deseja editar essa Pessoa?",
                                             "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.Yes))
                         {
-                            preencher(listaValidaCpf);
+                            preencher(validaCpf);
                             enabledForm();
                         }
                         else
                         {
+                            txtCpf.Text = listaPessoa[0].Cpf;
                             txtCpf.Focus();
                             txtCpf.SelectAll();
                         }
@@ -3591,8 +3595,8 @@ namespace ccbpess
                     }
                     else
                     {
-                        lblCargo.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesAteraCargo);
-                        cboCodCargo.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesAteraCargo);
+                        lblCargo.Enabled = funcoes.liberacoes(entAcesso.rotPesAteraCargo);
+                        cboCodCargo.Enabled = funcoes.liberacoes(entAcesso.rotPesAteraCargo);
                     }
                 }
                 else
@@ -3620,19 +3624,19 @@ namespace ccbpess
             {
                 MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
 
-                tabAdicionais.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesAdicionais);
+                tabAdicionais.Enabled = funcoes.liberacoes(entAcesso.rotPesAdicionais);
 
                 if (tabAdicionais.Enabled.Equals(true))
                 {
-                    tabFormacao.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesAdiForma);
-                    tabDiversos.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesAdiOrquetra);
-                    tabOutraOrquestra.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotPesAdiOrquetra);
+                    tabFormacao.Enabled = funcoes.liberacoes(entAcesso.rotPesAdiForma);
+                    tabDiversos.Enabled = funcoes.liberacoes(entAcesso.rotPesAdiOrquetra);
+                    tabOutraOrquestra.Enabled = funcoes.liberacoes(entAcesso.rotPesAdiOrquetra);
 
                     if (!lblCodCargo.Text.Equals(string.Empty))
                     {
                         if (CargoSelecao.PermiteInstrumento.Equals("Sim"))
                         {
-                            if (funcoes.liberacoes(listaAcesso, entAcesso.rotPesAdiInstrumento).Equals(true))
+                            if (funcoes.liberacoes(entAcesso.rotPesAdiInstrumento).Equals(true))
                             {
                                 gpoEstudo.Enabled = true;
 
@@ -3720,13 +3724,13 @@ namespace ccbpess
                 MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
 
                 //verificando se tem acesso a Aba Atendimento
-                if (funcoes.liberacoes(listaAcesso, entAcesso.rotPesAtendimento))
+                if (funcoes.liberacoes(entAcesso.rotPesAtendimento))
                 {
                     //Caso tenha, habilita a aba Atendimento
                     tabAtendimento.Enabled = true;
 
                     ///Verifica se tem acesso para editar o atendimento a Região
-                    if (funcoes.liberacoes(listaAcesso, entAcesso.rotPesAteRegiao))
+                    if (funcoes.liberacoes(entAcesso.rotPesAteRegiao))
                     {
                         ///Verifica se o Cargo permite Regiao
                         if (CargoSelecao != null && CargoSelecao.AtendeRegiao != null && CargoSelecao.AtendeRegiao.Equals("Sim"))
@@ -4045,7 +4049,7 @@ namespace ccbpess
                         }
                     }
                     ///Verifica se tem acesso a editar o atendimento a Comum
-                    if (funcoes.liberacoes(listaAcesso, entAcesso.rotPesAteComum))
+                    if (funcoes.liberacoes(entAcesso.rotPesAteComum))
                     {
                         ///Verifica se o Cargo permite Comum
                         if (CargoSelecao != null && CargoSelecao.AtendeComum != null && CargoSelecao.AtendeComum.Equals("Sim"))
@@ -4062,7 +4066,7 @@ namespace ccbpess
                             {
                                 ///Verifica se o usuario tem acesso a Aba Instrutores
                                 ///Percorre a lista para verificar acesso a Aba Comum
-                                if (funcoes.liberacoes(listaAcesso, entAcesso.rotPesAteInstrutor))
+                                if (funcoes.liberacoes(entAcesso.rotPesAteInstrutor))
                                 {
                                     ///Libera os ítens da Aba Comum
                                     tabAtende.Enabled = true;

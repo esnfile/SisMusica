@@ -46,9 +46,6 @@
     <Compile Include="funcoes.cs" />
     <Compile Include="modulos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="telaErros.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dconect\dconect.csproj">
@@ -59,11 +56,6 @@
       <Project>{538edb2f-4afa-41e6-b891-5fdd1d3b245a}</Project>
       <Name>entities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="telaErros.resx">
-      <DependentUpon>telaErros.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

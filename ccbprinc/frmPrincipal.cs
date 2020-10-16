@@ -929,7 +929,7 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoUsuario = new List<MOD_acessos>();
-                listaAcessoUsuario = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progUsuario)).ToList();
+                listaAcessoUsuario = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(new MOD_acessoUsuario().progUsuario)).ToList();
 
                 if (listaAcessoUsuario.Count < 1)
                 {
@@ -1367,7 +1367,7 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoUsuario = new List<MOD_acessos>();
-                listaAcessoUsuario = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progUsuario)).ToList();
+                listaAcessoUsuario = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(new MOD_acessoUsuario().progUsuario)).ToList();
 
                 if (listaAcessoUsuario.Count < 1)
                 {

@@ -771,50 +771,11 @@ namespace ccbusua
         {
             try
             {
-                foreach (MOD_acessos ent in listaAcesso)
-                {
-                    //verificando o botão inserir
-                    if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotInsUsuario))
-                    {
-                        btnNomeIns.Enabled = true;
-                    }
-                    //verificando o botão editar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotEditUsuario))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnNomeEditar.Enabled = true;
-                        }
-                        else
-                        {
-                            btnNomeEditar.Enabled = false;
-                        }
-                    }
-                    //verificando o botão excluir
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotExcUsuario))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnNomeExc.Enabled = true;
-                        }
-                        else
-                        {
-                            btnNomeExc.Enabled = false;
-                        }
-                    }
-                    //verificando o botão visualizar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotVisUsuario))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnNomeVisual.Enabled = true;
-                        }
-                        else
-                        {
-                            btnNomeVisual.Enabled = false;
-                        }
-                    }
-                }
+                //verificando o botão inserir
+                btnNomeIns.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotInsUsuario);
+                btnNomeEditar.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotEditUsuario, dataGrid);
+                btnNomeExc.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotExcUsuario, dataGrid);
+                btnNomeVisual.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotVisUsuario, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -833,50 +794,11 @@ namespace ccbusua
         {
             try
             {
-                foreach (MOD_acessos ent in listaAcesso)
-                {
-                    //verificando o botão inserir
-                    if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotInsUsuario))
-                    {
-                        btnPesIns.Enabled = true;
-                    }
-                    //verificando o botão editar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotEditUsuario))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnPesEditar.Enabled = true;
-                        }
-                        else
-                        {
-                            btnPesEditar.Enabled = false;
-                        }
-                    }
-                    //verificando o botão excluir
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotExcUsuario))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnPesExc.Enabled = true;
-                        }
-                        else
-                        {
-                            btnPesExc.Enabled = false;
-                        }
-                    }
-                    //verificando o botão visualizar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotVisUsuario))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnPesVisual.Enabled = true;
-                        }
-                        else
-                        {
-                            btnPesVisual.Enabled = false;
-                        }
-                    }
-                }
+                //verificando o botão inserir
+                btnPesIns.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotInsUsuario);
+                btnPesEditar.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotEditUsuario, dataGrid);
+                btnPesExc.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotExcUsuario, dataGrid);
+                btnPesVisual.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotVisUsuario, dataGrid);
             }
             catch (SqlException exl)
             {

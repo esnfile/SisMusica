@@ -477,10 +477,10 @@ namespace ccbpess
             try
             {
                 MOD_acessoCidade entAcesso = new MOD_acessoCidade();
-                btnIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsCidade);
-                btnEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditCidade, dataGrid);
-                btnExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcCidade, dataGrid);
-                btnVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisCidade, dataGrid);
+                btnIns.Enabled = funcoes.liberacoes(entAcesso.rotInsCidade);
+                btnEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditCidade, dataGrid);
+                btnExc.Enabled = funcoes.liberacoes(entAcesso.rotExcCidade, dataGrid);
+                btnVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisCidade, dataGrid);
             }
             catch (SqlException exl)
             {

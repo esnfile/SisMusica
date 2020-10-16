@@ -242,5 +242,27 @@ namespace BLL.pessoa
             }
         }
 
+
+
+
+        /// <summary>
+        /// Funcão que valida o CPF digitado, e Retorna a lista com os valores encontrados
+        /// </summary>
+        public List<MOD_pessoa> validaCpfDuplicado(MOD_pessoa pessoa)
+        {
+            try
+            {
+                List<MOD_pessoa> listaValidaCpf = new List<MOD_pessoa>();
+                return listaValidaCpf = new BLL_pessoa().buscarCpf(pessoa.Cpf);
+            }
+            catch (SqlException exl)
+            {
+                throw exl;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

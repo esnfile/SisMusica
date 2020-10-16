@@ -386,7 +386,7 @@ namespace BLL.acessos
 
                 ent.Logs.NomePc = modulos.DescPc;
 
-                ent.Logs.CodRotina = Convert.ToString(modulos.rotLibAcessoUsuario);
+                ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotLibAcessoUsuario);
                 ent.Logs.Ocorrencia = "Foi feito " + Operacao.ToUpper() + " de acesso referente à rotina: < " + ent.CodRotina.PadLeft(5, '0') + " > " + " no cadastro do usuário Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
 
                 ent.Logs.Ocorrencia = "Liberado o Acesso ref. a Rotina < " + ent.CodRotina + " > para o Usuario < " + ent.Usuario + " >. ";

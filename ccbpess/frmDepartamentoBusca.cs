@@ -406,10 +406,10 @@ namespace ccbpess
             try
             {
                 MOD_acessoDepartamento entAcesso = new MOD_acessoDepartamento();
-                btnDescIns.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotInsDepartamento);
-                btnDescEditar.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotEditDepartamento, dataGrid);
-                btnDescExc.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotExcDepartamento, dataGrid);
-                btnDescVisual.Enabled = funcoes.liberacoes(listaAcesso, entAcesso.rotVisDepartamento, dataGrid);
+                btnDescIns.Enabled = funcoes.liberacoes(entAcesso.rotInsDepartamento);
+                btnDescEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditDepartamento, dataGrid);
+                btnDescExc.Enabled = funcoes.liberacoes(entAcesso.rotExcDepartamento, dataGrid);
+                btnDescVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisDepartamento, dataGrid);
             }
             catch (SqlException exl)
             {

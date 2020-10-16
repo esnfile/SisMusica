@@ -12,5 +12,10 @@ namespace BLL.pessoa
 
         List<MOD_erros> ValidaCamposPessoa(MOD_pessoa pessoa);
         List<MOD_erros> ValidaCamposCargo(MOD_cargo cargo);
+        
+
+
+        List<MOD_pessoa> validaCpfDuplicado(MOD_pessoa pessoa);
+
     }
 }
