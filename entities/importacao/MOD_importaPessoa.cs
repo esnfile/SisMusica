@@ -23,4 +23,12 @@ namespace ENT.importa
         public List<MOD_importaPessoaItem> ListaPessoaItem { get; set; }
         public List<MOD_importaPessoaItemErro> ListaPessoaItemErros { get; set; }
     }
+
+    public class MOD_acessoImportaPessoa
+    {
+        public static int ProgImportaPessoa { get; } = 31;
+        public static int RotInsImportaPessoa { get; } = 164;
+        public static int RotVisImportaPessoa { get; } = 165;
+        public static int RotEditImportaPessoa { get; } = 166;
+    }
 }

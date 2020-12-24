@@ -2386,39 +2386,9 @@ namespace ccbinst
         {
             try
             {
-                MOD_acessoMetodoInstr entAcesso = new MOD_acessoMetodoInstr();
-                foreach (MOD_acessos ent in listaAcesso)
-                {
-                    //verificando o botão inserir
-                    if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotInsMetodoInstr))
-                    {
-                        btnInserir.Enabled = true;
-                    }
-                    //verificando o botão editar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotEditMetodoInstr))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnEditar.Enabled = true;
-                        }
-                        else
-                        {
-                            btnEditar.Enabled = false;
-                        }
-                    }
-                    //verificando o botão excluir
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotExcMetodoInstr))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnExcluir.Enabled = true;
-                        }
-                        else
-                        {
-                            btnExcluir.Enabled = false;
-                        }
-                    }
-                }
+                btnInserir.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoMetodoInstr.RotInsMetodoInstr);
+                btnEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoMetodoInstr.RotEditMetodoInstr, dataGrid);
+                btnExcluir.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoMetodoInstr.RotExcMetodoInstr, dataGrid);
             }
             catch (SqlException exl)
             {

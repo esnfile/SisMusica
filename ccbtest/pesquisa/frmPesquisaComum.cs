@@ -15,7 +15,7 @@ using BLL.validacoes.Exceptions;
 using ENT.acessos;
 using ENT.uteis;
 
-namespace ccbtest.pesquisa
+namespace ccbtest
 {
     public partial class frmPesquisaComum : Form
     {
@@ -254,8 +254,8 @@ namespace ccbtest.pesquisa
                 }
                 else if (formChama.Name.Equals("frmPreTesteBusca"))
                 {
-                    //((frmPreTesteBusca)formChama).carregaComum(vCodigo);
-                    //Close();
+                    ((frmPreTesteBusca)formChama).carregaComum(vCodigo);
+                    Close();
                 }
                 else if (formChama.Name.Equals("frmSolicitaTeste"))
                 {

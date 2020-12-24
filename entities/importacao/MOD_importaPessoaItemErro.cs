@@ -68,4 +68,16 @@ namespace ENT.importa
 
         public MOD_log Logs { get; set; }
     }
+
+    public class MOD_acessoImportaPessoaItemErro
+    {
+        private readonly int rotEditImportaPessoaErro = 235;
+        public int RotEditImportaPessoaErro
+        {
+            get
+            {
+                return rotEditImportaPessoaErro;
+            }
+        }
+    }
 }

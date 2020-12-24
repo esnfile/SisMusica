@@ -594,15 +594,15 @@ namespace BLL.uteis
 
                 if (Operacao.Equals("Insert"))
                 {
-                    ent.Logs.CodRotina = entAcesso.rotInsCCB.ToString();
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoCcb.RotInsCCB);
                 }
                 else if (Operacao.Equals("Update"))
                 {
-                    ent.Logs.CodRotina = entAcesso.rotEditCCB.ToString();
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoCcb.RotEditCCB);
                 }
                 else if (Operacao.Equals("Delete"))
                 {
-                    ent.Logs.CodRotina = entAcesso.rotExcCCB.ToString();
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoCcb.RotExcCCB);
                 }
 
                 ent.Logs.NomePc = modulos.DescPc;

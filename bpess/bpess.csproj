@@ -40,16 +40,89 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL_pessoaMetodoLicao.cs" />
-    <Compile Include="BLL_departamento.cs" />
-    <Compile Include="BLL_cidade.cs" />
-    <Compile Include="BLL_cargo.cs" />
-    <Compile Include="BLL_pessoa.cs" />
-    <Compile Include="IValidacaoCampo.cs" />
+    <Compile Include="Cargo\Classes\BLL_buscaCargoPorCodigo.cs" />
+    <Compile Include="Cargo\Classes\BLL_buscaCargoPorDepartamento.cs" />
+    <Compile Include="Cargo\Classes\BLL_buscaCargoPorDescricao.cs" />
+    <Compile Include="Cargo\Classes\BLL_listaCargo.cs" />
+    <Compile Include="Cargo\Classes\BLL_cargo_Log.cs" />
+    <Compile Include="Cargo\Interfaces\IBLL_buscaCargo.cs" />
+    <Compile Include="Cargo\Interfaces\IBLL_Cargo.cs" />
+    <Compile Include="Cargo\Interfaces\IBLL_cargo_Log.cs" />
+    <Compile Include="Cargo\Interfaces\IValidacaoCargo.cs" />
+    <Compile Include="Cargo\Classes\ValidacaoCargo.cs" />
+    <Compile Include="CCBPessoa\Classes\BLL_buscaCCBPessoaPorCCB.cs" />
+    <Compile Include="CCBPessoa\Classes\BLL_buscaCCBPessoaPorPessoaCCB.cs" />
+    <Compile Include="CCBPessoa\Classes\BLL_listaCCB.cs" />
+    <Compile Include="CCBPessoa\Classes\BLL_listaPessoaCCB.cs" />
+    <Compile Include="CCBPessoa\Classes\BLL_pessoaCCB.cs" />
+    <Compile Include="CCBPessoa\Classes\BLL_pessoaCCB_Log.cs" />
+    <Compile Include="CCBPessoa\Interfaces\IBLL_buscaPessoaCCB.cs" />
+    <Compile Include="CCBPessoa\Interfaces\IBLL_criarListaCCB.cs" />
+    <Compile Include="CCBPessoa\Interfaces\IBLL_PessoaCCB.cs" />
+    <Compile Include="Cidade\Interfaces\IValidacaoCidade.cs" />
+    <Compile Include="Cidade\Interfaces\ValidacaoCidade.cs" />
+    <Compile Include="Departamento\Interfaces\IValidacaoDepartamento.cs" />
+    <Compile Include="Departamento\Interfaces\ValidacaoDepartamento.cs" />
+    <Compile Include="FotoPessoa\Classes\BLL_buscaPessoaFotoPorCodPessoa.cs" />
+    <Compile Include="FotoPessoa\Classes\BLL_listaFoto.cs" />
+    <Compile Include="FotoPessoa\Classes\BLL_pessoaFoto.cs" />
+    <Compile Include="FotoPessoa\Classes\BLL_pessoaFoto_Log.cs" />
+    <Compile Include="FotoPessoa\Interfaces\IBLL_buscaPessoaFoto.cs" />
+    <Compile Include="FotoPessoa\Interfaces\IBLL_PessoaFoto.cs" />
+    <Compile Include="PessoaImporta\Classes\BLL_PessoaImporta.cs" />
+    <Compile Include="PessoaImporta\Classes\BLL_pessoaImporta_Log.cs" />
+    <Compile Include="PessoaInstrumento\Classes\BLL_buscaPessoaInstrPorInstrumento.cs" />
+    <Compile Include="PessoaInstrumento\Classes\BLL_buscaPessoaInstrPorPessoa.cs" />
+    <Compile Include="PessoaInstrumento\Classes\BLL_listaInstrumentos.cs" />
+    <Compile Include="PessoaInstrumento\Classes\BLL_listaPessoaInstr.cs" />
+    <Compile Include="PessoaInstrumento\Classes\BLL_pessoaInstr.cs" />
+    <Compile Include="PessoaInstrumento\Classes\BLL_pessoaInstr_Log.cs" />
+    <Compile Include="PessoaInstrumento\Interfaces\IBLL_buscaPessoaInstr.cs" />
+    <Compile Include="PessoaInstrumento\Interfaces\IBLL_PessoaInstr.cs" />
+    <Compile Include="PessoaMetodo\Classes\BLL_buscaPessoaMetodoPorMetodos.cs" />
+    <Compile Include="PessoaMetodo\Classes\BLL_buscaPessoaMetodoPorPessoa.cs" />
+    <Compile Include="PessoaMetodo\Classes\BLL_listaMetodos.cs" />
+    <Compile Include="PessoaMetodo\Classes\BLL_listaPessoaMetodo.cs" />
+    <Compile Include="PessoaMetodo\Classes\BLL_pessoaMetodo.cs" />
+    <Compile Include="PessoaMetodo\Classes\BLL_pessoaMetodo_Log.cs" />
+    <Compile Include="PessoaMetodo\Interfaces\IBLL_buscaPessoaMetodo.cs" />
+    <Compile Include="PessoaMetodo\Interfaces\IBLL_criarListaMetodo.cs" />
+    <Compile Include="PessoaMetodo\Interfaces\IBLL_PessoaMetodo.cs" />
+    <Compile Include="Pessoas\Classes\BLL_buscaVisaoOrquestral.cs" />
+    <Compile Include="Pessoas\Classes\BLL_buscaPessoaDuplicada.cs" />
+    <Compile Include="Pessoas\Classes\BLL_buscaRelatorioPessoa.cs" />
+    <Compile Include="Pessoas\Classes\BLL_buscaPessoaPorInstrumento.cs" />
+    <Compile Include="Pessoas\Classes\BLL_buscaPessoaPorCodRefRegiao.cs" />
+    <Compile Include="Pessoas\Classes\BLL_buscaPessoaPorComum.cs" />
+    <Compile Include="Pessoas\Classes\BLL_buscaPessoaPorRegiao.cs" />
+    <Compile Include="Pessoas\Classes\BLL_buscaPessoaPorCidade.cs" />
+    <Compile Include="Pessoas\Classes\BLL_buscaPessoaPorCodRefBras.cs" />
+    <Compile Include="Pessoas\Classes\BLL_buscaPessoaPorCargo.cs" />
+    <Compile Include="Pessoas\Classes\BLL_buscaPessoaPorCpf.cs" />
+    <Compile Include="Pessoas\Classes\BLL_buscaPessoaPorNome.cs" />
+    <Compile Include="Pessoas\Classes\BLL_buscaPessoaPorCodPessoa.cs" />
+    <Compile Include="Pessoas\Classes\BLL_listaPessoa.cs" />
+    <Compile Include="Pessoas\Classes\BLL_pessoa_Log.cs" />
+    <Compile Include="PessoaMetodoLicao\Classes\BLL_pessoaMetodoLicao.cs" />
+    <Compile Include="Departamento\Classes\BLL_departamento.cs" />
+    <Compile Include="Cidade\Classes\BLL_cidade.cs" />
+    <Compile Include="Cargo\Classes\BLL_cargo.cs" />
+    <Compile Include="Pessoas\Classes\BLL_pessoa.cs" />
+    <Compile Include="Pessoas\Interfaces\IBLL_buscaPessoaDuplicada.cs" />
+    <Compile Include="Pessoas\Interfaces\IBLL_buscaRelatorio.cs" />
+    <Compile Include="Pessoas\Interfaces\IBLL_buscaVisaoOrquestral.cs" />
+    <Compile Include="Pessoas\Interfaces\IBLL_buscaPessoa.cs" />
+    <Compile Include="PessoaImporta\Interfaces\IBLL_PessoaImporta.cs" />
+    <Compile Include="Pessoas\Interfaces\IBLL_Pessoa.cs" />
+    <Compile Include="Pessoas\Interfaces\IBLL_ValidacaoPessoa.cs" />
+    <Compile Include="Pessoas\Classes\BLL_ValidacaoPessoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValidacaoCampo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\busua\busua.csproj">
+      <Project>{aa265f7b-63d5-4b88-86ba-122acbad2e25}</Project>
+      <Name>busua</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ccbfun\ccbfun.csproj">
       <Project>{77174dd7-29c6-4caf-910c-a895312ed355}</Project>
       <Name>ccbfun</Name>
@@ -66,6 +139,9 @@
       <Project>{538edb2f-4afa-41e6-b891-5fdd1d3b245a}</Project>
       <Name>entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PessoaMetodoLicao\Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

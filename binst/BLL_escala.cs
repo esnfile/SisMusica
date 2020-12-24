@@ -436,19 +436,17 @@ namespace BLL.instrumentos
                 ent.Logs.Hora = DateTime.Now.ToString("HH:mm");
                 ent.Logs.CodUsuario = Convert.ToString(modulos.CodUsuario);
 
-                MOD_acessoEscala entAcesso = new MOD_acessoEscala();
-
                 if (Operacao.Equals("Insert"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotInsEscala);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoEscala.RotInsEscala);
                 }
                 else if (Operacao.Equals("Update"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotEditEscala);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoEscala.RotEditEscala);
                 }
                 else if (Operacao.Equals("Delete"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotExcEscala);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoEscala.RotExcEscala);
                 }
 
                 ent.Logs.NomePc = modulos.DescPc;

@@ -223,8 +223,8 @@ namespace ccbusua
             try
             {
                 //chama a classe de negócios
-                objBLL = new BLL_pessoa();
-                lista = objBLL.buscarNome(Pessoa, modulos.CodUsuarioCCB, modulos.CodUsuarioCargo);
+                IBLL_buscaPessoa objBLL_Pessoa = new BLL_buscaPessoaPorNome();
+                lista = objBLL_Pessoa.Buscar(Pessoa);
                 funcoes.gridPessoa(gridDesc);
                 gridDesc.DataSource = lista;
                 definirImagens(gridDesc);

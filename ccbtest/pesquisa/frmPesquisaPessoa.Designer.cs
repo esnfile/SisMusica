@@ -1,4 +1,4 @@
-﻿namespace ccbtest.pesquisa
+﻿namespace ccbtest
 {
     partial class frmPesquisaPessoa
     {

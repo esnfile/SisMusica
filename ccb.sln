@@ -97,6 +97,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dexp", "dexp\dexp.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bexp", "bexp\bexp.csproj", "{1D04373A-1757-49A0-A20A-DF89FBEA479E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "webapi", "webapi", "{BF97F3BE-D3A9-4430-8AEF-87AA4195F034}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sismus", "sismus\sismus.csproj", "{BB68CD7F-2369-4B65-8AD5-974B14F27185}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -275,6 +279,10 @@ Global
 		{1D04373A-1757-49A0-A20A-DF89FBEA479E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D04373A-1757-49A0-A20A-DF89FBEA479E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D04373A-1757-49A0-A20A-DF89FBEA479E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB68CD7F-2369-4B65-8AD5-974B14F27185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB68CD7F-2369-4B65-8AD5-974B14F27185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB68CD7F-2369-4B65-8AD5-974B14F27185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB68CD7F-2369-4B65-8AD5-974B14F27185}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -323,6 +331,7 @@ Global
 		{2735A2CE-B0CB-41D8-AE87-1DAED217BE2E} = {E123A4F3-E86B-4C3C-81AB-B9CCC5C7EFE2}
 		{8FDB1DE2-522B-4602-8932-F0E2C47F6DCB} = {7D173F31-F925-4598-828F-53CA84DA45FB}
 		{1D04373A-1757-49A0-A20A-DF89FBEA479E} = {E123A4F3-E86B-4C3C-81AB-B9CCC5C7EFE2}
+		{BB68CD7F-2369-4B65-8AD5-974B14F27185} = {BF97F3BE-D3A9-4430-8AEF-87AA4195F034}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C7E2FFE7-A1BF-4006-9047-83D45DFB16F8}

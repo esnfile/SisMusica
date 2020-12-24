@@ -16,6 +16,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using BLL.Valida;
 
 namespace ccbprinc
 {
@@ -128,13 +129,14 @@ namespace ccbprinc
 
                             //buscando os Parametros do sistema
                             objBLL_Param = new BLL_parametros();
-                            listaParam = objBLL_Param.buscarRegional("1");
-                            modulos.listaParametros = listaParam;
+
+                            new BLL_Session(1, out listaParam);
 
                             modulos.CodRegional = listaParam[0].CodRegional.PadLeft(3, '0');
-                            modulos.CodigoRegional = listaParam[0].Codigo;
-                            modulos.DescRegional = listaParam[0].Descricao;
-                            
+                            modulos.CodigoRegional = listaParam[0].CodigoRegional;
+                            modulos.DescRegional = listaParam[0].DescricaoRegional;
+
+                            new BLL_Session(Convert.ToInt64(listaSenha[0].CodUsuario), out listaSenha);
                             modulos.CodUsuario = listaSenha[0].CodUsuario;
                             modulos.CodPessoaUser = listaSenha[0].CodPessoa;
                             modulos.NomePessoaUser = listaSenha[0].Nome;

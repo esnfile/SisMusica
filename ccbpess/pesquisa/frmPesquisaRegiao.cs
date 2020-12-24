@@ -267,11 +267,6 @@ namespace ccbpess.pesquisa
                     ((frmPessoaBusca)formChama).carregaRegiao(vCodigo);
                     Close();
                 }
-                else if (formChama.Name.Equals("frmPessoa"))
-                {
-                    ((frmPessoa)formChama).carregaRegiao(vCodigo);
-                    Close();
-                }
             }
             catch (SqlException exl)
             {

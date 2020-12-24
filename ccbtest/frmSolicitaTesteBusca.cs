@@ -8,7 +8,6 @@ using BLL.pessoa;
 using BLL.preTeste;
 using BLL.validacoes;
 using BLL.validacoes.Exceptions;
-using ccbtest.pesquisa;
 using ENT.acessos;
 using ENT.pessoa;
 using ENT.preTeste;
@@ -47,7 +46,7 @@ namespace ccbtest
         MOD_solicitaTeste objEnt = null;
         List<MOD_solicitaTeste> lista;
 
-        BLL_pessoa objBLL_Pessoa = null;
+        IBLL_buscaPessoa objBLL_Pessoa = null;
         List<MOD_pessoa> listaPessoa = null;
 
         Form formulario;
@@ -1364,8 +1363,8 @@ namespace ccbtest
             try
             {
 
-                objBLL_Pessoa = new BLL_pessoa();
-                listaPessoa = objBLL_Pessoa.buscarCod(vCodPessoa, modulos.CodUsuarioCCB, true);
+                objBLL_Pessoa = new BLL_buscaPessoaPorCodPessoa();
+                listaPessoa = objBLL_Pessoa.Buscar(vCodPessoa, true);
 
                 if (listaPessoa != null && listaPessoa.Count > 0)
                 {
@@ -1448,75 +1447,12 @@ namespace ccbtest
         {
             try
             {
-                MOD_acessoSolicitaTeste entAcesso = new MOD_acessoSolicitaTeste();
-                foreach (MOD_acessos ent in listaAcesso)
-                {
-                    //verificando o botão inserir
-                    if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotInsSolicitaTeste))
-                    {
-                        btnCodIns.Enabled = true;
-                    }
-                    //verificando o botão editar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotEditSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnCodEditar.Enabled = true;
-                        }
-                        else
-                        {
-                            btnCodEditar.Enabled = false;
-                        }
-                    }
-                    //verificando o botão cancelar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotCancelSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnCodCancel.Enabled = true;
-                        }
-                        else
-                        {
-                            btnCodCancel.Enabled = false;
-                        }
-                    }
-                    //verificando o botão visualizar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotVisSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnCodVisual.Enabled = true;
-                        }
-                        else
-                        {
-                            btnCodVisual.Enabled = false;
-                        }
-                    }
-                    //verificando o botão negar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotNegaSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnCodNegar.Enabled = true;
-                        }
-                        else
-                        {
-                            btnCodNegar.Enabled = false;
-                        }
-                    }
-                    //verificando o botão imprimir
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotImpSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnCodImp.Enabled = true;
-                        }
-                        else
-                        {
-                            btnCodImp.Enabled = false;
-                        }
-                    }
-                }
+                btnCodIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste);
+                btnCodEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
+                btnCodCancel.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
+                btnCodVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
+                btnCodNegar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
+                btnCodImp.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1535,75 +1471,12 @@ namespace ccbtest
         {
             try
             {
-                MOD_acessoSolicitaTeste entAcesso = new MOD_acessoSolicitaTeste();
-                foreach (MOD_acessos ent in listaAcesso)
-                {
-                    //verificando o botão inserir
-                    if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotInsSolicitaTeste))
-                    {
-                        btnPesIns.Enabled = true;
-                    }
-                    //verificando o botão editar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotEditSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnPesEditar.Enabled = true;
-                        }
-                        else
-                        {
-                            btnPesEditar.Enabled = false;
-                        }
-                    }
-                    //verificando o botão cancelar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotCancelSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnPesCancel.Enabled = true;
-                        }
-                        else
-                        {
-                            btnPesCancel.Enabled = false;
-                        }
-                    }
-                    //verificando o botão visualizar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotVisSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnPesVisual.Enabled = true;
-                        }
-                        else
-                        {
-                            btnPesVisual.Enabled = false;
-                        }
-                    }
-                    //verificando o botão negar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotNegaSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnPesNegar.Enabled = true;
-                        }
-                        else
-                        {
-                            btnPesNegar.Enabled = false;
-                        }
-                    }
-                    //verificando o botão imprimir
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotImpSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnPesImp.Enabled = true;
-                        }
-                        else
-                        {
-                            btnPesImp.Enabled = false;
-                        }
-                    }
-                }
+                btnPesIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste);
+                btnPesEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
+                btnPesCancel.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
+                btnPesVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
+                btnPesNegar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
+                btnPesImp.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1622,75 +1495,12 @@ namespace ccbtest
         {
             try
             {
-                MOD_acessoSolicitaTeste entAcesso = new MOD_acessoSolicitaTeste();
-                foreach (MOD_acessos ent in listaAcesso)
-                {
-                    //verificando o botão inserir
-                    if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotInsSolicitaTeste))
-                    {
-                        btnDataIns.Enabled = true;
-                    }
-                    //verificando o botão editar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotEditSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnDataEditar.Enabled = true;
-                        }
-                        else
-                        {
-                            btnDataEditar.Enabled = false;
-                        }
-                    }
-                    //verificando o botão cancelar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotCancelSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnDataCancel.Enabled = true;
-                        }
-                        else
-                        {
-                            btnDataCancel.Enabled = false;
-                        }
-                    }
-                    //verificando o botão visualizar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotVisSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnDataVisual.Enabled = true;
-                        }
-                        else
-                        {
-                            btnDataVisual.Enabled = false;
-                        }
-                    }
-                    //verificando o botão negar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotNegaSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnDataNegar.Enabled = true;
-                        }
-                        else
-                        {
-                            btnDataNegar.Enabled = false;
-                        }
-                    }
-                    //verificando o botão imprimir
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotImpSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnDataImp.Enabled = true;
-                        }
-                        else
-                        {
-                            btnDataImp.Enabled = false;
-                        }
-                    }
-                }
+                btnDataIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste);
+                btnDataEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
+                btnDataCancel.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
+                btnDataVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
+                btnDataNegar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
+                btnDataImp.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1709,75 +1519,12 @@ namespace ccbtest
         {
             try
             {
-                MOD_acessoSolicitaTeste entAcesso = new MOD_acessoSolicitaTeste();
-                foreach (MOD_acessos ent in listaAcesso)
-                {
-                    //verificando o botão inserir
-                    if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotInsSolicitaTeste))
-                    {
-                        btnSitIns.Enabled = true;
-                    }
-                    //verificando o botão editar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotEditSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnSitEditar.Enabled = true;
-                        }
-                        else
-                        {
-                            btnSitEditar.Enabled = false;
-                        }
-                    }
-                    //verificando o botão cancelar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotCancelSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnSitCancel.Enabled = true;
-                        }
-                        else
-                        {
-                            btnSitCancel.Enabled = false;
-                        }
-                    }
-                    //verificando o botão visualizar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotVisSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnSitVisual.Enabled = true;
-                        }
-                        else
-                        {
-                            btnSitVisual.Enabled = false;
-                        }
-                    }
-                    //verificando o botão negar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotNegaSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnSitNegar.Enabled = true;
-                        }
-                        else
-                        {
-                            btnSitNegar.Enabled = false;
-                        }
-                    }
-                    //verificando o botão imprimir
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotImpSolicitaTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnSitImp.Enabled = true;
-                        }
-                        else
-                        {
-                            btnSitImp.Enabled = false;
-                        }
-                    }
-                }
+                btnSitIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste);
+                btnSitEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
+                btnSitCancel.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
+                btnSitVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
+                btnSitNegar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
+                btnSitImp.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoSolicitaTeste.RotInsSolicitaTeste, dataGrid);
             }
             catch (SqlException exl)
             {

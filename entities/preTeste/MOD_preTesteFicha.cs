@@ -102,31 +102,31 @@ namespace ENT.preTeste
 
     public class MOD_acessoFichaPreTeste
     {
-        public int progFichaPreTeste { get; set; } = 35;
-        public int rotInsFichaPreTeste { get; set; } = 187;
-        public int rotEditFichaPreTeste { get; set; } = 188;
-        public int rotExcFichaPreTeste { get; set; } = 189;
-        public int rotVisFichaPreTeste { get; set; } = 190;
-        public int rotImpFichaPreTeste { get; set; } = 196;
+        public static int ProgFichaPreTeste { get; } = 35;
+        public static int RotInsFichaPreTeste { get; } = 187;
+        public static int RotEditFichaPreTeste { get; } = 188;
+        public static int RotExcFichaPreTeste { get; } = 189;
+        public static int RotVisFichaPreTeste { get; } = 190;
+        public static int RotImpFichaPreTeste { get; } = 196;
 
-        public int rotInsMetFichaPreTeste { get; set; } = 172;
-        public int rotEditMetFichaPreTeste { get; set; } = 173;
-        public int rotExcMetFichaPreTeste { get; set; } = 174;
+        public static int RotInsMetFichaPreTeste { get; } = 172;
+        public static int RotEditMetFichaPreTeste { get; } = 173;
+        public static int RotExcMetFichaPreTeste { get; } = 174;
 
-        public int rotInsHinoFichaPreTeste { get; set; } = 175;
-        public int rotEditHinoFichaPreTeste { get; set; } = 176;
-        public int rotExcHinoFichaPreTeste { get; set; } = 177;
+        public static int RotInsHinoFichaPreTeste { get; } = 175;
+        public static int RotEditHinoFichaPreTeste { get; } = 176;
+        public static int RotExcHinoFichaPreTeste { get; } = 177;
 
-        public int rotInsMtsFichaPreTeste { get; set; } = 178;
-        public int rotEditMtsFichaPreTeste { get; set; } = 179;
-        public int rotExcMtsFichaPreTeste { get; set; } = 180;
+        public static int RotInsMtsFichaPreTeste { get; } = 178;
+        public static int RotEditMtsFichaPreTeste { get; } = 179;
+        public static int RotExcMtsFichaPreTeste { get; } = 180;
 
-        public int rotInsEscalaFichaPreTeste { get; set; } = 181;
-        public int rotEditEscalaFichaPreTeste { get; set; } = 182;
-        public int rotExcEscalaFichaPreTeste { get; set; } = 183;
+        public static int RotInsEscalaFichaPreTeste { get; } = 181;
+        public static int RotEditEscalaFichaPreTeste { get; } = 182;
+        public static int RotExcEscalaFichaPreTeste { get; } = 183;
 
-        public int rotInsTeoriaFichaPreTeste { get; set; } = 184;
-        public int rotEditTeoriaFichaPreTeste { get; set; } = 185;
-        public int rotExcTeoriaFichaPreTeste { get; set; } = 186;
+        public static int RotInsTeoriaFichaPreTeste { get; } = 184;
+        public static int RotEditTeoriaFichaPreTeste { get; } = 185;
+        public static int RotExcTeoriaFichaPreTeste { get; } = 186;
     }
 }

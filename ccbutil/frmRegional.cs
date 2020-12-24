@@ -35,9 +35,6 @@ namespace ccbutil
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
 
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
-
                 ///Recebe a lista e armazena
                 listaRegional = lista;
 
@@ -63,8 +60,6 @@ namespace ccbutil
         #region declaracoes
 
         clsException excp;
-
-        List<MOD_acessos> listaAcesso = null;
 
         BLL_regional objBLL = null;
         MOD_regional objEnt = null;

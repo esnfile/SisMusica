@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conect.cs" />
     <Compile Include="conectarBanco.cs">
       <SubType>Form</SubType>
     </Compile>

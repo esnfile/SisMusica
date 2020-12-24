@@ -430,8 +430,8 @@ namespace BLL.administracao
                     //Informa se o irmão compareceu na Reunião
                     ent.Presente = true;
 
-                    BLL_pessoa objBLL_pessoa = new BLL_pessoa();
-                    ent.listaPessoa = objBLL_pessoa.buscarCod(ent.CodPessoa);
+                    IBLL_buscaPessoa objBLL_pessoa = new BLL_buscaPessoaPorCodPessoa();
+                    ent.listaPessoa = objBLL_pessoa.Buscar(ent.CodPessoa);
 
                     //adiciona os dados à lista
                     lista.Add(ent);

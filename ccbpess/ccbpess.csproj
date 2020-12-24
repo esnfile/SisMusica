@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ccbpess</RootNamespace>
     <AssemblyName>ccbpess</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,12 +30,16 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cargo\Classes\CargoBusca_Funcoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cargo\Classes\Cargo_Funcoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDepartamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,16 +72,16 @@
     <Compile Include="frmCidadeBusca.Designer.cs">
       <DependentUpon>frmCidadeBusca.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCargo.cs">
+    <Compile Include="Cargo\Formularios\frmCargo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCargo.Designer.cs">
+    <Compile Include="Cargo\Formularios\frmCargo.Designer.cs">
       <DependentUpon>frmCargo.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCargoBusca.cs">
+    <Compile Include="Cargo\Formularios\frmCargoBusca.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCargoBusca.Designer.cs">
+    <Compile Include="Cargo\Formularios\frmCargoBusca.Designer.cs">
       <DependentUpon>frmCargoBusca.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCidade.cs">
@@ -78,16 +90,22 @@
     <Compile Include="frmCidade.Designer.cs">
       <DependentUpon>frmCidade.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPessoa.cs">
+    <Compile Include="Pessoa\Classes\PessoaBusca_Funcoes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPessoa.Designer.cs">
+    <Compile Include="Pessoa\Classes\Pessoa_Funcoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pessoa\Formularios\frmPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pessoa\Formularios\frmPessoa.Designer.cs">
       <DependentUpon>frmPessoa.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPessoaBusca.cs">
+    <Compile Include="Pessoa\Formularios\frmPessoaBusca.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPessoaBusca.Designer.cs">
+    <Compile Include="Pessoa\Formularios\frmPessoaBusca.Designer.cs">
       <DependentUpon>frmPessoaBusca.cs</DependentUpon>
     </Compile>
     <Compile Include="pesquisa\frmCCB.cs">
@@ -143,19 +161,19 @@
     <EmbeddedResource Include="frmCidadeBusca.resx">
       <DependentUpon>frmCidadeBusca.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCargo.resx">
+    <EmbeddedResource Include="Cargo\Formularios\frmCargo.resx">
       <DependentUpon>frmCargo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCargoBusca.resx">
+    <EmbeddedResource Include="Cargo\Formularios\frmCargoBusca.resx">
       <DependentUpon>frmCargoBusca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCidade.resx">
       <DependentUpon>frmCidade.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPessoa.resx">
+    <EmbeddedResource Include="Pessoa\Formularios\frmPessoa.resx">
       <DependentUpon>frmPessoa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPessoaBusca.resx">
+    <EmbeddedResource Include="Pessoa\Formularios\frmPessoaBusca.resx">
       <DependentUpon>frmPessoaBusca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pesquisa\frmCCB.resx">
@@ -190,6 +208,10 @@
       <Project>{9c258944-c272-427a-b59c-139fd8c905d6}</Project>
       <Name>bpess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\busua\busua.csproj">
+      <Project>{AA265F7B-63D5-4B88-86BA-122ACBAD2E25}</Project>
+      <Name>busua</Name>
+    </ProjectReference>
     <ProjectReference Include="..\butil\butil.csproj">
       <Project>{63c8b22b-8a1c-405e-ad2a-f4649d3570e1}</Project>
       <Name>butil</Name>
@@ -209,6 +231,10 @@
     <ProjectReference Include="..\entities\entities.csproj">
       <Project>{538edb2f-4afa-41e6-b891-5fdd1d3b245a}</Project>
       <Name>entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sismus\sismus.csproj">
+      <Project>{bb68cd7f-2369-4b65-8ad5-974b14f27185}</Project>
+      <Name>sismus</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -256,5 +282,6 @@
   <ItemGroup>
     <None Include="imagens\Impressora.bmp" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

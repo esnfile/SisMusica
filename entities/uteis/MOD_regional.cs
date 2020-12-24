@@ -22,10 +22,10 @@ namespace ENT.uteis
 
     public class MOD_acessoRegional
     {
-        public int progRegional { get; set; } = 28;
-        public int rotInsRegional { get; set; } = 136;
-        public int rotEditRegional { get; set; } = 137;
-        public int rotExcRegional { get; set; } = 138;
-        public int rotVisRegional { get; set; } = 139;
+        public static int ProgRegional { get; set; } = 28;
+        public static int RotInsRegional { get; set; } = 136;
+        public static int RotEditRegional { get; set; } = 137;
+        public static int RotExcRegional { get; set; } = 138;
+        public static int RotVisRegional { get; set; } = 139;
     }
 }

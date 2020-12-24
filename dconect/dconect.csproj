@@ -43,5 +43,15 @@
     <Compile Include="conecta\iConnect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\" />
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\entities\entities.csproj">
+      <Project>{538edb2f-4afa-41e6-b891-5fdd1d3b245a}</Project>
+      <Name>entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

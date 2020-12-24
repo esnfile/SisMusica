@@ -48,7 +48,7 @@ namespace ccbusua
         MOD_usuario objEnt = null;
         List<MOD_usuario> lista;
 
-        BLL_pessoa objBLL_Pessoa = null;
+        IBLL_buscaPessoa objBLL_Pessoa = null;
         List<MOD_pessoa> listaPessoa = null;
 
         Form formulario;
@@ -623,9 +623,6 @@ namespace ccbusua
                 {
                     preencher(Codigo);
 
-                    //Verifica se o usuario a ser editado não é o usuario 1
-                    funcoes.liberaEdicaoAdm(Convert.ToInt32(Codigo));
-
                     formulario = new frmUsuario(this, dataGrid, lista);
                     ((frmUsuario)formulario).MdiParent = MdiParent;
                     ((frmUsuario)formulario).StartPosition = FormStartPosition.Manual;
@@ -654,6 +651,9 @@ namespace ccbusua
             {
                 objBLL = new BLL_usuario();
                 lista = objBLL.buscarCod(CodUsuario);
+
+                //Verifica se o usuario a ser editado não é o usuario 1
+                BLL_Liberacoes.LiberaEdicaoAdm(Convert.ToInt32(Codigo), lista);
             }
             catch (SqlException exl)
             {
@@ -732,8 +732,8 @@ namespace ccbusua
         {
             try
             {
-                objBLL_Pessoa = new BLL_pessoa();
-                listaPessoa = objBLL_Pessoa.buscarCod(vCodPessoa);
+                objBLL_Pessoa = new BLL_buscaPessoaPorCodPessoa();
+                listaPessoa = objBLL_Pessoa.Buscar(vCodPessoa);
 
                 if (listaPessoa != null && listaPessoa.Count > 0)
                 {
@@ -772,10 +772,10 @@ namespace ccbusua
             try
             {
                 //verificando o botão inserir
-                btnNomeIns.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotInsUsuario);
-                btnNomeEditar.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotEditUsuario, dataGrid);
-                btnNomeExc.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotExcUsuario, dataGrid);
-                btnNomeVisual.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotVisUsuario, dataGrid);
+                btnNomeIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoUsuario.RotInsUsuario);
+                btnNomeEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoUsuario.RotEditUsuario, dataGrid);
+                btnNomeExc.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoUsuario.RotExcUsuario, dataGrid);
+                btnNomeVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoUsuario.RotVisUsuario, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -795,10 +795,10 @@ namespace ccbusua
             try
             {
                 //verificando o botão inserir
-                btnPesIns.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotInsUsuario);
-                btnPesEditar.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotEditUsuario, dataGrid);
-                btnPesExc.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotExcUsuario, dataGrid);
-                btnPesVisual.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotVisUsuario, dataGrid);
+                btnPesIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoUsuario.RotInsUsuario);
+                btnPesEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoUsuario.RotEditUsuario, dataGrid);
+                btnPesExc.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoUsuario.RotExcUsuario, dataGrid);
+                btnPesVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoUsuario.RotVisUsuario, dataGrid);
             }
             catch (SqlException exl)
             {

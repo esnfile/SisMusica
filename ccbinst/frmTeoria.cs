@@ -36,9 +36,6 @@ namespace ccbinst
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
 
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
-
                 ///Recebe a lista e armazena
                 listaTeoria = lista;
 
@@ -68,7 +65,6 @@ namespace ccbinst
         #region declaracoes
 
         clsException excp;
-        List<MOD_acessos> listaAcesso = null;
 
         BLL_teoria objBLL = null;
         MOD_teoria objEnt = null;
@@ -1491,39 +1487,9 @@ namespace ccbinst
         {
             try
             {
-                foreach (MOD_acessos ent in listaAcesso)
-                {
-                    //verificando o botão inserir
-                    if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotInsFotoTeoria))
-                    {
-                        btnInserir.Enabled = true;
-                    }
-                    //verificando o botão visualizar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotVisualFotoTeoria))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnVisual.Enabled = true;
-                        }
-                        else
-                        {
-                            btnVisual.Enabled = false;
-                        }
-                    }
-
-                    //verificando o botão excluir
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotExcFotoTeoria))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnExcluir.Enabled = true;
-                        }
-                        else
-                        {
-                            btnExcluir.Enabled = false;
-                        }
-                    }
-                }
+                btnInserir.Enabled = BLL_Liberacoes.LiberaAcessoRotina(modulos.rotInsFotoTeoria);
+                btnVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(modulos.rotInsFotoTeoria, dataGrid);
+                btnExcluir.Enabled = BLL_Liberacoes.LiberaAcessoRotina(modulos.rotInsFotoTeoria, dataGrid);
             }
             catch (SqlException exl)
             {

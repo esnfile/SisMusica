@@ -44,7 +44,7 @@ namespace ccbpess.pesquisa
         string Codigo;
         string Descricao;
 
-        BLL_pessoa objBLL = null;
+        IBLL_buscaPessoa objBLL = null;
         MOD_pessoa objEnt = null;
         List<MOD_pessoa> lista;
 
@@ -226,9 +226,9 @@ namespace ccbpess.pesquisa
             try
             {
                 //chama a classe de negócios
-                objBLL = new BLL_pessoa();
+                objBLL = new BLL_buscaPessoaPorNome();
                 List<MOD_pessoa> listaPesFiltro = new List<MOD_pessoa>();
-                lista = objBLL.buscarNome(Pessoa, modulos.CodUsuarioCCB, modulos.CodUsuarioCargo);
+                lista = objBLL.Buscar(Pessoa);
 
                 if (campoChama.Equals("Instrutor"))
                 {

@@ -32,9 +32,6 @@ namespace ccbinst
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
 
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
-
                 ///Recebe a lista e armazena
                 listaFamilia = lista;
 
@@ -57,8 +54,6 @@ namespace ccbinst
         #region declaracoes
 
         clsException excp;
-
-        List<MOD_acessos> listaAcesso = null;
 
         BLL_familia objBLL = null;
         MOD_familia objEnt = null;

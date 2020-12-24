@@ -862,7 +862,6 @@ namespace BLL.preTeste
         {
             try
             {
-                MOD_acessoSolicitaTeste entAcesso = new MOD_acessoSolicitaTeste();
                 //preenche os dados para salvar na tabela Logs
                 ent.Logs = new MOD_log();
                 ent.Logs.Data = DateTime.Now.ToString("dd/MM/yyyy");
@@ -871,27 +870,27 @@ namespace BLL.preTeste
 
                 if (Operacao.Equals("Insert"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotInsSolicitaTeste);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoSolicitaTeste.RotInsSolicitaTeste);
                 }
                 else if (Operacao.Equals("Update"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotEditSolicitaTeste);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoSolicitaTeste.RotEditSolicitaTeste);
                 }
                 else if (Operacao.Equals("Cancela"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotCancelSolicitaTeste);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoSolicitaTeste.RotCancelSolicitaTeste);
                 }
                 else if (Operacao.Equals("Nega"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotNegaSolicitaTeste);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoSolicitaTeste.RotNegaSolicitaTeste);
                 }
                 else if (Operacao.Equals("Autoriza"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotAutorizaSolicitaTeste);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoSolicitaTeste.RotAutorizaSolicitaTeste);
                 }
                 else if (Operacao.Equals("Delete"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotExcSolicitaTeste);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoSolicitaTeste.RotExcSolicitaTeste);
                 }
 
                 ent.Logs.NomePc = modulos.DescPc;

@@ -580,8 +580,8 @@ namespace BLL.administracao
                     ent.DescCargo = (string)(row.IsNull("DescCargo") ? null : row["DescCargo"]);
                     ent.SiglaCargo = (string)(row.IsNull("SiglaCargo") ? null : row["SiglaCargo"]);
                     ent.Ordem = (string)(row.IsNull("Ordem") ? Convert.ToString(null) : Convert.ToString(row["Ordem"]));
-                    ent.Masculino = (string)(row.IsNull("Masculino") ? null : row["Masculino"]);
-                    ent.Feminino = (string)(row.IsNull("Feminino") ? null : row["Feminino"]);
+                    ent.Masculino = (row.IsNull("Masculino") || "Não".Equals(row["Masculino"])) ? false : true;
+                    ent.Feminino = (row.IsNull("Feminino") || "Não".Equals(row["Feminino"])) ? false : true;
                     //adiciona os dados à lista
                     lista.Add(ent);
                 }
@@ -672,8 +672,6 @@ namespace BLL.administracao
         {
             try
             {
-                MOD_acessoTipoReuniao entAcesso = new MOD_acessoTipoReuniao();
-
                 //preenche os dados para salvar na tabela Logs
                 ent.Logs = new MOD_log();
                 ent.Logs.Data = DateTime.Now.ToString("dd/MM/yyyy");
@@ -682,19 +680,19 @@ namespace BLL.administracao
 
                 if (Operacao.Equals("Insert"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotInsTipoReuniao);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoTipoReuniao.RotInsTipoReuniao);
                 }
                 else if (Operacao.Equals("Update"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotEditTipoReuniao);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoTipoReuniao.RotEditTipoReuniao);
                 }
                 else if (Operacao.Equals("Delete"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotExcTipoReuniao);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoTipoReuniao.RotExcTipoReuniao);
                 }
                 else if (Operacao.Equals("TipoReuniaoCargo"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotipoReuniaoCargo);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoTipoReuniao.RotipoReuniaoCargo);
                 }
 
                 ent.Logs.NomePc = modulos.DescPc;

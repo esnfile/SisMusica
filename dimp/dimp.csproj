@@ -39,9 +39,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL_importaPessoa.cs" />
-    <Compile Include="DAL_importaPessoaItem.cs" />
-    <Compile Include="DAL_importaPessoaItemErro.cs" />
+    <Compile Include="ImportaPessoaItensErros\Classes\DAL_buscaImportaPessoaErro.cs" />
+    <Compile Include="ImportaPessoaItensErros\Classes\DAL_ImportaPessoaErro_StrSql.cs" />
+    <Compile Include="ImportaPessoasItens\Classes\DAL_buscaImportaPessoaItem.cs" />
+    <Compile Include="ImportaPessoasItens\Classes\DAL_ImportaPessoaItem_StrSql.cs" />
+    <Compile Include="ImportaPessoaItensErros\Interfaces\IDAL_buscaImportaPessoaErro.cs" />
+    <Compile Include="ImportaPessoaItensErros\Interfaces\IDAL_ImportaPessoaErro.cs" />
+    <Compile Include="ImportaPessoaItensErros\Interfaces\IDAL_ImportaPessoaErro_StrSql.cs" />
+    <Compile Include="ImportaPessoasItens\Interfaces\IDAL_buscaImportaPessoaItem.cs" />
+    <Compile Include="ImportaPessoasItens\Interfaces\IDAL_ImportaPessoaItem.cs" />
+    <Compile Include="ImportaPessoasItens\Interfaces\IDAL_ImportaPessoaItem_StrSql.cs" />
+    <Compile Include="ImportaPessoa\Classes\DAL_buscaPorDataImportaPessoa.cs" />
+    <Compile Include="ImportaPessoa\Classes\DAL_buscaPorDescricaoImportaPessoa.cs" />
+    <Compile Include="ImportaPessoa\Classes\DAL_buscaPorCodImportaPessoa.cs" />
+    <Compile Include="ImportaPessoa\Classes\DAL_importaPessoa.cs" />
+    <Compile Include="ImportaPessoasItens\Classes\DAL_importaPessoaItem.cs" />
+    <Compile Include="ImportaPessoaItensErros\Classes\DAL_importaPessoaErro.cs" />
+    <Compile Include="ImportaPessoa\Classes\DAL_ImportaPessoa_StrSql.cs" />
+    <Compile Include="ImportaPessoa\Interfaces\IDAL_buscaPorCodImportaPessoa.cs" />
+    <Compile Include="ImportaPessoa\Interfaces\IDAL_buscaPorDataImportaPessoa.cs" />
+    <Compile Include="ImportaPessoa\Interfaces\IDAL_buscaPorDescricaoImportaPessoa.cs" />
+    <Compile Include="ImportaPessoa\Interfaces\IDAL_ImportaPessoa_StrSql.cs" />
+    <Compile Include="ImportaPessoa\Interfaces\IDAL_ImportaPessoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,5 +73,6 @@
       <Name>entities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

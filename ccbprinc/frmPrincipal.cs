@@ -37,6 +37,9 @@ using ENT.administracao;
 using ccbadm;
 using ccbreutil;
 using ccbexp;
+using ENT.importa;
+using BLL.Valida;
+using ENT.Session;
 
 namespace ccbprinc
 {
@@ -47,13 +50,14 @@ namespace ccbprinc
             InitializeComponent();
             try
             {
+                GetVersion();
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
                 string version = fvi.FileVersion;
 
-                apoio.CarregaAcessosUsuario(modulos.CodUsuario);
-                lblStUsuario.Text = "Usuário: " + modulos.CodUsuario.PadLeft(6, '0') + " - " + modulos.Usuario.ToUpper();
-                lblStRegional.Text = "Regional: " + modulos.CodRegional.PadLeft(3, '0') + " - " + modulos.CodigoRegional.ToUpper() + " - " + modulos.DescRegional.ToUpper();
+
+                lblStUsuario.Text = "Usuário: " + MOD_Session.ListaUsuarioLogado[0].CodUsuario.PadLeft(6, '0') + " - " + MOD_Session.ListaUsuarioLogado[0].Usuario.ToUpper();
+                lblStRegional.Text = "Regional: " + MOD_Session.ListaParametroLogado[0].CodRegional.PadLeft(3, '0') + " - " + MOD_Session.ListaParametroLogado[0].CodigoRegional.ToUpper() + " - " + MOD_Session.ListaParametroLogado[0].DescricaoRegional.ToUpper();
                 lblStData.Text = "Data: " + funcoes.FormataData(DateTime.Now.ToString("dd/MM/yyyy"));
                 lblStVersao.Text = buscarVersao();
             }
@@ -154,20 +158,33 @@ namespace ccbprinc
         {
             try
             {
-                List<MOD_acessos> listaAcessoEscala = new List<MOD_acessos>();
-                MOD_acessoEscala entAcesso = new MOD_acessoEscala();
-                listaAcessoEscala = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progEscala)).ToList();
 
-                if (listaAcessoEscala.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                List<MOD_acessos> listaAcessoEscala = new List<MOD_acessos>();
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoEscala.ProgEscala))
                 {
                     frmEscalaBusca formEscala = new frmEscalaBusca(listaAcessoEscala);
                     CheckForm(formEscala);
                     formEscala.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+                //MOD_acessoEscala entAcesso = new MOD_acessoEscala();
+
+                //listaAcessoEscala = MOD_Session.ListaAcessoLogado.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progEscala)).ToList();
+
+                //if (listaAcessoEscala.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmEscalaBusca formEscala = new frmEscalaBusca(listaAcessoEscala);
+                //    CheckForm(formEscala);
+                //    formEscala.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -183,18 +200,31 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoFamilia = new List<MOD_acessos>();
-                listaAcessoFamilia = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progFamilia)).ToList();
 
-                if (listaAcessoFamilia.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(modulos.progFamilia))
                 {
                     frmFamiliaBusca formFamilia = new frmFamiliaBusca(listaAcessoFamilia);
                     CheckForm(formFamilia);
                     formFamilia.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //listaAcessoFamilia = MOD_Session.ListaAcessoLogado.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progFamilia)).ToList();
+
+                //if (listaAcessoFamilia.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmFamiliaBusca formFamilia = new frmFamiliaBusca(listaAcessoFamilia);
+                //    CheckForm(formFamilia);
+                //    formFamilia.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -210,18 +240,32 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoTonalidade = new List<MOD_acessos>();
-                listaAcessoTonalidade = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progTonalidade)).ToList();
 
-                if (listaAcessoTonalidade.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(modulos.progTonalidade))
                 {
                     frmTonalidadeBusca formTonalidade = new frmTonalidadeBusca(listaAcessoTonalidade);
                     CheckForm(formTonalidade);
                     formTonalidade.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+
+                //listaAcessoTonalidade = MOD_Session.ListaAcessoLogado.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progTonalidade)).ToList();
+
+                //if (listaAcessoTonalidade.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmTonalidadeBusca formTonalidade = new frmTonalidadeBusca(listaAcessoTonalidade);
+                //    CheckForm(formTonalidade);
+                //    formTonalidade.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -237,18 +281,31 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoHinario = new List<MOD_acessos>();
-                listaAcessoHinario = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progHinario)).ToList();
 
-                if (listaAcessoHinario.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(modulos.progHinario))
                 {
                     frmHinarioBusca formHino = new frmHinarioBusca(listaAcessoHinario);
                     CheckForm(formHino);
                     formHino.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //listaAcessoHinario = MOD_Session.ListaAcessoLogado.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progHinario)).ToList();
+
+                //if (listaAcessoHinario.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmHinarioBusca formHino = new frmHinarioBusca(listaAcessoHinario);
+                //    CheckForm(formHino);
+                //    formHino.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -264,18 +321,30 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoVoz = new List<MOD_acessos>();
-                listaAcessoVoz = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progVoz)).ToList();
 
-                if (listaAcessoVoz.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(modulos.progVoz))
                 {
                     frmVozesBusca formVoz = new frmVozesBusca(listaAcessoVoz);
                     CheckForm(formVoz);
                     formVoz.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+                //listaAcessoVoz = MOD_Session.ListaAcessoLogado.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progVoz)).ToList();
+
+                //if (listaAcessoVoz.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmVozesBusca formVoz = new frmVozesBusca(listaAcessoVoz);
+                //    CheckForm(formVoz);
+                //    formVoz.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -291,18 +360,31 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoTeoria = new List<MOD_acessos>();
-                listaAcessoTeoria = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progTeoria)).ToList();
 
-                if (listaAcessoTeoria.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(modulos.progTeoria))
                 {
                     frmTeoriaBusca formTeoria = new frmTeoriaBusca(listaAcessoTeoria);
                     CheckForm(formTeoria);
                     formTeoria.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //listaAcessoTeoria = MOD_Session.ListaAcessoLogado.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progTeoria)).ToList();
+
+                //if (listaAcessoTeoria.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmTeoriaBusca formTeoria = new frmTeoriaBusca(listaAcessoTeoria);
+                //    CheckForm(formTeoria);
+                //    formTeoria.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -318,18 +400,30 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoFaseMts = new List<MOD_acessos>();
-                listaAcessoFaseMts = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progMtsFase)).ToList();
 
-                if (listaAcessoFaseMts.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(modulos.progMtsFase))
                 {
                     frmMtsFaseBusca formFase = new frmMtsFaseBusca(listaAcessoFaseMts);
                     CheckForm(formFase);
                     formFase.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+                //listaAcessoFaseMts = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progMtsFase)).ToList();
+
+                //if (listaAcessoFaseMts.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmMtsFaseBusca formFase = new frmMtsFaseBusca(listaAcessoFaseMts);
+                //    CheckForm(formFase);
+                //    formFase.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -345,18 +439,30 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoModuloMts = new List<MOD_acessos>();
-                listaAcessoModuloMts = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progMtsModulo)).ToList();
 
-                if (listaAcessoModuloMts.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(modulos.progMtsModulo))
                 {
                     frmMtsModuloBusca formMod = new frmMtsModuloBusca(listaAcessoModuloMts);
                     CheckForm(formMod);
                     formMod.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+                //listaAcessoModuloMts = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progMtsModulo)).ToList();
+
+                //if (listaAcessoModuloMts.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmMtsModuloBusca formMod = new frmMtsModuloBusca(listaAcessoModuloMts);
+                //    CheckForm(formMod);
+                //    formMod.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -372,18 +478,31 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoInstr = new List<MOD_acessos>();
-                listaAcessoInstr = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progInstrumento)).ToList();
 
-                if (listaAcessoInstr.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(modulos.progInstrumento))
                 {
                     frmInstrBusca formInstr = new frmInstrBusca(listaAcessoInstr);
                     CheckForm(formInstr);
                     formInstr.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //listaAcessoInstr = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progInstrumento)).ToList();
+
+                //if (listaAcessoInstr.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmInstrBusca formInstr = new frmInstrBusca(listaAcessoInstr);
+                //    CheckForm(formInstr);
+                //    formInstr.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -399,19 +518,32 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoMet = new List<MOD_acessos>();
-                MOD_acessoMetodo entAcesso = new MOD_acessoMetodo();
-                listaAcessoMet = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progMetodo)).ToList();
 
-                if (listaAcessoMet.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoMetodo.ProgMetodo))
                 {
                     frmMetodoBusca formMet = new frmMetodoBusca(listaAcessoMet);
                     CheckForm(formMet);
                     formMet.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //MOD_acessoMetodo entAcesso = new MOD_acessoMetodo();
+                //listaAcessoMet = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progMetodo)).ToList();
+
+                //if (listaAcessoMet.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmMetodoBusca formMet = new frmMetodoBusca(listaAcessoMet);
+                //    CheckForm(formMet);
+                //    formMet.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -427,18 +559,29 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoMetInstr = new List<MOD_acessos>();
-                MOD_acessoMetodoInstr entAcesso = new MOD_acessoMetodoInstr();
-                listaAcessoMetInstr = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progMetodoInstr)).ToList();
 
-                if (listaAcessoMetInstr.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoMetodoInstr.ProgMetodoInstr))
                 {
                     frmMetodoInstr formMetInstr = new frmMetodoInstr(listaAcessoMetInstr);
                     CheckForm(formMetInstr);
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //listaAcessoMetInstr = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progMetodoInstr)).ToList();
+
+                //if (listaAcessoMetInstr.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmMetodoInstr formMetInstr = new frmMetodoInstr(listaAcessoMetInstr);
+                //    CheckForm(formMetInstr);
+                //}
             }
             catch (SqlException exl)
             {
@@ -458,20 +601,30 @@ namespace ccbprinc
         {
             try
             {
-                List<MOD_acessos> listaAcessoPessoa = new List<MOD_acessos>();
-                MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
-                listaAcessoPessoa = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progPessoa)).ToList();
-
-                if (listaAcessoPessoa.Count < 1)
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoPessoa.ProgPessoa))
                 {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
-                {
-                    frmPessoaBusca formPessoa = new frmPessoaBusca(listaAcessoPessoa);
+                    frmPessoaBusca formPessoa = new frmPessoaBusca();
                     CheckForm(formPessoa);
                     formPessoa.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //listaAcessoPessoa = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progPessoa)).ToList();
+
+                //if (listaAcessoPessoa.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmPessoaBusca formPessoa = new frmPessoaBusca(listaAcessoPessoa);
+                //    CheckForm(formPessoa);
+                //    formPessoa.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -487,18 +640,31 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoComum = new List<MOD_acessos>();
-                listaAcessoComum = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progComum)).ToList();
 
-                if (listaAcessoComum.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(modulos.progComum))
                 {
                     frmCCBBusca formComum = new frmCCBBusca(listaAcessoComum, this, string.Empty);
                     CheckForm(formComum);
                     formComum.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //listaAcessoComum = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progComum)).ToList();
+
+                //if (listaAcessoComum.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmCCBBusca formComum = new frmCCBBusca(listaAcessoComum, this, string.Empty);
+                //    CheckForm(formComum);
+                //    formComum.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -514,18 +680,31 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoRegiao = new List<MOD_acessos>();
-                listaAcessoRegiao = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progRegiao)).ToList();
 
-                if (listaAcessoRegiao.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(modulos.progRegiao))
                 {
                     frmRegiaoBusca formRegiao = new frmRegiaoBusca(listaAcessoRegiao);
                     CheckForm(formRegiao);
                     formRegiao.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //listaAcessoRegiao = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progRegiao)).ToList();
+
+                //if (listaAcessoRegiao.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmRegiaoBusca formRegiao = new frmRegiaoBusca(listaAcessoRegiao);
+                //    CheckForm(formRegiao);
+                //    formRegiao.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -540,19 +719,32 @@ namespace ccbprinc
         {
             try {
                 List<MOD_acessos> listaAcessoRegional = new List<MOD_acessos>();
-                MOD_acessoRegional entAcesso = new MOD_acessoRegional();
-                listaAcessoRegional = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progRegional)).ToList();
 
-                if (listaAcessoRegional.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoRegional.ProgRegional))
                 {
                     frmRegionalBusca formRegional = new frmRegionalBusca(listaAcessoRegional);
                     CheckForm(formRegional);
                     formRegional.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //MOD_acessoRegional entAcesso = new MOD_acessoRegional();
+                //listaAcessoRegional = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progRegional)).ToList();
+
+                //if (listaAcessoRegional.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmRegionalBusca formRegional = new frmRegionalBusca(listaAcessoRegional);
+                //    CheckForm(formRegional);
+                //    formRegional.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -565,21 +757,35 @@ namespace ccbprinc
         }
         private void mnuTabUtilCidade_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 List<MOD_acessos> listaAcessoCidade = new List<MOD_acessos>();
-                MOD_acessoCidade entAcesso = new MOD_acessoCidade();
-                listaAcessoCidade = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progCidade)).ToList();
 
-                if (listaAcessoCidade.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoCidade.ProgCidade))
                 {
                     frmCidadeBusca formCidade = new frmCidadeBusca(listaAcessoCidade);
                     CheckForm(formCidade);
                     formCidade.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //MOD_acessoCidade entAcesso = new MOD_acessoCidade();
+                //listaAcessoCidade = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progCidade)).ToList();
+
+                //if (listaAcessoCidade.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmCidadeBusca formCidade = new frmCidadeBusca(listaAcessoCidade);
+                //    CheckForm(formCidade);
+                //    formCidade.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -592,20 +798,16 @@ namespace ccbprinc
         }
         private void mnuTabUtilCargo_Click(object sender, EventArgs e)
         {
-            try {
-                List<MOD_acessos> listaAcessoCargo = new List<MOD_acessos>();
-                MOD_acessoCargo entAcesso = new MOD_acessoCargo();
-                listaAcessoCargo = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progCargo)).ToList();
-
-                if (listaAcessoCargo.Count < 1)
+            try
+            {
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoCargo.ProgCargo))
                 {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    frmCargoBusca formCargo = new frmCargoBusca();
+                    CheckForm(formCargo);
                 }
                 else
                 {
-                    frmCargoBusca formCargo = new frmCargoBusca(listaAcessoCargo);
-                    CheckForm(formCargo);
-                    formCargo.defineFoco();
+                    throw new Exception(modulos.semAcesso);
                 }
             }
             catch (SqlException exl)
@@ -622,19 +824,32 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoDepart = new List<MOD_acessos>();
-                MOD_acessoDepartamento entAcesso = new MOD_acessoDepartamento();
-                listaAcessoDepart = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progDepartamento)).ToList();
 
-                if (listaAcessoDepart.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoDepartamento.ProgDepartamento))
                 {
                     frmDepartamentoBusca formDepart = new frmDepartamentoBusca(listaAcessoDepart);
                     CheckForm(formDepart);
                     formDepart.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //MOD_acessoDepartamento entAcesso = new MOD_acessoDepartamento();
+                //listaAcessoDepart = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progDepartamento)).ToList();
+
+                //if (listaAcessoDepart.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmDepartamentoBusca formDepart = new frmDepartamentoBusca(listaAcessoDepart);
+                //    CheckForm(formDepart);
+                //    formDepart.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -650,19 +865,29 @@ namespace ccbprinc
         {
             try
             {
-                List<MOD_acessos> listaAcessoRelPes = new List<MOD_acessos>();
-                MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
-                listaAcessoRelPes = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodRotina).Equals(entAcesso.rotPesMixRelatorio)).ToList();
-
-                if (listaAcessoRelPes.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoPessoa.RotPesMixRelatorio))
                 {
                     frmMixPessoa formMixPessoa = new frmMixPessoa();
                     CheckForm(formMixPessoa);
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
+                //listaAcessoRelPes = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodRotina).Equals(entAcesso.rotPesMixRelatorio)).ToList();
+
+                //if (listaAcessoRelPes.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmMixPessoa formMixPessoa = new frmMixPessoa();
+                //    CheckForm(formMixPessoa);
+                //}
             }
             catch (SqlException exl)
             {
@@ -677,19 +902,30 @@ namespace ccbprinc
         {
             try
             {
-                List<MOD_acessos> listaAcessoRelPes = new List<MOD_acessos>();
-                MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
-                listaAcessoRelPes = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodRotina).Equals(entAcesso.rotPesRelMinisterio)).ToList();
 
-                if (listaAcessoRelPes.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoPessoa.RotPesRelMinisterio))
                 {
                     frmConsultaSimples formConsPessoa = new frmConsultaSimples();
                     CheckForm(formConsPessoa);
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
+                //listaAcessoRelPes = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodRotina).Equals(entAcesso.rotPesRelMinisterio)).ToList();
+
+                //if (listaAcessoRelPes.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmConsultaSimples formConsPessoa = new frmConsultaSimples();
+                //    CheckForm(formConsPessoa);
+                //}
             }
             catch (SqlException exl)
             {
@@ -704,19 +940,30 @@ namespace ccbprinc
         {
             try
             {
-                List<MOD_acessos> listaAcessoRelVisaoGeral = new List<MOD_acessos>();
-                MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
-                listaAcessoRelVisaoGeral = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodRotina).Equals(entAcesso.rotPesRelVisaoGeral)).ToList();
 
-                if (listaAcessoRelVisaoGeral.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoPessoa.RotPesRelVisaoGeral))
                 {
                     frmAnalisePessoa formAnalisePessoa = new frmAnalisePessoa();
                     CheckForm(formAnalisePessoa);
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
+                //listaAcessoRelVisaoGeral = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodRotina).Equals(entAcesso.rotPesRelVisaoGeral)).ToList();
+
+                //if (listaAcessoRelVisaoGeral.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmAnalisePessoa formAnalisePessoa = new frmAnalisePessoa();
+                //    CheckForm(formAnalisePessoa);
+                //}
             }
             catch (SqlException exl)
             {
@@ -731,19 +978,30 @@ namespace ccbprinc
         {
             try
             {
-                List<MOD_acessos> listaAcessoRelCCB = new List<MOD_acessos>();
-                MOD_acessoCcb entAcesso = new MOD_acessoCcb();
-                listaAcessoRelCCB = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodRotina).Equals(entAcesso.rotCCBMixRelatorio)).ToList();
 
-                if (listaAcessoRelCCB.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoCcb.RotCCBMixRelatorio))
                 {
                     frmMixCCB formMixCCB = new frmMixCCB();
                     CheckForm(formMixCCB);
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //MOD_acessoCcb entAcesso = new MOD_acessoCcb();
+                //listaAcessoRelCCB = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodRotina).Equals(entAcesso.rotCCBMixRelatorio)).ToList();
+
+                //if (listaAcessoRelCCB.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmMixCCB formMixCCB = new frmMixCCB();
+                //    CheckForm(formMixCCB);
+                //}
             }
             catch (SqlException exl)
             {
@@ -758,19 +1016,30 @@ namespace ccbprinc
         {
             try
             {
-                List<MOD_acessos> listaAcessoRelFicha = new List<MOD_acessos>();
-                MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
-                listaAcessoRelFicha = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodRotina).Equals(entAcesso.rotPesRelFichaCadastral)).ToList();
 
-                if (listaAcessoRelFicha.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoPessoa.RotPesRelFichaCadastral))
                 {
                     frmFichaCadastral formFichaCadastral = new frmFichaCadastral();
                     CheckForm(formFichaCadastral);
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
+                //listaAcessoRelFicha = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodRotina).Equals(entAcesso.rotPesRelFichaCadastral)).ToList();
+
+                //if (listaAcessoRelFicha.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmFichaCadastral formFichaCadastral = new frmFichaCadastral();
+                //    CheckForm(formFichaCadastral);
+                //}
             }
             catch (SqlException exl)
             {
@@ -791,17 +1060,29 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoLicaoTeste = new List<MOD_acessos>();
-                listaAcessoLicaoTeste = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progLicaoTeste)).ToList();
 
-                if (listaAcessoLicaoTeste.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(modulos.progLicaoTeste))
                 {
                     frmLicaoTeste formLicaoTeste = new frmLicaoTeste(listaAcessoLicaoTeste);
                     CheckForm(formLicaoTeste);
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //listaAcessoLicaoTeste = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progLicaoTeste)).ToList();
+
+                //if (listaAcessoLicaoTeste.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmLicaoTeste formLicaoTeste = new frmLicaoTeste(listaAcessoLicaoTeste);
+                //    CheckForm(formLicaoTeste);
+                //}
             }
             catch (SqlException exl)
             {
@@ -817,17 +1098,26 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoLicaoTesteInstr = new List<MOD_acessos>();
-                listaAcessoLicaoTesteInstr = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progLicaoPreTeste)).ToList();
 
-                if (listaAcessoLicaoTesteInstr.Count < 1)
+                if (false.Equals(BLL_Liberacoes.LiberaAcessoPrograma(modulos.progLicaoPreTeste)))
                 {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    throw new Exception(modulos.semAcesso);
                 }
-                else
-                {
-                    frmMetodoTeste formMetodoTeste = new frmMetodoTeste(listaAcessoLicaoTesteInstr);
-                    CheckForm(formMetodoTeste);
-                }
+                frmMetodoTeste formMetodoTeste = new frmMetodoTeste(listaAcessoLicaoTesteInstr);
+                CheckForm(formMetodoTeste);
+
+
+                //listaAcessoLicaoTesteInstr = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progLicaoPreTeste)).ToList();
+
+                //if (listaAcessoLicaoTesteInstr.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmMetodoTeste formMetodoTeste = new frmMetodoTeste(listaAcessoLicaoTesteInstr);
+                //    CheckForm(formMetodoTeste);
+                //}
             }
             catch (SqlException exl)
             {
@@ -843,19 +1133,28 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoPreTeste = new List<MOD_acessos>();
-                MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
-                listaAcessoPreTeste = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progPreTeste)).ToList();
 
-                if (listaAcessoPreTeste.Count < 1)
+                if (false.Equals(BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoPreTeste.ProgPreTeste)))
                 {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    throw new Exception(modulos.semAcesso);
                 }
-                else
-                {
-                    frmPreTesteBusca formPreTeste = new frmPreTesteBusca(listaAcessoPreTeste);
-                    CheckForm(formPreTeste);
-                    formPreTeste.defineFoco();
-                }
+                frmPreTesteBusca formPreTeste = new frmPreTesteBusca(listaAcessoPreTeste);
+                CheckForm(formPreTeste);
+                formPreTeste.defineFoco();
+
+                //MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
+                //listaAcessoPreTeste = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progPreTeste)).ToList();
+
+                //if (listaAcessoPreTeste.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmPreTesteBusca formPreTeste = new frmPreTesteBusca(listaAcessoPreTeste);
+                //    CheckForm(formPreTeste);
+                //    formPreTeste.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -871,18 +1170,27 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoLicaoSolicita = new List<MOD_acessos>();
-                MOD_acessoSolicitaTeste entAcesso = new MOD_acessoSolicitaTeste();
-                listaAcessoLicaoSolicita = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progSolicitaTeste)).ToList();
 
-                if (listaAcessoLicaoSolicita.Count < 1)
+                if (false.Equals(BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoSolicitaTeste.ProgSolicitaTeste)))
                 {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    throw new Exception(modulos.semAcesso);
                 }
-                else
-                {
-                    frmSolicitaTesteBusca formSolicita = new frmSolicitaTesteBusca(listaAcessoLicaoSolicita);
-                    CheckForm(formSolicita);
-                }
+                frmSolicitaTesteBusca formSolicita = new frmSolicitaTesteBusca(listaAcessoLicaoSolicita);
+                CheckForm(formSolicita);
+
+
+                //MOD_acessoSolicitaTeste entAcesso = new MOD_acessoSolicitaTeste();
+                //listaAcessoLicaoSolicita = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.ProgSolicitaTeste)).ToList();
+
+                //if (listaAcessoLicaoSolicita.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmSolicitaTesteBusca formSolicita = new frmSolicitaTesteBusca(listaAcessoLicaoSolicita);
+                //    CheckForm(formSolicita);
+                //}
             }
             catch (SqlException exl)
             {
@@ -898,17 +1206,26 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoLicaTesteTeoria = new List<MOD_acessos>();
-                listaAcessoLicaTesteTeoria = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progLicaoPreTeste)).ToList();
 
-                if (listaAcessoLicaTesteTeoria.Count < 1)
+                if (false.Equals(BLL_Liberacoes.LiberaAcessoPrograma(modulos.progLicaoPreTeste)))
                 {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    throw new Exception(modulos.semAcesso);
                 }
-                else
-                {
-                    frmLicaoTeste formLicaoTeste = new frmLicaoTeste(listaAcessoLicaTesteTeoria);
-                    CheckForm(formLicaoTeste);
-                }
+                frmLicaoTeste formLicaoTeste = new frmLicaoTeste(listaAcessoLicaTesteTeoria);
+                CheckForm(formLicaoTeste);
+
+
+                //listaAcessoLicaTesteTeoria = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progLicaoPreTeste)).ToList();
+
+                //if (listaAcessoLicaTesteTeoria.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmLicaoTeste formLicaoTeste = new frmLicaoTeste(listaAcessoLicaTesteTeoria);
+                //    CheckForm(formLicaoTeste);
+                //}
             }
             catch (SqlException exl)
             {
@@ -929,17 +1246,26 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoUsuario = new List<MOD_acessos>();
-                listaAcessoUsuario = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(new MOD_acessoUsuario().progUsuario)).ToList();
 
-                if (listaAcessoUsuario.Count < 1)
+                if (false.Equals(BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoUsuario.ProgUsuario)))
                 {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    throw new Exception(modulos.semAcesso);
                 }
-                else
-                {
-                    frmUsuarioBusca formUsuario = new frmUsuarioBusca(listaAcessoUsuario);
-                    CheckForm(formUsuario);
-                }
+                frmUsuarioBusca formUsuario = new frmUsuarioBusca(listaAcessoUsuario);
+                CheckForm(formUsuario);
+
+
+                //listaAcessoUsuario = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(new MOD_acessoUsuario().ProgUsuario)).ToList();
+
+                //if (listaAcessoUsuario.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmUsuarioBusca formUsuario = new frmUsuarioBusca(listaAcessoUsuario);
+                //    CheckForm(formUsuario);
+                //}
             }
             catch (SqlException exl)
             {
@@ -961,7 +1287,7 @@ namespace ccbprinc
                 }
                 else
                 {
-                    frmModProg formProg = new frmModProg(this, modulos.listaLibAcesso);
+                    frmModProg formProg = new frmModProg(this, MOD_Session.ListaAcessoLogado);
                     CheckForm(formProg);
                 }
             }
@@ -984,17 +1310,29 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoImpPessoa = new List<MOD_acessos>();
-                listaAcessoImpPessoa = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progImportaPessoa)).ToList();
 
-                if (listaAcessoImpPessoa.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoImportaPessoa.ProgImportaPessoa))
                 {
                     frmImportarPessoa formImport = new frmImportarPessoa(listaAcessoImpPessoa);
                     CheckForm(formImport);
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //listaAcessoImpPessoa = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(new MOD_acessoImportaPessoa().ProgImportaPessoa)).ToList();
+
+                //if (listaAcessoImpPessoa.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmImportarPessoa formImport = new frmImportarPessoa(listaAcessoImpPessoa);
+                //    CheckForm(formImport);
+                //}
             }
             catch (SqlException exl)
             {
@@ -1010,17 +1348,29 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoImpPessoa = new List<MOD_acessos>();
-                listaAcessoImpPessoa = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progImportaPessoa)).ToList();
 
-                if (listaAcessoImpPessoa.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoImportaPessoa.ProgImportaPessoa))
                 {
                     frmImportarPessoaErros formImport = new frmImportarPessoaErros(listaAcessoImpPessoa);
                     CheckForm(formImport);
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //listaAcessoImpPessoa = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(new MOD_acessoImportaPessoa().ProgImportaPessoa)).ToList();
+
+                //if (listaAcessoImpPessoa.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmImportarPessoaErros formImport = new frmImportarPessoaErros(listaAcessoImpPessoa);
+                //    CheckForm(formImport);
+                //}
             }
             catch (SqlException exl)
             {
@@ -1036,18 +1386,31 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoImpPessoa = new List<MOD_acessos>();
-                listaAcessoImpPessoa = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progImportaPessoa)).ToList();
 
-                if (listaAcessoImpPessoa.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoImportaPessoa.ProgImportaPessoa))
                 {
                     frmImportarPessoaBusca formImport = new frmImportarPessoaBusca(listaAcessoImpPessoa);
                     CheckForm(formImport);
                     formImport.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //listaAcessoImpPessoa = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(new MOD_acessoImportaPessoa().ProgImportaPessoa)).ToList();
+
+                //if (listaAcessoImpPessoa.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmImportarPessoaBusca formImport = new frmImportarPessoaBusca(listaAcessoImpPessoa);
+                //    CheckForm(formImport);
+                //    formImport.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -1071,6 +1434,7 @@ namespace ccbprinc
                 //}
                 //else
                 //{
+
                 frmExpPessoa formExport = new frmExpPessoa();
                 CheckForm(formExport);
                 //}
@@ -1094,19 +1458,32 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoReunMin = new List<MOD_acessos>();
-                MOD_acessoReuniao entAcesso = new MOD_acessoReuniao();
-                listaAcessoReunMin = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progReuniaoMinisterio)).ToList();
 
-                if (listaAcessoReunMin.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoReuniao.ProgReuniaoMinisterio))
                 {
                     frmReunioesBusca formReuniao = new frmReunioesBusca(listaAcessoReunMin);
                     CheckForm(formReuniao);
                     formReuniao.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //MOD_acessoReuniao entAcesso = new MOD_acessoReuniao();
+                //listaAcessoReunMin = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.ProgReuniaoMinisterio)).ToList();
+
+                //if (listaAcessoReunMin.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmReunioesBusca formReuniao = new frmReunioesBusca(listaAcessoReunMin);
+                //    CheckForm(formReuniao);
+                //    formReuniao.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -1122,19 +1499,32 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoTipoReun = new List<MOD_acessos>();
-                MOD_acessoTipoReuniao entAcesso = new MOD_acessoTipoReuniao();
-                listaAcessoTipoReun = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progTipoReuniao)).ToList();
 
-                if (listaAcessoTipoReun.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(MOD_acessoTipoReuniao.ProgTipoReuniao))
                 {
                     frmTipoReuniaoBusca formTipoReuniao = new frmTipoReuniaoBusca(listaAcessoTipoReun);
                     CheckForm(formTipoReuniao);
                     formTipoReuniao.defineFoco();
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //MOD_acessoTipoReuniao entAcesso = new MOD_acessoTipoReuniao();
+                //listaAcessoTipoReun = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.ProgTipoReuniao)).ToList();
+
+                //if (listaAcessoTipoReun.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmTipoReuniaoBusca formTipoReuniao = new frmTipoReuniaoBusca(listaAcessoTipoReun);
+                //    CheckForm(formTipoReuniao);
+                //    formTipoReuniao.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -1155,17 +1545,28 @@ namespace ccbprinc
             try
             {
                 List<MOD_acessos> listaAcessoVisao = new List<MOD_acessos>();
-                listaAcessoVisao = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progVisaoOrq)).ToList();
 
-                if (listaAcessoVisao.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
+                if (BLL_Liberacoes.LiberaAcessoPrograma(modulos.progVisaoOrq))
                 {
                     frmVisaoOrquestra formVisaoOrquestra = new frmVisaoOrquestra(listaAcessoVisao);
                     CheckForm(formVisaoOrquestra);
                 }
+                else
+                {
+                    throw new Exception(modulos.semAcesso);
+                }
+
+
+                //listaAcessoVisao = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progVisaoOrq)).ToList();
+
+                //if (listaAcessoVisao.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmVisaoOrquestra formVisaoOrquestra = new frmVisaoOrquestra(listaAcessoVisao);
+                //    CheckForm(formVisaoOrquestra);
             }
             catch (SqlException exl)
             {
@@ -1256,19 +1657,21 @@ namespace ccbprinc
         {
             try
             {
-                List<MOD_acessos> listaAcessoInstr = new List<MOD_acessos>();
-                listaAcessoInstr = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progInstrumento)).ToList();
+                mnuInstr.PerformClick();
 
-                if (listaAcessoInstr.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
-                {
-                    frmInstrBusca formInstr = new frmInstrBusca(listaAcessoInstr);
-                    CheckForm(formInstr);
-                    formInstr.defineFoco();
-                }
+
+                //listaAcessoInstr = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progInstrumento)).ToList();
+
+                //if (listaAcessoInstr.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmInstrBusca formInstr = new frmInstrBusca(listaAcessoInstr);
+                //    CheckForm(formInstr);
+                //    formInstr.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -1283,20 +1686,23 @@ namespace ccbprinc
         {
             try
             {
-                List<MOD_acessos> listaAcessoPessoa = new List<MOD_acessos>();
-                MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
-                listaAcessoPessoa = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progPessoa)).ToList();
+                mnuTabUtilPessoa.PerformClick();
 
-                if (listaAcessoPessoa.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
-                {
-                    frmPessoaBusca formPessoa = new frmPessoaBusca(listaAcessoPessoa);
-                    CheckForm(formPessoa);
-                    formPessoa.defineFoco();
-                }
+
+                //List<MOD_acessos> listaAcessoPessoa = new List<MOD_acessos>();
+                //MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
+                //listaAcessoPessoa = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.ProgPessoa)).ToList();
+
+                //if (listaAcessoPessoa.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmPessoaBusca formPessoa = new frmPessoaBusca(listaAcessoPessoa);
+                //    CheckForm(formPessoa);
+                //    formPessoa.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -1311,20 +1717,22 @@ namespace ccbprinc
         {
             try
             {
-                List<MOD_acessos> listaAcessoPreTeste = new List<MOD_acessos>();
-                MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
-                listaAcessoPreTeste = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progPreTeste)).ToList();
+                mnuPreTeste.PerformClick();
 
-                if (listaAcessoPreTeste.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
-                {
-                    frmPreTesteBusca formPreTeste = new frmPreTesteBusca(listaAcessoPreTeste);
-                    CheckForm(formPreTeste);
-                    formPreTeste.defineFoco();
-                }
+                //List<MOD_acessos> listaAcessoPreTeste = new List<MOD_acessos>();
+                //MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
+                //listaAcessoPreTeste = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(entAcesso.progPreTeste)).ToList();
+
+                //if (listaAcessoPreTeste.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmPreTesteBusca formPreTeste = new frmPreTesteBusca(listaAcessoPreTeste);
+                //    CheckForm(formPreTeste);
+                //    formPreTeste.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -1339,19 +1747,20 @@ namespace ccbprinc
         {
             try
             {
-                List<MOD_acessos> listaAcessoComum = new List<MOD_acessos>();
-                listaAcessoComum = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progComum)).ToList();
+                mnuTabUtilComum.PerformClick();
+                //List<MOD_acessos> listaAcessoComum = new List<MOD_acessos>();
+                //listaAcessoComum = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(modulos.progComum)).ToList();
 
-                if (listaAcessoComum.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
-                {
-                    frmCCBBusca formComum = new frmCCBBusca(listaAcessoComum, this, string.Empty);
-                    CheckForm(formComum);
-                    formComum.defineFoco();
-                }
+                //if (listaAcessoComum.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmCCBBusca formComum = new frmCCBBusca(listaAcessoComum, this, string.Empty);
+                //    CheckForm(formComum);
+                //    formComum.defineFoco();
+                //}
             }
             catch (SqlException exl)
             {
@@ -1366,18 +1775,19 @@ namespace ccbprinc
         {
             try
             {
-                List<MOD_acessos> listaAcessoUsuario = new List<MOD_acessos>();
-                listaAcessoUsuario = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(new MOD_acessoUsuario().progUsuario)).ToList();
+                mnuGerUsuario.PerformClick();
+                //List<MOD_acessos> listaAcessoUsuario = new List<MOD_acessos>();
+                //listaAcessoUsuario = modulos.listaLibAcesso.Where(x => Convert.ToInt32(x.CodPrograma).Equals(new MOD_acessoUsuario().progUsuario)).ToList();
 
-                if (listaAcessoUsuario.Count < 1)
-                {
-                    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
-                else
-                {
-                    frmUsuarioBusca formUsuario = new frmUsuarioBusca(listaAcessoUsuario);
-                    CheckForm(formUsuario);
-                }
+                //if (listaAcessoUsuario.Count < 1)
+                //{
+                //    MessageBox.Show(modulos.semAcesso, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //}
+                //else
+                //{
+                //    frmUsuarioBusca formUsuario = new frmUsuarioBusca(listaAcessoUsuario);
+                //    CheckForm(formUsuario);
+                //}
             }
             catch (SqlException exl)
             {

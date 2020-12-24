@@ -19,6 +19,7 @@ using ENT.acessos;
 using BLL.validacoes;
 using Microsoft.VisualBasic;
 using BLL.Usuario;
+using ENT.Session;
 
 namespace ccbusua
 {
@@ -35,7 +36,7 @@ namespace ccbusua
                 formChama = forms;
 
                 //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
+                listaAcesso = MOD_Session.ListaAcessoLogado;
 
                 ///Recebe a lista e armazena
                 listaUsuario = lista;

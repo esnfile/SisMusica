@@ -102,11 +102,26 @@ namespace ccbimp
 
         private void frmImportarPessoaErros_Load(object sender, EventArgs e)
         {
-            apoio.Aguarde("Carregando registros pendentes...");
-            //carrega os dados da lista
-            preencherErro(preencheCCBImporta(modulos.CodUsuario));
+            try
+            {
+                apoio.Aguarde("Carregando registros pendentes...");
+                //carrega os dados da lista
+                preencherErro(preencheCCBImporta(modulos.CodUsuario));
 
-            verPermErro(gridErro);
+                verPermErro(gridErro);
+            }
+            catch (SqlException exl)
+            {
+                excp = new clsException(exl);
+            }
+            catch (Exception ex)
+            {
+                excp = new clsException(ex);
+            }
+            finally
+            {
+                apoio.FecharAguarde();
+            }
         }
         private void frmImportarPessoaErros_Activated(object sender, EventArgs e)
         {
@@ -114,14 +129,14 @@ namespace ccbimp
             {
                 apoio.Aguarde("Marcando registros com erro...");
                 definirErro(gridErro);
-             }
+            }
             catch (SqlException exl)
             {
-                throw exl;
+                excp = new clsException(exl);
             }
             catch (Exception ex)
             {
-                throw ex;
+                excp = new clsException(ex);
             }
             finally
             {
@@ -296,14 +311,6 @@ namespace ccbimp
         {
             try
             {
-                if (gridErro.RowCount > 0)
-                {
-                    btnEditar.Enabled = true;
-                }
-                else
-                {
-                    btnEditar.Enabled = false;
-                }
             }
             catch (SqlException exl)
             {
@@ -334,7 +341,12 @@ namespace ccbimp
         {
             if (gridErro.RowCount > 0)
             {
+                btnEditar.Enabled = true;
                 definirErro(gridErro);
+            }
+            else
+            {
+                btnEditar.Enabled = false;
             }
         }
 
@@ -1086,10 +1098,10 @@ namespace ccbimp
             try
             {
 
-                objBLL_Importa = new BLL_importaPessoa();
+                IBLL_buscaImportaPessoaErro objBLL_Erro = new BLL_buscaImportaPessoaErro();
                 listaImportaItemErro = new List<MOD_importaPessoaItemErro>();
 
-                listaImportaItemErro = objBLL_Importa.buscarImpErro(preencheCCBImporta(modulos.CodUsuario));
+                listaImportaItemErro = objBLL_Erro.Buscar(preencheCCBImporta(modulos.CodUsuario));
 
                 objBind_ImpErro = new BindingSource();
                 montaGridDadosErro();
@@ -1224,33 +1236,6 @@ namespace ccbimp
         }
 
         /// <summary>
-        /// Função que resume as informações para enviar a classe de negocios para salvar
-        /// </summary>
-        internal void salvarItem()
-        {
-            try
-            {
-                objBLL_Importa = new BLL_importaPessoa();
-
-                //chama a rotina da camada de negocios para efetuar inserção ou update
-                objBLL_Importa.inserirItemSucesso(criarListaItens(), criarListaItensErros());
-                preencherErro(modulos.CodUsuarioCCB);
-            }
-            catch (ArgumentException ae)
-            {
-                throw new Exception(ae.Message);
-            }
-            catch (SqlException exl)
-            {
-                throw exl;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        /// <summary>
         /// Função que Retorna uma Lista Preenchida com os Valores Pesquisados
         /// </summary>
         /// <param name="objDtb"></param>
@@ -1291,7 +1276,7 @@ namespace ccbimp
                 ent.Celular2 = Convert.ToString(objEnt_ItemErro.Celular2);
                 ent.Email = Convert.ToString(objEnt_ItemErro.Email).ToLower();
                 ent.CodCCB = Convert.ToString(objEnt_ItemErro.CodCCB).PadLeft(6, '0');
-                ent.Descricao = Convert.ToString(objEnt_ItemErro.DescCCB);
+                ent.DescricaoCCB = Convert.ToString(objEnt_ItemErro.DescCCB);
                 ent.EstadoCivil = Convert.ToString(objEnt_ItemErro.EstadoCivil);
                 ent.DataApresentacao = Convert.ToString(objEnt_ItemErro.DataApresentacao);
                 ent.PaisCCB = Convert.ToString(objEnt_ItemErro.PaisCCB);
@@ -1441,31 +1426,42 @@ namespace ccbimp
         /// </summary>
         internal string preencheCCBImporta(string CodUsuario, string CodRegiao)
         {
-            string CodUsuCCB = string.Empty;
-            objBLL_CCBUsuario = new BLL_usuario();
-            listaCCBUsuario = objBLL_CCBUsuario.buscarUsuarioCCB(CodUsuario, CodRegiao);
-
-            foreach (MOD_usuarioCCB ent in listaCCBUsuario)
+            try
             {
-                string Codigo = string.Empty;
-                if (CodUsuCCB.Equals(string.Empty))
+                string CodUsuCCB = string.Empty;
+                objBLL_CCBUsuario = new BLL_usuario();
+                listaCCBUsuario = objBLL_CCBUsuario.buscarUsuarioCCB(CodUsuario, CodRegiao);
+
+                foreach (MOD_usuarioCCB ent in listaCCBUsuario)
                 {
-                    Codigo = Convert.ToInt32(ent.CodCCB).ToString();
+                    string Codigo = string.Empty;
+                    if (CodUsuCCB.Equals(string.Empty))
+                    {
+                        Codigo = Convert.ToInt32(ent.CodCCB).ToString();
+                    }
+                    else
+                    {
+                        Codigo = CodUsuCCB + "','" + Convert.ToInt32(ent.CodCCB).ToString();
+                    }
+                    CodUsuCCB = Codigo;
+                }
+
+                if (modulos.Supervisor.Equals("Sim"))
+                {
+                    return CodUsuCCB + "','" + "Erro";
                 }
                 else
                 {
-                    Codigo = CodUsuCCB + "','" + Convert.ToInt32(ent.CodCCB).ToString();
+                    return CodUsuCCB;
                 }
-                CodUsuCCB = Codigo;
             }
-
-            if (modulos.Supervisor.Equals("Sim"))
+            catch (SqlException exl)
             {
-                return CodUsuCCB + "','" + "Erro";
+                throw exl;
             }
-            else
+            catch (Exception ex)
             {
-                return CodUsuCCB;
+                throw ex;
             }
         }
         /// <summary>
@@ -1473,31 +1469,42 @@ namespace ccbimp
         /// </summary>
         internal string preencheCCBImporta(string CodUsuario)
         {
-            string CodUsuCCB = string.Empty;
-            objBLL_CCBUsuario = new BLL_usuario();
-            listaCCBUsuario = objBLL_CCBUsuario.buscarUsuarioCCB(CodUsuario);
-
-            foreach (MOD_usuarioCCB ent in listaCCBUsuario)
+            try
             {
-                string Codigo = string.Empty;
-                if (CodUsuCCB.Equals(string.Empty))
+                string CodUsuCCB = string.Empty;
+                objBLL_CCBUsuario = new BLL_usuario();
+                listaCCBUsuario = objBLL_CCBUsuario.buscarUsuarioCCB(CodUsuario);
+
+                foreach (MOD_usuarioCCB ent in listaCCBUsuario)
                 {
-                    Codigo = Convert.ToInt32(ent.CodCCB).ToString();
+                    string Codigo = string.Empty;
+                    if (CodUsuCCB.Equals(string.Empty))
+                    {
+                        Codigo = Convert.ToInt32(ent.CodCCB).ToString();
+                    }
+                    else
+                    {
+                        Codigo = CodUsuCCB + "','" + Convert.ToInt32(ent.CodCCB).ToString();
+                    }
+                    CodUsuCCB = Codigo;
+                }
+
+                if (modulos.Supervisor.Equals("Sim"))
+                {
+                    return CodUsuCCB + "','" + "Erro";
                 }
                 else
                 {
-                    Codigo = CodUsuCCB + "','" + Convert.ToInt32(ent.CodCCB).ToString();
+                    return CodUsuCCB;
                 }
-                CodUsuCCB = Codigo;
             }
-
-            if (modulos.Supervisor.Equals("Sim"))
+            catch (SqlException exl)
             {
-                return CodUsuCCB + "','" + "Erro";
+                throw exl;
             }
-            else
+            catch (Exception ex)
             {
-                return CodUsuCCB;
+                throw ex;
             }
         }
 
@@ -1511,21 +1518,7 @@ namespace ccbimp
         {
             try
             {
-                foreach (MOD_acessos ent in listaAcesso)
-                {
-                    //verificando o botão visualizar
-                    if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotEditImportaPessoa))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnEditar.Enabled = true;
-                        }
-                        else
-                        {
-                            btnEditar.Enabled = false;
-                        }
-                    }
-                }
+                btnEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(new MOD_acessoImportaPessoaItemErro().RotEditImportaPessoaErro, dataGrid);
             }
             catch (SqlException exl)
             {

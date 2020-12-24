@@ -22,7 +22,7 @@ namespace ccbadm
 {
     public partial class frmListaPresenca : Form
     {
-        public frmListaPresenca(List<MOD_acessos> listaLibAcesso, Form forms, List<MOD_reuniaoMinisterio> listaReuniao)
+        public frmListaPresenca(Form forms, List<MOD_reuniaoMinisterio> listaReuniao)
         {
             InitializeComponent();
 
@@ -31,9 +31,6 @@ namespace ccbadm
 
                 //indica que esse formulario foi aberto por outro
                 formChama = forms;
-
-                ///Recebe a lista de liberação de acesso
-                listaAcesso = listaLibAcesso;
 
                 txtCodReuniao.Text = listaReuniao[0].CodReuniao;
                 txtDataReuniao.Text = listaReuniao[0].DataReuniao;
@@ -64,13 +61,12 @@ namespace ccbadm
         int IndiceLista;
 
         clsException excp;
-        List<MOD_acessos> listaAcesso = null;
 
         BLL_listaPresenca objBLL_Presenca = null;
         MOD_listaPresenca objEnt_Presenca = null;
         List<MOD_listaPresenca> listaPresenca = new List<MOD_listaPresenca>();
 
-        BLL_pessoa objBLL_Pessoa = null;
+        IBLL_buscaPessoa objBLL_Pessoa = null;
         List<MOD_pessoa> listaPessoa = null;
 
         Form formulario;
@@ -489,8 +485,8 @@ namespace ccbadm
         {
             try
             {
-                objBLL_Pessoa = new BLL_pessoa();
-                listaPessoa = objBLL_Pessoa.buscarCod(vCodPessoa, modulos.CodUsuarioCCB, true);
+                objBLL_Pessoa = new BLL_buscaPessoaPorCodPessoa();
+                listaPessoa = objBLL_Pessoa.Buscar(vCodPessoa, true);
 
                 if (listaPessoa != null && listaPessoa.Count > 0)
                 {
@@ -525,8 +521,8 @@ namespace ccbadm
         {
             try
             {
-                objBLL_Pessoa = new BLL_pessoa();
-                listaPessoa = objBLL_Pessoa.buscarCod(vCodPessoa);
+                objBLL_Pessoa = new BLL_buscaPessoaPorCodPessoa();
+                listaPessoa = objBLL_Pessoa.Buscar(vCodPessoa);
             }
             catch (SqlException exl)
             {
@@ -773,8 +769,8 @@ namespace ccbadm
             try
             {
                 MOD_acessoListaPresenca entAcesso = new MOD_acessoListaPresenca();
-                btnIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPresenca);
-                btnExcluir.Enabled = funcoes.liberacoes(entAcesso.rotExcPresenca, dataGrid);
+                btnIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(entAcesso.rotInsPresenca);
+                btnExcluir.Enabled = BLL_Liberacoes.LiberaAcessoRotina(entAcesso.rotExcPresenca, dataGrid);
             }
             catch (SqlException exl)
             {

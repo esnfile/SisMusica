@@ -34,9 +34,6 @@ namespace ccbtest
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
 
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
-
                 ///Recebe a lista e armazena
                 listaDepartamento = lista;
 
@@ -59,8 +56,6 @@ namespace ccbtest
         #region declaracoes
 
         clsException excp;
-
-        List<MOD_acessos> listaAcesso = null;
 
         BLL_departamento objBLL = null;
         MOD_departamento objEnt = null;

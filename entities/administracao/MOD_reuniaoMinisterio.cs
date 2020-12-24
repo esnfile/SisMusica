@@ -59,12 +59,12 @@ namespace ENT.administracao
 
     public class MOD_acessoReuniao
     {
-        public int progReuniaoMinisterio { get; set; } = 38;
-        public int rotInsReuniao { get; set; } = 211;
-        public int rotEditReuniao { get; set; } = 212;
-        public int rotFinalReuniao { get; set; } = 215;
-        public int rotVisReuniao { get; set; } = 213;
-        public int rotCancelReuniao { get; set; } = 214;
-        public int rotImpReuniao { get; set; } = 216;
+        public static int ProgReuniaoMinisterio { get; } = 38;
+        public static int RotInsReuniao { get; } = 211;
+        public static int RotEditReuniao { get; } = 212;
+        public static int RotFinalReuniao { get; } = 215;
+        public static int RotVisReuniao { get; } = 213;
+        public static int RotCancelReuniao { get; } = 214;
+        public static int RotImpReuniao { get; } = 216;
     }
 }

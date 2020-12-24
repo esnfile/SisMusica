@@ -65,7 +65,7 @@ namespace ccbrepess
         MOD_erros objEnt_Erros = null;
         List<MOD_erros> listaErros;
 
-        BLL_pessoa objBLL_Pessoa;
+        IBLL_buscaRelatorio objBLL_Pessoa;
         List<MOD_pessoa> listaPessoa = new List<MOD_pessoa>();
 
         List<MOD_ccb> listaCCB = new List<MOD_ccb>();
@@ -1177,14 +1177,14 @@ namespace ccbrepess
                         CodCargo = Convert.ToInt64(cboCargo.SelectedValue).ToString();
                         CodComum = preencherSelecionados("Comum", gridComum);
 
-                        objBLL_Pessoa = new BLL_pessoa();
+                        objBLL_Pessoa = new BLL_buscaRelatorioPessoa();
                         if (lblStatus.Text.Equals("Ambos"))
                         {
-                            listaPessoa = objBLL_Pessoa.buscarRelatorioPessoa(lblSexo.Text, lblEstadoCivil.Text, CodCargo, CodComum);
+                            listaPessoa = objBLL_Pessoa.Buscar(lblSexo.Text, lblEstadoCivil.Text, CodCargo, CodComum);
                         }
                         else
                         {
-                            listaPessoa = objBLL_Pessoa.buscarRelatorioPessoa(lblSexo.Text, lblEstadoCivil.Text, CodCargo, CodComum, lblStatus.Text.Equals("Sim") ? true : false);
+                            listaPessoa = objBLL_Pessoa.Buscar(lblSexo.Text, lblEstadoCivil.Text, CodCargo, CodComum, lblStatus.Text.Equals("Sim") ? true : false);
                         }
 
                         listaPessoa = listaPessoa.OrderBy(p => p.Descricao).ToList();

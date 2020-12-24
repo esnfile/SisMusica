@@ -1724,7 +1724,6 @@ namespace BLL.preTeste
         {
             try
             {
-                MOD_acessoFichaPreTeste entAcesso = new MOD_acessoFichaPreTeste();
                 //preenche os dados para salvar na tabela Logs
                 ent.Logs = new MOD_log();
                 ent.Logs.Data = DateTime.Now.ToString("dd/MM/yyyy");
@@ -1733,15 +1732,15 @@ namespace BLL.preTeste
 
                 if (Operacao.Equals("Insert"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotInsFichaPreTeste);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoFichaPreTeste.RotInsFichaPreTeste);
                 }
                 else if (Operacao.Equals("Update"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotEditFichaPreTeste);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoFichaPreTeste.RotEditFichaPreTeste);
                 }
                 else if (Operacao.Equals("Delete"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotExcFichaPreTeste);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoFichaPreTeste.RotExcFichaPreTeste);
                 }
 
                 ent.Logs.NomePc = modulos.DescPc;

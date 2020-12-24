@@ -325,6 +325,9 @@ namespace ccbadm.relatorios
             try
             {
 
+                //chama a funcão montar grid
+                new BLL_GridCargo().MontarGrid(gridCargo, string.Empty);
+
                 //funcoes.gridRegiao(gridRegiao, "VisaoOrquestral");
                 //funcoes.gridCCB(gridComComum, "VisaoOrquestral");
 
@@ -511,7 +514,6 @@ namespace ccbadm.relatorios
                     listaUsuarioCargo = new List<MOD_usuarioCargo>();
                     listaUsuarioCargo = objBLL_Tipo.buscarUsuarioCargo(lblTipo.Text, modulos.CodUsuario);
 
-                    funcoes.gridCargo(dataGrid, "Relatorios");
                     dataGrid.DataSource = listaUsuarioCargo;
                     dataGrid.DefaultCellStyle.ForeColor = Color.Black;
                 }

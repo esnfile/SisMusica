@@ -540,7 +540,6 @@ namespace BLL.instrumentos
         {
             try
             {
-                MOD_acessoMetodoInstr entAcesso = new MOD_acessoMetodoInstr();
                 //preenche os dados para salvar na tabela Logs
                 ent.Logs = new MOD_log();
                 ent.Logs.Data = DateTime.Now.ToString("dd/MM/yyyy");
@@ -550,15 +549,15 @@ namespace BLL.instrumentos
 
                 if (Operacao.Equals("Insert"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotInsMetodoInstr);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoMetodoInstr.RotInsMetodoInstr);
                 }
                 else if (Operacao.Equals("Update"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotEditMetodoInstr);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoMetodoInstr.RotEditMetodoInstr);
                 }
                 else if (Operacao.Equals("Delete"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotExcMetodoInstr);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoMetodoInstr.RotExcMetodoInstr);
                 }
 
                 ent.Logs.NomePc = modulos.DescPc;

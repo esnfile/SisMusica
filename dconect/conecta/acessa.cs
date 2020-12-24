@@ -1,15 +1,12 @@
-﻿using System;
+﻿using ENT.Session;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data;
 using System.Data.SqlClient;
-using DAL.Interface;
-using System.IO;
 
 namespace DAL.Acessa
 {
-    public class acessa : iConnect
+    public class acessa : IConnect
     {
 
         #region Declaração de Variaveis
@@ -36,7 +33,7 @@ namespace DAL.Acessa
         {
             try
             {
-                objConn = new SqlConnection(strSql);
+                objConn = new SqlConnection(MOD_Session.StrConnection);
                 objConn.Open();
                 return true;
             }

@@ -31,9 +31,6 @@ namespace ccbpess
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
 
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
-
                 ///preenche o comboEstado
                 apoio.carregaComboEstado(cboUf);
 
@@ -59,8 +56,6 @@ namespace ccbpess
         #region declaracoes
 
         clsException excp;
-
-        List<MOD_acessos> listaAcesso = null;
 
         BLL_cidade objBLL = null;
         MOD_cidade objEnt = null;
@@ -178,19 +173,19 @@ namespace ccbpess
         {
             try
             {
-                if (ValidarControles().Equals(true))
+                if (ValidarControles(criarTabela()))
                 {
                     objBLL = new BLL_cidade();
 
                     if (Convert.ToInt32(txtCodigo.Text).Equals(0))
                     {
                         //chama a rotina da camada de negocios para efetuar inserção ou update
-                        objBLL.inserir(criarTabela());
+                        objBLL.inserir(objEnt);
                     }
                     else
                     {
                         //chama a rotina da camada de negocios para efetuar inserção ou update
-                        objBLL.salvar(criarTabela());
+                        objBLL.salvar(objEnt);
                     }
 
                     //conversor para retorno ao formulario que chamou
@@ -223,47 +218,17 @@ namespace ccbpess
         /// <summary>
         /// Função que valida os campos
         /// </summary>
-        private bool ValidarControles()
+        private bool ValidarControles(MOD_cidade cidade)
         {
             try
             {
-                //inicia a variavel blnValida
-                blnValida = true;
-                bool blnRetorno = true;
-
-                //inicia uma nova lista de erros
-                listaErros = new List<MOD_erros>();
-                if (txtCidade.Text.Equals(string.Empty))
+                IValidacaoCidade valida = new ValidacaoCidade();
+                List<MOD_erros> erros = valida.ValidaCamposCidade(cidade);
+                if (erros.Count > 0)
                 {
-                    blnValida = false;
-                    objEnt_Erros = new MOD_erros();
-                    objEnt_Erros.Texto = "Cidade! Campo obrigatório.";
-                    objEnt_Erros.Grau = "Alto";
-                    listaErros.Add(objEnt_Erros);
+                    return apoio.AbrirErros(erros, this);
                 }
-                if (cboUf.Text.Equals(string.Empty))
-                {
-                    blnValida = false;
-                    objEnt_Erros = new MOD_erros();
-                    objEnt_Erros.Texto = "Estado! Campo obrigatório.";
-                    objEnt_Erros.Grau = "Alto";
-                    listaErros.Add(objEnt_Erros);
-                }
-                if (txtCep.Text.Equals(string.Empty))
-                {
-                    blnValida = false;
-                    objEnt_Erros = new MOD_erros();
-                    objEnt_Erros.Texto = "Cep! Campo obrigatório.";
-                    objEnt_Erros.Grau = "Alto";
-                    listaErros.Add(objEnt_Erros);
-                }
-
-                //chama o formulário para gerar os erros
-                if (blnValida.Equals(false))
-                {
-                    blnRetorno = apoio.AbrirErros(listaErros, this);
-                }
-                return blnRetorno;
+                return true;
             }
             catch (SqlException exl)
             {

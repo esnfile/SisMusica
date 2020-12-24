@@ -18,11 +18,11 @@ namespace ENT.administracao
 
     public class MOD_acessoTipoReuniao
     {
-        public int progTipoReuniao { get; set; } = 40;
-        public int rotInsTipoReuniao { get; set; } = 219;
-        public int rotEditTipoReuniao { get; set; } = 220;
-        public int rotExcTipoReuniao { get; set; } = 221;
-        public int rotVisTipoReuniao { get; set; } = 222;
-        public int rotipoReuniaoCargo { get; set; } = 223;
+        public static int ProgTipoReuniao { get; } = 40;
+        public static int RotInsTipoReuniao { get; } = 219;
+        public static int RotEditTipoReuniao { get; } = 220;
+        public static int RotExcTipoReuniao { get; } = 221;
+        public static int RotVisTipoReuniao { get; } = 222;
+        public static int RotipoReuniaoCargo { get; } = 223;
     }
 }

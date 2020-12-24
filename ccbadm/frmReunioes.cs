@@ -20,6 +20,7 @@ using ENT.pessoa;
 using ENT.administracao;
 using BLL.uteis;
 using ccbadm.pesquisa;
+using ENT.Session;
 
 namespace ccbadm
 {
@@ -36,9 +37,6 @@ namespace ccbadm
                 formChama = forms;
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
-
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
 
                 //Carrega o ComboBox TipoReunião
                 apoio.carregaComboTipoReuniao(cboTipo);
@@ -75,8 +73,6 @@ namespace ccbadm
 
         clsException excp;
 
-        List<MOD_acessos> listaAcesso = null;
-
         BLL_reuniaoMinisterio objBLL = null;
         MOD_reuniaoMinisterio objEnt = null;
         List<MOD_reuniaoMinisterio> listaReuniao = null;
@@ -84,7 +80,7 @@ namespace ccbadm
         BLL_biblia objBLL_Biblia = null;
         List<MOD_biblia> listaBiblia = null;
 
-        BLL_pessoa objBLL_Pessoa = null;
+        IBLL_buscaPessoa objBLL_Pessoa = null;
         List<MOD_pessoa> listaPessoa = null;
 
         BLL_ccb objBLL_CCB = null;
@@ -870,8 +866,8 @@ namespace ccbadm
             {
                 List<MOD_pessoa> listaPesFiltro = new List<MOD_pessoa>();
 
-                objBLL_Pessoa = new BLL_pessoa();
-                listaPessoa = objBLL_Pessoa.buscarCod(vCodPessoa, modulos.CodUsuarioCCB, true);
+                objBLL_Pessoa = new BLL_buscaPessoaPorCodPessoa();
+                listaPessoa = objBLL_Pessoa.Buscar(vCodPessoa, true);
 
                 if (listaPessoa != null && listaPessoa.Count > 0)
                 {
@@ -1033,7 +1029,7 @@ namespace ccbadm
                     lista = objBLL.buscarCod(objEnt.CodReuniao);
                     preencher(lista);
 
-                    formulario = new frmListaPresenca(listaAcesso, this, lista);
+                    formulario = new frmListaPresenca(this, lista);
                     ((frmListaPresenca)formulario).MdiParent = MdiParent;
                     ((frmListaPresenca)formulario).StartPosition = FormStartPosition.Manual;
                     funcoes.CentralizarForm(((frmListaPresenca)formulario));

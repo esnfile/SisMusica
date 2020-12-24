@@ -84,6 +84,8 @@
             // 
             this.cboCCB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboCCB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboCCB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cboCCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCCB.FormattingEnabled = true;
             this.cboCCB.Location = new System.Drawing.Point(505, 9);
             this.cboCCB.Name = "cboCCB";
@@ -104,6 +106,8 @@
             // 
             this.cboRegiao.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboRegiao.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboRegiao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cboRegiao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRegiao.FormattingEnabled = true;
             this.cboRegiao.Location = new System.Drawing.Point(270, 9);
             this.cboRegiao.Name = "cboRegiao";
@@ -124,6 +128,8 @@
             // 
             this.cboRegional.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboRegional.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboRegional.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cboRegional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRegional.FormattingEnabled = true;
             this.cboRegional.Location = new System.Drawing.Point(68, 9);
             this.cboRegional.Name = "cboRegional";
@@ -143,6 +149,7 @@
             // btnEditar
             // 
             this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditar.Location = new System.Drawing.Point(733, 358);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnEditar.Name = "btnEditar";
@@ -199,6 +206,7 @@
             // btnFechar
             // 
             this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFechar.Location = new System.Drawing.Point(753, 429);
             this.btnFechar.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnFechar.Name = "btnFechar";

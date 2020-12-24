@@ -798,7 +798,6 @@ namespace BLL.preTeste
         {
             try
             {
-                MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
                 //preenche os dados para salvar na tabela Logs
                 ent.Logs = new MOD_log();
                 ent.Logs.Data = DateTime.Now.ToString("dd/MM/yyyy");
@@ -807,23 +806,23 @@ namespace BLL.preTeste
 
                 if (Operacao.Equals("Insert"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotInsPreTeste);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoPreTeste.RotInsPreTeste);
                 }
                 else if (Operacao.Equals("Update"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotEditPreTeste);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoPreTeste.RotEditPreTeste);
                 }
                 else if (Operacao.Equals("Cancela"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotCancelPreTeste);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoPreTeste.RotCancelPreTeste);
                 }
                 else if (Operacao.Equals("Encerra"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotEncerraPreTeste);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoPreTeste.RotEncerraPreTeste);
                 }
                 else if (Operacao.Equals("ReAgenda"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotReAgendaPreTeste);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoPreTeste.RotReAgendaPreTeste);
                 }
 
                 ent.Logs.NomePc = modulos.DescPc;

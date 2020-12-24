@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using BLL.cargo;
 using BLL.Funcoes;
 using BLL.pessoa;
 using BLL.uteis;
@@ -32,7 +32,7 @@ namespace ccbimp
         public string Codigo;
         string Descricao;
 
-        BLL_cargo objBLL = null;
+        IBLL_buscaCargo objBLL = null;
         List<MOD_cargo> lista;
 
         //instancias de validacoes
@@ -165,7 +165,7 @@ namespace ccbimp
             try
             {
                 //chama a funcão montar grid
-                funcoes.gridCargo(gridDesc, string.Empty);
+                new BLL_GridCargo().MontarGrid(gridDesc, string.Empty);
             }
             catch (SqlException exl)
             {
@@ -197,9 +197,8 @@ namespace ccbimp
             try
             {
                 //chama a classe de negócios
-                objBLL = new BLL_cargo();
-                lista = objBLL.buscarDescricao(Campo);
-                funcoes.gridCargo(dataGrid, string.Empty);
+                objBLL = new BLL_buscaCargoPorDescricao();
+                lista = objBLL.Buscar(Campo);
                 dataGrid.DataSource = lista;
             }
             catch (SqlException exl)

@@ -33,14 +33,14 @@ namespace ENT.preTeste
 
     public class MOD_acessoSolicitaTeste
     {
-        public int progSolicitaTeste { get; set; } = 34;
-        public int rotInsSolicitaTeste { get; set; } = 191;
-        public int rotEditSolicitaTeste { get; set; } = 192;
-        public int rotExcSolicitaTeste { get; set; } = 193;
-        public int rotVisSolicitaTeste { get; set; } = 194;
-        public int rotImpSolicitaTeste { get; set; } = 195;
-        public int rotCancelSolicitaTeste { get; set; } = 197;
-        public int rotAutorizaSolicitaTeste { get; set; } = 198;
-        public int rotNegaSolicitaTeste { get; set; } = 199;
+        public static int ProgSolicitaTeste { get; } = 34;
+        public static int RotInsSolicitaTeste { get; } = 191;
+        public static int RotEditSolicitaTeste { get; } = 192;
+        public static int RotExcSolicitaTeste { get; } = 193;
+        public static int RotVisSolicitaTeste { get; } = 194;
+        public static int RotImpSolicitaTeste { get; } = 195;
+        public static int RotCancelSolicitaTeste { get; } = 197;
+        public static int RotAutorizaSolicitaTeste { get; } = 198;
+        public static int RotNegaSolicitaTeste { get; } = 199;
     }
 }

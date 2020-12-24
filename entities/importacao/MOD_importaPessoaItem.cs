@@ -40,7 +40,7 @@ namespace ENT.importa
         public string Email { get; set; }
         public string CodCCB { get; set; }
         public string CodigoCCB { get; set; }
-        public string Descricao { get; set; }
+        public string DescricaoCCB { get; set; }
         public string EndCCB { get; set; }
         public string NumCCB { get; set; }
         public string BairroCCB { get; set; }
@@ -96,5 +96,17 @@ namespace ENT.importa
         public string OrgaoEmissor { get; set; }
 
         public MOD_log Logs { get; set; }
+    }
+
+    public class MOD_acessoImportaPessoaItem
+    {
+        private readonly int rotEditImportaPessoaItem = 236;
+        public int RotEditImportaPessoaItem
+        {
+            get
+            {
+                return rotEditImportaPessoaItem;
+            }
+        }
     }
 }

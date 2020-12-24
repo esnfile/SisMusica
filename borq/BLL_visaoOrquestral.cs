@@ -31,7 +31,7 @@ namespace borq
         BLL_voz objBLL_Voz = null;
         BLL_instrumento objBLL_Instrumento = null;
 
-        BLL_pessoa objBLL_Pessoa = null;
+        IBLL_buscaVisaoOrquestral objBLL_Pessoa = null;
 
         List<MOD_ccb> listaCCB = new List<MOD_ccb>();
         List<MOD_regiaoAtuacao> listaRegiao = new List<MOD_regiaoAtuacao>();
@@ -245,8 +245,8 @@ namespace borq
         {
             try
             {
-                objBLL_Pessoa = new BLL_pessoa();
-                listaPessoa = objBLL_Pessoa.buscarVisaoOrquestral(CodInstrumento, CodCCB, Ativo);
+                objBLL_Pessoa = new BLL_buscaVisaoOrquestral();
+                listaPessoa = objBLL_Pessoa.Buscar(CodInstrumento, CodCCB, Ativo);
                 return listaPessoa;
             }
             catch (SqlException exl)

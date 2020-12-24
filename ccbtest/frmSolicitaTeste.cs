@@ -19,7 +19,6 @@ using BLL.pessoa;
 using ENT.pessoa;
 using ENT.preTeste;
 using BLL.uteis;
-using ccbtest.pesquisa;
 
 namespace ccbtest
 {
@@ -36,9 +35,6 @@ namespace ccbtest
                 formChama = forms;
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
-
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
 
                 ///Recebe a lista e armazena
                 listaSolicita = lista;
@@ -70,13 +66,11 @@ namespace ccbtest
 
         clsException excp;
 
-        List<MOD_acessos> listaAcesso = null;
-
         BLL_solicitaTeste objBLL = null;
         MOD_solicitaTeste objEnt = null;
         List<MOD_solicitaTeste> listaSolicita = null;
 
-        BLL_pessoa objBLL_Pessoa = null;
+        IBLL_buscaPessoa objBLL_Pessoa = null;
         List<MOD_pessoa> listaPessoa = null;
 
         BLL_ccb objBLL_CCB = null;
@@ -575,8 +569,8 @@ namespace ccbtest
             {
                 List<MOD_pessoa> listaPesFiltro = new List<MOD_pessoa>();
 
-                objBLL_Pessoa = new BLL_pessoa();
-                listaPessoa = objBLL_Pessoa.buscarCod(vCodPessoa, modulos.CodUsuarioCCB, true);
+                objBLL_Pessoa = new BLL_buscaPessoaPorCodPessoa();
+                listaPessoa = objBLL_Pessoa.Buscar(vCodPessoa, true);
 
                 if (listaPessoa != null && listaPessoa.Count > 0)
                 {

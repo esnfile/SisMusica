@@ -73,6 +73,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="controles\TextBoxPersonal.Designer.cs" />
+    <Compile Include="DadosSession\BLL_Session.cs" />
     <Compile Include="exceptions\clsException.cs" />
     <Compile Include="formularios\carregBarra.cs">
       <SubType>Form</SubType>

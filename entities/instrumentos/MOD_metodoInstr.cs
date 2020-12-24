@@ -38,9 +38,9 @@ namespace ENT.instrumentos
     }
     public class MOD_acessoMetodoInstr
     {
-        public int progMetodoInstr { get; set; } = 6;
-        public int rotInsMetodoInstr { get; set; } = 11;
-        public int rotEditMetodoInstr { get; set; } = 144;
-        public int rotExcMetodoInstr { get; set; } = 145;
+        public static int ProgMetodoInstr { get; } = 6;
+        public static int RotInsMetodoInstr { get; } = 11;
+        public static int RotEditMetodoInstr { get; } = 144;
+        public static int RotExcMetodoInstr { get; } = 145;
     }
 }

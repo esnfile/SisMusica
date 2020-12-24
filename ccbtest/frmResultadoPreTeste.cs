@@ -20,7 +20,6 @@ using ENT.instrumentos;
 using ENT.pessoa;
 using ENT.preTeste;
 using ENT.uteis;
-using ccbtest.pesquisa;
 using ENT.licao;
 using BLL.licao;
 
@@ -39,9 +38,6 @@ namespace ccbtest
                 formChama = forms;
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
-
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
 
                 ///Recebe a lista e armazena
                 listaPreTesteFicha = lista;
@@ -75,7 +71,6 @@ namespace ccbtest
         #region declaracoes
 
         clsException excp;
-        List<MOD_acessos> listaAcesso = null;
 
         MOD_preTeste objEnt_PreTeste = null;
 
@@ -108,7 +103,7 @@ namespace ccbtest
         List<MOD_preTesteTeoria> listaDeleteTesteTeoria = new List<MOD_preTesteTeoria>();
         BindingSource objBind_TesteTeoria = new BindingSource();
 
-        BLL_pessoa objBLL_Pessoa = null;
+        IBLL_buscaPessoa objBLL_Pessoa = null;
         List<MOD_pessoa> listaPessoa = new List<MOD_pessoa>();
 
         BLL_solicitaTeste objBLL_Solicita = null;
@@ -731,8 +726,8 @@ namespace ccbtest
             {
                 List<MOD_pessoa> listaPesFiltro = new List<MOD_pessoa>();
 
-                objBLL_Pessoa = new BLL_pessoa();
-                listaPessoa = objBLL_Pessoa.buscarCod(vCodPessoa, modulos.CodUsuarioCCB, true);
+                objBLL_Pessoa = new BLL_buscaPessoaPorCodPessoa();
+                listaPessoa = objBLL_Pessoa.Buscar(vCodPessoa, true);
 
                 if (listaPessoa != null && listaPessoa.Count > 0)
                 {

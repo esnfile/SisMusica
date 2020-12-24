@@ -21,10 +21,10 @@ namespace ENT.instrumentos
 
     public class MOD_acessoEscala
     {
-        public int progEscala { get; set; } = 10;
-        public int rotInsEscala { get; set; } = 30;
-        public int rotEditEscala { get; set; } = 31;
-        public int rotExcEscala { get; set; } = 32;
-        public int rotVisEscala { get; set; } = 33;
+        public static int ProgEscala { get; } = 10;
+        public static int RotInsEscala { get; } = 30;
+        public static int RotEditEscala { get; } = 31;
+        public static int RotExcEscala { get; } = 32;
+        public static int RotVisEscala { get; } = 33;
     }
 }

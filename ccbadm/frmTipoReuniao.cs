@@ -33,9 +33,6 @@ namespace ccbadm
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
 
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
-
                 ///Recebe a lista e armazena
                 listaTipo = lista;
 
@@ -61,8 +58,6 @@ namespace ccbadm
         #region declaracoes
 
         clsException excp;
-
-        List<MOD_acessos> listaAcesso = null;
 
         BLL_tipoReuniao objBLL = null;
         MOD_tipoReuniao objEnt = null;
@@ -499,7 +494,8 @@ namespace ccbadm
                 }
 
                 listaTipoCargo.AddRange(listaNova);
-                funcoes.gridCargo(gridCargo, "TipoReuniaoCargo");
+                //chama a funcão montar grid
+                new BLL_GridCargo().MontarGrid(gridCargo, "Relatorios");
                 ///vincula a lista ao DataSource do DataGriView
                 gridCargo.DataSource = listaTipoCargo;
             }
@@ -519,8 +515,7 @@ namespace ccbadm
         {
             try
             {
-                MOD_acessoTipoReuniao entAcesso = new MOD_acessoTipoReuniao();
-                gpoCargo.Enabled = funcoes.liberacoes(entAcesso.rotipoReuniaoCargo);
+                gpoCargo.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoTipoReuniao.RotipoReuniaoCargo);
             }
             catch (SqlException exl)
             {

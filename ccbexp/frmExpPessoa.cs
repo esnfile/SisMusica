@@ -196,6 +196,15 @@ namespace ccbexp
             //Read more: http://www.linhadecodigo.com.br/artigo/3462/exportar-datagridview-para-arquivo-do-excel-com-csharp.aspx#ixzz6W4QV0PVL
             if (gridPessoa.Rows.Count > 0)
             {
+                    Excel.Application App; // Aplicação Excel
+                    Excel.Workbook WorkBook; // Pasta
+                    Excel.Worksheet WorkSheet; // Planilha
+                    object misValue = System.Reflection.Missing.Value;
+                        App = new Excel.Application();
+                        WorkBook = App.Workbooks.Add(misValue);
+                        WorkSheet = (Excel.Worksheet)WorkBook.Worksheets.get_Item(1);
+
+
                 try
                 {
                     if (salvarExporta().Equals(true))
@@ -205,14 +214,7 @@ namespace ccbexp
 
                         SaveFileDialog salvar = new SaveFileDialog();
 
-                        Excel.Application App; // Aplicação Excel
-                        Excel.Workbook WorkBook; // Pasta
-                        Excel.Worksheet WorkSheet; // Planilha
-                        object misValue = System.Reflection.Missing.Value;
 
-                        App = new Excel.Application();
-                        WorkBook = App.Workbooks.Add(misValue);
-                        WorkSheet = (Excel.Worksheet)WorkBook.Worksheets.get_Item(1);
                         int i = 0;
                         int j = 0;
 
@@ -508,6 +510,9 @@ namespace ccbexp
         {
             try
             {
+                //chama a funcão montar grid
+                new BLL_GridCargo().MontarGrid(gridCargo, string.Empty);
+
                 tabVisual.Enabled = false;
                 lblVisualEnabled.Visible = true;
             }
@@ -1138,9 +1143,8 @@ namespace ccbexp
                     objBLL_Usuario = new BLL_usuario();
                     listaCargoCCB = objBLL_Usuario.buscarUsuarioCargo(modulos.CodUsuario);
 
-                    funcoes.gridCargo(dataGrid, "Relatorios");
-                    dataGrid.DataSource = listaCargoCCB;
-                    dataGrid.DefaultCellStyle.ForeColor = Color.Black;
+                    gridCargo.DataSource = listaCargoCCB;
+                    gridCargo.DefaultCellStyle.ForeColor = Color.Black;
                 }
             }
             catch (SqlException exl)
@@ -1474,14 +1478,13 @@ namespace ccbexp
                     CodCargo = preencherSelecionados("Cargo", gridCargo);
                     CodComum = preencherSelecionados("Comum", gridComum);
 
-                    objBLL_Pessoa = new BLL_pessoa();
                     if (lblStatus.Text.Equals("Ambos"))
                     {
-                        listaPessoa = objBLL_Pessoa.buscarRelatorioPessoa(lblSexo.Text, lblEstadoCivil.Text, CodCargo, CodComum, "DataCadastro", txtDataInicial.Text, txtDataFinal.Text, lblDesenvolvimento.Text);
+                        listaPessoa = new BLL_buscaRelatorioPessoa().Buscar(lblSexo.Text, lblEstadoCivil.Text, CodCargo, CodComum, "DataCadastro", txtDataInicial.Text, txtDataFinal.Text, lblDesenvolvimento.Text);
                     }
                     else
                     {
-                        listaPessoa = objBLL_Pessoa.buscarRelatorioPessoa(lblSexo.Text, lblEstadoCivil.Text, CodCargo, CodComum, lblStatus.Text.Equals("Sim") ? true : false, "DataCadastro", txtDataInicial.Text, txtDataFinal.Text, lblDesenvolvimento.Text);
+                        listaPessoa = new BLL_buscaRelatorioPessoa().Buscar(lblSexo.Text, lblEstadoCivil.Text, CodCargo, CodComum, lblStatus.Text.Equals("Sim") ? true : false, "DataCadastro", txtDataInicial.Text, txtDataFinal.Text, lblDesenvolvimento.Text);
                     }
 
                     listaPessoa = listaPessoa.OrderBy(p => p.Descricao).ToList();

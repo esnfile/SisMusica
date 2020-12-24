@@ -1427,14 +1427,12 @@ namespace ccbadm
         {
             try
             {
-                MOD_acessoReuniao entAcesso = new MOD_acessoReuniao();
-
-                btnCodIns.Enabled = funcoes.liberacoes(entAcesso.rotInsReuniao);
-                btnCodEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditReuniao, dataGrid);
-                btnCodCancel.Enabled = funcoes.liberacoes(entAcesso.rotCancelReuniao, dataGrid);
-                btnCodVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisReuniao, dataGrid);
-                btnCodImp.Enabled = funcoes.liberacoes(entAcesso.rotImpReuniao, dataGrid);
-                btnCodFinaliza.Enabled = funcoes.liberacoes(entAcesso.rotFinalReuniao, dataGrid);
+                btnCodIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotInsReuniao);
+                btnCodEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotEditReuniao, dataGrid);
+                btnCodCancel.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotCancelReuniao, dataGrid);
+                btnCodVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotVisReuniao, dataGrid);
+                btnCodImp.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotImpReuniao, dataGrid);
+                btnCodFinaliza.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotFinalReuniao, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1453,14 +1451,12 @@ namespace ccbadm
         {
             try
             {
-                MOD_acessoReuniao entAcesso = new MOD_acessoReuniao();
-
-                btnRegIns.Enabled = funcoes.liberacoes(entAcesso.rotInsReuniao);
-                btnRegEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditReuniao, dataGrid);
-                btnRegCancel.Enabled = funcoes.liberacoes(entAcesso.rotCancelReuniao, dataGrid);
-                btnRegVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisReuniao, dataGrid);
-                btnRegImp.Enabled = funcoes.liberacoes(entAcesso.rotImpReuniao, dataGrid);
-                btnRegFinaliza.Enabled = funcoes.liberacoes(entAcesso.rotFinalReuniao, dataGrid);
+                btnRegIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotInsReuniao);
+                btnRegEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotEditReuniao, dataGrid);
+                btnRegCancel.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotCancelReuniao, dataGrid);
+                btnRegVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotVisReuniao, dataGrid);
+                btnRegImp.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotImpReuniao, dataGrid);
+                btnRegFinaliza.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotFinalReuniao, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1479,14 +1475,12 @@ namespace ccbadm
         {
             try
             {
-                MOD_acessoReuniao entAcesso = new MOD_acessoReuniao();
-
-                btnDataIns.Enabled = funcoes.liberacoes(entAcesso.rotInsReuniao);
-                btnDataEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditReuniao, dataGrid);
-                btnDataCancel.Enabled = funcoes.liberacoes(entAcesso.rotCancelReuniao, dataGrid);
-                btnDataVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisReuniao, dataGrid);
-                btnDataImp.Enabled = funcoes.liberacoes(entAcesso.rotImpReuniao, dataGrid);
-                btnDataFinaliza.Enabled = funcoes.liberacoes(entAcesso.rotFinalReuniao, dataGrid);
+                btnDataIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotInsReuniao);
+                btnDataEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotEditReuniao, dataGrid);
+                btnDataCancel.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotCancelReuniao, dataGrid);
+                btnDataVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotVisReuniao, dataGrid);
+                btnDataImp.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotImpReuniao, dataGrid);
+                btnDataFinaliza.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotFinalReuniao, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1505,14 +1499,12 @@ namespace ccbadm
         {
             try
             {
-                MOD_acessoReuniao entAcesso = new MOD_acessoReuniao();
-
-                btnSitIns.Enabled = funcoes.liberacoes(entAcesso.rotInsReuniao);
-                btnSitEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditReuniao, dataGrid);
-                btnSitCancel.Enabled = funcoes.liberacoes(entAcesso.rotCancelReuniao, dataGrid);
-                btnSitVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisReuniao, dataGrid);
-                btnSitImp.Enabled = funcoes.liberacoes(entAcesso.rotImpReuniao, dataGrid);
-                btnSitFinaliza.Enabled = funcoes.liberacoes(entAcesso.rotFinalReuniao, dataGrid);
+                btnSitIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotInsReuniao);
+                btnSitEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotEditReuniao, dataGrid);
+                btnSitCancel.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotCancelReuniao, dataGrid);
+                btnSitVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotVisReuniao, dataGrid);
+                btnSitImp.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotImpReuniao, dataGrid);
+                btnSitFinaliza.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoReuniao.RotFinalReuniao, dataGrid);
             }
             catch (SqlException exl)
             {

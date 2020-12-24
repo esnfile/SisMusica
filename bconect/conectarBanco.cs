@@ -36,7 +36,7 @@ namespace BLL.conecta
             ///Local
             modulos.CaminhoBD = @"Data Source=EDUARDO\SQLEXPRESS;Initial Catalog=CCB_Musica;Integrated Security=True";
 
-            modulos.preencheStrConexao();
+            Conect.Conectar();
         }
 
         private void InitializeComponent()

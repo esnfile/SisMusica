@@ -59,7 +59,7 @@ namespace ccbadm
 
         List<MOD_listaPresenca> listaPresenca = null;
 
-        BLL_pessoa objBLL_Pessoa = null;
+        IBLL_buscaPessoa objBLL_Pessoa = null;
         List<MOD_pessoa> listaPessoa = null;
 
         Form formChama;
@@ -209,8 +209,8 @@ namespace ccbadm
                 txtProfessoraPres.Text = Convert.ToString(listaFiltroProf.Count()).PadLeft(5, '0');
 
                 //Total Geral
-                objBLL_Pessoa = new BLL_pessoa();
-                listaPessoa = objBLL_Pessoa.buscarCod(string.Empty);
+                objBLL_Pessoa = new BLL_buscaPessoaPorCodPessoa();
+                listaPessoa = objBLL_Pessoa.Buscar(string.Empty);
 
                 //Encarregado Regional
                 foreach (MOD_pessoa entPessoa in listaPessoa)

@@ -32,6 +32,8 @@
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -98,21 +100,22 @@
     <Compile Include="preTeste\MOD_preTesteMts.cs" />
     <Compile Include="preTeste\MOD_preTesteTeoria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="session\MOD_Session.cs" />
     <Compile Include="teste\MOD_solicitaTeste.cs" />
-    <Compile Include="uteis\MOD_parametroTesteMet.cs" />
-    <Compile Include="uteis\MOD_parametroPreTesteMet.cs" />
+    <Compile Include="parametros\MOD_parametroTesteMet.cs" />
+    <Compile Include="parametros\MOD_parametroPreTesteMet.cs" />
     <Compile Include="uteis\MOD_regionalParametro.cs" />
     <Compile Include="teste\MOD_licaoTesteTeoria .cs" />
     <Compile Include="teste\MOD_licaoTesteMts.cs" />
     <Compile Include="teste\MOD_licaoTesteMet.cs" />
     <Compile Include="teste\MOD_licaoTesteHino.cs" />
     <Compile Include="teste\MOD_licaoTesteEscala.cs" />
-    <Compile Include="uteis\MOD_parametros.cs" />
+    <Compile Include="parametros\MOD_parametros.cs" />
     <Compile Include="uteis\MOD_regional.cs" />
-    <Compile Include="uteis\MOD_regiaoPessoa.cs" />
+    <Compile Include="pessoa\MOD_regiaoPessoa.cs" />
     <Compile Include="uteis\MOD_regiaoAtuacao.cs" />
     <Compile Include="uteis\MOD_ccb.cs" />
-    <Compile Include="uteis\MOD_ccbPessoa.cs" />
+    <Compile Include="pessoa\MOD_pessoaCCB.cs" />
     <Compile Include="uteis\MOD_cidade.cs" />
     <Compile Include="uteis\MOD_erros.cs" />
     <Compile Include="uteis\MOD_log.cs" />
@@ -120,10 +123,7 @@
     <Compile Include="uteis\MOD_uf.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dconect\dconect.csproj">
-      <Project>{770c4aa7-58cc-4fb3-81e1-07a323700e0b}</Project>
-      <Name>dconect</Name>
-    </ProjectReference>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

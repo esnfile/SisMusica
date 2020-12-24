@@ -68,7 +68,7 @@ namespace ccbrepess
         MOD_erros objEnt_Erros = null;
         List<MOD_erros> listaErros;
         
-        BLL_pessoa objBLL_Pessoa;
+        IBLL_buscaRelatorio objBLL_Pessoa;
         List<MOD_pessoa> listaPessoa = new List<MOD_pessoa>();
 
         List<MOD_ccb> listaCCB = new List<MOD_ccb>();
@@ -416,6 +416,8 @@ namespace ccbrepess
 
                 //funcoes.gridRegiao(gridRegiao, "VisaoOrquestral");
                 //funcoes.gridCCB(gridComComum, "VisaoOrquestral");
+
+                new BLL_GridCargo().MontarGrid(gridCargo, "Relatorios");
 
                 //verificar permissão de acesso
                 //verPermVisao();
@@ -784,9 +786,8 @@ namespace ccbrepess
                     objBLL_Usuario = new BLL_usuario();
                     listaCargoCCB = objBLL_Usuario.buscarUsuarioCargo(modulos.CodUsuario);
 
-                    funcoes.gridCargo(dataGrid, "Relatorios");
-                    dataGrid.DataSource = listaCargoCCB;
-                    dataGrid.DefaultCellStyle.ForeColor = Color.Black;
+                    gridCargo.DataSource = listaCargoCCB;
+                    gridCargo.DefaultCellStyle.ForeColor = Color.Black;
                 }
             }
             catch (SqlException exl)
@@ -1141,14 +1142,14 @@ namespace ccbrepess
                     CodCargo = preencherSelecionados("Cargo", gridCargo);
                     CodComum = preencherSelecionados("Comum", gridComum);
 
-                    objBLL_Pessoa = new BLL_pessoa();
+                    objBLL_Pessoa = new BLL_buscaRelatorioPessoa();
                     if (lblStatus.Text.Equals("Ambos"))
                     {
-                        listaPessoa = objBLL_Pessoa.buscarRelatorioPessoa(lblSexo.Text, lblEstadoCivil.Text, CodCargo, CodComum, optDataCadastro.Checked.Equals(true) ? "DataCadastro" : optDataNasc.Checked.Equals(true) ? "DataNasc" : "DataApresentacao", txtDataInicial.Text, txtDataFinal.Text);
+                        listaPessoa = objBLL_Pessoa.Buscar(lblSexo.Text, lblEstadoCivil.Text, CodCargo, CodComum, optDataCadastro.Checked.Equals(true) ? "DataCadastro" : optDataNasc.Checked.Equals(true) ? "DataNasc" : "DataApresentacao", txtDataInicial.Text, txtDataFinal.Text);
                     }
                     else
                     {
-                        listaPessoa = objBLL_Pessoa.buscarRelatorioPessoa(lblSexo.Text, lblEstadoCivil.Text, CodCargo, CodComum, lblStatus.Text.Equals("Sim") ? true : false, optDataCadastro.Checked.Equals(true) ? "DataCadastro" : optDataNasc.Checked.Equals(true) ? "DataNasc" : "DataApresentacao", txtDataInicial.Text, txtDataFinal.Text);
+                        listaPessoa = objBLL_Pessoa.Buscar(lblSexo.Text, lblEstadoCivil.Text, CodCargo, CodComum, lblStatus.Text.Equals("Sim") ? true : false, optDataCadastro.Checked.Equals(true) ? "DataCadastro" : optDataNasc.Checked.Equals(true) ? "DataNasc" : "DataApresentacao", txtDataInicial.Text, txtDataFinal.Text);
                     }
 
                     if (optAnalitico.Checked.Equals(true))

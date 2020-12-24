@@ -22,6 +22,8 @@ using ENT.uteis;
 using ENT.acessos;
 using BLL.instrumentos;
 using ccbpess.pesquisa;
+using BLL.cargo;
+using ENT.Session;
 
 namespace ccbadm
 {
@@ -38,9 +40,6 @@ namespace ccbadm
                 formChama = forms;
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
-
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
 
                 ///Recebe a lista e armazena
                 listaPessoa = lista;
@@ -77,9 +76,8 @@ namespace ccbadm
         #region declaracoes
 
         clsException excp;
-        List<MOD_acessos> listaAcesso = null;
 
-        BLL_pessoa objBLL = null;
+        IBLL_Pessoa objBLL = null;
         MOD_pessoa objEnt = null;
         List<MOD_pessoa> listaPessoa = null;
 
@@ -89,7 +87,7 @@ namespace ccbadm
         BLL_cidade objBLL_Cid = null;
         List<MOD_cidade> listaCidade = null;
 
-        BLL_cargo objBLL_Cargo = null;
+        IBLL_buscaCargo objBLL_Cargo = null;
         List<MOD_cargo> listaCargo = null;
         MOD_cargo CargoSelecao = null;
 
@@ -105,7 +103,7 @@ namespace ccbadm
         Form formChama;
         DataGridView dataGrid;
 
-        string foto = null;
+        string caminhoFoto = null;
 
         #endregion
 
@@ -779,12 +777,12 @@ namespace ccbadm
                     if (Convert.ToInt64(txtCodigo.Text).Equals(0))
                     {
                         //chama a rotina da camada de negocios para efetuar inserção ou update
-                        objBLL.inserir(criarTabela());
+                        objBLL.Insert(criarTabela(), out listaPessoa);
                     }
                     else
                     {
                         //chama a rotina da camada de negocios para efetuar inserção ou update
-                        objBLL.salvar(criarTabela());
+                        objBLL.Update(criarTabela(), out listaPessoa);
                     }
 
                     //conversor para retorno ao formulario que chamou
@@ -1007,9 +1005,9 @@ namespace ccbadm
         {
             try
             {
-                objBLL = new BLL_pessoa();
+                IBLL_buscaPessoa objBLL_Pessoa = new BLL_buscaPessoaPorCpf();
                 List<MOD_pessoa> listaValidaCpf = new List<MOD_pessoa>();
-                listaValidaCpf = objBLL.buscarCpf(this.txtCpf.Text);
+                listaValidaCpf = objBLL_Pessoa.Buscar(this.txtCpf.Text);
 
                 if (listaValidaCpf.Count > 0)
                 {
@@ -1128,7 +1126,7 @@ namespace ccbadm
                 objEnt.FotoPessoa = new MOD_pessoaFoto();
                 objEnt.FotoPessoa.CodFoto = this.lblCodFoto.Text;
                 objEnt.FotoPessoa.CodPessoa = this.txtCodigo.Text;
-                objEnt.FotoPessoa.Foto = foto;
+                objEnt.FotoPessoa.Foto = carregaFoto();
                 return objEnt.FotoPessoa;
             }
             catch (SqlException exl)
@@ -1353,12 +1351,12 @@ namespace ccbadm
         {
             try
             {
-                objBLL_Cargo = new BLL_cargo();
+                objBLL_Cargo = new BLL_buscaCargoPorDescricao();
                 listaCargo = new List<MOD_cargo>();
 
                 cboCodCargo.SelectedIndexChanged -= new EventHandler(cboCodCargo_SelectedIndexChanged);
 
-                listaCargo = objBLL_Cargo.buscarCod(string.Empty);
+                listaCargo = objBLL_Cargo.Buscar(string.Empty);
                 cboCodCargo.DataSource = listaCargo;
                 cboCodCargo.ValueMember = "CodCargo";
                 cboCodCargo.DisplayMember = "DescCargo";
@@ -1462,7 +1460,7 @@ namespace ccbadm
                         lblCidadeCom.Text = string.Empty;
                         txtEstadoCom.Text = string.Empty;
 
-                        formulario = new frmCCBBusca(modulos.listaLibAcesso, this, Campo);
+                        formulario = new frmCCBBusca(MOD_Session.ListaAcessoLogado, this, Campo);
                         ((frmCCBBusca)formulario).MdiParent = MdiParent;
                         ((frmCCBBusca)formulario).StartPosition = FormStartPosition.Manual;
                         funcoes.CentralizarForm(((frmCCBBusca)formulario));
@@ -1686,7 +1684,7 @@ namespace ccbadm
                     try
                     {
                         pctFoto.Image = new Bitmap(dlg.OpenFile());
-                        foto = dlg.FileName;
+                        caminhoFoto = dlg.FileName;
                     }
                     catch (Exception ex)
                     {
@@ -1704,6 +1702,34 @@ namespace ccbadm
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// Função que carrega a Imagem e Converte em Binário
+        /// </summary>
+        /// <returns></returns>
+        private byte[] carregaFoto()
+        {
+            try
+            {
+                FileStream fs = new FileStream(caminhoFoto, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+
+                byte[] foto = br.ReadBytes((int)fs.Length);
+                br.Close();
+                fs.Close();
+
+                return foto;
+            }
+            catch (SqlException exl)
+            {
+                throw exl;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         #region verificação e liberação de acesso
 
@@ -1724,8 +1750,8 @@ namespace ccbadm
                     }
                     else
                     {
-                        lblCargo.Enabled = funcoes.liberacoes(entAcesso.rotPesAteraCargo);
-                        cboCodCargo.Enabled = funcoes.liberacoes(entAcesso.rotPesAteraCargo);
+                        lblCargo.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPessoa.RotPesAteraCargo);
+                        cboCodCargo.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPessoa.RotPesAteraCargo);
                     }
                 }
                 else
@@ -1751,21 +1777,19 @@ namespace ccbadm
         {
             try
             {
-                MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
-
-                tabAdicionais.Enabled = funcoes.liberacoes(entAcesso.rotPesAdicionais);
+                tabAdicionais.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPessoa.RotPesAdicionais);
 
                 if (tabAdicionais.Enabled.Equals(true))
                 {
-                    tabFormacao.Enabled = funcoes.liberacoes(entAcesso.rotPesAdiForma);
-                    tabDiversos.Enabled = funcoes.liberacoes(entAcesso.rotPesAdiOrquetra);
-                    tabOutraOrquestra.Enabled = funcoes.liberacoes(entAcesso.rotPesAdiOrquetra);
+                    tabFormacao.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPessoa.RotPesAdiForma);
+                    tabDiversos.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPessoa.RotPesAdiOrquetra);
+                    tabOutraOrquestra.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPessoa.RotPesAdiOrquetra);
 
                     if (!lblCodCargo.Text.Equals(string.Empty))
                     {
                         if (CargoSelecao.PermiteInstrumento.Equals("Sim"))
                         {
-                            if (funcoes.liberacoes(entAcesso.rotPesAdiInstrumento).Equals(true))
+                            if (BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPessoa.RotPesAdiInstrumento).Equals(true))
                             {
                                 gpoEstudo.Enabled = true;
 

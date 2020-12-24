@@ -23,10 +23,10 @@ namespace ENT.uteis
 
     public class MOD_acessoCidade
     {
-        public int progCidade { get; set; } = 7;
-        public int rotInsCidade { get; set; } = 18;
-        public int rotEditCidade { get; set; } = 19;
-        public int rotExcCidade { get; set; } = 20;
-        public int rotVisCidade { get; set; } = 21;
+        public static int ProgCidade { get; set; } = 7;
+        public static int RotInsCidade { get; set; } = 18;
+        public static int RotEditCidade { get; set; } = 19;
+        public static int RotExcCidade { get; set; } = 20;
+        public static int RotVisCidade { get; set; } = 21;
     }
 }

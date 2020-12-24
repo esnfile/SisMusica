@@ -22,6 +22,7 @@ using ENT.uteis;
 using ENT.acessos;
 using BLL.instrumentos;
 using ENT.importa;
+using BLL.cargo;
 
 namespace ccbimp
 {
@@ -37,9 +38,6 @@ namespace ccbimp
                 //indica que esse formulario foi aberto por outro
                 formChama = forms;
                 txtCodImportaErro.Text = CodImportaErro;
-
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
 
                 ///Recebe a lista e armazena
                 listaPessoa = lista;
@@ -76,9 +74,8 @@ namespace ccbimp
         #region declaracoes
 
         clsException excp;
-        List<MOD_acessos> listaAcesso = null;
 
-        BLL_pessoa objBLL = null;
+        IBLL_Pessoa objBLL = null;
         MOD_pessoa objEnt = null;
         List<MOD_pessoa> listaPessoa = null;
 
@@ -88,7 +85,7 @@ namespace ccbimp
         BLL_cidade objBLL_Cid = null;
         List<MOD_cidade> listaCidade = null;
 
-        BLL_cargo objBLL_Cargo = null;
+        IBLL_buscaCargo objBLL_Cargo = null;
         List<MOD_cargo> listaCargo = null;
         MOD_cargo CargoSelecao = null;
 
@@ -107,7 +104,7 @@ namespace ccbimp
         Form formulario;
         Form formChama;
 
-        string foto = null;
+        string caminhoFoto = null;
 
         #endregion
 
@@ -809,19 +806,19 @@ namespace ccbimp
                         if (Convert.ToInt64(txtCodigo.Text).Equals(0))
                         {
                             //chama a rotina da camada de negocios para efetuar inserção ou update
-                            objBLL.inserir(criarTabela());
+                            objBLL.Insert(criarTabela(), out listaPessoa);
                         }
                         else
                         {
                             //chama a rotina da camada de negocios para efetuar inserção ou update
-                            objBLL.salvar(criarTabela());
+                            objBLL.Update(criarTabela(), out listaPessoa);
                         }
 
                         //conversor para retorno ao formulario que chamou
                         if (formChama.Name.Equals("frmImportarPessoaErros"))
                         {
                             ((frmImportarPessoaErros)formChama).objEnt_ItemErro = criarItemImportado();
-                            ((frmImportarPessoaErros)formChama).salvarItem();
+                            ((frmImportarPessoaErros)formChama).preencherErro(modulos.CodUsuarioCCB);
                         }
 
                         FormClosing -= new FormClosingEventHandler(frmPessoaErros_FormClosing);
@@ -1034,9 +1031,9 @@ namespace ccbimp
                 }
                 else
                 {
-                    objBLL = new BLL_pessoa();
+                    IBLL_buscaPessoa objBLL_Pessoa = new BLL_buscaPessoaPorCpf();
                     List<MOD_pessoa> listaValidaCpf = new List<MOD_pessoa>();
-                    listaValidaCpf = objBLL.buscarCpf(txtCpf.Text);
+                    listaValidaCpf = objBLL_Pessoa.Buscar(txtCpf.Text);
 
                     if (listaValidaCpf.Count > 0)
                     {
@@ -1167,7 +1164,7 @@ namespace ccbimp
                 objEnt.FotoPessoa = new MOD_pessoaFoto();
                 objEnt.FotoPessoa.CodFoto = this.lblCodFoto.Text;
                 objEnt.FotoPessoa.CodPessoa = this.txtCodigo.Text;
-                objEnt.FotoPessoa.Foto = foto;
+                objEnt.FotoPessoa.Foto = carregaFoto();
                 return objEnt.FotoPessoa;
             }
             catch (SqlException exl)
@@ -1505,12 +1502,12 @@ namespace ccbimp
         {
             try
             {
-                objBLL_Cargo = new BLL_cargo();
+                objBLL_Cargo = new BLL_buscaCargoPorDescricao();
                 listaCargo = new List<MOD_cargo>();
 
                 cboCodCargo.SelectedIndexChanged -= new EventHandler(cboCodCargo_SelectedIndexChanged); 
                     
-                listaCargo = objBLL_Cargo.buscarCod(string.Empty);
+                listaCargo = objBLL_Cargo.Buscar(string.Empty);
                 cboCodCargo.DataSource = listaCargo;
                 cboCodCargo.ValueMember = "CodCargo";
                 cboCodCargo.DisplayMember = "DescCargo";
@@ -1589,11 +1586,11 @@ namespace ccbimp
         {
             try
             {
-                BLL_pessoa objBLL_Pessoa = new BLL_pessoa();
+                IBLL_buscaPessoa objBLL_Pessoa = new BLL_buscaPessoaPorCodPessoa();
                 List<MOD_pessoa> listaPes = new List<MOD_pessoa>();
                 List<MOD_pessoa> listaPesFiltro = new List<MOD_pessoa>();
 
-                listaPes = objBLL_Pessoa.buscarCod(vCodPessoa, modulos.CodUsuarioCCB, modulos.CodUsuarioCargo);
+                listaPes = objBLL_Pessoa.Buscar(vCodPessoa);
 
                 if (Campo.Equals("Instrutor"))
                 {
@@ -2099,7 +2096,7 @@ namespace ccbimp
                     try
                     {
                         pctFoto.Image = new Bitmap(dlg.OpenFile());
-                        foto = dlg.FileName;
+                        caminhoFoto = dlg.FileName;
                     }
                     catch (Exception ex)
                     {
@@ -2107,6 +2104,33 @@ namespace ccbimp
                     }
                 }
                 dlg.Dispose();
+            }
+            catch (SqlException exl)
+            {
+                throw exl;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Função que carrega a Imagem e Converte em Binário
+        /// </summary>
+        /// <returns></returns>
+        private byte[] carregaFoto()
+        {
+            try
+            {
+                FileStream fs = new FileStream(caminhoFoto, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+
+                byte[] foto = br.ReadBytes((int)fs.Length);
+                br.Close();
+                fs.Close();
+
+                return foto;
             }
             catch (SqlException exl)
             {
@@ -2129,7 +2153,6 @@ namespace ccbimp
             {
                 if (!lblSexo.Text.Equals(string.Empty))
                 {
-                    MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
                     if (Convert.ToInt64(txtCodigo.Text).Equals(0))
                     {
                         lblCargo.Enabled = true;
@@ -2137,8 +2160,8 @@ namespace ccbimp
                     }
                     else
                     {
-                        lblCargo.Enabled = funcoes.liberacoes(entAcesso.rotPesAteraCargo);
-                        cboCodCargo.Enabled = funcoes.liberacoes(entAcesso.rotPesAteraCargo);
+                        lblCargo.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPessoa.RotPesAteraCargo);
+                        cboCodCargo.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPessoa.RotPesAteraCargo);
                     }
                 }
                 else
@@ -2164,21 +2187,19 @@ namespace ccbimp
         {
             try
             {
-                MOD_acessoPessoa entAcesso = new MOD_acessoPessoa();
-
-                tabAdicionais.Enabled = funcoes.liberacoes(entAcesso.rotPesAdicionais);
+                tabAdicionais.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPessoa.RotPesAdicionais);
 
                 if (tabAdicionais.Enabled.Equals(true))
                 {
-                    tabFormacao.Enabled = funcoes.liberacoes(entAcesso.rotPesAdiForma);
-                    tabDiversos.Enabled = funcoes.liberacoes(entAcesso.rotPesAdiOrquetra);
-                    tabOutraOrquestra.Enabled = funcoes.liberacoes(entAcesso.rotPesAdiOrquetra);
+                    tabFormacao.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPessoa.RotPesAdiForma);
+                    tabDiversos.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPessoa.RotPesAdiOrquetra);
+                    tabOutraOrquestra.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPessoa.RotPesAdiOrquetra);
 
                     if (!lblCodCargo.Text.Equals(string.Empty))
                     {
                         if (CargoSelecao.PermiteInstrumento.Equals("Sim"))
                         {
-                            if (funcoes.liberacoes(entAcesso.rotPesAdiInstrumento).Equals(true))
+                            if (BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPessoa.RotPesAdiInstrumento).Equals(true))
                             {
                                 gpoEstudo.Enabled = true;
 

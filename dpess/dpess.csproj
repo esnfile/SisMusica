@@ -39,14 +39,64 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL_pessoaMetodoLicao.cs" />
-    <Compile Include="DAL_cargo.cs" />
-    <Compile Include="DAL_ccbPessoa.cs" />
-    <Compile Include="DAL_pessoa.cs" />
-    <Compile Include="DAL_pessoaFoto.cs" />
-    <Compile Include="DAL_pessoaMetodo.cs" />
-    <Compile Include="DAL_pessoaInstr.cs" />
-    <Compile Include="DAL_regiaoPessoa.cs" />
+    <Compile Include="Cargo\Classes\DAL_buscaPorCodigo.cs" />
+    <Compile Include="Cargo\Classes\DAL_buscaPorDepartamento.cs" />
+    <Compile Include="Cargo\Classes\DAL_buscaPorDescricao.cs" />
+    <Compile Include="Cargo\Classes\DAL_cargo_StrSql.cs" />
+    <Compile Include="Cargo\Interfaces\IDAL_buscaCargo.cs" />
+    <Compile Include="Cargo\Interfaces\IDAL_Cargo.cs" />
+    <Compile Include="Cargo\Interfaces\IDAL_Cargo_StrSql.cs" />
+    <Compile Include="CCBPessoa\Classes\DAL_buscaCCB.cs" />
+    <Compile Include="CCBPessoa\Classes\DAL_buscaPessoaCCB.cs" />
+    <Compile Include="CCBPessoa\Classes\DAL_pessoaCCB.cs" />
+    <Compile Include="CCBPessoa\Classes\DAL_pessoaCCB_StrSql.cs" />
+    <Compile Include="CCBPessoa\Interfaces\IDAL_buscaPessoaCCB.cs" />
+    <Compile Include="CCBPessoa\Interfaces\IDAL_PessoaCCB.cs" />
+    <Compile Include="CCBPessoa\Interfaces\IDAL_pessoaCCB_StrSql.cs" />
+    <Compile Include="FotoPessoa\Classes\DAL_buscaPessoaFoto.cs" />
+    <Compile Include="FotoPessoa\Classes\DAL_pessoaFoto_StrSql.cs" />
+    <Compile Include="FotoPessoa\Interfaces\IDAL_buscaPessoaFoto.cs" />
+    <Compile Include="FotoPessoa\Interfaces\IDAL_PessoaFoto.cs" />
+    <Compile Include="FotoPessoa\Interfaces\IDAL_pessoaFoto_StrSql.cs" />
+    <Compile Include="PessoaInstrumento\Classes\DAL_buscaInstrumentos.cs" />
+    <Compile Include="PessoaInstrumento\Classes\DAL_buscaPessoaInstr.cs" />
+    <Compile Include="PessoaInstrumento\Classes\DAL_pessoaInstr_StrSql.cs" />
+    <Compile Include="PessoaInstrumento\Interfaces\IDAL_PessoaInstr.cs" />
+    <Compile Include="PessoaInstrumento\Interfaces\IDAL_pessoaInstr_StrSql.cs" />
+    <Compile Include="PessoaMetodo\Classes\DAL_buscaMetodos.cs" />
+    <Compile Include="PessoaMetodo\Classes\DAL_buscaPessoaMetodo.cs" />
+    <Compile Include="PessoaMetodo\Classes\DAL_pessoaMetodo.cs" />
+    <Compile Include="PessoaMetodo\Classes\DAL_pessoaMetodo_StrSql.cs" />
+    <Compile Include="PessoaMetodo\Interfaces\IDAL_buscaPessoaMetodo.cs" />
+    <Compile Include="PessoaMetodo\Interfaces\IDAL_PessoaMetodo.cs" />
+    <Compile Include="PessoaMetodo\Interfaces\IDAL_pessoaMetodo_StrSql.cs" />
+    <Compile Include="PessoaRegiao\Interfaces\IDAL_buscaRegiaoPessoa.cs" />
+    <Compile Include="PessoaRegiao\Interfaces\IDAL_PessoaRegiao.cs" />
+    <Compile Include="PessoaRegiao\Interfaces\IDAL_pessoaRegiao_StrSql.cs" />
+    <Compile Include="Pessoa\Classes\DAL_buscaPessoaDuplicada.cs" />
+    <Compile Include="Pessoa\Classes\DAL_buscaVisaoOrquestral.cs" />
+    <Compile Include="Pessoa\Classes\DAL_buscaRelatorio.cs" />
+    <Compile Include="Pessoa\Classes\DAL_buscaPorInstrumento.cs" />
+    <Compile Include="Pessoa\Classes\DAL_buscaPorComum.cs" />
+    <Compile Include="Pessoa\Classes\DAL_buscaPorCargo.cs" />
+    <Compile Include="Pessoa\Classes\DAL_buscaPorCodigoRefRegiao.cs" />
+    <Compile Include="Pessoa\Classes\DAL_buscaPorCodigoRefBras.cs" />
+    <Compile Include="Pessoa\Classes\DAL_buscaPorCidade.cs" />
+    <Compile Include="Pessoa\Classes\DAL_buscaPorRegiao.cs" />
+    <Compile Include="Pessoa\Classes\DAL_buscaPorCpf.cs" />
+    <Compile Include="Pessoa\Classes\DAL_buscaPorNome.cs" />
+    <Compile Include="Pessoa\Classes\DAL_buscaPorCodPessoa.cs" />
+    <Compile Include="Pessoa\Classes\DAL_pessoaMetodoLicao.cs" />
+    <Compile Include="Cargo\Classes\DAL_cargo.cs" />
+    <Compile Include="Pessoa\Classes\DAL_pessoa.cs" />
+    <Compile Include="FotoPessoa\Classes\DAL_pessoaFoto.cs" />
+    <Compile Include="PessoaInstrumento\Classes\DAL_pessoaInstr.cs" />
+    <Compile Include="Pessoa\Classes\DAL_pessoa_StrSql.cs" />
+    <Compile Include="PessoaRegiao\Classes\DAL_regiaoPessoa.cs" />
+    <Compile Include="PessoaInstrumento\Interfaces\IDAL_buscaPessoaInstr.cs" />
+    <Compile Include="Pessoa\Interfaces\IDAL_Pessoa.cs" />
+    <Compile Include="Pessoa\Interfaces\IDAL_buscaPessoa.cs" />
+    <Compile Include="Pessoa\Interfaces\IDAL_Pessoa_StrSql.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,5 +109,6 @@
       <Name>entities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

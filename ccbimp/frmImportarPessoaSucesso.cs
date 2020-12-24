@@ -39,11 +39,15 @@ namespace ccbimp
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
 
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
-
                 ///Recebe a lista e armazena
                 listaImporta = lista;
+
+                #region Carregar ComboBox
+
+                apoio.carregaComboRegional(cboRegional);
+                apoio.carregaComboRegiao(cboRegiao, Convert.ToString(cboRegional.SelectedValue));
+
+                #endregion
 
                 if (lista != null && lista.Count > 0)
                 {
@@ -94,8 +98,6 @@ namespace ccbimp
         MOD_erros objEnt_Erros = null;
         List<MOD_erros> listaErros;
         bool blnValida;
-
-        List<MOD_acessos> listaAcesso = null;
 
         #endregion
 
@@ -906,19 +908,13 @@ namespace ccbimp
         {
             try
             {
-                //informa os valores aos campos recebidos na lista
-                txtCodigoSucesso.Text = listaImporta[0].CodImportaPessoa;
-                txtDataImportaSucesso.Text = listaImporta[0].DataImporta;
-                txtHoraImportaSucesso.Text = listaImporta[0].HoraImporta;
-                txtCodUsuarioSucesso.Text = listaImporta[0].CodUsuario;
-                txtUsuarioSucesso.Text = listaImporta[0].Usuario;
-                txtDescricaoSucesso.Text = listaImporta[0].Descricao;
-                
-                objBLL_Importa = new BLL_importaPessoa();
-                listaImporta[0].ListaPessoaItem = objBLL_Importa.buscarImportaItem(CodImportaPessoa);
+                IBLL_buscaImportaPessoaItem objBLL_BuscaItem = new BLL_buscaImportaPessoaItem();
+                List<MOD_importaPessoaItem> listaItem = new List<MOD_importaPessoaItem>();
+
+                listaItem = objBLL_BuscaItem.Buscar(modulos.CodUsuarioCCB, CodImportaPessoa, modulos.CodUsuarioCargo);
 
                 objBind_ImpSucesso = new BindingSource();
-                objBind_ImpSucesso.DataSource = listaImporta[0].ListaPessoaItem;
+                objBind_ImpSucesso.DataSource = listaItem;
                 montaGridDadosSucesso();
                 gridSucesso.DataSource = objBind_ImpSucesso;
 

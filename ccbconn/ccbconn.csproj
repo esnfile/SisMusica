@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icone.ico" />
+    <None Include="imagens\comtest.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using ENT.Log;
+using ENT.pessoa;
 
 namespace ENT.uteis
 {
@@ -36,20 +37,20 @@ namespace ENT.uteis
         public string DescricaoRegional { get; set; }
 
         public MOD_log Logs { get; set; }
-        public BindingList<MOD_ccbPessoa> listaCCBPessoa { get; set; }
-        public List<MOD_ccbPessoa> listaDeleteCCBPessoa { get; set; }
+        public BindingList<MOD_pessoaCCB> listaCCBPessoa { get; set; }
+        public List<MOD_pessoaCCB> listaDeleteCCBPessoa { get; set; }
     }
 
     public class MOD_acessoCcb
     {
-        public int progCCB { get; set; } = 9;
-        public int rotInsCCB { get; set; } = 26;
-        public int rotEditCCB { get; set; } = 27;
-        public int rotExcCCB { get; set; } = 28;
-        public int rotVisCCB { get; set; } = 29;
-        public int rotCCBAbaMinist { get; set; } = 155;
-        public int rotInsCCBMinist { get; set; } = 156;
-        public int rotExcCCBMinist { get; set; } = 157;
-        public int rotCCBMixRelatorio { get; set; } = 224;
+        public static int ProgCCB { get; } = 9;
+        public static int RotInsCCB { get; } = 26;
+        public static int RotEditCCB { get; } = 27;
+        public static int RotExcCCB { get; } = 28;
+        public static int RotVisCCB { get; } = 29;
+        public static int RotCCBAbaMinist { get; } = 155;
+        public static int RotInsCCBMinist { get; } = 156;
+        public static int RotExcCCBMinist { get; } = 157;
+        public static int RotCCBMixRelatorio { get; } = 224;
     }
 }

@@ -22,6 +22,8 @@ using System.ComponentModel;
 using System.Drawing;
 using BLL.administracao;
 using ENT.administracao;
+using BLL.cargo;
+using ENT.Session;
 
 namespace BLL.validacoes
 {
@@ -55,7 +57,7 @@ namespace BLL.validacoes
         static BLL_ccb objBLL_CCB = null;
         static List<MOD_ccb> listaCCB = null;
 
-        static BLL_cargo objBLL_Cargo = null;
+        static IBLL_buscaCargo objBLL_Cargo = null;
         static List<MOD_cargo> listaCargo = null;
 
         static BLL_departamento objBLL_Depart = null;
@@ -292,14 +294,6 @@ namespace BLL.validacoes
             toolTip.Show(message, control, control.Width / 2, control.Height, 5000);
         }
 
-        public static void CarregaAcessosUsuario(string CodUsuario)
-        {
-            objBLL_Acesso = new BLL_acessos();
-            listaAcesso = objBLL_Acesso.buscarUsuAcesso(CodUsuario);
-            modulos.listaLibAcesso = listaAcesso;
-            modulos.Supervisor = listaAcesso[0].Supervisor;
-        }
-
         /// <summary>
         /// Sub que informa as Comuns que o Usuario poderá acessar
         /// </summary>
@@ -518,7 +512,7 @@ namespace BLL.validacoes
                 cboCombo.DataSource = listaRegional;
                 cboCombo.ValueMember = "CodRegional";
                 cboCombo.DisplayMember = "Descricao";
-                cboCombo.SelectedValue = modulos.listaParametros[0].listaRegional[0].CodRegional;
+                cboCombo.SelectedValue = MOD_Session.ListaParametroLogado[0].CodRegional;
                 return cboCombo;
             }
             catch (SqlException exl)
@@ -849,10 +843,10 @@ namespace BLL.validacoes
         {
             try
             {
-                objBLL_Cargo = new BLL_cargo();
+                objBLL_Cargo = new BLL_buscaCargoPorDescricao();
                 listaCargo = new List<MOD_cargo>();
 
-                listaCargo = objBLL_Cargo.buscarCod(string.Empty);
+                listaCargo = objBLL_Cargo.Buscar(string.Empty);
                 cboCombo.Items.Clear();
                 cboCombo.DataSource = listaCargo;
                 cboCombo.ValueMember = "CodCargo";

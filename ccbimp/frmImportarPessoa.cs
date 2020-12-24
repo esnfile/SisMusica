@@ -25,6 +25,7 @@ using System.Threading;
 using ENT.acessos;
 using ENT.importa;
 using BLL.pessoa;
+using BLL.cargo;
 
 namespace ccbimp
 {
@@ -894,12 +895,12 @@ namespace ccbimp
                         if (Convert.ToInt64(txtCodigo.Text).Equals(0))
                         {
                             //chama a rotina da camada de negocios para efetuar inserção ou update
-                            objBLL_Importa.inserir(criarLista(gridDados));
+                            objBLL_Importa.Insert(criarLista(gridDados), out listaImporta);
                         }
                         else
                         {
                             //chama a rotina da camada de negocios para efetuar inserção ou update
-                            objBLL_Importa.salvar(criarLista(gridDados));
+                            objBLL_Importa.Update(criarLista(gridDados), out listaImporta);
                         }
 
                         //conversor para retorno ao formulario que chamou
@@ -1130,7 +1131,7 @@ namespace ccbimp
                         ent.Celular2 = funcoes.FormataString("(##) #####-####", Convert.ToString(row.Cells["Celular2"].Value));
                         ent.Email = Convert.ToString(row.Cells["Email"].Value).ToLower();
                         ent.CodCCB = Convert.ToString(row.Cells["CodCCB"].Value).PadLeft(6, '0');
-                        ent.Descricao = Convert.ToString(row.Cells["DescCCB"].Value);
+                        ent.DescricaoCCB = Convert.ToString(row.Cells["DescCCB"].Value);
                         ent.EstadoCivil = Convert.ToString(row.Cells["EstadoCivil"].Value);
                         ent.DataApresentacao = funcoes.FormataData(Convert.ToString(row.Cells["DataApresentacao"].Value));
                         ent.PaisCCB = Convert.ToString(row.Cells["PaisCCB"].Value);
@@ -2840,10 +2841,10 @@ namespace ccbimp
         {
             try
             {
-                BLL_cargo objBLL_cargo = new BLL_cargo();
+                IBLL_buscaCargo objBLL_cargo = new BLL_buscaCargoPorCodigo();
                 List<MOD_cargo> listaCargo = new List<MOD_cargo>();
 
-                listaCargo = objBLL_cargo.buscarCod(CodCargo);
+                listaCargo = objBLL_cargo.Buscar(CodCargo);
 
                 if (listaCargo != null && listaCargo.Count > 0)
                 {
@@ -2877,10 +2878,10 @@ namespace ccbimp
         {
             try
             {
-                BLL_cargo objBLL_cargo = new BLL_cargo();
+                IBLL_buscaCargo objBLL_cargo = new BLL_buscaCargoPorDescricao();
                 List<MOD_cargo> listaCargo = new List<MOD_cargo>();
 
-                listaCargo = objBLL_cargo.buscarDescricao(DescCargo);
+                listaCargo = objBLL_cargo.Buscar(DescCargo);
 
                 if (listaCargo != null && listaCargo.Count > 0)
                 {
@@ -3240,19 +3241,7 @@ namespace ccbimp
         {
             try
             {
-                foreach (MOD_acessos ent in listaAcesso)
-                {
-                    //verificando o botão visualizar
-                    if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotInsImportaPessoa))
-                    {
-                        btnSalvar.Enabled = true;
-                        break;
-                    }
-                    else
-                    {
-                        btnSalvar.Enabled = false;
-                    }
-                }
+                btnSalvar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoImportaPessoa.RotInsImportaPessoa);
             }
             catch (SqlException exl)
             {

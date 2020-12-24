@@ -428,8 +428,6 @@ namespace BLL.uteis
         {
             try
             {
-                MOD_acessoRegional entAcesso = new MOD_acessoRegional();
-
                 //preenche os dados para salvar na tabela Logs
                 ent.Logs = new MOD_log();
                 ent.Logs.Data = DateTime.Now.ToString("dd/MM/yyyy");
@@ -438,15 +436,15 @@ namespace BLL.uteis
 
                 if (Operacao.Equals("Insert"))
                 {
-                    ent.Logs.CodRotina = entAcesso.rotInsRegional.ToString();
+                    ent.Logs.CodRotina = MOD_acessoRegional.RotInsRegional.ToString();
                 }
                 else if (Operacao.Equals("Update"))
                 {
-                    ent.Logs.CodRotina = entAcesso.rotEditRegional.ToString();
+                    ent.Logs.CodRotina = MOD_acessoRegional.RotEditRegional.ToString();
                 }
                 else if (Operacao.Equals("Delete"))
                 {
-                    ent.Logs.CodRotina = entAcesso.rotExcRegional.ToString();
+                    ent.Logs.CodRotina = MOD_acessoRegional.RotExcRegional.ToString();
                 }
 
                 ent.Logs.NomePc = modulos.DescPc;

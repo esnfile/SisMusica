@@ -11,6 +11,7 @@ using System.Data;
 using ENT.acessos;
 using System.Drawing;
 using ENT.Erros;
+using ENT.Session;
 
 namespace BLL.Funcoes
 {
@@ -747,9 +748,9 @@ namespace BLL.Funcoes
                 ///iniciando pela 1ª coluna
                 ///1ª coluna
                 DataGridViewTextBoxColumn colCCBPes = new DataGridViewTextBoxColumn();
-                colCCBPes.DataPropertyName = "CodCCBPessoa";
-                colCCBPes.HeaderText = "CodCCBPessoa";
-                colCCBPes.Name = "CodCCBPessoa";
+                colCCBPes.DataPropertyName = "CodPessoa";
+                colCCBPes.HeaderText = "CodPessoa";
+                colCCBPes.Name = "CodPessoa";
                 colCCBPes.Width = 100;
                 colCCBPes.Frozen = false;
                 colCCBPes.MinimumWidth = 100;
@@ -773,9 +774,9 @@ namespace BLL.Funcoes
                 colCCB.Visible = true;
                 ///2ª coluna
                 DataGridViewTextBoxColumn colCodigo = new DataGridViewTextBoxColumn();
-                colCodigo.DataPropertyName = "Codigo";
+                colCodigo.DataPropertyName = "CodigoCCB";
                 colCodigo.HeaderText = "Identificação";
-                colCodigo.Name = "Codigo";
+                colCodigo.Name = "CodigoCCB";
                 colCodigo.Width = 90;
                 colCodigo.Frozen = false;
                 colCodigo.MinimumWidth = 70;
@@ -787,9 +788,9 @@ namespace BLL.Funcoes
                 colCodigo.Visible = true;
                 ///3ª coluna
                 DataGridViewTextBoxColumn colDescricao = new DataGridViewTextBoxColumn();
-                colDescricao.DataPropertyName = "Descricao";
+                colDescricao.DataPropertyName = "DescricaoCCB";
                 colDescricao.HeaderText = "Descrição";
-                colDescricao.Name = "Descricao";
+                colDescricao.Name = "DescricaoCCB";
                 colDescricao.Width = 250;
                 colDescricao.Frozen = false;
                 colDescricao.MinimumWidth = 250;
@@ -1941,319 +1942,322 @@ namespace BLL.Funcoes
             ///feito um refresh para fazer a atualização do datagridview
             dataGrid.Refresh();
         }
-        ///<summary> Montar DataGrid Cargo
-        ///funcao que monta o datagrid, essa funcao é generica para todos os datagridview
-        ///que consulta Cargo, devendo somente informar o nome do datagridview que é
-        ///passado como parametro
-        ///<para>Parametros Tabela:</para>
-        ///<para> - Tabela: UsuarioCargo, Relatorios</para>
-        ///</summary>
-        public static void gridCargo(DataGridView dataGrid, string Tabela)
-        {
-            dataGrid.AutoGenerateColumns = false;
-            dataGrid.DataSource = null;
-            dataGrid.Columns.Clear();
-            dataGrid.RowTemplate.Height = 18;
 
-            if (Tabela.Equals("UsuarioCargo"))
-            {
-                ///nessas linhas abaixo é que estão definidas as colunas do DataGridView
-                ///iniciando pela 1ª coluna
-                ///1ª coluna
-                DataGridViewTextBoxColumn colCodUsuCargo = new DataGridViewTextBoxColumn();
-                colCodUsuCargo.DataPropertyName = "CodUsuarioCargo";
-                colCodUsuCargo.HeaderText = "CodUsuarioCargo";
-                colCodUsuCargo.Name = "CodUsuarioCargo";
-                colCodUsuCargo.Width = 100;
-                colCodUsuCargo.Frozen = false;
-                colCodUsuCargo.MinimumWidth = 100;
-                colCodUsuCargo.ReadOnly = true;
-                colCodUsuCargo.FillWeight = 100;
-                colCodUsuCargo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                colCodUsuCargo.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
-                colCodUsuCargo.MaxInputLength = 20;
-                colCodUsuCargo.Visible = false;
-                DataGridViewTextBoxColumn colCodCargo = new DataGridViewTextBoxColumn();
-                colCodCargo.DataPropertyName = "CodCargo";
-                colCodCargo.HeaderText = "Código";
-                colCodCargo.Name = "CodCargo";
-                colCodCargo.Width = 50;
-                colCodCargo.Frozen = false;
-                colCodCargo.MinimumWidth = 40;
-                colCodCargo.ReadOnly = true;
-                colCodCargo.FillWeight = 100;
-                colCodCargo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                colCodCargo.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
-                colCodCargo.Visible = true;
-                ///2ª coluna
-                DataGridViewTextBoxColumn colDescricao = new DataGridViewTextBoxColumn();
-                colDescricao.DataPropertyName = "DescCargo";
-                colDescricao.HeaderText = "Cargo";
-                colDescricao.Name = "DescCargo";
-                colDescricao.Width = 100;
-                colDescricao.Frozen = false;
-                colDescricao.MinimumWidth = 80;
-                colDescricao.ReadOnly = true;
-                colDescricao.FillWeight = 100;
-                colDescricao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                colDescricao.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                colDescricao.MaxInputLength = 100;
-                colDescricao.Visible = true;
-                ///2ª coluna
-                DataGridViewTextBoxColumn colSigla = new DataGridViewTextBoxColumn();
-                colSigla.DataPropertyName = "SiglaCargo";
-                colSigla.HeaderText = "Identif";
-                colSigla.Name = "SiglaCargo";
-                colSigla.Width = 50;
-                colSigla.Frozen = false;
-                colSigla.MinimumWidth = 40;
-                colSigla.ReadOnly = true;
-                colSigla.FillWeight = 100;
-                colSigla.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                colSigla.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
-                colSigla.MaxInputLength = 100;
-                colSigla.Visible = true;
-                ///4ª coluna
-                DataGridViewCheckBoxColumn colMarc = new DataGridViewCheckBoxColumn();
-                colMarc.DataPropertyName = "Marcado";
-                colMarc.HeaderText = "";
-                colMarc.Name = "Marcado";
-                colMarc.Width = 20;
-                colMarc.Frozen = false;
-                colMarc.MinimumWidth = 15;
-                colMarc.ReadOnly = false;
-                colMarc.FillWeight = 100;
-                colMarc.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                colMarc.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
-                colMarc.Visible = true;
-                ///aqui é adicionado as colunas no datagridview
-                dataGrid.Columns.Add(colMarc);
-                dataGrid.Columns.Add(colCodUsuCargo);
-                dataGrid.Columns.Add(colCodCargo);
-                dataGrid.Columns.Add(colSigla);
-                dataGrid.Columns.Add(colDescricao);
-            }
-            else if (Tabela.Equals("Relatorios"))
-            {
-                ///nessas linhas abaixo é que estão definidas as colunas do DataGridView
-                ///iniciando pela 1ª coluna
-                ///1ª coluna
-                DataGridViewTextBoxColumn colCodUsuCargo = new DataGridViewTextBoxColumn();
-                colCodUsuCargo.DataPropertyName = "CodUsuarioCargo";
-                colCodUsuCargo.HeaderText = "CodUsuarioCargo";
-                colCodUsuCargo.Name = "CodUsuarioCargo";
-                colCodUsuCargo.Width = 100;
-                colCodUsuCargo.Frozen = false;
-                colCodUsuCargo.MinimumWidth = 100;
-                colCodUsuCargo.ReadOnly = true;
-                colCodUsuCargo.FillWeight = 100;
-                colCodUsuCargo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                colCodUsuCargo.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
-                colCodUsuCargo.MaxInputLength = 20;
-                colCodUsuCargo.Visible = false;
-                DataGridViewTextBoxColumn colCodCargo = new DataGridViewTextBoxColumn();
-                colCodCargo.DataPropertyName = "CodCargo";
-                colCodCargo.HeaderText = "Código";
-                colCodCargo.Name = "CodCargo";
-                colCodCargo.Width = 50;
-                colCodCargo.Frozen = false;
-                colCodCargo.MinimumWidth = 40;
-                colCodCargo.ReadOnly = true;
-                colCodCargo.FillWeight = 100;
-                colCodCargo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                colCodCargo.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
-                colCodCargo.Visible = false;
-                ///2ª coluna
-                DataGridViewTextBoxColumn colDescricao = new DataGridViewTextBoxColumn();
-                colDescricao.DataPropertyName = "DescCargo";
-                colDescricao.HeaderText = "Cargo";
-                colDescricao.Name = "DescCargo";
-                colDescricao.Width = 100;
-                colDescricao.Frozen = false;
-                colDescricao.MinimumWidth = 80;
-                colDescricao.ReadOnly = true;
-                colDescricao.FillWeight = 100;
-                colDescricao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                colDescricao.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                colDescricao.MaxInputLength = 100;
-                colDescricao.Visible = true;
-                ///2ª coluna
-                DataGridViewTextBoxColumn colSigla = new DataGridViewTextBoxColumn();
-                colSigla.DataPropertyName = "SiglaCargo";
-                colSigla.HeaderText = "Ident";
-                colSigla.Name = "SiglaCargo";
-                colSigla.Width = 40;
-                colSigla.Frozen = false;
-                colSigla.MinimumWidth = 40;
-                colSigla.ReadOnly = true;
-                colSigla.FillWeight = 100;
-                colSigla.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                colSigla.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
-                colSigla.MaxInputLength = 100;
-                colSigla.Visible = true;
-                ///4ª coluna
-                DataGridViewCheckBoxColumn colMarc = new DataGridViewCheckBoxColumn();
-                colMarc.DataPropertyName = "Marcado";
-                colMarc.HeaderText = "";
-                colMarc.Name = "Marcado";
-                colMarc.Width = 20;
-                colMarc.Frozen = false;
-                colMarc.MinimumWidth = 15;
-                colMarc.ReadOnly = false;
-                colMarc.FillWeight = 100;
-                colMarc.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                colMarc.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
-                colMarc.Visible = true;
-                ///aqui é adicionado as colunas no datagridview
-                dataGrid.Columns.Add(colMarc);
-                dataGrid.Columns.Add(colCodUsuCargo);
-                dataGrid.Columns.Add(colCodCargo);
-                dataGrid.Columns.Add(colDescricao);
-                dataGrid.Columns.Add(colSigla);
-            }
-            else if (Tabela.Equals("TipoReuniaoCargo"))
-            {
-                ///nessas linhas abaixo é que estão definidas as colunas do DataGridView
-                ///iniciando pela 1ª coluna
-                ///1ª coluna
-                DataGridViewTextBoxColumn colCodReunCargo = new DataGridViewTextBoxColumn();
-                colCodReunCargo.DataPropertyName = "CodCargoReuniao";
-                colCodReunCargo.HeaderText = "CodCargoReuniao";
-                colCodReunCargo.Name = "CodCargoReuniao";
-                colCodReunCargo.Width = 100;
-                colCodReunCargo.Frozen = false;
-                colCodReunCargo.MinimumWidth = 100;
-                colCodReunCargo.ReadOnly = true;
-                colCodReunCargo.FillWeight = 100;
-                colCodReunCargo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                colCodReunCargo.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
-                colCodReunCargo.MaxInputLength = 20;
-                colCodReunCargo.Visible = false;
-                DataGridViewTextBoxColumn colCodCargo = new DataGridViewTextBoxColumn();
-                colCodCargo.DataPropertyName = "CodCargo";
-                colCodCargo.HeaderText = "Código";
-                colCodCargo.Name = "CodCargo";
-                colCodCargo.Width = 50;
-                colCodCargo.Frozen = false;
-                colCodCargo.MinimumWidth = 40;
-                colCodCargo.ReadOnly = true;
-                colCodCargo.FillWeight = 100;
-                colCodCargo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                colCodCargo.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
-                colCodCargo.Visible = true;
-                ///2ª coluna
-                DataGridViewTextBoxColumn colDescricao = new DataGridViewTextBoxColumn();
-                colDescricao.DataPropertyName = "DescCargo";
-                colDescricao.HeaderText = "Cargo";
-                colDescricao.Name = "DescCargo";
-                colDescricao.Width = 100;
-                colDescricao.Frozen = false;
-                colDescricao.MinimumWidth = 80;
-                colDescricao.ReadOnly = true;
-                colDescricao.FillWeight = 100;
-                colDescricao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                colDescricao.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                colDescricao.MaxInputLength = 100;
-                colDescricao.Visible = true;
-                ///2ª coluna
-                DataGridViewTextBoxColumn colSigla = new DataGridViewTextBoxColumn();
-                colSigla.DataPropertyName = "SiglaCargo";
-                colSigla.HeaderText = "Identif";
-                colSigla.Name = "SiglaCargo";
-                colSigla.Width = 50;
-                colSigla.Frozen = false;
-                colSigla.MinimumWidth = 40;
-                colSigla.ReadOnly = true;
-                colSigla.FillWeight = 100;
-                colSigla.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                colSigla.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
-                colSigla.MaxInputLength = 100;
-                colSigla.Visible = true;
-                ///4ª coluna
-                DataGridViewCheckBoxColumn colMarc = new DataGridViewCheckBoxColumn();
-                colMarc.DataPropertyName = "Marcado";
-                colMarc.HeaderText = "";
-                colMarc.Name = "Marcado";
-                colMarc.Width = 20;
-                colMarc.Frozen = false;
-                colMarc.MinimumWidth = 15;
-                colMarc.ReadOnly = false;
-                colMarc.FillWeight = 100;
-                colMarc.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                colMarc.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
-                colMarc.Visible = true;
-                ///aqui é adicionado as colunas no datagridview
-                dataGrid.Columns.Add(colMarc);
-                dataGrid.Columns.Add(colCodReunCargo);
-                dataGrid.Columns.Add(colCodCargo);
-                dataGrid.Columns.Add(colSigla);
-                dataGrid.Columns.Add(colDescricao);
-            }
+        /////<summary> Montar DataGrid Cargo
+        /////funcao que monta o datagrid, essa funcao é generica para todos os datagridview
+        /////que consulta Cargo, devendo somente informar o nome do datagridview que é
+        /////passado como parametro
+        /////<para>Parametros Tabela:</para>
+        /////<para> - Tabela: UsuarioCargo, Relatorios</para>
+        /////</summary>
+        //public static void gridCargo(DataGridView dataGrid, string Tabela)
+        //{
+        //    dataGrid.AutoGenerateColumns = false;
+        //    dataGrid.DataSource = null;
+        //    dataGrid.Columns.Clear();
+        //    dataGrid.RowTemplate.Height = 18;
 
-            else
-            {
-                ///nessas linhas abaixo é que estão definidas as colunas do DataGridView
-                ///iniciando pela 1ª coluna
-                DataGridViewTextBoxColumn colCodCargo = new DataGridViewTextBoxColumn();
-                colCodCargo.DataPropertyName = "CodCargo";
-                colCodCargo.HeaderText = "Código";
-                colCodCargo.Width = 60;
-                colCodCargo.Frozen = false;
-                colCodCargo.MinimumWidth = 50;
-                colCodCargo.ReadOnly = true;
-                colCodCargo.FillWeight = 100;
-                colCodCargo.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
-                colCodCargo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                colCodCargo.Visible = true;
-                ///2ª coluna
-                DataGridViewTextBoxColumn colSigla = new DataGridViewTextBoxColumn();
-                colSigla.DataPropertyName = "SiglaCargo";
-                colSigla.HeaderText = "Sigla";
-                colSigla.Width = 60;
-                colSigla.Frozen = false;
-                colSigla.MinimumWidth = 50;
-                colSigla.ReadOnly = true;
-                colSigla.FillWeight = 100;
-                colCodCargo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                colSigla.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
-                colSigla.Visible = true;
-                ///3ª coluna
-                DataGridViewTextBoxColumn colDescricao = new DataGridViewTextBoxColumn();
-                colDescricao.DataPropertyName = "DescCargo";
-                colDescricao.HeaderText = "Ministério/Cargo";
-                colDescricao.Width = 200;
-                colDescricao.Frozen = false;
-                colDescricao.MinimumWidth = 120;
-                colDescricao.ReadOnly = true;
-                colDescricao.FillWeight = 100;
-                colDescricao.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
-                colDescricao.Visible = true;
-                ///3ª coluna
-                DataGridViewTextBoxColumn colDepart = new DataGridViewTextBoxColumn();
-                colDepart.DataPropertyName = "DescDepartamento";
-                colDepart.HeaderText = "Departamento";
-                colDepart.Width = 100;
-                colDepart.Frozen = false;
-                colDepart.MinimumWidth = 80;
-                colDepart.ReadOnly = true;
-                colDepart.FillWeight = 100;
-                colDepart.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                colDepart.Visible = true;
+        //    if (Tabela.Equals("UsuarioCargo"))
+        //    {
+        //        ///nessas linhas abaixo é que estão definidas as colunas do DataGridView
+        //        ///iniciando pela 1ª coluna
+        //        ///1ª coluna
+        //        DataGridViewTextBoxColumn colCodUsuCargo = new DataGridViewTextBoxColumn();
+        //        colCodUsuCargo.DataPropertyName = "CodUsuarioCargo";
+        //        colCodUsuCargo.HeaderText = "CodUsuarioCargo";
+        //        colCodUsuCargo.Name = "CodUsuarioCargo";
+        //        colCodUsuCargo.Width = 100;
+        //        colCodUsuCargo.Frozen = false;
+        //        colCodUsuCargo.MinimumWidth = 100;
+        //        colCodUsuCargo.ReadOnly = true;
+        //        colCodUsuCargo.FillWeight = 100;
+        //        colCodUsuCargo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        //        colCodUsuCargo.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+        //        colCodUsuCargo.MaxInputLength = 20;
+        //        colCodUsuCargo.Visible = false;
+        //        DataGridViewTextBoxColumn colCodCargo = new DataGridViewTextBoxColumn();
+        //        colCodCargo.DataPropertyName = "CodCargo";
+        //        colCodCargo.HeaderText = "Código";
+        //        colCodCargo.Name = "CodCargo";
+        //        colCodCargo.Width = 50;
+        //        colCodCargo.Frozen = false;
+        //        colCodCargo.MinimumWidth = 40;
+        //        colCodCargo.ReadOnly = true;
+        //        colCodCargo.FillWeight = 100;
+        //        colCodCargo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        //        colCodCargo.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+        //        colCodCargo.Visible = true;
+        //        ///2ª coluna
+        //        DataGridViewTextBoxColumn colDescricao = new DataGridViewTextBoxColumn();
+        //        colDescricao.DataPropertyName = "DescCargo";
+        //        colDescricao.HeaderText = "Cargo";
+        //        colDescricao.Name = "DescCargo";
+        //        colDescricao.Width = 100;
+        //        colDescricao.Frozen = false;
+        //        colDescricao.MinimumWidth = 80;
+        //        colDescricao.ReadOnly = true;
+        //        colDescricao.FillWeight = 100;
+        //        colDescricao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+        //        colDescricao.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        //        colDescricao.MaxInputLength = 100;
+        //        colDescricao.Visible = true;
+        //        ///2ª coluna
+        //        DataGridViewTextBoxColumn colSigla = new DataGridViewTextBoxColumn();
+        //        colSigla.DataPropertyName = "SiglaCargo";
+        //        colSigla.HeaderText = "Identif";
+        //        colSigla.Name = "SiglaCargo";
+        //        colSigla.Width = 50;
+        //        colSigla.Frozen = false;
+        //        colSigla.MinimumWidth = 40;
+        //        colSigla.ReadOnly = true;
+        //        colSigla.FillWeight = 100;
+        //        colSigla.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+        //        colSigla.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+        //        colSigla.MaxInputLength = 100;
+        //        colSigla.Visible = true;
+        //        ///4ª coluna
+        //        DataGridViewCheckBoxColumn colMarc = new DataGridViewCheckBoxColumn();
+        //        colMarc.DataPropertyName = "Marcado";
+        //        colMarc.HeaderText = "";
+        //        colMarc.Name = "Marcado";
+        //        colMarc.Width = 20;
+        //        colMarc.Frozen = false;
+        //        colMarc.MinimumWidth = 15;
+        //        colMarc.ReadOnly = false;
+        //        colMarc.FillWeight = 100;
+        //        colMarc.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        //        colMarc.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+        //        colMarc.Visible = true;
+        //        ///aqui é adicionado as colunas no datagridview
+        //        dataGrid.Columns.Add(colMarc);
+        //        dataGrid.Columns.Add(colCodUsuCargo);
+        //        dataGrid.Columns.Add(colCodCargo);
+        //        dataGrid.Columns.Add(colSigla);
+        //        dataGrid.Columns.Add(colDescricao);
+        //    }
+        //    else if (Tabela.Equals("Relatorios"))
+        //    {
+        //        ///nessas linhas abaixo é que estão definidas as colunas do DataGridView
+        //        ///iniciando pela 1ª coluna
+        //        ///1ª coluna
+        //        DataGridViewTextBoxColumn colCodUsuCargo = new DataGridViewTextBoxColumn();
+        //        colCodUsuCargo.DataPropertyName = "CodUsuarioCargo";
+        //        colCodUsuCargo.HeaderText = "CodUsuarioCargo";
+        //        colCodUsuCargo.Name = "CodUsuarioCargo";
+        //        colCodUsuCargo.Width = 100;
+        //        colCodUsuCargo.Frozen = false;
+        //        colCodUsuCargo.MinimumWidth = 100;
+        //        colCodUsuCargo.ReadOnly = true;
+        //        colCodUsuCargo.FillWeight = 100;
+        //        colCodUsuCargo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        //        colCodUsuCargo.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+        //        colCodUsuCargo.MaxInputLength = 20;
+        //        colCodUsuCargo.Visible = false;
+        //        DataGridViewTextBoxColumn colCodCargo = new DataGridViewTextBoxColumn();
+        //        colCodCargo.DataPropertyName = "CodCargo";
+        //        colCodCargo.HeaderText = "Código";
+        //        colCodCargo.Name = "CodCargo";
+        //        colCodCargo.Width = 50;
+        //        colCodCargo.Frozen = false;
+        //        colCodCargo.MinimumWidth = 40;
+        //        colCodCargo.ReadOnly = true;
+        //        colCodCargo.FillWeight = 100;
+        //        colCodCargo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        //        colCodCargo.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+        //        colCodCargo.Visible = false;
+        //        ///2ª coluna
+        //        DataGridViewTextBoxColumn colDescricao = new DataGridViewTextBoxColumn();
+        //        colDescricao.DataPropertyName = "DescCargo";
+        //        colDescricao.HeaderText = "Cargo";
+        //        colDescricao.Name = "DescCargo";
+        //        colDescricao.Width = 100;
+        //        colDescricao.Frozen = false;
+        //        colDescricao.MinimumWidth = 80;
+        //        colDescricao.ReadOnly = true;
+        //        colDescricao.FillWeight = 100;
+        //        colDescricao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+        //        colDescricao.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        //        colDescricao.MaxInputLength = 100;
+        //        colDescricao.Visible = true;
+        //        ///2ª coluna
+        //        DataGridViewTextBoxColumn colSigla = new DataGridViewTextBoxColumn();
+        //        colSigla.DataPropertyName = "SiglaCargo";
+        //        colSigla.HeaderText = "Ident";
+        //        colSigla.Name = "SiglaCargo";
+        //        colSigla.Width = 40;
+        //        colSigla.Frozen = false;
+        //        colSigla.MinimumWidth = 40;
+        //        colSigla.ReadOnly = true;
+        //        colSigla.FillWeight = 100;
+        //        colSigla.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+        //        colSigla.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+        //        colSigla.MaxInputLength = 100;
+        //        colSigla.Visible = true;
+        //        ///4ª coluna
+        //        DataGridViewCheckBoxColumn colMarc = new DataGridViewCheckBoxColumn();
+        //        colMarc.DataPropertyName = "Marcado";
+        //        colMarc.HeaderText = "";
+        //        colMarc.Name = "Marcado";
+        //        colMarc.Width = 20;
+        //        colMarc.Frozen = false;
+        //        colMarc.MinimumWidth = 15;
+        //        colMarc.ReadOnly = false;
+        //        colMarc.FillWeight = 100;
+        //        colMarc.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        //        colMarc.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+        //        colMarc.Visible = true;
+        //        ///aqui é adicionado as colunas no datagridview
+        //        dataGrid.Columns.Add(colMarc);
+        //        dataGrid.Columns.Add(colCodUsuCargo);
+        //        dataGrid.Columns.Add(colCodCargo);
+        //        dataGrid.Columns.Add(colDescricao);
+        //        dataGrid.Columns.Add(colSigla);
+        //    }
+        //    else if (Tabela.Equals("TipoReuniaoCargo"))
+        //    {
+        //        ///nessas linhas abaixo é que estão definidas as colunas do DataGridView
+        //        ///iniciando pela 1ª coluna
+        //        ///1ª coluna
+        //        DataGridViewTextBoxColumn colCodReunCargo = new DataGridViewTextBoxColumn();
+        //        colCodReunCargo.DataPropertyName = "CodCargoReuniao";
+        //        colCodReunCargo.HeaderText = "CodCargoReuniao";
+        //        colCodReunCargo.Name = "CodCargoReuniao";
+        //        colCodReunCargo.Width = 100;
+        //        colCodReunCargo.Frozen = false;
+        //        colCodReunCargo.MinimumWidth = 100;
+        //        colCodReunCargo.ReadOnly = true;
+        //        colCodReunCargo.FillWeight = 100;
+        //        colCodReunCargo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        //        colCodReunCargo.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+        //        colCodReunCargo.MaxInputLength = 20;
+        //        colCodReunCargo.Visible = false;
+        //        DataGridViewTextBoxColumn colCodCargo = new DataGridViewTextBoxColumn();
+        //        colCodCargo.DataPropertyName = "CodCargo";
+        //        colCodCargo.HeaderText = "Código";
+        //        colCodCargo.Name = "CodCargo";
+        //        colCodCargo.Width = 50;
+        //        colCodCargo.Frozen = false;
+        //        colCodCargo.MinimumWidth = 40;
+        //        colCodCargo.ReadOnly = true;
+        //        colCodCargo.FillWeight = 100;
+        //        colCodCargo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        //        colCodCargo.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+        //        colCodCargo.Visible = true;
+        //        ///2ª coluna
+        //        DataGridViewTextBoxColumn colDescricao = new DataGridViewTextBoxColumn();
+        //        colDescricao.DataPropertyName = "DescCargo";
+        //        colDescricao.HeaderText = "Cargo";
+        //        colDescricao.Name = "DescCargo";
+        //        colDescricao.Width = 100;
+        //        colDescricao.Frozen = false;
+        //        colDescricao.MinimumWidth = 80;
+        //        colDescricao.ReadOnly = true;
+        //        colDescricao.FillWeight = 100;
+        //        colDescricao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+        //        colDescricao.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        //        colDescricao.MaxInputLength = 100;
+        //        colDescricao.Visible = true;
+        //        ///2ª coluna
+        //        DataGridViewTextBoxColumn colSigla = new DataGridViewTextBoxColumn();
+        //        colSigla.DataPropertyName = "SiglaCargo";
+        //        colSigla.HeaderText = "Identif";
+        //        colSigla.Name = "SiglaCargo";
+        //        colSigla.Width = 50;
+        //        colSigla.Frozen = false;
+        //        colSigla.MinimumWidth = 40;
+        //        colSigla.ReadOnly = true;
+        //        colSigla.FillWeight = 100;
+        //        colSigla.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+        //        colSigla.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+        //        colSigla.MaxInputLength = 100;
+        //        colSigla.Visible = true;
+        //        ///4ª coluna
+        //        DataGridViewCheckBoxColumn colMarc = new DataGridViewCheckBoxColumn();
+        //        colMarc.DataPropertyName = "Marcado";
+        //        colMarc.HeaderText = "";
+        //        colMarc.Name = "Marcado";
+        //        colMarc.Width = 20;
+        //        colMarc.Frozen = false;
+        //        colMarc.MinimumWidth = 15;
+        //        colMarc.ReadOnly = false;
+        //        colMarc.FillWeight = 100;
+        //        colMarc.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        //        colMarc.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+        //        colMarc.Visible = true;
+        //        ///aqui é adicionado as colunas no datagridview
+        //        dataGrid.Columns.Add(colMarc);
+        //        dataGrid.Columns.Add(colCodReunCargo);
+        //        dataGrid.Columns.Add(colCodCargo);
+        //        dataGrid.Columns.Add(colSigla);
+        //        dataGrid.Columns.Add(colDescricao);
+        //    }
 
-                ///aqui é adicionado as colunas no datagridview
-                dataGrid.Columns.Add(colCodCargo);
-                dataGrid.Columns.Add(colSigla);
-                dataGrid.Columns.Add(colDescricao);
-                dataGrid.Columns.Add(colDepart);
-            }
-            ///feito um refresh para fazer a atualização do datagridview
-            dataGrid.Refresh();
-        }
+        //    else
+        //    {
+        //        ///nessas linhas abaixo é que estão definidas as colunas do DataGridView
+        //        ///iniciando pela 1ª coluna
+        //        DataGridViewTextBoxColumn colCodCargo = new DataGridViewTextBoxColumn();
+        //        colCodCargo.DataPropertyName = "CodCargo";
+        //        colCodCargo.HeaderText = "Código";
+        //        colCodCargo.Width = 60;
+        //        colCodCargo.Frozen = false;
+        //        colCodCargo.MinimumWidth = 50;
+        //        colCodCargo.ReadOnly = true;
+        //        colCodCargo.FillWeight = 100;
+        //        colCodCargo.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+        //        colCodCargo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        //        colCodCargo.Visible = true;
+        //        ///2ª coluna
+        //        DataGridViewTextBoxColumn colSigla = new DataGridViewTextBoxColumn();
+        //        colSigla.DataPropertyName = "SiglaCargo";
+        //        colSigla.HeaderText = "Sigla";
+        //        colSigla.Width = 60;
+        //        colSigla.Frozen = false;
+        //        colSigla.MinimumWidth = 50;
+        //        colSigla.ReadOnly = true;
+        //        colSigla.FillWeight = 100;
+        //        colCodCargo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        //        colSigla.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+        //        colSigla.Visible = true;
+        //        ///3ª coluna
+        //        DataGridViewTextBoxColumn colDescricao = new DataGridViewTextBoxColumn();
+        //        colDescricao.DataPropertyName = "DescCargo";
+        //        colDescricao.HeaderText = "Ministério/Cargo";
+        //        colDescricao.Width = 200;
+        //        colDescricao.Frozen = false;
+        //        colDescricao.MinimumWidth = 120;
+        //        colDescricao.ReadOnly = true;
+        //        colDescricao.FillWeight = 100;
+        //        colDescricao.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+        //        colDescricao.Visible = true;
+        //        ///3ª coluna
+        //        DataGridViewTextBoxColumn colDepart = new DataGridViewTextBoxColumn();
+        //        colDepart.DataPropertyName = "DescDepartamento";
+        //        colDepart.HeaderText = "Departamento";
+        //        colDepart.Width = 100;
+        //        colDepart.Frozen = false;
+        //        colDepart.MinimumWidth = 80;
+        //        colDepart.ReadOnly = true;
+        //        colDepart.FillWeight = 100;
+        //        colDepart.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        //        colDepart.Visible = true;
+
+        //        ///aqui é adicionado as colunas no datagridview
+        //        dataGrid.Columns.Add(colCodCargo);
+        //        dataGrid.Columns.Add(colSigla);
+        //        dataGrid.Columns.Add(colDescricao);
+        //        dataGrid.Columns.Add(colDepart);
+        //    }
+        //    ///feito um refresh para fazer a atualização do datagridview
+        //    dataGrid.Refresh();
+        //}
+
         ///<summary> Montar DataGrid Teoria
         ///funcao que monta o datagrid, essa funcao é generica para todos os datagridview
         ///que consulta Teoria, devendo somente informar o nome do datagridview que é
         ///passado como parametro
         ///</summary>
+        ///
         public static void gridTeoria(DataGridView dataGrid)
         {
             dataGrid.AutoGenerateColumns = false;
@@ -3648,9 +3652,9 @@ namespace BLL.Funcoes
                 ///iniciando pela 1ª coluna
                 ///1ª coluna
                 DataGridViewTextBoxColumn colCodPesInstr = new DataGridViewTextBoxColumn();
-                colCodPesInstr.DataPropertyName = "CodPessoaInstr";
-                colCodPesInstr.HeaderText = "CodPessoaInstr";
-                colCodPesInstr.Name = "CodPessoaInstr";
+                colCodPesInstr.DataPropertyName = "CodPessoa";
+                colCodPesInstr.HeaderText = "CodPessoa";
+                colCodPesInstr.Name = "CodPessoa";
                 colCodPesInstr.Width = 100;
                 colCodPesInstr.Frozen = false;
                 colCodPesInstr.MinimumWidth = 100;
@@ -7061,7 +7065,7 @@ namespace BLL.Funcoes
             }
             else
             {
-                foreach (MOD_acessos entAcesso in modulos.listaLibAcesso)
+                foreach (MOD_acessos entAcesso in MOD_Session.ListaAcessoLogado)
                 {
                     if (Convert.ToInt32(entAcesso.CodRotina).Equals(rotina))
                     {
@@ -7101,7 +7105,7 @@ namespace BLL.Funcoes
             }
             else
             {
-                foreach (MOD_acessos entAcesso in modulos.listaLibAcesso)
+                foreach (MOD_acessos entAcesso in MOD_Session.ListaAcessoLogado)
                 {
                     if (Convert.ToInt32(entAcesso.CodRotina).Equals(rotina))
                     {

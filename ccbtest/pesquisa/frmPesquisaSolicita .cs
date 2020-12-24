@@ -19,7 +19,7 @@ using ENT.pessoa;
 using ENT.preTeste;
 using ENT.uteis;
 
-namespace ccbtest.pesquisa
+namespace ccbtest
 {
     public partial class frmPesquisaSolicita : Form
     {
@@ -53,7 +53,7 @@ namespace ccbtest.pesquisa
         BLL_solicitaTeste objBLL = null;
         List<MOD_solicitaTeste> lista;
 
-        BLL_pessoa objBLL_Pessoa = null;
+        IBLL_buscaPessoa objBLL_Pessoa = null;
         List<MOD_pessoa> listaPessoa;
 
         BLL_ccb objBLL_CCB = null;
@@ -709,8 +709,8 @@ namespace ccbtest.pesquisa
         {
             try
             {
-                objBLL_Pessoa = new BLL_pessoa();
-                listaPessoa = objBLL_Pessoa.buscarCod(vCodPes);
+                objBLL_Pessoa = new BLL_buscaPessoaPorCodPessoa();
+                listaPessoa = objBLL_Pessoa.Buscar(vCodPes);
 
                 if (listaPessoa != null && listaPessoa.Count > 0)
                 {

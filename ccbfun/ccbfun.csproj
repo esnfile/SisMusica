@@ -42,8 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="exceptions\clsException.cs" />
+    <Compile Include="Funcoes\BLL_AbrirForm.cs" />
+    <Compile Include="Funcoes\BLL_Liberacoes.cs" />
+    <Compile Include="PreencherDataGridView\Classes\Utilitarios\Cargo\BLL_GridCargo.cs" />
+    <Compile Include="PreencherDataGridView\Interfaces\IBLL_DataGridView.cs" />
+    <Compile Include="ProcessarImagem\Classes\BLL_ProcessaImagem.cs" />
     <Compile Include="funcoes.cs" />
+    <Compile Include="ProcessarImagem\Interfaces\IBLL_ProcessaImagem.cs" />
     <Compile Include="modulos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,5 +62,6 @@
       <Name>entities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -514,9 +514,9 @@ namespace BLL.uteis
                     ent.TestePermAltObsTeoria = (string)(row.IsNull("TestePermAltObsTeoria") ? null : row["TestePermAltObsTeoria"]);
                     ent.TesteObsTeoria = (string)(row.IsNull("TesteObsTeoria") ? null : row["TesteObsTeoria"]);
 
-                    ent.Codigo = (string)(row.IsNull("Codigo") ? null : row["Codigo"]);
-                    ent.Descricao = (string)(row.IsNull("Descricao") ? null : row["Descricao"]);
-                    ent.Estado = (string)(row.IsNull("Estado") ? null : row["Estado"]);
+                    ent.CodigoRegional = (string)(row.IsNull("CodigoRegional") ? null : row["CodigoRegional"]);
+                    ent.DescricaoRegional = (string)(row.IsNull("DescricaoRegional") ? null : row["DescricaoRegional"]);
+                    ent.EstadoRegional = (string)(row.IsNull("EstadoRegional") ? null : row["EstadoRegional"]);
                     ent.CaminhoBD = (string)(row.IsNull("CaminhoBD") ? null : row["CaminhoBD"]);
 
                     objBLL_Regional = new BLL_regional();

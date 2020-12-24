@@ -585,7 +585,6 @@ namespace BLL.administracao
         {
             try
             {
-                MOD_acessoReuniao entAcesso = new MOD_acessoReuniao();
                 //preenche os dados para salvar na tabela Logs
                 ent.Logs = new MOD_log();
                 ent.Logs.Data = DateTime.Now.ToString("dd/MM/yyyy");
@@ -594,19 +593,19 @@ namespace BLL.administracao
 
                 if (Operacao.Equals("Insert"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotInsReuniao);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoReuniao.RotInsReuniao);
                 }
                 else if (Operacao.Equals("Update"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotEditReuniao);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoReuniao.RotEditReuniao);
                 }
                 else if (Operacao.Equals("Cancela"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotCancelReuniao);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoReuniao.RotCancelReuniao);
                 }
                 else if (Operacao.Equals("Finaliza"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(entAcesso.rotFinalReuniao);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoReuniao.RotFinalReuniao);
                 }
 
                 ent.Logs.NomePc = modulos.DescPc;

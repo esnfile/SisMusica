@@ -34,9 +34,6 @@ namespace ccbpess
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
 
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
-
                 ///Recebe a lista e armazena
                 listaDepartamento = lista;
 
@@ -59,8 +56,6 @@ namespace ccbpess
         #region declaracoes
 
         clsException excp;
-
-        List<MOD_acessos> listaAcesso = null;
 
         BLL_departamento objBLL = null;
         MOD_departamento objEnt = null;
@@ -178,19 +173,19 @@ namespace ccbpess
         {
             try
             {
-                if (ValidarControles().Equals(true))
+                if (ValidarControles(criarTabela()))
                 {
                     objBLL = new BLL_departamento();
 
                     if (Convert.ToInt32(txtCodigo.Text).Equals(0))
                     {
                         //chama a rotina da camada de negocios para efetuar inserção ou update
-                        objBLL.inserir(criarTabela());
+                        objBLL.inserir(objEnt);
                     }
                     else
                     {
                         //chama a rotina da camada de negocios para efetuar inserção ou update
-                        objBLL.salvar(criarTabela());
+                        objBLL.salvar(objEnt);
                     }
 
                     //conversor para retorno ao formulario que chamou
@@ -223,31 +218,17 @@ namespace ccbpess
         /// <summary>
         /// Função que valida os campos
         /// </summary>
-        private bool ValidarControles()
+        private bool ValidarControles(MOD_departamento departamento)
         {
             try
             {
-                //inicia a variavel blnValida
-                blnValida = true;
-                bool blnRetorno = true;
-
-                //inicia uma nova lista de erros
-                listaErros = new List<MOD_erros>();
-                if (txtDescricao.Text.Equals(string.Empty))
+                IValidacaoDepartamento valida = new ValidacaoDepartamento();
+                List<MOD_erros> erros = valida.ValidaCamposDepartamento(departamento);
+                if (erros.Count > 0)
                 {
-                    blnValida = false;
-                    objEnt_Erros = new MOD_erros();
-                    objEnt_Erros.Texto = "Descrição! Campo obrigatório.";
-                    objEnt_Erros.Grau = "Alto";
-                    listaErros.Add(objEnt_Erros);
+                    return apoio.AbrirErros(erros, this);
                 }
-
-                //chama o formulário para gerar os erros
-                if (blnValida.Equals(false))
-                {
-                    blnRetorno = apoio.AbrirErros(listaErros, this);
-                }
-                return blnRetorno;
+                return true;
             }
             catch (SqlException exl)
             {

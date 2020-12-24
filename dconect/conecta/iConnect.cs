@@ -5,9 +5,9 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace DAL.Interface
+namespace DAL.Acessa
 {
-    public interface iConnect
+    public interface IConnect
     {
         //método conectar
         bool conectar();

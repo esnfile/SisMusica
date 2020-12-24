@@ -405,12 +405,10 @@ namespace ccbadm
         {
             try
             {
-                MOD_acessoTipoReuniao entAcesso = new MOD_acessoTipoReuniao();
-
-                btnDescIns.Enabled = funcoes.liberacoes(entAcesso.rotInsTipoReuniao);
-                btnDescEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditTipoReuniao, dataGrid);
-                btnDescExc.Enabled = funcoes.liberacoes(entAcesso.rotExcTipoReuniao, dataGrid);
-                btnDescVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisTipoReuniao, dataGrid);
+                btnDescIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoTipoReuniao.RotInsTipoReuniao);
+                btnDescEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoTipoReuniao.RotEditTipoReuniao, dataGrid);
+                btnDescExc.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoTipoReuniao.RotExcTipoReuniao, dataGrid);
+                btnDescVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoTipoReuniao.RotVisTipoReuniao, dataGrid);
             }
             catch (SqlException exl)
             {

@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data;
 using System.Data.SqlClient;
-using Microsoft.VisualBasic;
 
 using DAL.Acessa;
-using ENT.Log;
 using ENT.pessoa;
 
 namespace DAL.pessoa

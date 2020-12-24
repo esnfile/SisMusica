@@ -35,9 +35,6 @@ namespace ccbpess.pesquisa
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
 
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
-
                 ///Recebe a lista e armazena
                 listaCCB = lista;
 
@@ -64,9 +61,7 @@ namespace ccbpess.pesquisa
 
         clsException excp;
 
-        List<MOD_acessos> listaAcesso = null;
-
-        BLL_pessoa objBLL_Pessoa = null;
+        IBLL_buscaPessoaCCB objBLL_PessoaCCB = null;
         List<MOD_pessoa> listaMinisterio = null;
 
         BLL_ccb objBLL = null;
@@ -79,8 +74,8 @@ namespace ccbpess.pesquisa
         BLL_cidade objBLL_Cid = null;
         List<MOD_cidade> listaCidade = null;
 
-        BindingList<MOD_ccbPessoa> listaCCBPessoa = new BindingList<MOD_ccbPessoa>();
-        List<MOD_ccbPessoa> listaDeleteCCBPessoa = new List<MOD_ccbPessoa>();
+        BindingList<MOD_pessoaCCB> listaCCBPessoa = new BindingList<MOD_pessoaCCB>();
+        List<MOD_pessoaCCB> listaDeleteCCBPessoa = new List<MOD_pessoaCCB>();
 
         BindingSource objBinding_CCB = null;
 
@@ -893,11 +888,11 @@ namespace ccbpess.pesquisa
         {
             try
             {
-                BLL_pessoa objBLL_Pessoa = new BLL_pessoa();
+                IBLL_buscaPessoa objBLL_Pessoa = new BLL_buscaPessoaPorCodPessoa();
                 List<MOD_pessoa> listaPes = new List<MOD_pessoa>();
                 List<MOD_pessoa> listaPesFiltro = new List<MOD_pessoa>();
 
-                listaPes = objBLL_Pessoa.buscarCod(vCodPessoa, modulos.CodUsuarioCCB, modulos.CodUsuarioCargo);
+                listaPes = objBLL_Pessoa.Buscar(vCodPessoa);
                 listaPesFiltro = listaPes.Where(x => Convert.ToInt16(x.CodCargo).Equals(8)).ToList();
 
                 if (listaPesFiltro != null && listaPesFiltro.Count > 0)
@@ -1181,9 +1176,9 @@ namespace ccbpess.pesquisa
         {
             try
             {
-                objBLL_Pessoa = new BLL_pessoa();
+                objBLL_PessoaCCB = new BLL_buscaCCBPessoaPorCCB();
                 objBinding_CCB = new BindingSource();
-                listaCCBPessoa = objBLL_Pessoa.buscarPesCCB(CodCCB);
+                listaCCBPessoa = new BindingList<MOD_pessoaCCB>(objBLL_PessoaCCB.Buscar(string.Empty, CodCCB));
 
                 objBinding_CCB.DataSource = listaCCBPessoa;
 
@@ -1249,15 +1244,14 @@ namespace ccbpess.pesquisa
             {
                 if (ValidarControlesMinist().Equals(true))
                 {
-                    MOD_ccbPessoa ent = new MOD_ccbPessoa();
-                    ent.CodCCBPessoa = "0";
+                    MOD_pessoaCCB ent = new MOD_pessoaCCB();
                     ent.CodPessoa = txtPessoa.Text;
                     ent.CodCCB = txtCodigo.Text;
                     ent.Nome = lblPessoa.Text;
                     ent.DescCargo = txtMinisterio.Text;
                     ent.DataApresentacao = txtDataApresentacao.Text;
 
-                    listaCCBPessoa = ((BindingList<MOD_ccbPessoa>)objBinding_CCB.DataSource);
+                    listaCCBPessoa = ((BindingList<MOD_pessoaCCB>)objBinding_CCB.DataSource);
                     //adiciona um novo item a lista
                     listaCCBPessoa.Add(ent);
                     //atualiza o datagridview
@@ -1284,8 +1278,7 @@ namespace ccbpess.pesquisa
         {
             try
             {
-                MOD_ccbPessoa ent = new MOD_ccbPessoa();
-                ent.CodCCBPessoa = CodCCBPessoa;
+                MOD_pessoaCCB ent = new MOD_pessoaCCB();
 
                 //Insere a linha na Lista Delete
                 listaDeleteCCBPessoa.Add(ent);
@@ -1395,8 +1388,7 @@ namespace ccbpess.pesquisa
         {
             try
             {
-                MOD_acessoCcb entAcesso = new MOD_acessoCcb();
-                tabMinisterio.Enabled = funcoes.liberacoes(entAcesso.rotCCBAbaMinist);
+                tabMinisterio.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoCcb.RotCCBAbaMinist);
             }
             catch (SqlException exl)
             {
@@ -1416,9 +1408,8 @@ namespace ccbpess.pesquisa
         {
             try
             {
-                MOD_acessoCcb entAcesso = new MOD_acessoCcb();
-                btnInserir.Enabled = funcoes.liberacoes(entAcesso.rotInsCCBMinist);
-                btnExcluir.Enabled = funcoes.liberacoes(entAcesso.rotExcCCBMinist, dataGrid);
+                btnInserir.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoCcb.RotInsCCBMinist);
+                btnExcluir.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoCcb.RotExcCCBMinist, dataGrid);
             }
             catch (SqlException exl)
             {

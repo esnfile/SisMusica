@@ -63,6 +63,16 @@ namespace ccbconn.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap comtest {
+            get {
+                object obj = ResourceManager.GetObject("comtest", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fundo_ccb {
             get {
                 object obj = ResourceManager.GetObject("fundo_ccb", resourceCulture);

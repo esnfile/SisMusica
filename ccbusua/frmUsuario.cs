@@ -21,6 +21,8 @@ using Microsoft.VisualBasic;
 using BLL.acessos;
 using BLL.Usuario;
 using BLL.validacoes.Controles;
+using ENT.Session;
+using BLL.Valida;
 
 namespace ccbusua
 {
@@ -39,7 +41,7 @@ namespace ccbusua
                 dataGrid = gridPesquisa;
 
                 //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
+                listaAcesso = MOD_Session.ListaAcessoLogado;
 
                 ///Recebe a lista e armazena
                 listaUsuario = lista;
@@ -147,7 +149,7 @@ namespace ccbusua
 
         List<MOD_acessos> listaAcesso = null;
 
-        BLL_pessoa objBLL_Pessoa = null;
+        IBLL_buscaPessoa objBLL_Pessoa = null;
         List<MOD_pessoa> listaPessoa = null;
 
         BLL_usuario objBLL = null;
@@ -830,9 +832,9 @@ namespace ccbusua
                         objBLL.salvar(criarTabela());
                     }
 
-                    apoio.CarregaAcessosUsuario(modulos.CodUsuario);
-                    apoio.preencheUsuarioCCB(modulos.CodUsuario);
-                    apoio.preencheUsuarioCargo(modulos.CodUsuario);
+                    new BLL_Session(Convert.ToInt64(objEnt.CodUsuario), out listaUsuario);
+                    apoio.preencheUsuarioCCB(objEnt.CodUsuario);
+                    apoio.preencheUsuarioCargo(objEnt.CodUsuario);
 
                     //conversor para retorno ao formulario que chamou
                     if (formChama.Name.Equals("frmUsuarioBusca"))
@@ -1138,8 +1140,8 @@ namespace ccbusua
         {
             try
             {
-                objBLL_Pessoa = new BLL_pessoa();
-                listaPessoa = objBLL_Pessoa.buscarCod(vCodPessoa, modulos.CodUsuarioCCB, modulos.CodUsuarioCargo);
+                objBLL_Pessoa = new BLL_buscaPessoaPorCodPessoa();
+                listaPessoa = objBLL_Pessoa.Buscar(vCodPessoa);
 
                 if (listaPessoa != null && listaPessoa.Count > 0)
                 {
@@ -1638,7 +1640,7 @@ namespace ccbusua
                 }
 
                 listaUsuCargo.AddRange(listaNova);
-                funcoes.gridCargo(gridCargo, "UsuarioCargo");
+                new BLL_GridCargo().MontarGrid(gridCargo, "UsuarioCargo");
                 ///vincula a lista ao DataSource do DataGriView
                 gridCargo.DataSource = listaUsuCargo;
             }
@@ -1781,7 +1783,7 @@ namespace ccbusua
                     }
 
                     listaUsuCargo.AddRange(listaNova);
-                    funcoes.gridCargo(gridCargo, "UsuarioCargo");
+                    new BLL_GridCargo().MontarGrid(gridCargo, "UsuarioCargo");
                     ///vincula a lista ao DataSource do DataGriView
                     gridCargo.DataSource = listaUsuCargo;
                 }
@@ -1876,7 +1878,8 @@ namespace ccbusua
                     }
                     else
                     {
-                        funcoes.gridCargo(dataGrid, "UsuarioCargo");
+                        //chama a funcão montar grid
+                        new BLL_GridCargo().MontarGrid(gridCargo, "UsuarioCargo");
                     }
                 }
             }
@@ -2007,8 +2010,8 @@ namespace ccbusua
             try
             {
                 //verificando a Aba Acessos
-                gpoAcesso.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotLibAcessoUsuario);
-                tvwAcesso.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotLibAcessoUsuario);
+                gpoAcesso.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoUsuario.RotLibAcessoUsuario);
+                tvwAcesso.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoUsuario.RotLibAcessoUsuario);
             }
             catch (SqlException exl)
             {
@@ -2026,7 +2029,7 @@ namespace ccbusua
         {
             try
             {
-                chkSupervisor.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotSupUsuario);
+                chkSupervisor.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoUsuario.RotSupUsuario);
             }
             catch (SqlException exl)
             {
@@ -2044,7 +2047,7 @@ namespace ccbusua
         {
             try
             {
-                chkAlteraSenha.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotSolAlteraSenha);
+                chkAlteraSenha.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoUsuario.RotSolAlteraSenha);
             }
             catch (SqlException exl)
             {
@@ -2062,7 +2065,7 @@ namespace ccbusua
         {
             try
             {
-                gpoCargo.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotUsuAcessoCargo);
+                gpoCargo.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoUsuario.RotUsuAcessoCargo);
             }
             catch (SqlException exl)
             {
@@ -2080,7 +2083,7 @@ namespace ccbusua
         {
             try
             {
-                gpoComum.Enabled = funcoes.liberacoes(new MOD_acessoUsuario().rotUsuAcessoCCB);
+                gpoComum.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoUsuario.RotUsuAcessoCCB);
             }
             catch (SqlException exl)
             {

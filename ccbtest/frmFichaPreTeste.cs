@@ -20,9 +20,10 @@ using ENT.instrumentos;
 using ENT.pessoa;
 using ENT.preTeste;
 using ENT.uteis;
-using ccbtest.pesquisa;
+using ccbtest;
 using ENT.licao;
 using BLL.licao;
+using ENT.Session;
 
 namespace ccbtest
 {
@@ -39,9 +40,6 @@ namespace ccbtest
                 formChama = forms;
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
-
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
 
                 ///Recebe a lista e armazena
                 listaPreTesteFicha = lista;
@@ -98,7 +96,6 @@ namespace ccbtest
         #region declaracoes
 
         clsException excp;
-        List<MOD_acessos> listaAcesso = null;
 
         MOD_preTeste objEnt_PreTeste = null;
 
@@ -131,7 +128,7 @@ namespace ccbtest
         List<MOD_preTesteTeoria> listaDeleteTesteTeoria = new List<MOD_preTesteTeoria>();
         BindingSource objBind_TesteTeoria = new BindingSource();
 
-        BLL_pessoa objBLL_Pessoa = null;
+        IBLL_buscaPessoa objBLL_Pessoa = null;
         List<MOD_pessoa> listaPessoa = new List<MOD_pessoa>();
 
         BLL_solicitaTeste objBLL_Solicita = null;
@@ -1858,8 +1855,8 @@ namespace ccbtest
             {
                 List<MOD_pessoa> listaPesFiltro = new List<MOD_pessoa>();
 
-                objBLL_Pessoa = new BLL_pessoa();
-                listaPessoa = objBLL_Pessoa.buscarCod(vCodPessoa, modulos.CodUsuarioCCB, true);
+                objBLL_Pessoa = new BLL_buscaPessoaPorCodPessoa();
+                listaPessoa = objBLL_Pessoa.Buscar(vCodPessoa, true);
 
                 if (listaPessoa != null && listaPessoa.Count > 0)
                 {
@@ -2069,10 +2066,10 @@ namespace ccbtest
         {
             try
             {
-                objBLL_Pessoa = new BLL_pessoa();
+                IBLL_buscaPessoaMetodo objBLL_MetodoPessoa = new BLL_buscaPessoaMetodoPorPessoa();
                 listaPessoaMetodo = new List<MOD_pessoaMetodo>();
 
-                listaPessoaMetodo = objBLL_Pessoa.buscarMetodoPessoa(Pessoa);
+                listaPessoaMetodo = objBLL_MetodoPessoa.Buscar(Pessoa);
                 cboMetodo.DataSource = listaPessoaMetodo;
                 cboMetodo.ValueMember = "CodMetodo";
                 cboMetodo.DisplayMember = "DescMetodo";
@@ -4284,7 +4281,7 @@ namespace ccbtest
         internal void verParamametros()
         {
             ///Veriicação nos parametros se é atorizado a alterar os dados da solicitação
-            if (modulos.listaParametros[0].AlteraSolicita.Equals("Não"))
+            if ("Não".Equals(MOD_Session.ListaParametroLogado[0].AlteraSolicita))
             {
                 lblTestePara.Enabled = false;
                 optRjm.Enabled = false;
@@ -4311,7 +4308,7 @@ namespace ccbtest
                 lblPessoa.Enabled = true;
             }
             ///Verificação nos parametros se é autorizado a alterar a quantidade de lições
-            if (modulos.listaParametros[0].AlteraQtdeLicoesPreTeste.Equals("Não"))
+            if ("Não".Equals(MOD_Session.ListaParametroLogado[0].AlteraQtdeLicoesPreTeste))
             {
                 txtQtdeMet.Enabled = false;
                 lblQtdeMet.Enabled = false;
@@ -4334,7 +4331,7 @@ namespace ccbtest
                 lblQtdeEscala.Enabled = true;
             }
             ///Verificação nos parametros se é autorizado a alterar as observações no preteste
-            if (modulos.listaParametros[0].TestePermAltObsMet.Equals("Não"))
+            if ("Não".Equals(MOD_Session.ListaParametroLogado[0].TestePermAltObsMet))
             {
                 lblObsMet.Enabled = false;
                 txtObsMet.Enabled = false;
@@ -4344,7 +4341,7 @@ namespace ccbtest
                 lblObsMet.Enabled = true;
                 txtObsMet.Enabled = true;
             }
-            if (modulos.listaParametros[0].TestePermAltObsMts.Equals("Não"))
+            if ("Não".Equals(MOD_Session.ListaParametroLogado[0].TestePermAltObsMts))
             {
                 lblObsMts.Enabled = false;
                 txtObsMts.Enabled = false;
@@ -4354,7 +4351,7 @@ namespace ccbtest
                 lblObsMts.Enabled = true;
                 txtObsMts.Enabled = true;
             }
-            if (modulos.listaParametros[0].TestePermAltObsHino.Equals("Não"))
+            if ("Não".Equals(MOD_Session.ListaParametroLogado[0].TestePermAltObsHino))
             {
                 lblObsHino.Enabled = false;
                 txtObsHino.Enabled = false;
@@ -4364,7 +4361,7 @@ namespace ccbtest
                 lblObsHino.Enabled = true;
                 txtObsHino.Enabled = true;
             }
-            if (modulos.listaParametros[0].TestePermAltObsEsc.Equals("Não"))
+            if ("Não".Equals(MOD_Session.ListaParametroLogado[0].TestePermAltObsEsc))
             {
                 lblObsEsc.Enabled = false;
                 txtObsEsc.Enabled = false;
@@ -4374,7 +4371,7 @@ namespace ccbtest
                 lblObsEsc.Enabled = true;
                 txtObsEsc.Enabled = true;
             }
-            if (modulos.listaParametros[0].TestePermAltObsTeoria.Equals("Não"))
+            if ("Não".Equals(MOD_Session.ListaParametroLogado[0].TestePermAltObsTeoria))
             {
                 lblObsTeoria.Enabled = false;
                 txtObsTeoria.Enabled = false;
@@ -4394,9 +4391,8 @@ namespace ccbtest
         {
             try
             {
-                MOD_acessoFichaPreTeste entAcesso = new MOD_acessoFichaPreTeste();
-                btnMetIns.Enabled = funcoes.liberacoes(entAcesso.rotInsMetFichaPreTeste);
-                btnMetExcluir.Enabled = funcoes.liberacoes(entAcesso.rotExcMetFichaPreTeste, dataGrid);
+                btnMetIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoFichaPreTeste.RotInsMetFichaPreTeste);
+                btnMetExcluir.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoFichaPreTeste.RotExcMetFichaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -4415,31 +4411,8 @@ namespace ccbtest
         {
             try
             {
-                MOD_acessoFichaPreTeste entAcesso = new MOD_acessoFichaPreTeste();
-                //verificando o botão inserir
-                btnHinoInserir.Enabled = funcoes.liberacoes(entAcesso.rotInsHinoFichaPreTeste);
-                btnHinoExcluir.Enabled = funcoes.liberacoes(entAcesso.rotExcHinoFichaPreTeste, dataGrid);
-
-                //foreach (MOD_acessos ent in listaAcesso)
-                //{
-                ////verificando o botão inserir
-                //if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotInsMetFichaPreTeste))
-                //{
-                //    btnMetIns.Enabled = true;
-                //}
-                //verificando o botão excluir
-                //else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotExcMetFichaPreTeste))
-                //{
-                //    if (dataGrid.Rows.Count > 0)
-                //    {
-                //        btnMetExcluir.Enabled = true;
-                //    }
-                //    else
-                //    {
-                //        btnMetExcluir.Enabled = false;
-                //    }
-                //}
-                //}
+                btnHinoInserir.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoFichaPreTeste.RotInsHinoFichaPreTeste);
+                btnHinoExcluir.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoFichaPreTeste.RotExcHinoFichaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -4458,9 +4431,8 @@ namespace ccbtest
         {
             try
             {
-                MOD_acessoFichaPreTeste entAcesso = new MOD_acessoFichaPreTeste();
-                btnMtsInserir.Enabled = funcoes.liberacoes(entAcesso.rotInsMtsFichaPreTeste);
-                btnMtsExcluir.Enabled = funcoes.liberacoes(entAcesso.rotExcMtsFichaPreTeste, dataGrid);
+                btnMtsInserir.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoFichaPreTeste.RotInsMtsFichaPreTeste);
+                btnMtsExcluir.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoFichaPreTeste.RotExcMtsFichaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -4479,9 +4451,8 @@ namespace ccbtest
         {
             try
             {
-                MOD_acessoFichaPreTeste entAcesso = new MOD_acessoFichaPreTeste();
-                btnEscalaInserir.Enabled = funcoes.liberacoes(entAcesso.rotInsEscalaFichaPreTeste);
-                btnEscalaExcluir.Enabled = funcoes.liberacoes(entAcesso.rotExcEscalaFichaPreTeste, dataGrid);
+                btnEscalaInserir.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoFichaPreTeste.RotInsEscalaFichaPreTeste);
+                btnEscalaExcluir.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoFichaPreTeste.RotExcEscalaFichaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -4500,9 +4471,8 @@ namespace ccbtest
         {
             try
             {
-                MOD_acessoFichaPreTeste entAcesso = new MOD_acessoFichaPreTeste();
-                btnTeoriaInserir.Enabled = funcoes.liberacoes(entAcesso.rotInsTeoriaFichaPreTeste);
-                btnTeoriaExcluir.Enabled = funcoes.liberacoes(entAcesso.rotExcTeoriaFichaPreTeste, dataGrid);
+                btnTeoriaInserir.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoFichaPreTeste.RotInsTeoriaFichaPreTeste);
+                btnTeoriaExcluir.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoFichaPreTeste.RotExcTeoriaFichaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {

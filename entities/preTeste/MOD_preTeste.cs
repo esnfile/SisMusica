@@ -65,13 +65,13 @@ namespace ENT.preTeste
 
     public class MOD_acessoPreTeste
     {
-        public int progPreTeste { get; set; } = 26;
-        public int rotInsPreTeste { get; set; } = 117;
-        public int rotEditPreTeste { get; set; } = 118;
-        public int rotReAgendaPreTeste { get; set; } = 122;
-        public int rotVisPreTeste { get; set; } = 120;
-        public int rotCancelPreTeste { get; set; } = 119;
-        public int rotEncerraPreTeste { get; set; } = 121;
-        public int rotImpPreTeste { get; set; } = 196;
+        public static int ProgPreTeste { get; } = 26;
+        public static int RotInsPreTeste { get; } = 117;
+        public static int RotEditPreTeste { get; } = 118;
+        public static int RotReAgendaPreTeste { get; } = 122;
+        public static int RotVisPreTeste { get; } = 120;
+        public static int RotCancelPreTeste { get; } = 119;
+        public static int RotEncerraPreTeste { get; } = 121;
+        public static int RotImpPreTeste { get; } = 196;
     }
 }

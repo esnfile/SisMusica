@@ -406,51 +406,10 @@ namespace ccbinst
         {
             try
             {
-                MOD_acessoEscala entAcesso = new MOD_acessoEscala();
-                foreach (MOD_acessos ent in listaAcesso)
-                {
-                    //verificando o botão inserir
-                    if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotInsEscala))
-                    {
-                        btnDescIns.Enabled = true;
-                    }
-                    //verificando o botão editar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotEditEscala))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnDescEditar.Enabled = true;
-                        }
-                        else
-                        {
-                            btnDescEditar.Enabled = false;
-                        }
-                    }
-                    //verificando o botão excluir
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotExcEscala))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnDescExc.Enabled = true;
-                        }
-                        else
-                        {
-                            btnDescExc.Enabled = false;
-                        }
-                    }
-                    //verificando o botão visualizar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotVisEscala))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnDescVisual.Enabled = true;
-                        }
-                        else
-                        {
-                            btnDescVisual.Enabled = false;
-                        }
-                    }
-                }
+                btnDescIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoEscala.RotInsEscala);
+                btnDescEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoEscala.RotInsEscala, dataGrid);
+                btnDescExc.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoEscala.RotInsEscala, dataGrid);
+                btnDescVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoEscala.RotInsEscala, dataGrid);
             }
             catch (SqlException exl)
             {

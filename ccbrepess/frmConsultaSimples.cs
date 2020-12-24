@@ -55,7 +55,7 @@ namespace ccbrepess
         MOD_erros objEnt_Erros = null;
         List<MOD_erros> listaErros;
 
-        BLL_pessoa objBLL_Pessoa;
+        IBLL_buscaRelatorio objBLL_Pessoa;
         List<MOD_pessoa> listaPessoa = new List<MOD_pessoa>();
 
         BLL_usuario objBLL_Usuario;
@@ -362,8 +362,8 @@ namespace ccbrepess
                     CodCargo = Convert.ToInt16(cboCargo.SelectedValue).ToString();
                     CodComum = modulos.CodUsuarioCCB;
 
-                    objBLL_Pessoa = new BLL_pessoa();
-                    listaPessoa = objBLL_Pessoa.buscarRelatorioPessoa(lblSexo.Text, lblEstadoCivil.Text, CodCargo, CodComum, lblStatus.Text.Equals("Sim") ? true : false);
+                    objBLL_Pessoa = new BLL_buscaRelatorioPessoa();
+                    listaPessoa = objBLL_Pessoa.Buscar(lblSexo.Text, lblEstadoCivil.Text, CodCargo, CodComum, lblStatus.Text.Equals("Sim") ? true : false);
 
                     List<MOD_pessoa> listaOrdem = new List<MOD_pessoa>();
 

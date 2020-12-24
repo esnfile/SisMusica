@@ -20,7 +20,6 @@ using ENT.instrumentos;
 using ENT.pessoa;
 using ENT.preTeste;
 using ENT.uteis;
-using ccbtest.pesquisa;
 using ENT.relatorio;
 using ccbretest;
 
@@ -39,9 +38,6 @@ namespace ccbtest
                 formChama = forms;
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
-
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
 
                 ///Recebe a lista e armazena
                 listaPreTeste = lista;
@@ -72,7 +68,6 @@ namespace ccbtest
         #region declaracoes
 
         clsException excp;
-        List<MOD_acessos> listaAcesso = null;
 
         BLL_preTeste objBLL = null;
         MOD_preTeste objEnt = null;
@@ -83,7 +78,7 @@ namespace ccbtest
         List<MOD_preTesteFicha> listaFicha = null;
         List<MOD_preTesteFicha> listaDeleteFicha = null;
 
-        BLL_pessoa objBLL_Pessoa = null;
+        IBLL_buscaPessoa objBLL_Pessoa = null;
         List<MOD_pessoa> listaPessoa = null;
 
         BLL_ccb objBLL_CCB = null;
@@ -1054,8 +1049,8 @@ namespace ccbtest
             {
                 List<MOD_pessoa> listaPesFiltro = new List<MOD_pessoa>();
 
-                objBLL_Pessoa = new BLL_pessoa();
-                listaPessoa = objBLL_Pessoa.buscarCod(vCodPessoa, modulos.CodUsuarioCCB, true);
+                objBLL_Pessoa = new BLL_buscaPessoaPorCodPessoa();
+                listaPessoa = objBLL_Pessoa.Buscar(vCodPessoa, true);
 
                 if (listaPessoa != null && listaPessoa.Count > 0)
                 {
@@ -1586,51 +1581,10 @@ namespace ccbtest
         {
             try
             {
-                MOD_acessoFichaPreTeste entAcesso = new MOD_acessoFichaPreTeste();
-                foreach (MOD_acessos ent in listaAcesso)
-                {
-                    //verificando o botão inserir
-                    if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotInsFichaPreTeste))
-                    {
-                        btnInsFicha.Enabled = true;
-                    }
-                    //verificando o botão editar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotEditFichaPreTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnEditarFicha.Enabled = true;
-                        }
-                        else
-                        {
-                            btnEditarFicha.Enabled = false;
-                        }
-                    }
-                    //verificando o botão excluir
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotExcFichaPreTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnExcluirFicha.Enabled = true;
-                        }
-                        else
-                        {
-                            btnExcluirFicha.Enabled = false;
-                        }
-                    }
-                    //verificando o botão visualizar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotImpFichaPreTeste))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnImpFicha.Enabled = true;
-                        }
-                        else
-                        {
-                            btnImpFicha.Enabled = false;
-                        }
-                    }
-                }
+                btnInsFicha.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoFichaPreTeste.RotInsFichaPreTeste);
+                btnEditarFicha.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoFichaPreTeste.RotEditFichaPreTeste, dataGrid);
+                btnExcluirFicha.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoFichaPreTeste.RotExcFichaPreTeste, dataGrid);
+                btnImpFicha.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoFichaPreTeste.RotImpFichaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {

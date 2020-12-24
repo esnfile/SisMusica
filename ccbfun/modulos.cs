@@ -35,11 +35,6 @@ namespace BLL.Funcoes
         public static string CodigoRegional;
         public static string DescRegional;
         public static string CaminhoBD;
-        
-        /// <summary>
-        /// declara uma lista que será preenchida com os acessos liberados para o usuario logado
-        /// </summary>
-        public static List<MOD_acessos> listaLibAcesso;
 
         /// <summary>
         /// Lista Pública que recebe os parametros configurados em todo o sistema.
@@ -146,7 +141,7 @@ namespace BLL.Funcoes
         /// <summary>
         /// mensagem que o usuario não tem acesso ao caasdtro
         /// </summary>
-        public static string acessoNegado = "Acesso Negado!" + '\n' + "Não é permitido acesso ao Administrador.";
+        public static string acessoNegado = "Acesso Negado!" + '\n' + "Não é permitido alterar ao dados dos Administradores.";
 
         /// <summary>
         /// variavel que armazena qual tecla foi pressionado no DataGridView
@@ -358,10 +353,10 @@ namespace BLL.Funcoes
         #region Programas e Rotinas Configurações
 
         #region Importacao
-        public static int progImportaPessoa = 31;
-        public static int rotInsImportaPessoa = 164;
-        public static int rotVisImportaPessoa = 165;
-        public static int rotEditImportaPessoa = 166;
+        //public static int progImportaPessoa = 31;
+        //public static int rotInsImportaPessoa = 164;
+        //public static int rotVisImportaPessoa = 165;
+        //public static int rotEditImportaPessoa = 166;
         #endregion
 
         #endregion

@@ -32,10 +32,6 @@ namespace ccbinst
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
 
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
-
-
                 //preenche o combobox TipoEscala
                 apoio.carregaComboTipoEscala(cboTipo);
 
@@ -61,8 +57,6 @@ namespace ccbinst
         #region declaracoes
 
         clsException excp;
-
-        List<MOD_acessos> listaAcesso = null;
 
         BLL_escala objBLL = null;
         MOD_escala objEnt = null;

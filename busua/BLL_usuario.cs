@@ -1329,6 +1329,7 @@ namespace BLL.Usuario
                     ent.Supervisor = (string)(row.IsNull("Supervisor") ? null : row["Supervisor"]);
                     ent.Ativo = (string)(row.IsNull("Ativo") ? null : row["Ativo"]);
                     ent.AlteraSenha = (string)(row.IsNull("AlteraSenha") ? null : row["AlteraSenha"]);
+                    ent.Administrador = (string)(row.IsNull("Administrador") ? null : row["Administrador"]);
 
                     //adiciona os dados à lista
                     lista.Add(ent);
@@ -1417,8 +1418,8 @@ namespace BLL.Usuario
                     ent.DescCargo = (string)(row.IsNull("DescCargo") ? null : row["DescCargo"]);
                     ent.SiglaCargo = (string)(row.IsNull("SiglaCargo") ? null : row["SiglaCargo"]);
                     ent.Ordem = (string)(row.IsNull("Ordem") ? Convert.ToString(null) : Convert.ToString(row["Ordem"]));
-                    ent.Masculino = (string)(row.IsNull("Masculino") ? null : row["Masculino"]);
-                    ent.Feminino = (string)(row.IsNull("Feminino") ? null : row["Feminino"]);
+                    ent.Masculino = (row.IsNull("Masculino") || "Não".Equals(row["Masculino"])) ? false : true;
+                    ent.Feminino = (row.IsNull("Feminino") || "Não".Equals(row["Feminino"])) ? false : true;
                     //adiciona os dados à lista
                     lista.Add(ent);
                 }
@@ -1653,22 +1654,22 @@ namespace BLL.Usuario
 
                 if (Operacao.Equals("Insert"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotInsUsuario);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoUsuario.RotInsUsuario);
                     ent.Logs.Ocorrencia = "Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
                 }
                 else if (Operacao.Equals("Update"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotEditUsuario);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoUsuario.RotEditUsuario);
                     ent.Logs.Ocorrencia = "Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
                 }
                 else if (Operacao.Equals("Delete"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotExcUsuario);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoUsuario.RotExcUsuario);
                     ent.Logs.Ocorrencia = "Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
                 }
                 else if (Operacao.Equals("UpdateSenha"))
                 {
-                    ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotSenhaUsuario);
+                    ent.Logs.CodRotina = Convert.ToString(MOD_acessoUsuario.RotSenhaUsuario);
                     ent.Logs.Ocorrencia = "Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
                 }
 
@@ -1706,7 +1707,7 @@ namespace BLL.Usuario
                 ent.Logs.Hora = DateTime.Now.ToString("HH:mm");
                 ent.Logs.CodUsuario = Convert.ToString(modulos.CodUsuario);
 
-                ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotUsuAcessoCargo);
+                ent.Logs.CodRotina = Convert.ToString(MOD_acessoUsuario.RotUsuAcessoCargo);
                 ent.Logs.Ocorrencia = "Foi feito " + Operacao.ToUpper() + " do Cargo: < " + ent.SiglaCargo + " - " + ent.DescCargo + " > " + " no cadastro do usuário Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
 
                 ent.Logs.NomePc = modulos.DescPc;
@@ -1743,7 +1744,7 @@ namespace BLL.Usuario
                 ent.Logs.Hora = DateTime.Now.ToString("HH:mm");
                 ent.Logs.CodUsuario = Convert.ToString(modulos.CodUsuario);
 
-                ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotUsuAcessoCargo);
+                ent.Logs.CodRotina = Convert.ToString(MOD_acessoUsuario.RotUsuAcessoCargo);
                 ent.Logs.Ocorrencia = "Foi feito " + Operacao.ToUpper() + " da Comum Congregação: < " + ent.Codigo + " - " + ent.Descricao + " > " + " no cadastro do usuário Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
 
                 ent.Logs.NomePc = modulos.DescPc;
@@ -1780,7 +1781,7 @@ namespace BLL.Usuario
                 ent.Logs.Hora = DateTime.Now.ToString("HH:mm");
                 ent.Logs.CodUsuario = Convert.ToString(modulos.CodUsuario);
 
-                ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotUsuAcessoCargo);
+                ent.Logs.CodRotina = Convert.ToString(MOD_acessoUsuario.RotUsuAcessoCargo);
                 ent.Logs.Ocorrencia = "Foi feito " + Operacao.ToUpper() + " da Região: < " + ent.CodigoRegiao + " - " + ent.DescRegiao + " > " + " no cadastro do usuário Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
 
                 ent.Logs.NomePc = modulos.DescPc;
@@ -1817,7 +1818,7 @@ namespace BLL.Usuario
                 ent.Logs.Hora = DateTime.Now.ToString("HH:mm");
                 ent.Logs.CodUsuario = Convert.ToString(modulos.CodUsuario);
 
-                ent.Logs.CodRotina = Convert.ToString(new MOD_acessoUsuario().rotUsuAcessoCargo);
+                ent.Logs.CodRotina = Convert.ToString(MOD_acessoUsuario.RotUsuAcessoCargo);
                 ent.Logs.Ocorrencia = "Foi feito " + Operacao.ToUpper() + " da Região: < " + ent.CodigoRegiao + " - " + ent.DescRegiao + " > " + " no cadastro do usuário Código: < " + ent.CodUsuario + " > Nome: < " + ent.Nome + " > ";
 
                 ent.Logs.NomePc = modulos.DescPc;

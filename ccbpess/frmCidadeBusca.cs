@@ -476,11 +476,10 @@ namespace ccbpess
         {
             try
             {
-                MOD_acessoCidade entAcesso = new MOD_acessoCidade();
-                btnIns.Enabled = funcoes.liberacoes(entAcesso.rotInsCidade);
-                btnEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditCidade, dataGrid);
-                btnExc.Enabled = funcoes.liberacoes(entAcesso.rotExcCidade, dataGrid);
-                btnVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisCidade, dataGrid);
+                btnIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoCidade.RotInsCidade);
+                btnEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoCidade.RotEditCidade, dataGrid);
+                btnExc.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoCidade.RotExcCidade, dataGrid);
+                btnVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoCidade.RotVisCidade, dataGrid);
             }
             catch (SqlException exl)
             {

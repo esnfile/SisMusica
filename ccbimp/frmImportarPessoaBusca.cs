@@ -51,7 +51,7 @@ namespace ccbimp
         string DataImporta;
         string Usuario;
 
-        BLL_importaPessoa objBLL = null;
+        IBLL_buscaPorCodImportaPessoa objBLL = null;
         MOD_importaPessoa objEnt = null;
         List<MOD_importaPessoa> lista;
 
@@ -139,10 +139,8 @@ namespace ccbimp
                 {
                     apoio.Aguarde();
                     Codigo = gridData[0, gridData.CurrentRow.Index].Value.ToString();
-                    abrirForm("frmErros", gridData);
-                    ((frmImportarPessoa)formulario).Text = "Visualizando Importação";
-                    ((frmImportarPessoa)formulario).enabledForm();
-                    ((frmImportarPessoa)formulario).defineFoco();
+                    abrirForm("frmSucesso", gridData);
+                    ((frmImportarPessoaSucesso)formulario).Text = "Visualizando Importação";
                 }
                 catch (SqlException exl)
                 {
@@ -158,11 +156,13 @@ namespace ccbimp
                 }
             }
         }
-        private void gridData_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        private void gridData_SelectionChanged(object sender, EventArgs e)
         {
             try
             {
-                verPermData(gridData);
+                Codigo = gridData[0, gridData.CurrentRow.Index].Value.ToString();
+                DataImporta = gridData[1, gridData.CurrentRow.Index].Value.ToString();
+                Usuario = gridData[2, gridData.CurrentRow.Index].Value.ToString();
             }
             catch (SqlException exl)
             {
@@ -173,13 +173,11 @@ namespace ccbimp
                 excp = new clsException(ex);
             }
         }
-        private void gridData_SelectionChanged(object sender, EventArgs e)
+        private void gridData_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             try
             {
-                Codigo = gridData[0, gridData.CurrentRow.Index].Value.ToString();
-                DataImporta = gridData[1, gridData.CurrentRow.Index].Value.ToString();
-                Usuario = gridData[2, gridData.CurrentRow.Index].Value.ToString();
+                verPermData(gridData);
             }
             catch (SqlException exl)
             {
@@ -236,16 +234,16 @@ namespace ccbimp
                 if (Pesquisa.Equals("Codigo"))
                 {
                     //chama a classe de negócios
-                    objBLL = new BLL_importaPessoa();
-                    lista = objBLL.buscarCod(Campo1);
+                    objBLL = new BLL_buscaPorCodImportaPessoa();
+                    lista = objBLL.Buscar(Campo1);
                     funcoes.gridImportaPessoa(dataGrid);
                     dataGrid.DataSource = lista;
                 }
                 else if (Pesquisa.Equals("Data"))
                 {
                     //chama a classe de negócios
-                    objBLL = new BLL_importaPessoa();
-                    lista = objBLL.buscarDataImporta(Campo1, Campo2);
+                    IBLL_buscaPorDataImportaPessoa objBLL_Data = new BLL_buscaPorDataImportaPessoa();
+                    lista = objBLL_Data.Buscar(Campo1, Campo2);
                     funcoes.gridImportaPessoa(dataGrid);
                     dataGrid.DataSource = lista;
                 }
@@ -296,8 +294,8 @@ namespace ccbimp
         {
             try
             {
-                objBLL = new BLL_importaPessoa();
-                lista = objBLL.buscarCod(CodImporta);
+                objBLL = new BLL_buscaPorCodImportaPessoa();
+                lista = objBLL.Buscar(CodImporta);
             }
             catch (SqlException exl)
             {
@@ -351,21 +349,7 @@ namespace ccbimp
         {
             try
             {
-                foreach (MOD_acessos ent in listaAcesso)
-                {
-                    if (Convert.ToInt32(ent.CodRotina).Equals(modulos.rotVisImportaPessoa))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnDataVisual.Enabled = true;
-                            break;
-                        }
-                        else
-                        {
-                            btnDataVisual.Enabled = false;
-                        }
-                    }
-                }
+                btnDataVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoImportaPessoa.RotVisImportaPessoa, dataGrid);
             }
             catch (SqlException exl)
             {

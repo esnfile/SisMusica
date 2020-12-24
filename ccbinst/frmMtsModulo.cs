@@ -32,9 +32,6 @@ namespace ccbinst
                 //informa o datagrid que solicitou a pesquisa
                 dataGrid = gridPesquisa;
 
-                //carregando a lista de permissões de acesso.
-                listaAcesso = modulos.listaLibAcesso;
-
                 ///preenche o comboFase
                 apoio.carregaComboFaseMts(cboFase);
 
@@ -60,8 +57,6 @@ namespace ccbinst
         #region declaracoes
 
         clsException excp;
-
-        List<MOD_acessos> listaAcesso = null;
 
         BLL_mtsModulo objBLL = null;
         MOD_mtsModulo objEnt = null;

@@ -84,7 +84,7 @@ namespace DAL.uteis
 "P.QtdeHinoPreTesteOficial, P.QtdeEscalaPreTesteOficial, P.QtdeHinoTesteOficial, P.QtdeEscalaTesteOficial, P.RodapeRelatorio, " +
 "P.TestePermAltObsMet, P.TesteObsMet, P.TestePermAltObsMts, P.TesteObsMts, P.TestePermAltObsHino, P.TesteObsHino, " +
 "P.TestePermAltObsEsc, P.TesteObsEsc, P.TestePermAltObsTeoria, P.TesteObsTeoria, " +
-"R.Codigo, R.Descricao, R.Estado, R.CaminhoBD " +
+"R.Codigo AS CodigoRegional, R.Descricao AS DescricaoRegional, R.Estado AS EstadoRegional, R.CaminhoBD " +
 "FROM Parametros AS P " +
 "LEFT OUTER JOIN Regional AS R ON P.CodRegional = R.CodRegional ";
 

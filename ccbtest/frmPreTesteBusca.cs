@@ -6,12 +6,14 @@ using System.Windows.Forms;
 using BLL.Funcoes;
 using BLL.pessoa;
 using BLL.preTeste;
+using BLL.uteis;
 using BLL.validacoes;
 using BLL.validacoes.Exceptions;
 using ENT.acessos;
 using ENT.Erros;
 using ENT.pessoa;
 using ENT.preTeste;
+using ENT.uteis;
 
 namespace ccbtest
 {
@@ -1555,14 +1557,43 @@ namespace ccbtest
         {
             try
             {
-                preencher(Codigo);
-                formulario = new frmPreTeste(this, dataGrid, lista);
-                ((frmPreTeste)formulario).MdiParent = MdiParent;
-                ((frmPreTeste)formulario).StartPosition = FormStartPosition.Manual;
-                funcoes.CentralizarForm(((frmPreTeste)formulario));
-                ((frmPreTeste)formulario).Show();
-                ((frmPreTeste)formulario).BringToFront();
-                Enabled = false;
+                if ("frmPes".Equals(form))
+                {
+                    lblCodPessoa.Text = string.Empty;
+                    lblDescPessoa.Text = string.Empty;
+
+                    formulario = new frmPesquisaPessoa(this, string.Empty);
+                    ((frmPesquisaPessoa)formulario).MdiParent = MdiParent;
+                    ((frmPesquisaPessoa)formulario).StartPosition = FormStartPosition.Manual;
+                    funcoes.CentralizarForm(((frmPesquisaPessoa)formulario));
+                    ((frmPesquisaPessoa)formulario).Show();
+                    ((frmPesquisaPessoa)formulario).BringToFront();
+                    Enabled = false;
+                }
+                else if ("frmCom".Equals(form))
+                {
+                    lblCodComum.Text = string.Empty;
+                    lblDescricaoComum.Text = string.Empty;
+
+                    formulario = new frmPesquisaComum(this, string.Empty);
+                    ((frmPesquisaComum)formulario).MdiParent = MdiParent;
+                    ((frmPesquisaComum)formulario).StartPosition = FormStartPosition.Manual;
+                    funcoes.CentralizarForm(((frmPesquisaComum)formulario));
+                    ((frmPesquisaComum)formulario).Show();
+                    ((frmPesquisaComum)formulario).BringToFront();
+                    Enabled = false;
+                }
+                else
+                {
+                    preencher(Codigo);
+                    formulario = new frmPreTeste(this, dataGrid, lista);
+                    ((frmPreTeste)formulario).MdiParent = MdiParent;
+                    ((frmPreTeste)formulario).StartPosition = FormStartPosition.Manual;
+                    funcoes.CentralizarForm(((frmPreTeste)formulario));
+                    ((frmPreTeste)formulario).Show();
+                    ((frmPreTeste)formulario).BringToFront();
+                    Enabled = false;
+                }
             }
             catch (SqlException exl)
             {
@@ -1668,6 +1699,69 @@ namespace ccbtest
             txtCodigo.Focus();
         }
 
+        /// <summary>
+        /// Função que carrega a Pessoa pesquisado pelo Código
+        /// </summary>
+        /// <param name="vCodPessoa">Código da Pessoa</param>
+        internal void carregaPessoa(string vCodPessoa)
+        {
+            try
+            {
+                List<MOD_pessoa> listaPessoa = new List<MOD_pessoa>();
+                IBLL_buscaPessoa objBLL_Pessoa = new BLL_buscaPessoaPorCodPessoa();
+
+                listaPessoa = objBLL_Pessoa.Buscar(vCodPessoa);
+
+                if (listaPessoa != null && listaPessoa.Count > 0)
+                {
+                    lblCodPessoa.Text = listaPessoa[0].CodPessoa;
+                    lblDescPessoa.Text = listaPessoa[0].Nome;
+                }
+                else
+                {
+                    abrirForm("frmPes", gridPessoa);
+                }
+            }
+            catch (SqlException exl)
+            {
+                throw exl;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        /// <summary>
+        /// Função que carrega a Comum pesquisado pelo Código
+        /// </summary>
+        /// <param name="vCodCCB"></param>
+        internal void carregaComum(string vCodCCB)
+        {
+            try
+            {
+                List<MOD_ccb> listaCCB = new List<MOD_ccb>();
+                listaCCB = new BLL_ccb().buscarCod(vCodCCB);
+
+                if (listaCCB != null && listaCCB.Count > 0)
+                {
+                    lblCodComum.Text = listaCCB[0].CodCCB;
+                    lblDescricaoComum.Text = listaCCB[0].Codigo + " - " + listaCCB[0].Descricao + " - " + listaCCB[0].DescricaoRegiao;
+                }
+                else
+                {
+                    abrirForm("frmCCB", gridComum);
+                }
+            }
+            catch (SqlException exl)
+            {
+                throw exl;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         #region Verificar Permissões de Acessos
 
         /// <summary>
@@ -1678,14 +1772,12 @@ namespace ccbtest
         {
             try
             {
-                MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
-
-                btnCodIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPreTeste);
-                btnCodEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPreTeste, dataGrid);
-                btnCodExc.Enabled = funcoes.liberacoes(entAcesso.rotCancelPreTeste, dataGrid);
-                btnCodVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPreTeste, dataGrid);
-                btnCodEncerra.Enabled = funcoes.liberacoes(entAcesso.rotEncerraPreTeste, dataGrid);
-                btnCodAgenda.Enabled = funcoes.liberacoes(entAcesso.rotReAgendaPreTeste, dataGrid);
+                btnCodIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotInsPreTeste);
+                btnCodEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotEditPreTeste, dataGrid);
+                btnCodExc.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotCancelPreTeste, dataGrid);
+                btnCodVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotVisPreTeste, dataGrid);
+                btnCodEncerra.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotEncerraPreTeste, dataGrid);
+                btnCodAgenda.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotReAgendaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1704,14 +1796,12 @@ namespace ccbtest
         {
             try
             {
-                MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
-
-                btnPesIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPreTeste);
-                btnPesEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPreTeste, dataGrid);
-                btnPesExc.Enabled = funcoes.liberacoes(entAcesso.rotCancelPreTeste, dataGrid);
-                btnPesVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPreTeste, dataGrid);
-                btnPesEncerra.Enabled = funcoes.liberacoes(entAcesso.rotEncerraPreTeste, dataGrid);
-                btnPesAgenda.Enabled = funcoes.liberacoes(entAcesso.rotReAgendaPreTeste, dataGrid);
+                btnPesIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotInsPreTeste);
+                btnPesEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotEditPreTeste, dataGrid);
+                btnPesExc.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotCancelPreTeste, dataGrid);
+                btnPesVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotVisPreTeste, dataGrid);
+                btnPesEncerra.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotEncerraPreTeste, dataGrid);
+                btnPesAgenda.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotReAgendaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1730,14 +1820,12 @@ namespace ccbtest
         {
             try
             {
-                MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
-
-                btnDataIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPreTeste);
-                btnDataEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPreTeste, dataGrid);
-                btnDataExc.Enabled = funcoes.liberacoes(entAcesso.rotCancelPreTeste, dataGrid);
-                btnDataVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPreTeste, dataGrid);
-                btnDataEncerra.Enabled = funcoes.liberacoes(entAcesso.rotEncerraPreTeste, dataGrid);
-                btnDataAgenda.Enabled = funcoes.liberacoes(entAcesso.rotReAgendaPreTeste, dataGrid);
+                btnDataIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotInsPreTeste);
+                btnDataEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotEditPreTeste, dataGrid);
+                btnDataExc.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotCancelPreTeste, dataGrid);
+                btnDataVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotVisPreTeste, dataGrid);
+                btnDataEncerra.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotEncerraPreTeste, dataGrid);
+                btnDataAgenda.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotReAgendaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1756,14 +1844,12 @@ namespace ccbtest
         {
             try
             {
-                MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
-
-                btnSolIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPreTeste);
-                btnSolEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPreTeste, dataGrid);
-                btnSolExc.Enabled = funcoes.liberacoes(entAcesso.rotCancelPreTeste, dataGrid);
-                btnSolVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPreTeste, dataGrid);
-                btnSolEncerra.Enabled = funcoes.liberacoes(entAcesso.rotEncerraPreTeste, dataGrid);
-                btnSolAgenda.Enabled = funcoes.liberacoes(entAcesso.rotReAgendaPreTeste, dataGrid);
+                btnSolIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotInsPreTeste);
+                btnSolEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotEditPreTeste, dataGrid);
+                btnSolExc.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotCancelPreTeste, dataGrid);
+                btnSolVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotVisPreTeste, dataGrid);
+                btnSolEncerra.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotEncerraPreTeste, dataGrid);
+                btnSolAgenda.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotReAgendaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1782,14 +1868,12 @@ namespace ccbtest
         {
             try
             {
-                MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
-
-                btnSitIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPreTeste);
-                btnSitEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPreTeste, dataGrid);
-                btnSitExc.Enabled = funcoes.liberacoes(entAcesso.rotCancelPreTeste, dataGrid);
-                btnSitVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPreTeste, dataGrid);
-                btnSitEncerra.Enabled = funcoes.liberacoes(entAcesso.rotEncerraPreTeste, dataGrid);
-                btnSitAgenda.Enabled = funcoes.liberacoes(entAcesso.rotReAgendaPreTeste, dataGrid);
+                btnSitIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotInsPreTeste);
+                btnSitEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotEditPreTeste, dataGrid);
+                btnSitExc.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotCancelPreTeste, dataGrid);
+                btnSitVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotVisPreTeste, dataGrid);
+                btnSitEncerra.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotEncerraPreTeste, dataGrid);
+                btnSitAgenda.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotReAgendaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -1808,14 +1892,12 @@ namespace ccbtest
         {
             try
             {
-                MOD_acessoPreTeste entAcesso = new MOD_acessoPreTeste();
-
-                btnComIns.Enabled = funcoes.liberacoes(entAcesso.rotInsPreTeste);
-                btnComEditar.Enabled = funcoes.liberacoes(entAcesso.rotEditPreTeste, dataGrid);
-                btnComExc.Enabled = funcoes.liberacoes(entAcesso.rotCancelPreTeste, dataGrid);
-                btnComVisual.Enabled = funcoes.liberacoes(entAcesso.rotVisPreTeste, dataGrid);
-                btnComEncerra.Enabled = funcoes.liberacoes(entAcesso.rotEncerraPreTeste, dataGrid);
-                btnComAgenda.Enabled = funcoes.liberacoes(entAcesso.rotReAgendaPreTeste, dataGrid);
+                btnComIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotInsPreTeste);
+                btnComEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotEditPreTeste, dataGrid);
+                btnComExc.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotCancelPreTeste, dataGrid);
+                btnComVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotVisPreTeste, dataGrid);
+                btnComEncerra.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotEncerraPreTeste, dataGrid);
+                btnComAgenda.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoPreTeste.RotReAgendaPreTeste, dataGrid);
             }
             catch (SqlException exl)
             {

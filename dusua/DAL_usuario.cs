@@ -27,12 +27,12 @@ namespace DAL.Usuario
         #region Strings Sql da tabela Usuario
 
         //string de insert na tabela Usuario
-        private string strInsert = "INSERT INTO Usuario (CodUsuario, CodPessoa, Usuario, Senha, DataAlteraSenha, DataCadastro, Supervisor, Ativo, AlteraSenha) " +
-"VALUES (@CodUsuario, @CodPessoa, @Usuario, @Senha, @DataAlteraSenha, @DataCadastro, @Supervisor, @Ativo, @AlteraSenha) ";
+        private string strInsert = "INSERT INTO Usuario (CodUsuario, CodPessoa, Usuario, Senha, DataAlteraSenha, DataCadastro, Supervisor, Ativo, AlteraSenha, Administrador) " +
+"VALUES (@CodUsuario, @CodPessoa, @Usuario, @Senha, @DataAlteraSenha, @DataCadastro, @Supervisor, @Ativo, @AlteraSenha, @Administrador) ";
 
         //string de update na tabela Usuario
         private string strUpdate = "UPDATE Usuario SET CodPessoa = @CodPessoa, Usuario = @Usuario, Senha = @Senha, " +
-"DataAlteraSenha = @DataAlteraSenha, DataCadastro = @DataCadastro, Supervisor = @Supervisor, Ativo = @Ativo, AlteraSenha = @AlteraSenha " +
+"DataAlteraSenha = @DataAlteraSenha, DataCadastro = @DataCadastro, Supervisor = @Supervisor, Ativo = @Ativo, AlteraSenha = @AlteraSenha, Administrador = @Administrador " +
 "WHERE CodUsuario = @CodUsuario ";
 
         //string de update da senha na tabela Usuario
@@ -44,7 +44,7 @@ namespace DAL.Usuario
 
         //string de select na tabela Usuario
         private string strSelect = "SELECT U.CodUsuario, U.CodPessoa, U.Usuario, U.Senha, U.DataAlteraSenha, " +
-"U.DataCadastro, U.Supervisor, U.Ativo, U.AlteraSenha, P.Nome " +
+"U.DataCadastro, U.Supervisor, U.Ativo, U.AlteraSenha, U.Administrador, P.Nome " +
 "FROM Usuario AS U " +
 "LEFT OUTER JOIN Pessoa AS P ON U.CodPessoa = P.CodPessoa ";
 
@@ -80,6 +80,7 @@ namespace DAL.Usuario
                 objParam.Add(new SqlParameter("@Supervisor", string.IsNullOrEmpty(objEnt.Supervisor) ? DBNull.Value as object : objEnt.Supervisor as object));
                 objParam.Add(new SqlParameter("@Ativo", string.IsNullOrEmpty(objEnt.Ativo) ? DBNull.Value as object : objEnt.Ativo as object));
                 objParam.Add(new SqlParameter("@AlteraSenha", string.IsNullOrEmpty(objEnt.AlteraSenha) ? DBNull.Value as object : objEnt.AlteraSenha as object));
+                objParam.Add(new SqlParameter("@Administrador", string.IsNullOrEmpty(objEnt.Administrador) ? DBNull.Value as object : objEnt.Administrador as object));
 
                 blnRetorno = objAcessa.executar(strUpdate, objParam);
 
@@ -157,6 +158,7 @@ namespace DAL.Usuario
                 objParam.Add(new SqlParameter("@Supervisor", string.IsNullOrEmpty(objEnt.Supervisor) ? DBNull.Value as object : objEnt.Supervisor as object));
                 objParam.Add(new SqlParameter("@Ativo", string.IsNullOrEmpty(objEnt.Ativo) ? DBNull.Value as object : objEnt.Ativo as object));
                 objParam.Add(new SqlParameter("@AlteraSenha", string.IsNullOrEmpty(objEnt.AlteraSenha) ? DBNull.Value as object : objEnt.AlteraSenha as object));
+                objParam.Add(new SqlParameter("@Administrador", string.IsNullOrEmpty(objEnt.Administrador) ? DBNull.Value as object : objEnt.Administrador as object));
 
                 blnRetorno = objAcessa.executar(strInsert, objParam);
 

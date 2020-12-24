@@ -90,6 +90,8 @@ namespace ENT.pessoa
         public string NomeInstrutor { get; set; }
         public string Sequencia { get; set; }
         public string MotivoInativa { get; set; }
+        public string CodigoRefBras { get; set; }
+        public string CodigoRefRegiao { get; set; }
 
         public string DataInicial { get; set; }
         public string DataFinal { get; set; }
@@ -146,11 +148,12 @@ namespace ENT.pessoa
         public List<MOD_cargo> listaCargo { get; set; }
         public List<MOD_pessoaInstr> listaPessoaInstr { get; set; }
         public List<MOD_pessoaMetodo> listaPessoaMet { get; set; }
-        public BindingList<MOD_ccbPessoa> listaCCBPessoa { get; set; }
-        public List<MOD_ccbPessoa> listaDeleteCCBPessoa { get; set; }
+        public BindingList<MOD_pessoaCCB> listaCCBPessoa { get; set; }
+        public List<MOD_pessoaCCB> listaDeleteCCBPessoa { get; set; }
         public BindingList<MOD_regiaoPessoa> listaRegiaoPessoa { get; set; }
         public List<MOD_regiaoPessoa> listaDeleteRegiaoPessoa { get; set; }
         public MOD_pessoaFoto FotoPessoa { get; set; }
+        public List<MOD_pessoaFoto> listaFotoPessoa { get; set; }
         public DataTable CarregarFotoPessoa { get; set; }
 
         public MOD_log Logs { get; set; }
@@ -159,33 +162,48 @@ namespace ENT.pessoa
 
     public class MOD_acessoPessoa
     {
-        public int progPessoa { get; set; } = 14;
-        public int rotInsPessoa { get; set; } = 46;
-        public int rotEditPessoa { get; set; } = 47;
-        public int rotExcPessoa { get; set; } = 48;
-        public int rotVisPessoa { get; set; } = 49;
-        public int rotPesAdicionais { get; set; } = 123;
-        public int rotPesInforGEM { get; set; } = 124;
-        public int rotPesInforRJM { get; set; } = 125;
-        public int rotPesInforCulto { get; set; } = 126;
-        public int rotPesInforOficial { get; set; } = 127;
-        public int rotPesAteInstrutor { get; set; } = 128;
-        public int rotPesAteComum { get; set; } = 129;
-        public int rotPesAteRegiao { get; set; } = 130;
-        public int rotPesAdiForma { get; set; } = 131;
-        public int rotPesAdiOrquetra { get; set; } = 132;
-        public int rotPesAteraCargo { get; set; } = 134;
-        public int rotPesAtendimento { get; set; } = 135;
-        public int rotPesAdiInstrumento { get; set; } = 146;
-        public int rotPesImportar { get; set; } = 164;
-        public int rotPesGemMetodo { get; set; } = 168;
-        public int rotPesImpFicha { get; set; } = 169;
+        public static int ProgPessoa { get; } = 14;
+        public static int RotInsPessoa { get; } = 46;
+        public static int RotEditPessoa { get; } = 47;
+        public static int RotExcPessoa { get; } = 48;
+        public static int RotVisPessoa { get; } = 49;
+        public static int RotPesAdicionais { get; } = 123;
+        public static int RotPesInforGEM { get; } = 124;
+        public static int RotPesInforRJM { get; } = 125;
+        public static int RotPesInforCulto { get; } = 126;
+        public static int RotPesInforOficial { get; } = 127;
 
-        public int progRelGerais { get; set; } = 33;
-        public int rotPesMixRelatorio { get; set; } = 170;
-        public int rotPesRelMinisterio { get; set; } = 171;
-        public int rotPesRelFichaCadastral { get; set; } = 226;
-        public int rotPesRelVisaoGeral { get; set; } = 227;
+        /// <summary>
+        /// Rotina que Libera a Aba Atendimento dos Instrumentos (Alteração de Instrumentos que atende e Informações)
+        /// <para>Formulário Cadastro de Pessoas > Aba Atendimento > Aba Instrutores</para>
+        /// </summary>
+        public static int RotPesAteInstrutor { get; } = 128;
 
+        /// <summary>
+        /// Rotina que Libera a Aba Atendimento das Comumns (Alteração de Instrumentos que atende e Informações)
+        /// <para>Formulário Cadastro de Pessoas > Aba Atendimento > Aba Comum</para>
+        /// </summary>
+        public static int RotPesAteComum { get; } = 129;
+
+        /// <summary>
+        /// Rotina que Libera a Aba Atendimento das Regiões (Alteração de Instrumentos que atende e Informações)
+        /// <para>Formulário Cadastro de Pessoas > Aba Atendimento > Aba Região</para>
+        /// </summary>
+        public static int RotPesAteRegiao { get; } = 130;
+
+        public static int RotPesAdiForma { get; } = 131;
+        public static int RotPesAdiOrquetra { get; } = 132;
+        public static int RotPesAteraCargo { get; } = 134;
+        public static int RotPesAtendimento { get; } = 135;
+        public static int RotPesAdiInstrumento { get; } = 146;
+        public static int RotPesImportar { get; } = 164;
+        public static int RotPesGemMetodo { get; } = 168;
+        public static int RotPesImpFicha { get; } = 169;
+
+        public static int ProgRelGerais { get; } = 33;
+        public static int RotPesMixRelatorio { get; } = 170;
+        public static int RotPesRelMinisterio { get; } = 171;
+        public static int RotPesRelFichaCadastral { get; } = 226;
+        public static int RotPesRelVisaoGeral { get; } = 227;
     }
 }

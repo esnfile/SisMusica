@@ -15,10 +15,14 @@ using BLL.validacoes.Exceptions;
 using ENT.acessos;
 using ENT.pessoa;
 
-namespace ccbtest.pesquisa
+namespace ccbtest
 {
     public partial class frmPesquisaPessoa : Form
     {
+        /// <summary>
+        /// Classe que Pesquisa a Pessoa
+        ///<para>Campo= 'Anciao', 'Coop', 'EncReg', 'EncLocal', 'Examina', 'Instrutor', 'Aluno' OU empty para retornar os dados total</para>
+        /// </summary>
         public frmPesquisaPessoa(Form forms, string Campo)
         {
             InitializeComponent();
@@ -236,9 +240,9 @@ namespace ccbtest.pesquisa
             try
             {
                 //chama a classe de negócios
-                objBLL = new BLL_pessoa();
+                IBLL_buscaPessoa objBLL_Pessoa = new BLL_buscaPessoaPorCodPessoa();
                 List<MOD_pessoa> listaPesFiltro = new List<MOD_pessoa>();
-                lista = objBLL.buscarNome(Pessoa, modulos.CodUsuarioCCB, modulos.CodUsuarioCargo);
+                lista = objBLL_Pessoa.Buscar(Pessoa);
 
                 if (campoChama.Equals("Instrutor") || campoChama.Equals("InstrutorMet") || 
                     campoChama.Equals("InstrutorHino") || campoChama.Equals("InstrutorMts") || 
@@ -341,8 +345,8 @@ namespace ccbtest.pesquisa
                 }
                 else if (formChama.Name.Equals("frmPreTesteBusca"))
                 {
-                    //((frmPreTesteBusca)formChama).carregaPessoa(vCodigo);
-                    //Close();
+                    ((frmPreTesteBusca)formChama).carregaPessoa(vCodigo);
+                    Close();
                 }
                 else if (formChama.Name.Equals("frmSolicitaTeste"))
                 {

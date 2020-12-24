@@ -871,51 +871,10 @@ namespace ccbinst
         {
             try
             {
-                MOD_acessoMetodo entAcesso = new MOD_acessoMetodo();
-                foreach (MOD_acessos ent in listaAcesso)
-                {
-                    //verificando o botão inserir
-                    if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotInsMetodo))
-                    {
-                        btnCodIns.Enabled = true;
-                    }
-                    //verificando o botão editar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotEditMetodo))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnCodEditar.Enabled = true;
-                        }
-                        else
-                        {
-                            btnCodEditar.Enabled = false;
-                        }
-                    }
-                    //verificando o botão excluir
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotExcMetodo))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnCodExc.Enabled = true;
-                        }
-                        else
-                        {
-                            btnCodExc.Enabled = false;
-                        }
-                    }
-                    //verificando o botão visualizar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotVisMetodo))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnCodVisual.Enabled = true;
-                        }
-                        else
-                        {
-                            btnCodVisual.Enabled = false;
-                        }
-                    }
-                }
+                btnCodIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoMetodo.RotInsMetodo);
+                btnCodEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoMetodo.RotEditMetodo, dataGrid);
+                btnCodExc.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoMetodo.RotExcMetodo, dataGrid);
+                btnCodVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoMetodo.RotVisMetodo, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -934,51 +893,10 @@ namespace ccbinst
         {
             try
             {
-                MOD_acessoMetodo entAcesso = new MOD_acessoMetodo();
-                foreach (MOD_acessos ent in listaAcesso)
-                {
-                    //verificando o botão inserir
-                    if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotInsMetodo))
-                    {
-                        btnDescIns.Enabled = true;
-                    }
-                    //verificando o botão editar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotEditMetodo))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnDescEditar.Enabled = true;
-                        }
-                        else
-                        {
-                            btnDescEditar.Enabled = false;
-                        }
-                    }
-                    //verificando o botão excluir
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotExcMetodo))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnDescExc.Enabled = true;
-                        }
-                        else
-                        {
-                            btnDescExc.Enabled = false;
-                        }
-                    }
-                    //verificando o botão visualizar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotVisMetodo))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnDescVisual.Enabled = true;
-                        }
-                        else
-                        {
-                            btnDescVisual.Enabled = false;
-                        }
-                    }
-                }
+                btnDescIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoMetodo.RotInsMetodo);
+                btnDescEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoMetodo.RotEditMetodo, dataGrid);
+                btnDescExc.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoMetodo.RotExcMetodo, dataGrid);
+                btnDescVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoMetodo.RotVisMetodo, dataGrid);
             }
             catch (SqlException exl)
             {
@@ -997,51 +915,10 @@ namespace ccbinst
         {
             try
             {
-                MOD_acessoMetodo entAcesso = new MOD_acessoMetodo();
-                foreach (MOD_acessos ent in listaAcesso)
-                {
-                    //verificando o botão inserir
-                    if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotInsMetodo))
-                    {
-                        btnTipoIns.Enabled = true;
-                    }
-                    //verificando o botão editar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotEditMetodo))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnTipoEditar.Enabled = true;
-                        }
-                        else
-                        {
-                            btnTipoEditar.Enabled = false;
-                        }
-                    }
-                    //verificando o botão excluir
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotExcMetodo))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnTipoExc.Enabled = true;
-                        }
-                        else
-                        {
-                            btnTipoExc.Enabled = false;
-                        }
-                    }
-                    //verificando o botão visualizar
-                    else if (Convert.ToInt32(ent.CodRotina).Equals(entAcesso.rotVisMetodo))
-                    {
-                        if (dataGrid.Rows.Count > 0)
-                        {
-                            btnTipoVisual.Enabled = true;
-                        }
-                        else
-                        {
-                            btnTipoVisual.Enabled = false;
-                        }
-                    }
-                }
+                btnTipoIns.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoMetodo.RotInsMetodo);
+                btnTipoEditar.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoMetodo.RotEditMetodo, dataGrid);
+                btnTipoExc.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoMetodo.RotExcMetodo, dataGrid);
+                btnTipoVisual.Enabled = BLL_Liberacoes.LiberaAcessoRotina(MOD_acessoMetodo.RotVisMetodo, dataGrid);
             }
             catch (SqlException exl)
             {

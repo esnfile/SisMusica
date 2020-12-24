@@ -52,6 +52,7 @@
             // 
             this.btnFechar.AccessibleDescription = "";
             this.btnFechar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFechar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnFechar.Location = new System.Drawing.Point(514, 405);
             this.btnFechar.Name = "btnFechar";
@@ -65,6 +66,7 @@
             // btnData
             // 
             this.btnData.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnData.Image = ((System.Drawing.Image)(resources.GetObject("btnData.Image")));
             this.btnData.Location = new System.Drawing.Point(210, 5);
             this.btnData.Name = "btnData";
@@ -78,6 +80,7 @@
             // 
             this.btnDataVisual.AccessibleDescription = "";
             this.btnDataVisual.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDataVisual.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDataVisual.Enabled = false;
             this.btnDataVisual.Location = new System.Drawing.Point(488, 323);
             this.btnDataVisual.Name = "btnDataVisual";
@@ -121,6 +124,7 @@
             this.btnDataInicial.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnDataInicial.BackgroundImage = global::ccbimp.Properties.Resources.antes;
             this.btnDataInicial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDataInicial.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDataInicial.Location = new System.Drawing.Point(77, 7);
             this.btnDataInicial.Name = "btnDataInicial";
             this.btnDataInicial.Size = new System.Drawing.Size(18, 19);
@@ -134,6 +138,7 @@
             this.btnDataFinal.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnDataFinal.BackgroundImage = global::ccbimp.Properties.Resources.depois;
             this.btnDataFinal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDataFinal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDataFinal.Location = new System.Drawing.Point(187, 7);
             this.btnDataFinal.Name = "btnDataFinal";
             this.btnDataFinal.Size = new System.Drawing.Size(18, 19);
@@ -208,7 +213,7 @@
             this.gridData.Size = new System.Drawing.Size(571, 281);
             this.gridData.TabIndex = 2;
             this.gridData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridData_CellDoubleClick);
-            this.gridData.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.gridData_RowStateChanged);
+            this.gridData.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridData_DataBindingComplete);
             this.gridData.SelectionChanged += new System.EventHandler(this.gridData_SelectionChanged);
             // 
             // frmImportarPessoaBusca
