@@ -1,0 +1,98 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using System.Data.SqlClient;
+using System.Transactions;
+using System.ComponentModel;
+
+using ENT.pessoa;
+using DAL.pessoa;
+using DAL.uteis;
+using ENT.uteis;
+using DAL.log;
+using ENT.Log;
+using BLL.Funcoes;
+using ENT.instrumentos;
+using ENT.Session;
+
+namespace BLL.pessoa
+{
+    public class BLL_buscaPessoaPorCidade : IBLL_buscaPessoa
+    {
+        DataTable objDtb = null;
+        List<MOD_pessoa> listaPessoa = new List<MOD_pessoa>();
+        IDAL_buscaPessoa objDAL = new DAL_buscaPorCidade();
+
+        /// <summary>
+        /// Função que Transmite o codCidade informado, para pesquisa
+        /// </summary>
+        /// <param name="codCidade"></param>
+        /// <returns></returns>
+        public List<MOD_pessoa> Buscar(string codCidade)
+        {
+            try
+            {
+                if ("Sim".Equals(MOD_Session.ListaUsuarioLogado[0].Administrador))
+                {
+                    objDtb = objDAL.Buscar(codCidade);
+                }
+                else
+                {
+                    objDtb = objDAL.Buscar(codCidade, MOD_Session.ListaCCBUsuarioLogado, MOD_Session.ListaCargoUsuarioLogado);
+                }
+
+                if (objDtb != null)
+                {
+                    listaPessoa = new BLL_listaPessoa().CriarLista(objDtb);
+                }
+                return listaPessoa;
+            }
+            catch (SqlException exl)
+            {
+                throw exl;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        /// <summary>
+        /// Função que Transmite o codCidade informado, para pesquisa
+        /// <para>Ativo: Sim ou Não</para>
+        /// </summary>
+        /// <param name="codCidade"></param>
+        /// <param name="ativo"></param>
+        /// <returns></returns>
+        public List<MOD_pessoa> Buscar(string codCidade, bool ativo)
+        {
+            try
+            {
+                if ("Sim".Equals(MOD_Session.ListaUsuarioLogado[0].Administrador))
+                {
+                    objDtb = objDAL.Buscar(codCidade, ativo);
+                }
+                else
+                {
+                    objDtb = objDAL.Buscar(codCidade, MOD_Session.ListaCCBUsuarioLogado, MOD_Session.ListaCargoUsuarioLogado, ativo);
+                }
+
+                if (objDtb != null)
+                {
+                    listaPessoa = new BLL_listaPessoa().CriarLista(objDtb);
+                }
+                return listaPessoa;
+            }
+            catch (SqlException exl)
+            {
+                throw exl;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+    }
+}
